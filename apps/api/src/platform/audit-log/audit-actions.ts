@@ -1,0 +1,119 @@
+/**
+ * Registry of audit action names (PLT-01). Modules add their actions here; the audit
+ * service rejects any name that isn't registered, so actions stay consistent.
+ */
+export const AUDIT_ACTIONS = [
+  // Identity (Sprint 1)
+  'auth.login.succeeded',
+  'auth.login.failed',
+  'auth.account.locked',
+  'auth.logout',
+  'auth.session.revoked',
+  'auth.password.changed',
+  'auth.token.reuse_detected',
+  // Tenancy (PLT-02)
+  'tenant.access.denied',
+  // Registration (US-011.1 – US-011.5)
+  'registration.created',
+  'registration.email_verified',
+  'registration.approved',
+  'registration.rejected',
+  'registration.resubmitted',
+  'registration.closed',
+  'company.created',
+  // Users (US-006, US-002, US-003, US-007)
+  'user.invited',
+  'user.invitation_resent',
+  'user.invitation_revoked',
+  'user.invitation_accepted',
+  'user.profile.updated',
+  'auth.password_reset.requested',
+  'auth.password.reset',
+  // Company (US-012 – US-014)
+  'company.updated',
+  'company.settings.updated',
+  'company.logo.updated',
+  'company.logo.removed',
+  // Files (PLT-07)
+  'file.uploaded',
+  'file.deleted',
+  // Subscription lifecycle (PLT-10, PLT-13, PLT-14)
+  'payment.submitted',
+  'payment.withdrawn',
+  'payment.confirmed',
+  'payment.rejected',
+  'subscription.activated',
+  'subscription.renewed',
+  'subscription.plan_changed',
+  'subscription.grace_started',
+  'subscription.read_only_started',
+  'subscription.read_only_ended',
+  // Roles, permissions & projects (Sprint 5)
+  'user.role.changed',
+  'user.project_role.added',
+  'user.project_role.changed',
+  'user.project_role.removed',
+  'role.permissions.changed',
+  'role.permissions.reset',
+  'project.created',
+  'project.updated',
+  'project.status.changed',
+  'project.archived',
+  'project.restored',
+  // Project structure (Sprint 6, US-019 – US-021)
+  'place.created',
+  'place.updated',
+  'place.moved',
+  'place.deactivated',
+  'place.reactivated',
+  'place.deleted',
+  // Workforce (Sprint 7)
+  'workforce.list_item.created',
+  'workforce.list_item.renamed',
+  'workforce.list_item.moved',
+  'workforce.list_item.deactivated',
+  'workforce.list_item.reactivated',
+  'workforce.list_item.deleted',
+  'workforce.member.created',
+  'workforce.member.updated',
+  'workforce.member.status_changed',
+  'workforce.member.photo_changed',
+  'workforce.member.photo_removed',
+  'workforce.member.archived',
+  'workforce.member.restored',
+  'workforce.member.user_linked',
+  'workforce.member.user_unlinked',
+  'workforce.assignment.created',
+  'workforce.assignment.updated',
+  'workforce.assignment.ended',
+  'workforce.assignment.cancelled',
+  'workforce.training.created',
+  'workforce.training.updated',
+  'workforce.training.renewed',
+  'workforce.training.voided',
+  'workforce.training.opened',
+  'workforce.certificate.created',
+  'workforce.certificate.updated',
+  'workforce.certificate.renewed',
+  'workforce.certificate.voided',
+  'workforce.certificate.opened',
+  'workforce.medical.created',
+  'workforce.medical.updated',
+  'workforce.medical.renewed',
+  'workforce.medical.voided',
+  'workforce.medical.opened',
+  'workforce.document.created',
+  'workforce.document.updated',
+  'workforce.document.renewed',
+  'workforce.document.voided',
+  'workforce.document.opened',
+  'workforce.contacts.updated',
+  // Platform (PLT-04)
+  'platform.system_owner.created',
+] as const;
+
+export type AuditAction = (typeof AUDIT_ACTIONS)[number];
+
+export function isAuditAction(value: string): value is AuditAction {
+  return (AUDIT_ACTIONS as readonly string[]).includes(value);
+}

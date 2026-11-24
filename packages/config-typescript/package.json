@@ -1,0 +1,13 @@
+{
+  "name": "@hse/config-typescript",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Shared tsconfig bases: base, worker, nextjs, library",
+  "files": ["*.json"],
+  "exports": {
+    "./base.json": "./base.json",
+    "./worker.json": "./worker.json",
+    "./nextjs.json": "./nextjs.json",
+    "./library.json": "./library.json"
+  }
+}

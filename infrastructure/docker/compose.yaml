@@ -1,0 +1,46 @@
+# Local development stack: API (Wrangler + emulated D1/R2/KV/Queues) and web (Next.js dev).
+# Usage (from the repository root):
+#   node scripts/setup.mjs
+#   docker compose -f infrastructure/docker/compose.yaml up
+name: hse-management
+
+x-dev: &dev
+  build:
+    context: ../..
+    dockerfile: infrastructure/docker/Dockerfile.dev
+  volumes:
+    - ../..:/workspace
+    # Linux node_modules live in a volume so they never clash with host binaries.
+    - node_modules:/workspace/node_modules
+  working_dir: /workspace
+
+services:
+  install:
+    <<: *dev
+    command: npm ci --no-audit --no-fund
+    user: root
+
+  api:
+    <<: *dev
+    # Apply migrations to the local D1, then serve on all interfaces inside the container.
+    command: sh -c "npm run db:migrate:local --workspace @hse/api && cd apps/api && npx wrangler dev --ip 0.0.0.0 --port 8787"
+    ports:
+      - '8787:8787'
+    depends_on:
+      install:
+        condition: service_completed_successfully
+
+  web:
+    <<: *dev
+    command: npm run dev --workspace @hse/web -- --hostname 0.0.0.0
+    environment:
+      # The Next.js dev proxy forwards /api/* to the api service (T-4).
+      API_PROXY_ORIGIN: http://api:8787
+    ports:
+      - '3000:3000'
+    depends_on:
+      install:
+        condition: service_completed_successfully
+
+volumes:
+  node_modules:

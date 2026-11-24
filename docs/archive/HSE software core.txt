@@ -1,0 +1,7400 @@
+# Document 00 — Vision & Product Foundation
+
+**Version:** 1.0
+
+---
+
+# 1. Vision
+
+Build a modern, cloud-native, AI-first Safety Operations Platform that helps construction and industrial companies manage all daily **HSE** operations from one centralized system.
+
+The platform replaces paper forms, spreadsheets, disconnected applications and manual communication with one integrated solution.
+
+This product is designed to become the daily operating system for Safety Officers, Supervisors, Engineers, Project Managers and **HSE** Managers.
+
+---
+
+# 2. Target Market
+
+## Phase 1
+
+Primary Country:
+
+- Saudi Arabia
+
+Primary Industries:
+
+- Construction
+- **EPC**
+- Infrastructure
+- Oil & Gas
+- Industrial Projects
+
+---
+
+## Phase 2
+
+Expand into:
+
+- United Arab Emirates
+- Qatar
+- Kuwait
+- Oman
+- Bahrain
+
+---
+
+# 3. Product Philosophy
+
+This product is **NOT** designed to be:
+
+- An Excel replacement
+- A document storage system
+- A reporting-only application
+- An **ERP** system
+- An HR system
+
+Instead, this product is designed to become the **Daily Safety Operations Platform** used throughout every working day.
+
+A Safety Officer should start the day with this platform and finish the day with this platform.
+
+---
+
+# 4. Mission
+
+Provide one simple platform where every daily safety activity can be planned, executed, tracked and reported.
+
+---
+
+# 5. Product Goals
+
+The platform should:
+
+- Reduce paperwork
+- Eliminate scattered Excel files
+- Improve compliance
+- Increase safety visibility
+- Improve reporting speed
+- Standardize workflows
+- Simplify inspections
+- Improve communication between field teams and management
+
+---
+
+# 6. Design Principles
+
+The following priorities must always be respected during development.
+
+## Simplicity
+
+2. Speed
+## Reliability
+## Scalability
+## User Experience
+
+Every feature must be easy enough for first-time users.
+
+---
+
+# 7. Core Principles
+
+The platform must be:
+
+- Cloud First
+- Mobile First
+- AI Ready
+- Multi Company Ready
+- Multi Project Ready
+- **API** First
+- Secure by Default
+- Offline Friendly
+- Responsive
+- Arabic Ready
+- English Ready
+
+---
+
+# 8. Target Users
+
+The platform supports different user roles.
+
+Primary users include:
+
+- System Owner
+- Company Administrator
+- **HSE** Manager
+- Safety Officer
+- Project Manager
+- Site Engineer
+- Supervisor
+- Foreman
+- Worker (Limited Access)
+- Client (Read Only)
+- Consultant (Read Only)
+
+---
+
+# 9. Daily Workflow Philosophy
+
+The platform should become the central workplace for every Safety Officer.
+
+Typical daily workflow:
+
+### Start Shift
+
+↓
+
+### Review Dashboard
+
+↓
+
+### Complete Inspections
+
+↓
+
+### Report Hazards
+
+↓
+
+Create or Review Permits
+
+↓
+
+### Assign Corrective Actions
+
+↓
+
+### Monitor Progress
+
+↓
+
+### Generate Reports
+
+↓
+
+### End Shift
+
+---
+
+# 10. Version 1 Scope
+
+Version 1 focuses only on daily **HSE** operations.
+
+Included:
+
+- Company Management
+- Project Management
+- User Management
+- Dashboard
+- Daily Inspection
+- Hazard Reporting
+- Near Miss Reporting
+- Incident Reporting
+- Corrective Actions
+- Permit to Work
+- Toolbox Talk
+- **PPE** Management
+- Reports
+
+Not Included:
+
+- Payroll
+- HR Management
+- Inventory
+- Accounting
+- Procurement
+- Asset Management
+- Quality Control
+- Finance
+
+These modules may be introduced in future releases.
+
+---
+
+# 11. Future Vision
+
+The platform will gradually evolve into an AI-powered Safety Operations Platform.
+
+Future capabilities include:
+
+- AI Hazard Detection
+- AI Report Generation
+- AI Root Cause Analysis
+- AI Safety Recommendations
+- AI Toolbox Talk Generation
+- AI Compliance Assistant
+- Voice Reporting
+- Arabic Voice Commands
+- Predictive Risk Analysis
+
+---
+
+# 12. Success Criteria
+
+The product will be considered successful when:
+
+- Companies no longer depend on Excel for daily **HSE** operations.
+- A Safety Officer can complete a field inspection in less than two minutes.
+- A Hazard Report can be submitted in under thirty seconds.
+- Management can monitor multiple projects from a single dashboard.
+- Reports can be generated instantly without manual formatting.
+
+---
+
+# 13. Technical Direction
+
+Architecture should follow these principles:
+
+- Cloudflare First
+- Serverless First
+- Modular Architecture
+- **API** First
+- Mobile Responsive
+- Progressive Web App (**PWA**)
+- Secure Authentication
+- High Performance
+- Scalable Infrastructure
+
+The system should be designed so that individual modules can be developed independently without affecting the rest of the platform.
+
+---
+
+# 14. Long-Term Product Vision
+
+The long-term objective is to create one of the most modern Safety Operations Platforms for the Middle East, beginning with Saudi Arabia and expanding across the **GCC** region.
+
+The platform should be trusted by companies of all sizes, from small contractors to large enterprise organizations, while remaining simple, fast and intuitive for daily field operations.
+
+# Document 01 — System Architecture
+
+**Version:** 1.0
+
+---
+
+# 1. Architecture Philosophy
+
+The platform must follow a modern cloud-native architecture.
+
+Every module should be independent, reusable and scalable.
+
+The architecture should support future growth without major rewrites.
+
+---
+
+# 2. Design Principles
+
+The architecture must follow these principles.
+
+- Modular
+- Scalable
+- Serverless First
+- **API** First
+- Mobile First
+- Cloudflare First
+- AI Friendly
+- Secure by Default
+
+---
+
+# 3. High-Level Architecture
+
+``` Users
+
+↓
+
+Progressive Web App (**PWA**)
+
+↓
+
+**API** Layer
+
+↓
+
+### Business Logic Layer
+
+↓
+
+### Data Access Layer
+
+↓
+
+Database & Storage
+
+↓
+
+### Cloudflare Infrastructure
+
+```
+
+Each layer has a single responsibility.
+
+No layer should directly access another non-adjacent layer.
+
+---
+
+# 4. Application Layers
+
+## Presentation Layer
+
+Responsible for:
+
+- User Interface
+- Forms
+- Validation
+- Navigation
+- Responsive Design
+
+This layer must never contain business logic.
+
+---
+
+## API Layer
+
+Responsible for:
+
+- Authentication
+- Request Validation
+- Authorization
+- Routing
+- Response Formatting
+
+No business rules should exist here.
+
+---
+
+## Business Layer
+
+Responsible for:
+
+- Business Rules
+- Workflow
+- Permission Checks
+- Calculations
+- Automation
+
+This is the heart of the system.
+
+---
+
+## Data Layer
+
+Responsible for:
+
+- Database Operations
+- Query Optimization
+- Transactions
+- Storage Access
+
+No UI logic is allowed.
+
+---
+
+# 5. Module Architecture
+
+Every module must be independent.
+
+Example modules:
+
+- Company
+- Project
+- Users
+- Inspection
+- Hazard
+- Incident
+- Permit
+- **PPE**
+- Training
+- Reports
+
+Each module owns its own business logic.
+
+Modules communicate only through well-defined services.
+
+---
+
+# 6. Shared Components
+
+The following components should be reusable across the entire system.
+
+- Authentication
+- File Upload
+- Notifications
+- Search
+- Filters
+- Comments
+- Attachments
+- Activity Timeline
+- Audit Log
+
+No module should create duplicate functionality.
+
+---
+
+# 7. File Storage Strategy
+
+Large files must never be stored inside the database.
+
+Examples:
+
+- Images
+- Videos
+- PDFs
+- Certificates
+- Attachments
+
+Only metadata and storage references should be saved in the database.
+
+---
+
+# 8. Database Strategy
+
+The application should support database abstraction.
+
+Business logic must not depend on a specific database engine.
+
+This allows future migration without changing application behavior.
+
+---
+
+# 9. Multi-Company Architecture
+
+One platform serves multiple companies.
+
+Each company owns:
+
+- Users
+- Projects
+- Employees
+- Inspections
+- Hazards
+- Reports
+
+Data isolation between companies is mandatory.
+
+A user can only access data belonging to their authorized company.
+
+---
+
+# 10. Multi-Project Architecture
+
+A company can create multiple projects.
+
+Every operational record belongs to one project.
+
+Examples:
+
+- Inspection
+- Incident
+- Permit
+- Hazard
+- Toolbox Talk
+- Corrective Action
+
+Project-level filtering must be available throughout the platform.
+
+---
+
+# 11. Security Principles
+
+Every request must be authenticated.
+
+Every action must be authorized.
+
+Every data modification must be logged.
+
+Sensitive operations should require additional verification when appropriate.
+
+---
+
+# 12. Audit Trail
+
+The system must automatically record important activities.
+
+Examples:
+
+- Created
+- Updated
+- Deleted
+- Approved
+- Rejected
+- Closed
+- Reopened
+
+Each log should include:
+
+- User
+- Date & Time
+- Project
+- Previous Value
+- New Value
+
+Audit history should not be editable.
+
+---
+
+# 13. Notification Architecture
+
+The notification system should support multiple channels.
+
+Current:
+
+- In-App Notifications
+
+Future:
+
+- Email
+- **SMS**
+- WhatsApp
+- Push Notifications
+
+The notification engine should be reusable across all modules.
+
+---
+
+# 14. Reporting Architecture
+
+Reports should be generated directly from structured data.
+
+No report should depend on manual formatting.
+
+Every report should support future export to:
+
+- **PDF**
+- Excel
+- **CSV**
+
+---
+
+# 15. Offline Strategy
+
+The application should continue basic operations when internet connectivity is unstable.
+
+Examples:
+
+- Create Inspection
+- Capture Photos
+- Record Hazard
+
+Data should synchronize automatically when the connection is restored.
+
+---
+
+# 16. Performance Goals
+
+Target performance objectives:
+
+- Initial page load under 2 seconds.
+- **API** response under **500** milliseconds for standard operations.
+- Support thousands of records without noticeable slowdown.
+- Optimize for mobile devices used on construction sites.
+
+---
+
+# 17. Future Scalability
+
+The architecture should allow new modules to be added without changing existing modules.
+
+Examples of future modules:
+
+- Environmental Management
+- Equipment Inspection
+- Medical
+- Emergency Response
+- Compliance
+- AI Assistant
+- Quality Management
+- Asset Management
+
+The platform should evolve through modular expansion rather than architectural redesign.
+
+# Document 02 — Technology Stack & Engineering Standards
+
+**Version:** 1.0
+
+---
+
+# 1. Purpose
+
+This document defines the official technology stack and engineering standards for the platform.
+
+Every AI-generated feature, module and component must follow this document.
+
+No technology should be introduced without updating this document.
+
+---
+
+# 2. Architecture Strategy
+
+The platform follows a **Cloudflare-First** architecture.
+
+Primary objectives:
+
+- Low operating cost
+- High availability
+- Global performance
+- Fast deployment
+- Serverless execution
+- Easy scalability
+
+---
+
+# 3. Official Technology Stack
+
+## Frontend
+
+- Next.js (App Router)
+- React
+- TypeScript
+- Tailwind **CSS**
+- shadcn/ui
+
+---
+
+## Backend
+
+- Hono
+- TypeScript
+
+Business logic must remain independent from the framework wherever possible.
+
+---
+
+## Database
+
+### Primary Database
+
+- Cloudflare D1
+
+### Future Upgrade Path
+
+- PostgreSQL
+
+Database access must always go through an **ORM**.
+
+---
+
+## ORM
+
+Official **ORM**
+
+- Drizzle **ORM**
+
+Direct **SQL** should only be used when necessary for performance.
+
+---
+
+## Authentication
+
+Authentication must support:
+
+- Email & Password
+- Google Sign-In (Future)
+- Microsoft Sign-In (Future)
+
+Every request must be authenticated.
+
+---
+
+## File Storage
+
+### Official Storage
+
+- Cloudflare R2
+
+Supported file types:
+
+- Images
+- **PDF**
+- Documents
+- Certificates
+
+Only file references should be stored in the database.
+
+---
+
+## Cache
+
+### Official Cache
+
+- Cloudflare KV
+
+Used for:
+
+- Application settings
+- Temporary data
+- Frequently accessed values
+
+Do not store permanent business records in cache.
+
+---
+
+## Queue
+
+### Official Queue
+
+- Cloudflare Queues
+
+Used for asynchronous tasks such as:
+
+- Notifications
+- Email
+- Image processing
+- Background jobs
+
+---
+
+# 4. Application Type
+
+The application must behave as a Progressive Web App (**PWA**).
+
+Requirements:
+
+- Installable
+- Mobile friendly
+- Offline capable
+- Fast loading
+
+---
+
+# 5. Responsive Strategy
+
+The application is designed Mobile First.
+
+Priority order:
+
+## Mobile
+
+## Tablet ## Desktop
+
+Every screen must work correctly on all supported devices.
+
+---
+
+# 6. Internationalization
+
+Languages:
+
+Version 1
+
+- English
+
+Version 2
+
+- Arabic
+
+The system must be designed to support multiple languages without changing application logic.
+
+All user-facing text should be translatable.
+
+---
+
+# 7. Date & Time
+
+Store all timestamps in **UTC**.
+
+Display dates according to the user's configured timezone.
+
+Future support:
+
+- Hijri Calendar
+- Gregorian Calendar
+
+---
+
+# 8. File Upload Standards
+
+Supported uploads:
+
+- Images
+- **PDF**
+- Office Documents
+
+General rules:
+
+- Validate file type
+- Validate file size
+- Generate unique file names
+- Store metadata in the database
+- Store files in R2
+
+---
+
+# 9. Logging
+
+Every important system event must be logged.
+
+Examples:
+
+- Login
+- Logout
+- Create
+- Update
+- Delete
+- Approval
+- Rejection
+- Status Change
+
+Logs must never be editable.
+
+---
+
+# 10. Error Handling
+
+Every **API** response must return a consistent format.
+
+Errors should be:
+
+- Human-readable
+- Developer-friendly
+- Traceable
+
+Sensitive internal details must never be exposed to end users.
+
+---
+
+# 11. Security Standards
+
+Minimum requirements:
+
+- Authentication required
+- Role-based authorization
+- Input validation
+- **SQL** injection protection
+- **XSS** protection
+- **CSRF** protection (where applicable)
+- Secure password hashing
+- Rate limiting for sensitive endpoints
+
+Security must be considered in every feature from the beginning.
+
+---
+
+# 12. Performance Standards
+
+Target objectives:
+
+- Initial page load under 2 seconds
+- Standard **API** response under **500** ms
+- Optimized image loading
+- Lazy loading where appropriate
+- Pagination for large datasets
+
+Performance should be monitored continuously.
+
+---
+
+# 13. Scalability Principles
+
+The system must support:
+
+- Multiple companies
+- Multiple projects
+- Multiple users
+- Large numbers of inspections
+- Large numbers of uploaded files
+
+No module should assume a fixed data size.
+
+---
+
+# 14. Coding Standards
+
+- TypeScript only
+- Strict typing enabled
+- Reusable components first
+- Avoid duplicated code
+- Keep modules independent
+- Keep business logic outside UI components
+- Follow consistent naming conventions
+
+---
+
+# 15. Future Compatibility
+
+The architecture should allow future integration with:
+
+- AI Assistants
+- WhatsApp **API**
+- **SMS** Gateway
+- Email Providers
+- External **ERP** Systems
+- Government Compliance Systems
+- BI & Analytics Platforms
+
+These integrations should require minimal changes to the existing codebase.
+
+---
+
+# 16. AI Implementation Notes
+
+When generating code, AI assistants must:
+
+- Follow this technology stack exactly.
+- Avoid introducing new libraries without justification.
+- Prefer reusable solutions over quick fixes.
+- Keep modules loosely coupled.
+- Write production-ready code instead of prototypes.
+- Consider future scalability in every implementation.
+
+This document serves as the engineering baseline for all future development.
+
+# Document 03 — AI Development Constitution
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines the mandatory development rules that every AI assistant must follow while working on this project.
+
+These rules are non-negotiable.
+
+Every generated file, feature, **API**, component and database change must comply with this constitution.
+
+---
+
+# Rule 1 — Think Before Coding
+
+Never start writing code immediately.
+
+Always understand:
+
+- Business goal
+- User workflow
+- Existing architecture
+- Module dependencies
+
+If any requirement is unclear, stop and ask for clarification instead of making assumptions.
+
+---
+
+# Rule 2 — Follow Existing Architecture
+
+Never invent a new architecture.
+
+Always follow the official project architecture.
+
+Do not introduce unnecessary complexity.
+
+---
+
+# Rule 3 — Reuse Before Creating
+
+Before creating:
+
+- Component
+- Hook
+- Service
+- Utility
+- Validation
+- **API**
+
+Always check whether a reusable solution already exists.
+
+Duplicate code is prohibited.
+
+---
+
+# Rule 4 — Keep Business Logic Separate
+
+Business logic must never exist inside:
+
+- UI Components
+- Pages
+- Layouts
+
+Business logic belongs inside Services.
+
+---
+
+# Rule 5 — One Responsibility
+
+Each file should have one responsibility.
+
+Avoid large files with multiple unrelated purposes.
+
+---
+
+# Rule 6 — Consistent Naming
+
+Always use clear and descriptive names.
+
+Avoid abbreviations unless they are industry standards.
+
+Examples:
+
+Good
+
+CreateInspectionService
+
+GenerateIncidentReport
+
+Bad
+
+Helper1
+
+DataUtil
+
+TempFile
+
+---
+
+# Rule 7 — Modular Development
+
+Every module must be independent.
+
+A module should be removable without breaking unrelated modules.
+
+---
+
+# Rule 8 — Database Safety
+
+Never modify database structure without a migration.
+
+Never delete production fields without approval.
+
+Preserve backward compatibility whenever possible.
+
+---
+
+# Rule 9 — Security First
+
+Every feature must consider:
+
+Authentication
+
+Authorization
+
+Validation
+
+### Audit Logging
+
+Never trust client-side data.
+
+Always validate on the server.
+
+---
+
+# Rule 10 — API Consistency
+
+All APIs must follow one response structure.
+
+Success responses should remain consistent.
+
+Error responses should remain consistent.
+
+Never create custom formats for individual endpoints.
+
+---
+
+# Rule 11 — Error Handling
+
+Handle every expected failure.
+
+Return meaningful error messages.
+
+Never expose internal implementation details.
+
+---
+
+# Rule 12 — Mobile First
+
+Assume the majority of users work on mobile devices.
+
+Every screen must remain usable with one hand.
+
+Buttons must be easy to tap while wearing work gloves where practical.
+
+---
+
+# Rule 13 — Performance Matters
+
+Avoid unnecessary:
+
+Database queries
+
+Network requests
+
+Component re-renders
+
+Large bundle sizes
+
+Performance optimization is part of feature development.
+
+---
+
+# Rule 14 — Accessibility
+
+Use semantic **HTML**.
+
+Support keyboard navigation where applicable.
+
+Maintain sufficient color contrast.
+
+Never rely only on color to communicate important information.
+
+---
+
+# Rule 15 — Offline Awareness
+
+Assume construction sites may have unstable internet.
+
+Features should tolerate temporary connection loss whenever possible.
+
+---
+
+# Rule 16 — Future AI Compatibility
+
+Design every module so future AI features can integrate without major refactoring.
+
+Avoid hard-coded workflows.
+
+Prefer configurable business rules.
+
+---
+
+# Rule 17 — Code Quality
+
+Generated code must be:
+
+Readable
+
+Maintainable
+
+Well-structured
+
+Strongly typed
+
+Production-ready
+
+Prototype-quality code is unacceptable.
+
+---
+
+# Rule 18 — Documentation
+
+Every important module should include:
+
+Purpose
+
+Responsibilities
+
+Dependencies
+
+Extension points
+
+Future developers should understand the module without reading the entire project.
+
+---
+
+# Rule 19 — Testing Mindset
+
+Every feature should be developed with testing in mind.
+
+Business logic should remain testable.
+
+Avoid tightly coupling logic with UI.
+
+---
+
+# Rule 20 — Long-Term Thinking
+
+Never implement a shortcut that creates future technical debt unless explicitly approved.
+
+Prefer solutions that remain maintainable for years.
+
+---
+
+# AI Working Process
+
+For every development task, follow this sequence:
+
+## Understand the requirement.
+
+## Review related modules. ## Design the solution. ## Reuse existing code where possible. ## Implement the feature. ## Validate the implementation. ## Check security. ## Check performance. ## Update documentation if needed. ## Confirm the task is complete.
+
+---
+
+# AI Completion Checklist
+
+Before considering any task complete, verify:
+
+- Business requirement satisfied.
+- UI follows project standards.
+- Mobile responsive.
+- Validation implemented.
+- Authorization enforced.
+- Audit logging included where required.
+- Error handling completed.
+- No duplicate code introduced.
+- No architecture rules violated.
+- Code is production-ready.
+
+If any item fails, the task is **not complete**.
+
+---
+
+# Final Principle
+
+The objective is not to generate code quickly.
+
+The objective is to build a professional, scalable and maintainable platform that can evolve for many years without requiring architectural redesign.
+
+Every implementation decision should support that objective.
+
+# Document 04 — Database Design Principles
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines the database philosophy and data modeling standards for the platform.
+
+It ensures that every module follows one consistent database design approach.
+
+All future database structures must comply with this document.
+
+---
+
+# 1. Database Philosophy
+
+The database is the single source of truth.
+
+Every business operation must be backed by structured, normalized and reliable data.
+
+The database should be designed for long-term maintainability rather than short-term convenience.
+
+---
+
+# 2. Database Principles
+
+Every table must have a clear business purpose.
+
+Avoid duplicate data.
+
+Avoid unnecessary relationships.
+
+Store business data only once.
+
+Reference it everywhere else.
+
+---
+
+# 3. Naming Convention
+
+Use singular names.
+
+Examples:
+
+- company
+- project
+- employee
+- inspection
+- hazard
+- incident
+- permit
+
+Avoid abbreviations.
+
+Table and column names must clearly describe their purpose.
+
+---
+
+# 4. Primary Keys
+
+Every table must contain a unique identifier.
+
+The identifier should never change during the record's lifetime.
+
+Primary keys must not contain business meaning.
+
+---
+
+# 5. Foreign Keys
+
+Relationships should be explicit.
+
+Every reference between tables must be clearly defined.
+
+Orphan records should never exist.
+
+---
+
+# 6. Standard Audit Fields
+
+Every business table should include standard audit information.
+
+Recommended fields include:
+
+- Created By
+- Created At
+- Updated By
+- Updated At
+
+For modules that support soft deletion:
+
+- Deleted By
+- Deleted At
+
+These fields provide accountability and traceability.
+
+---
+
+# 7. Status Management
+
+Avoid using multiple boolean flags to represent business states.
+
+Instead, use a single status field with clearly defined values.
+
+Example lifecycle:
+
+Draft → Submitted → Under Review → Approved → Closed
+
+The exact status values will be defined by each module.
+
+---
+
+# 8. Soft Delete Policy
+
+Business records should normally be soft deleted.
+
+Deleting a record should not remove historical information unless explicitly required.
+
+This preserves audit history and supports recovery.
+
+---
+
+# 9. Attachments
+
+Files must never be stored inside the database.
+
+The database should store only:
+
+- File reference
+- File name
+- File type
+- File size
+- Storage location
+
+Actual files belong in object storage.
+
+---
+
+# 10. Images
+
+Inspection photos, hazard images and incident evidence should be linked to their parent records.
+
+A business record may have multiple images.
+
+Images should remain accessible even if additional photos are added later.
+
+---
+
+# 11. Comments
+
+Comments should be designed as reusable entities.
+
+Any module should be able to receive comments without creating separate comment systems.
+
+Examples:
+
+- Hazard
+- Incident
+- Inspection
+- Corrective Action
+
+---
+
+# 12. Activity Timeline
+
+Every important business object should support an activity timeline.
+
+Timeline entries may include:
+
+- Created
+- Updated
+- Assigned
+- Approved
+- Closed
+- Reopened
+
+This provides a complete operational history.
+
+---
+
+# 13. Notifications
+
+Notification records should be generic.
+
+The notification system must support every module without requiring module-specific notification tables.
+
+---
+
+# 14. Multi-Company Design
+
+Every business record must belong to a company.
+
+Cross-company data access is prohibited.
+
+Data isolation is mandatory.
+
+---
+
+# 15. Multi-Project Design
+
+Operational records should belong to a specific project whenever applicable.
+
+Examples:
+
+- Inspection
+- Permit
+- Hazard
+- Incident
+- Corrective Action
+
+This enables project-level reporting and filtering.
+
+---
+
+# 16. User Relationships
+
+Business records should reference users by identifier rather than storing duplicated user information.
+
+This ensures consistency when user details change.
+
+---
+
+# 17. Historical Records
+
+Important historical events should never be overwritten.
+
+Where appropriate, maintain history instead of replacing previous values.
+
+Examples include approvals, assignments and status changes.
+
+---
+
+# 18. Scalability
+
+Database design must support:
+
+- Millions of records
+- Thousands of concurrent users
+- Large numbers of projects
+- Large numbers of uploaded files
+
+No design decision should assume small data volumes.
+
+---
+
+# 19. Future Expansion
+
+The database should allow future modules without redesigning existing structures.
+
+Examples:
+
+- Environmental Management
+- Equipment Inspection
+- Medical
+- Compliance
+- Asset Management
+- AI Recommendations
+
+Future tables should integrate naturally into the existing data model.
+
+---
+
+# 20. AI Database Rules
+
+When generating database structures, AI assistants must:
+
+- Reuse existing entities whenever appropriate.
+- Avoid duplicate tables.
+- Keep relationships simple.
+- Normalize data where practical.
+- Preserve historical information.
+- Prefer extensibility over shortcuts.
+- Never break existing schema without a migration plan.
+
+---
+
+# Final Principle
+
+A well-designed database should remain stable even as new features are introduced.
+
+Modules may evolve.
+
+User interfaces may change.
+
+Technologies may change.
+
+The database foundation should remain reliable, consistent and scalable for the lifetime of the product.
+
+# Document 05 — Product Design System
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines the visual language and user experience standards for the platform.
+
+Every screen, component and workflow must follow these rules to ensure consistency throughout the application.
+
+The goal is to create a product that feels simple, modern and professional while remaining practical for daily field operations.
+
+---
+
+# 1. Design Philosophy
+
+The design should help users complete work quickly, not impress them with visual effects.
+
+The interface should feel:
+
+- Clean
+- Fast
+- Simple
+- Professional
+- Consistent
+
+Every screen should reduce cognitive load.
+
+---
+
+# 2. Primary Users
+
+The primary users are:
+
+- Safety Officers
+- **HSE** Managers
+- Site Engineers
+- Supervisors
+- Project Managers
+
+Most users will access the platform from construction sites using mobile devices.
+
+The interface must prioritize usability over decoration.
+
+---
+
+# 3. Mobile-First Design
+
+Every feature must be designed for mobile before desktop.
+
+Requirements:
+
+- Large touch targets
+- Easy one-handed operation
+- Readable fonts
+- Minimal typing
+- Fast navigation
+
+Desktop layouts should extend the mobile experience rather than replace it.
+
+---
+
+# 4. Navigation
+
+## Mobile
+
+Use a Bottom Navigation Bar for the most frequently used actions.
+
+Suggested items:
+
+- Dashboard
+- Tasks
+- Projects
+- Notifications
+- Profile
+
+Additional features should be available through a side menu.
+
+---
+
+## Desktop
+
+Use a collapsible left sidebar.
+
+Sidebar items should remain consistent across all modules.
+
+Suggested structure:
+
+Dashboard
+
+Projects
+
+### Daily Operations
+
+Reports
+
+Administration
+
+Settings
+
+---
+
+# 5. Dashboard Philosophy
+
+The dashboard is the application's home screen.
+
+It should answer one question:
+
+***What needs my attention today?***
+
+The dashboard should prioritize:
+
+- Pending tasks
+- Overdue actions
+- Today's inspections
+- Open hazards
+- Active permits
+- Recent incidents
+
+Avoid displaying excessive charts.
+
+Actionable information is more important than statistics.
+
+---
+
+# 6. Screen Layout
+
+Every page should follow a consistent layout.
+
+Header
+
+↓
+
+Breadcrumb (Desktop)
+
+↓
+
+### Page Title
+
+↓
+
+### Quick Actions
+
+↓
+
+### Main Content
+
+↓
+
+### Optional Sidebar Widgets
+
+Consistency is more important than creativity.
+
+---
+
+# 7. Forms
+
+Forms should be simple.
+
+Rules:
+
+- Group related fields
+- Minimize scrolling
+- Use dropdowns where appropriate
+- Use date pickers
+- Use searchable lists
+- Auto-fill known information
+- Validate before submission
+
+Never overwhelm users with long forms.
+
+---
+
+# 8. Lists
+
+Every list should support:
+
+- Search
+- Filter
+- Sorting
+- Pagination (when needed)
+
+Frequently used actions should remain visible.
+
+---
+
+# 9. Search
+
+Search should be available throughout the application.
+
+Users should never need to remember where information is stored.
+
+Search should support:
+
+- Employee Name
+- Project
+- Permit Number
+- Inspection Number
+- Incident Number
+- Tags
+
+---
+
+# 10. Filters
+
+Every operational screen should support filters.
+
+Examples:
+
+- Company
+- Project
+- Status
+- Date
+- Assigned User
+- Inspection Type
+- Priority
+
+Filter selections should persist during the session.
+
+---
+
+# 11. Status System
+
+Every operational record should clearly display its status.
+
+Examples:
+
+- Draft
+- Submitted
+- Pending
+- Approved
+- Active
+- Closed
+- Rejected
+- Expired
+
+Status presentation must remain consistent across all modules.
+
+---
+
+# 12. Priority System
+
+Tasks should support priorities.
+
+Recommended levels:
+
+- Low
+- Medium
+- High
+- Critical
+
+Priority should always be visible in lists and detail pages.
+
+---
+
+# 13. Color Philosophy
+
+Color should communicate meaning.
+
+Avoid using color only for decoration.
+
+Example usage:
+
+Green
+
+Success
+
+Blue
+
+Information
+
+Yellow
+
+Warning
+
+Red
+
+Critical
+
+Gray
+
+Inactive
+
+Every status should also include text or an icon.
+
+Never rely on color alone.
+
+---
+
+# 14. Icons
+
+Icons should support understanding.
+
+Icons must never replace text.
+
+Every important action should include both:
+
+- Icon
+- Label
+
+---
+
+# 15. Buttons
+
+Primary actions should be visually clear.
+
+Avoid having multiple primary buttons on the same screen.
+
+Button order should remain consistent throughout the application.
+
+---
+
+# 16. Tables
+
+Desktop:
+
+Use responsive data tables.
+
+Mobile:
+
+Replace wide tables with cards or stacked layouts.
+
+Never require horizontal scrolling on standard mobile screens.
+
+---
+
+# 17. Detail Pages
+
+Every business object should have a dedicated detail page.
+
+Suggested structure:
+
+Overview
+
+↓
+
+### General Information
+
+↓
+
+Attachments
+
+↓
+
+Comments
+
+↓
+
+Timeline
+
+↓
+
+### Related Records
+
+Users should understand the complete history without opening multiple pages.
+
+---
+
+# 18. Attachments
+
+Users should be able to:
+
+- Upload photos
+- Preview files
+- Download files
+- View upload history
+
+Images should load quickly and support zooming.
+
+---
+
+# 19. Notifications
+
+Notifications should be informative without becoming distracting.
+
+Categories:
+
+- Information
+- Reminder
+- Warning
+- Critical
+
+Critical notifications should require user attention.
+
+---
+
+# 20. Empty States
+
+Empty screens should guide users.
+
+Instead of showing nothing, explain:
+
+- Why no data exists
+- What users can do next
+- Provide a primary action
+
+Example:
+
+*No inspections have been created for this project.*
+
+[Create Inspection]
+
+---
+
+# 21. Loading States
+
+Never leave users guessing.
+
+Use:
+
+- Skeleton loaders
+- Progress indicators
+- Loading messages where appropriate
+
+Avoid blocking the entire screen.
+
+---
+
+# 22. Error States
+
+Errors should explain:
+
+- What happened
+- Why it happened (if known)
+- How users can resolve it
+
+Provide recovery actions whenever possible.
+
+---
+
+# 23. Accessibility
+
+The interface must support:
+
+- High readability
+- Keyboard navigation where applicable
+- Screen readers where practical
+- Sufficient color contrast
+
+Accessibility should be considered part of quality, not an optional feature.
+
+---
+
+# 24. User Experience Principles
+
+Every interaction should minimize effort.
+
+Users should complete common tasks with as few steps as possible.
+
+Avoid unnecessary confirmations.
+
+Reduce repetitive data entry.
+
+Remember previous user choices whenever appropriate.
+
+---
+
+# 25. AI UI Rules
+
+When generating new screens, AI assistants must:
+
+- Follow the established layout.
+- Reuse existing components.
+- Maintain consistent spacing.
+- Maintain consistent typography.
+- Maintain consistent button placement.
+- Preserve navigation behavior.
+- Never redesign existing UI patterns without approval.
+
+Every new screen should feel like it has always been part of the product.
+
+---
+
+# Final Principle
+
+A great interface is one users rarely notice because every interaction feels natural.
+
+The product should help Safety Officers focus on safety, not on learning software.
+
+# Document 06 — Organization & Project Structure
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines how organizations, projects and work locations are structured within the platform.
+
+Every operational record must belong to this hierarchy.
+
+A consistent structure ensures accurate reporting, permissions and traceability.
+
+---
+
+# 1. Platform Hierarchy
+
+The platform follows a hierarchical model.
+
+``` Platform
+
+└── Company
+
+      └── Project
+
+            └── Area
+
+                  └── Location
+
+                        └── Work Zone
+```
+
+Every operational activity originates from this structure.
+
+---
+
+# 2. Platform
+
+The platform represents the entire SaaS application.
+
+Responsibilities:
+
+- Manage subscriptions
+- Manage companies
+- Global configuration
+- Platform administration
+- Feature management
+- Billing (Future)
+
+Platform users are internal only.
+
+Customers never access platform management.
+
+---
+
+# 3. Company
+
+A company represents one customer organization.
+
+Examples:
+
+- Main Contractor
+- Subcontractor
+- Industrial Company
+- **EPC** Company
+
+Each company owns:
+
+- Users
+- Projects
+- Employees
+- Contractors
+- Inspections
+- Hazards
+- Reports
+- Documents
+
+Companies cannot access each other's data.
+
+---
+
+# 4. Projects
+
+A company may create multiple projects.
+
+Examples:
+
+- Riyadh Metro Extension
+- Residential Tower
+- Hospital Project
+- Airport Expansion
+
+Every project has:
+
+- Project Name
+- Project Code
+- Client
+- Start Date
+- Expected End Date
+- Status
+
+Every operational record belongs to one project.
+
+---
+
+# 5. Areas
+
+Large projects are divided into Areas.
+
+Examples:
+
+- Block A
+- Block B
+- Warehouse
+- Utility Area
+- Administration Area
+
+Areas improve reporting and navigation.
+
+---
+
+# 6. Locations
+
+Each Area contains multiple Locations.
+
+Examples:
+
+- Floor 01
+- Basement
+- Roof
+- Parking
+- Mechanical Room
+
+Locations help identify where work actually occurs.
+
+---
+
+# 7. Work Zones
+
+Locations may contain multiple Work Zones.
+
+Examples:
+
+- Scaffold Zone
+- Excavation Zone
+- Crane Zone
+- Concrete Casting Zone
+- Electrical Work Zone
+
+Work Zones provide the most precise operational location.
+
+---
+
+# 8. Operational Records
+
+Every operational module should reference the project hierarchy whenever applicable.
+
+Examples include:
+
+- Inspection
+- Hazard
+- Incident
+- Permit to Work
+- Toolbox Talk
+- Corrective Action
+- Environmental Observation
+
+This allows accurate filtering and reporting by project, area, location and work zone.
+
+---
+
+# 9. Project Status
+
+Recommended lifecycle:
+
+- Planning
+- Mobilization
+- Active
+- Suspended
+- Completed
+- Archived
+
+Only active projects may receive new operational records.
+
+---
+
+# 10. Company Roles
+
+Typical company-level roles include:
+
+- Company Administrator
+- **HSE** Director
+- Project Manager
+- **HSE** Manager
+
+Company-level roles can manage multiple projects depending on permissions.
+
+---
+
+# 11. Project Roles
+
+Project-specific roles include:
+
+- Safety Officer
+- Site Engineer
+- Supervisor
+- Foreman
+- Inspector
+
+Users may have different roles in different projects.
+
+Permissions should always be evaluated within the context of the current project.
+
+---
+
+# 12. Multi-Project Users
+
+One user may belong to multiple projects.
+
+Examples:
+
+- Regional **HSE** Manager
+- Senior Safety Engineer
+- Corporate Auditor
+
+The platform must allow switching between assigned projects without requiring multiple accounts.
+
+---
+
+# 13. Archived Projects
+
+Completed projects remain accessible in read-only mode.
+
+Historical records must never be deleted simply because a project has finished.
+
+Archived projects continue to support reporting, audits and legal requirements.
+
+---
+
+# 14. Reporting Hierarchy
+
+Reports should be available at multiple levels.
+
+Platform
+
+↓
+
+Company
+
+↓
+
+Project
+
+↓
+
+Area
+
+↓
+
+Location
+
+↓
+
+### Work Zone
+
+This enables management to analyze safety performance from high-level summaries down to individual work zones.
+
+---
+
+# 15. Future Expansion
+
+The hierarchy should support future additions without redesign.
+
+Possible future entities include:
+
+- Buildings
+- Departments
+- Facilities
+- Assets
+- Production Units
+
+The architecture should remain flexible for industries beyond construction.
+
+---
+
+# 16. AI Implementation Rules
+
+When creating any operational module, AI assistants must:
+
+- Always associate records with a Company.
+- Associate records with a Project whenever applicable.
+- Support optional Area, Location and Work Zone references.
+- Never bypass the hierarchy.
+- Never hard-code project structures.
+
+The hierarchy must remain configurable to support different customer organizations.
+
+---
+
+# Final Principle
+
+A well-defined organizational hierarchy is the foundation of reliable reporting, accurate permissions and scalable project management.
+
+Every feature introduced in the future should integrate naturally into this structure rather than creating parallel organizational models.
+
+# Document 07 — Identity, Roles & Permission System
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines how users, roles, permissions and access control work throughout the platform.
+
+The permission system must remain flexible enough to support companies of all sizes while maintaining strong security and simplicity.
+
+---
+
+# 1. Design Philosophy
+
+Access control is based on three independent concepts:
+
+- Identity
+- Role
+- Permission
+
+A user's identity determines **who they are**.
+
+A role describes **their responsibility**.
+
+Permissions define **what they are allowed to do**.
+
+These concepts must remain independent.
+
+---
+
+# 2. Access Model
+
+The platform follows:
+
+**Identity → Role → Permission → Scope**
+
+Every authorization decision must pass through all four layers.
+
+---
+
+# 3. Identity
+
+Each user has one unique account.
+
+A user should never create multiple accounts simply because they work on different projects.
+
+The same identity may belong to multiple companies (future) or multiple projects.
+
+---
+
+# 4. Roles
+
+Roles represent job responsibilities.
+
+Examples include:
+
+- Company Administrator
+- **HSE** Director
+- **HSE** Manager
+- Project Manager
+- Safety Officer
+- Site Engineer
+- Supervisor
+- Foreman
+- Worker
+- Client
+- Consultant
+- Auditor
+
+Roles describe responsibilities only.
+
+They do not automatically grant unlimited permissions.
+
+---
+
+# 5. Permissions
+
+Permissions define specific actions.
+
+Examples:
+
+- Create Inspection
+- Edit Inspection
+- Delete Inspection
+- Approve Inspection
+- Create Permit
+- Approve Permit
+- Close Permit
+- View Incident
+- Export Reports
+- Manage Users
+- Manage Projects
+
+Every permission should represent one action.
+
+Avoid combining multiple actions into a single permission.
+
+---
+
+# 6. Scope
+
+Permissions are always evaluated within a scope.
+
+Supported scopes include:
+
+- Platform
+- Company
+- Project
+- Area (Future)
+- Location (Future)
+
+Example:
+
+A Safety Officer may edit inspections only inside Project Alpha.
+
+The same user may have read-only access in Project Beta.
+
+---
+
+# 7. Permission Strategy
+
+Prefer granting the minimum permissions required.
+
+Users should receive only the access necessary to perform their responsibilities.
+
+Avoid broad administrative privileges.
+
+---
+
+# 8. Role Assignment
+
+Users may hold different roles in different projects.
+
+Example:
+
+Project A
+
+### Safety Officer
+
+Project B
+
+Supervisor
+
+Project C
+
+### Read Only Auditor
+
+The platform must support independent role assignments.
+
+---
+
+# 9. Permission Categories
+
+Permissions should be grouped by module.
+
+Examples:
+
+Dashboard
+
+Company
+
+Projects
+
+Employees
+
+Inspection
+
+Hazards
+
+Incidents
+
+Permits
+
+Reports
+
+Administration
+
+This simplifies administration as the platform grows.
+
+---
+
+# 10. Approval Permissions
+
+Approval actions require dedicated permissions.
+
+Examples:
+
+### Approve Inspection
+
+### Approve Permit
+
+### Approve Incident Closure
+
+### Approve Corrective Action
+
+Approval rights should never be implied by edit permissions.
+
+---
+
+# 11. Read Access
+
+Viewing data is independent from editing data.
+
+Possible combinations include:
+
+### View Only
+
+View + Create
+
+View + Edit
+
+View + Approve
+
+### Full Management
+
+---
+
+# 12. Temporary Access
+
+The platform should support temporary access.
+
+Examples:
+
+### External Auditor
+
+Consultant
+
+### Client Representative
+
+Temporary permissions should expire automatically.
+
+---
+
+# 13. Account Status
+
+Supported user statuses:
+
+- Pending Invitation
+- Active
+- Suspended
+- Locked
+- Archived
+
+Suspended users must immediately lose system access.
+
+---
+
+# 14. Authentication
+
+Every request requires authentication.
+
+Future authentication methods may include:
+
+- Email & Password
+- Google
+- Microsoft
+- Single Sign-On (Enterprise)
+
+Authentication and authorization are separate responsibilities.
+
+---
+
+# 15. Session Management
+
+Users should be able to:
+
+- View active sessions
+- Sign out from other devices
+- Reset passwords securely
+
+Sessions should expire automatically after inactivity.
+
+---
+
+# 16. Audit Requirements
+
+Every permission-sensitive action must be logged.
+
+Examples:
+
+- Login
+- Logout
+- Role Assignment
+- Permission Changes
+- User Suspension
+- Approval Actions
+
+Logs must remain immutable.
+
+---
+
+# 17. Future Expansion
+
+The permission system should support future features such as:
+
+- Custom Roles
+- Department-based Access
+- Branch-level Access
+- Team-based Access
+- Approval Workflows
+- Delegated Authority
+
+These additions should not require redesigning the existing permission model.
+
+---
+
+# 18. AI Implementation Rules
+
+When implementing access control, AI assistants must:
+
+- Never hard-code permissions.
+- Always check permissions on the server.
+- Never trust client-side role information.
+- Separate authentication from authorization.
+- Keep permission checks reusable.
+- Follow the Identity → Role → Permission → Scope model consistently.
+
+---
+
+# Final Principle
+
+A secure permission system should remain flexible enough to support future growth without becoming overly complex.
+
+Users should have exactly the access they need—no more and no less.
+
+The platform's security depends on consistent permission enforcement across every module.
+
+# Document 08 — Company & Project Management Module
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Company & Project Management module establishes the operational foundation of the platform.
+
+Every employee, inspection, permit, incident, hazard, report and future module depends on this structure.
+
+No operational activity can exist without an active company and project.
+
+---
+
+# 1. Objectives
+
+This module enables organizations to:
+
+- Register their company
+- Configure company settings
+- Create multiple projects
+- Organize project locations
+- Assign users
+- Manage project lifecycle
+
+---
+
+# 2. Module Components
+
+The module consists of:
+
+- Company Profile
+- Company Settings
+- Project Management
+- Project Areas
+- Project Locations
+- Work Zones
+- Project Members
+
+---
+
+# 3. Company Profile
+
+Each company maintains a single profile.
+
+Suggested information:
+
+- Company Name
+- Company Logo
+- Registration Number
+- Country
+- City
+- Time Zone
+- Default Language
+- Contact Information
+
+This information is used throughout the platform.
+
+---
+
+# 4. Company Settings
+
+The company administrator can configure:
+
+- Default Language
+- Date Format
+- Time Format
+- Working Week
+- Default Notification Preferences
+- Company Branding
+
+Future settings should be added without changing existing functionality.
+
+---
+
+# 5. Project Management
+
+A company can create unlimited projects, depending on the subscription plan.
+
+Each project represents an independent worksite or contract.
+
+Suggested information:
+
+- Project Name
+- Project Code
+- Client Name
+- Contract Number
+- Project Description
+- Start Date
+- Expected Completion Date
+- Current Status
+
+---
+
+# 6. Project Status
+
+Supported statuses:
+
+- Planning
+- Mobilization
+- Active
+- On Hold
+- Completed
+- Archived
+
+Only active projects can receive new operational records.
+
+---
+
+# 7. Project Organization
+
+Projects should support hierarchical organization.
+
+Example:
+
+Project
+
+↓
+
+Area
+
+↓
+
+Location
+
+↓
+
+### Work Zone
+
+Users should easily identify where work is taking place.
+
+---
+
+# 8. Project Dashboard
+
+Each project should have its own dashboard.
+
+The dashboard summarizes:
+
+- Active Permits
+- Open Hazards
+- Open Incidents
+- Today's Inspections
+- Pending Corrective Actions
+- Upcoming Expirations
+
+The dashboard should focus on operational awareness rather than excessive charts.
+
+---
+
+# 9. Project Members
+
+Each project contains its own members.
+
+Users may include:
+
+- **HSE** Manager
+- Safety Officer
+- Project Manager
+- Site Engineer
+- Supervisor
+- Foreman
+- Client Representative
+- Consultant
+
+Each member receives permissions according to the authorization system.
+
+---
+
+# 10. User Assignment
+
+Users may belong to multiple projects.
+
+Assignment should include:
+
+- Role
+- Access Scope
+- Start Date
+- End Date (Optional)
+
+Removing a user from one project must not affect other projects.
+
+---
+
+# 11. Project Documents
+
+Projects should maintain important documents.
+
+Examples:
+
+- Site Layout
+- Emergency Plan
+- Safety Plan
+- Method Statements
+- Risk Assessments
+
+Future document categories should be configurable.
+
+---
+
+# 12. Project Timeline
+
+Every project should maintain an activity timeline.
+
+Examples:
+
+- Project Created
+- User Added
+- Area Created
+- Status Changed
+- Project Archived
+
+The timeline provides operational history.
+
+---
+
+# 13. Search
+
+Users should quickly locate projects using:
+
+- Project Name
+- Project Code
+- Client
+- Status
+
+Search results should remain fast even with large datasets.
+
+---
+
+# 14. Filtering
+
+Projects should support filtering by:
+
+- Status
+- Client
+- Country
+- Company
+- Start Date
+- Completion Date
+
+Filters should remain consistent with the rest of the platform.
+
+---
+
+# 15. Notifications
+
+Project administrators should receive notifications for important events.
+
+Examples:
+
+- New Member Joined
+- Project Activated
+- Project Archived
+- Permission Updated
+- Critical Safety Events
+
+---
+
+# 16. Reporting
+
+The module should support reports including:
+
+- Active Projects
+- Completed Projects
+- User Distribution
+- Project Status Summary
+- Safety Performance by Project
+
+Reports should integrate with the global reporting engine.
+
+---
+
+# 17. Business Rules
+
+The following rules are mandatory:
+
+- Every project belongs to exactly one company.
+- Every operational record belongs to one active project.
+- Archived projects are read-only.
+- Company administrators can access all company projects.
+- Project-level permissions override default access.
+- Deleting a project is prohibited if operational records exist.
+- Project codes must be unique within the company.
+
+---
+
+# 18. Future Expansion
+
+This module should support future capabilities including:
+
+- Multi-client projects
+- Joint ventures
+- Multiple contractors
+- Project templates
+- Project cloning
+- **GIS** integration
+- Interactive project maps
+
+The architecture should support these features without major redesign.
+
+---
+
+# 19. AI Implementation Rules
+
+When implementing this module, AI assistants must:
+
+- Keep company logic separate from project logic.
+- Never duplicate company settings inside projects.
+- Use reusable services for project management.
+- Validate project status before allowing operational activities.
+- Ensure every project action is audited.
+- Maintain compatibility with future modules.
+
+---
+
+# Final Principle
+
+The Company & Project Management module is the foundation of the entire platform.
+
+A well-designed project structure enables accurate reporting, secure permissions and scalable operations.
+
+Every future module should integrate naturally with this foundation without introducing duplicate organizational structures.
+
+# Document 09 — Workforce Management Module
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Workforce Management module provides a centralized system for managing all people involved in company operations.
+
+Rather than separating employees, contractors and visitors into different systems, the platform manages all workforce members through one unified model.
+
+This approach reduces duplication, simplifies administration and improves operational visibility.
+
+---
+
+# 1. Objectives
+
+The module enables organizations to:
+
+- Maintain a centralized workforce directory.
+- Assign people to projects.
+- Track competency and certifications.
+- Manage employment status.
+- Record emergency contact information.
+- Support future compliance and training requirements.
+
+---
+
+# 2. Workforce Categories
+
+Every person belongs to one workforce category.
+
+Supported categories include:
+
+- Employee
+- Contractor
+- Subcontractor
+- Temporary Worker
+- Visitor
+- Consultant
+- Client Representative
+
+Additional categories may be added in future without changing the system architecture.
+
+---
+
+# 3. Workforce Profile
+
+Each workforce member has a single profile.
+
+Typical information includes:
+
+- Full Name
+- Employee ID (Optional)
+- Nationality
+- Company
+- Category
+- Job Title
+- Department
+- Contact Number
+- Email
+- Profile Photo
+
+Each profile remains unique across the platform.
+
+---
+
+# 4. Employment Status
+
+Supported statuses include:
+
+- Active
+- On Leave
+- Suspended
+- Inactive
+- Terminated
+
+Inactive workforce members cannot be assigned to operational activities.
+
+---
+
+# 5. Project Assignment
+
+A workforce member may belong to multiple projects.
+
+Each assignment records:
+
+- Project
+- Role
+- Start Date
+- End Date
+- Current Status
+
+Assignments should remain historically traceable.
+
+---
+
+# 6. Job Positions
+
+Job positions should remain configurable.
+
+Examples include:
+
+- Safety Officer
+- **HSE** Manager
+- Site Engineer
+- Electrician
+- Welder
+- Rigger
+- Scaffolder
+- Crane Operator
+- Carpenter
+- Driver
+
+Organizations should be able to define additional job positions.
+
+---
+
+# 7. Competency Management
+
+Each workforce member may possess multiple competencies.
+
+Examples:
+
+- Working at Height
+- First Aid
+- Fire Fighting
+- Rigging
+- Lifting Operations
+- Confined Space Entry
+
+Competencies support future permit validation and compliance checks.
+
+---
+
+# 8. Training Records
+
+The platform should maintain workforce training history.
+
+Each record may include:
+
+- Training Name
+- Provider
+- Completion Date
+- Expiry Date
+- Certificate Reference
+- Attachment
+
+Historical training records should never be deleted.
+
+---
+
+# 9. Certification Management
+
+Professional certifications should be tracked.
+
+Examples:
+
+- Safety Passport
+- Equipment License
+- Operator License
+- Medical Clearance
+- Specialized Training Certificates
+
+The platform should support automatic expiry reminders.
+
+---
+
+# 10. Medical Information
+
+Only operationally necessary information should be stored.
+
+Examples:
+
+- Medical Fitness Status
+- Medical Expiry Date
+- Emergency Contact
+
+The platform should avoid storing unnecessary sensitive medical details.
+
+---
+
+# 11. Emergency Contacts
+
+Each workforce member may have one or more emergency contacts.
+
+Suggested information:
+
+- Contact Name
+- Relationship
+- Phone Number
+
+This information should be accessible only to authorized users.
+
+---
+
+# 12. Workforce Documents
+
+Supported document types:
+
+- Passport
+- National ID
+- Work Permit
+- Employment Contract
+- Training Certificates
+- Licenses
+
+Documents should support expiry tracking.
+
+---
+
+# 13. Workforce Search
+
+Users should quickly locate people using:
+
+- Name
+- Employee ID
+- Company
+- Project
+- Job Position
+- Nationality
+- Category
+
+Search performance should remain fast with large workforces.
+
+---
+
+# 14. Workforce Dashboard
+
+The module dashboard should display:
+
+- Total Workforce
+- Active Workforce
+- Expiring Certifications
+- Expiring Medicals
+- Pending Trainings
+- Recently Added Members
+
+The dashboard should highlight actions requiring attention.
+
+---
+
+# 15. Notifications
+
+Examples include:
+
+- Certificate Expiring
+- Medical Expiring
+- Training Due
+- Assignment Ending
+- Workforce Suspended
+
+Notifications should integrate with the platform notification engine.
+
+---
+
+# 16. Reporting
+
+Supported reports include:
+
+- Workforce Summary
+- Workforce by Project
+- Workforce by Company
+- Certification Status
+- Training Status
+- Medical Status
+- Workforce Distribution
+
+Reports should support filtering and export.
+
+---
+
+# 17. Business Rules
+
+The following rules apply:
+
+- Every workforce member belongs to one company.
+- A person may be assigned to multiple projects.
+- Expired certifications should be clearly identified.
+- Inactive personnel cannot receive new operational assignments.
+- Historical assignments must remain available for audits.
+- Deleting workforce records is prohibited; archive them instead.
+
+---
+
+# 18. Future Expansion
+
+Future capabilities may include:
+
+- Attendance Tracking
+- Biometric Integration
+- QR Code Identification
+- **NFC** Badge Support
+- Face Recognition
+- Shift Scheduling
+- Time Tracking
+- Payroll Integration
+
+These features should integrate without redesigning the workforce model.
+
+---
+
+# 19. AI Implementation Rules
+
+When implementing this module, AI assistants must:
+
+- Use a unified workforce model.
+- Avoid separate employee and contractor tables unless technically required.
+- Keep profile information independent from project assignments.
+- Treat certifications and trainings as reusable entities.
+- Preserve historical records.
+- Support future integrations through modular services.
+
+---
+
+# Final Principle
+
+People are the most important operational asset within the platform.
+
+The Workforce Management module should provide a complete, accurate and scalable representation of every person involved in company operations while remaining flexible enough to support future industries and business models.
+
+# Document 10 — Inspection Engine
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Inspection Engine is the core operational module of the platform.
+
+Instead of creating separate inspection systems for different purposes, the platform uses one configurable inspection engine that supports multiple inspection types through reusable templates.
+
+This design ensures flexibility, scalability and consistency across all industries.
+
+---
+
+# 1. Objectives
+
+The Inspection Engine enables organizations to:
+
+- Perform daily inspections.
+- Standardize inspection procedures.
+- Capture field observations.
+- Record evidence.
+- Identify unsafe conditions.
+- Generate corrective actions.
+- Produce inspection reports.
+
+---
+
+# 2. Inspection Philosophy
+
+An inspection is **not** a form.
+
+An inspection is the execution of a predefined template.
+
+Every inspection follows:
+
+Template
+
+↓
+
+Inspection
+
+↓
+
+Observation
+
+↓
+
+Finding
+
+↓
+
+### Corrective Action
+
+↓
+
+Closure
+
+---
+
+# 3. Inspection Types
+
+The engine must support unlimited inspection types.
+
+Examples include:
+
+- Daily Safety Inspection
+- Weekly Safety Inspection
+- Environmental Inspection
+- Fire Safety Inspection
+- **PPE** Inspection
+- Scaffold Inspection
+- Excavation Inspection
+- Lifting Inspection
+- Electrical Inspection
+- Vehicle Inspection
+- Camp Inspection
+- Welfare Inspection
+
+New inspection types should be added without changing application code.
+
+---
+
+# 4. Inspection Templates
+
+Templates define inspection structure.
+
+Each template contains:
+
+- Name
+- Description
+- Category
+- Checklist Sections
+- Questions
+- Required Evidence
+- Scoring Method
+- Approval Workflow
+
+Templates should be version-controlled.
+
+Previous inspections must continue using the template version that was active when they were created.
+
+---
+
+# 5. Inspection Workflow
+
+The standard workflow:
+
+Draft
+
+↓
+
+### In Progress
+
+↓
+
+Submitted
+
+↓
+
+### Under Review
+
+↓
+
+Approved
+
+↓
+
+Closed
+
+↓
+
+Archived
+
+Each status change should be logged.
+
+---
+
+# 6. Inspection Information
+
+Each inspection records:
+
+- Company
+- Project
+- Area
+- Location
+- Work Zone
+- Inspection Type
+- Template Version
+- Inspector
+- Inspection Date
+- Weather (Optional)
+- Notes
+
+---
+
+# 7. Checklist Structure
+
+Templates should support multiple sections.
+
+Example:
+
+### General Safety
+
+↓
+
+Housekeeping
+
+↓
+
+**PPE**
+
+↓
+
+### Electrical Safety
+
+↓
+
+Working at Height
+
+↓
+
+### Fire Protection
+
+↓
+
+### Environmental Controls
+
+Each section contains multiple inspection items.
+
+---
+
+# 8. Inspection Items
+
+Each inspection item supports:
+
+- Question
+- Expected Condition
+- Actual Result
+- Status
+- Comment
+- Photo Attachment
+- Priority
+- Assigned Person (Optional)
+
+Every item should function independently.
+
+---
+
+# 9. Result Types
+
+Inspection items may produce:
+
+- Pass
+- Fail
+- Observation
+- Not Applicable
+- Not Inspected
+
+The available result types should be configurable.
+
+---
+
+# 10. Evidence Collection
+
+Evidence may include:
+
+- Photos
+- Videos (Future)
+- Documents
+- Notes
+- **GPS** Location (Optional)
+- Timestamp
+
+Evidence should remain linked permanently to the inspection.
+
+---
+
+# 11. Findings
+
+Failed inspection items automatically create findings.
+
+Each finding contains:
+
+- Description
+- Severity
+- Category
+- Responsible Person
+- Due Date
+- Current Status
+
+Findings become the basis for corrective actions.
+
+---
+
+# 12. Corrective Actions
+
+Corrective actions may be created directly from findings.
+
+Each action should remain linked to:
+
+- Inspection
+- Finding
+- Responsible User
+
+Closing a corrective action updates the inspection history.
+
+---
+
+# 13. Scoring
+
+Templates may optionally include scoring.
+
+Supported methods include:
+
+- Percentage
+- Weighted Score
+- Pass / Fail
+- Risk Score
+
+Scoring methods should remain configurable.
+
+---
+
+# 14. Attachments
+
+Each inspection supports unlimited attachments.
+
+Examples:
+
+- Photos
+- Documents
+- Drawings
+- Certificates
+
+Attachments should support preview before download.
+
+---
+
+# 15. Inspection Dashboard
+
+The dashboard should display:
+
+- Today's Inspections
+- Overdue Inspections
+- Pending Reviews
+- Failed Items
+- Open Findings
+- Completed Inspections
+- Inspection Trends
+
+The focus should be operational awareness rather than excessive analytics.
+
+---
+
+# 16. Notifications
+
+Examples:
+
+- Inspection Assigned
+- Inspection Submitted
+- Review Required
+- Corrective Action Created
+- Inspection Overdue
+
+Notifications should integrate with the platform notification engine.
+
+---
+
+# 17. Reporting
+
+Supported reports include:
+
+- Inspection Summary
+- Failed Items
+- Findings by Category
+- Findings by Project
+- Inspector Performance
+- Completion Rate
+- Trend Analysis
+
+Reports should support filtering, export and scheduled generation.
+
+---
+
+# 18. Business Rules
+
+The following rules apply:
+
+- Every inspection belongs to one project.
+- Every inspection uses one template version.
+- Submitted inspections cannot be edited without reopening.
+- Every failed item should support evidence.
+- Every corrective action must remain linked to its originating inspection.
+- Historical inspections must remain unchanged even if templates evolve.
+
+---
+
+# 19. Future Expansion
+
+The engine should support future capabilities including:
+
+- AI-generated findings
+- Voice-based inspections
+- Offline inspections
+- QR code asset inspections
+- Barcode scanning
+- Digital signatures
+- Automatic risk scoring
+- Sensor integration
+- Drone inspection data
+
+The inspection engine should evolve without redesigning its core architecture.
+
+---
+
+# 20. AI Implementation Rules
+
+When implementing the Inspection Engine, AI assistants must:
+
+- Build a template-driven architecture.
+- Never hard-code inspection types.
+- Keep templates independent from inspections.
+- Support versioning.
+- Preserve historical records.
+- Reuse the engine for all future inspection modules.
+- Keep business logic separate from UI components.
+
+---
+
+# Final Principle
+
+The Inspection Engine is the operational heart of the platform.
+
+Every inspection should be fast, structured, evidence-based and fully traceable.
+
+By using configurable templates instead of hard-coded forms, the platform can adapt to new industries, regulations and customer requirements without significant redevelopment.
+
+# Document 11 — Safety Event Engine
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Safety Event Engine provides a unified framework for recording, managing and investigating all safety-related events.
+
+Instead of maintaining separate systems for hazards, near misses, incidents and accidents, the platform manages every safety event through one configurable engine.
+
+This approach improves consistency, reporting and long-term scalability.
+
+---
+
+# 1. Objectives
+
+The Safety Event Engine enables organizations to:
+
+- Report unsafe conditions.
+- Report unsafe acts.
+- Record near misses.
+- Record incidents.
+- Record accidents.
+- Investigate events.
+- Track corrective actions.
+- Analyze trends.
+- Improve safety performance.
+
+---
+
+# 2. Safety Event Philosophy
+
+Every safety-related occurrence is treated as a **Safety Event**.
+
+The event type determines the workflow, not the database structure.
+
+The standard lifecycle:
+
+Report
+
+↓
+
+Review
+
+↓
+
+Investigation
+
+↓
+
+### Corrective Actions
+
+↓
+
+Verification
+
+↓
+
+Closure
+
+---
+
+# 3. Event Types
+
+The engine should support configurable event types.
+
+Examples:
+
+- Hazard
+- Unsafe Act
+- Unsafe Condition
+- Near Miss
+- Property Damage
+- Environmental Event
+- First Aid Case
+- Medical Treatment Case
+- Lost Time Injury
+- Fatality
+
+Organizations may create additional event types.
+
+---
+
+# 4. Event Categories
+
+Events may belong to one or more categories.
+
+Examples:
+
+- Working at Height
+- Electrical
+- Fire
+- Excavation
+- Lifting
+- Vehicle
+- Housekeeping
+- Chemical
+- Environmental
+- **PPE**
+- Machinery
+
+Categories should remain configurable.
+
+---
+
+# 5. Event Information
+
+Each event records:
+
+- Company
+- Project
+- Area
+- Location
+- Work Zone
+- Event Type
+- Event Category
+- Date
+- Time
+- Reported By
+- Assigned To
+- Description
+
+---
+
+# 6. Severity Levels
+
+Supported severities:
+
+- Low
+- Medium
+- High
+- Critical
+
+Organizations may customize severity labels if required.
+
+---
+
+# 7. Event Status
+
+Suggested lifecycle:
+
+Draft
+
+↓
+
+Reported
+
+↓
+
+### Under Review
+
+↓
+
+Investigation
+
+↓
+
+### Corrective Action
+
+↓
+
+Verification
+
+↓
+
+Closed
+
+↓
+
+Archived
+
+Every status transition must be recorded.
+
+---
+
+# 8. Evidence
+
+Events may include:
+
+- Photos
+- Documents
+- Videos (Future)
+- Voice Notes (Future)
+- **GPS** Coordinates
+- Witness Information
+
+Evidence should remain permanently linked to the event.
+
+---
+
+# 9. Investigation
+
+Investigations should support:
+
+- Immediate Causes
+- Root Causes
+- Contributing Factors
+- Recommendations
+- Lessons Learned
+
+Investigation templates should remain configurable.
+
+---
+
+# 10. Witnesses
+
+Events may include multiple witnesses.
+
+Each witness record may include:
+
+- Name
+- Contact
+- Company
+- Statement
+
+Witness records should become read-only after closure.
+
+---
+
+# 11. Corrective Actions
+
+Every event may generate one or more corrective actions.
+
+Each action records:
+
+- Responsible Person
+- Due Date
+- Priority
+- Progress
+- Completion Evidence
+
+Corrective actions remain linked to the originating event.
+
+---
+
+# 12. Risk Rating
+
+Risk may be assessed using configurable methods.
+
+Examples:
+
+- Probability × Severity
+- Risk Matrix
+- Numeric Score
+
+Organizations should be able to select their preferred assessment method.
+
+---
+
+# 13. Attachments
+
+Events support unlimited attachments.
+
+Examples:
+
+- Photos
+- Investigation Documents
+- Medical Reports
+- Drawings
+- Supporting Files
+
+---
+
+# 14. Notifications
+
+The notification engine should support:
+
+- Event Reported
+- High Severity Event
+- Investigation Assigned
+- Corrective Action Due
+- Event Closed
+
+Critical events should trigger immediate notifications.
+
+---
+
+# 15. Dashboard
+
+The module dashboard should display:
+
+- Open Events
+- High Risk Events
+- Events by Type
+- Events by Project
+- Events by Severity
+- Overdue Investigations
+- Overdue Corrective Actions
+
+The dashboard should prioritize operational decision-making.
+
+---
+
+# 16. Reporting
+
+Reports should include:
+
+- Event Summary
+- Trend Analysis
+- Severity Distribution
+- Category Distribution
+- Root Cause Analysis
+- Project Comparison
+- Monthly Performance
+
+Reports should support **PDF**, Excel and scheduled delivery.
+
+---
+
+# 17. Business Rules
+
+The following rules apply:
+
+- Every event belongs to one company.
+- Every event belongs to one project.
+- Closed events become read-only.
+- Investigation cannot begin until the event is reported.
+- Corrective actions must remain linked to the originating event.
+- Historical records must never be deleted.
+
+---
+
+# 18. Future Expansion
+
+The engine should support future capabilities including:
+
+- AI-generated incident summaries
+- AI root cause suggestions
+- Image-based hazard detection
+- Voice event reporting
+- Automatic risk scoring
+- IoT sensor alerts
+- **CCTV** event integration
+- Drone inspection events
+
+These capabilities should integrate without redesigning the core engine.
+
+---
+
+# 19. AI Implementation Rules
+
+When implementing the Safety Event Engine, AI assistants must:
+
+- Build one unified event model.
+- Never create separate modules for hazards and incidents without business justification.
+- Keep event types configurable.
+- Separate investigation logic from event reporting.
+- Preserve complete event history.
+- Ensure every workflow remains fully auditable.
+
+---
+
+# Final Principle
+
+The Safety Event Engine should become the single source of truth for all safety-related occurrences.
+
+By managing every event through one configurable architecture, the platform remains simpler to maintain, easier to extend and more powerful for reporting, compliance and future AI capabilities.
+
+# Document 12 — Permit to Work Engine
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Permit to Work (**PTW**) Engine provides a configurable system for planning, reviewing, approving and controlling high-risk work activities.
+
+Instead of building separate modules for each permit type, the platform uses one reusable Permit Engine driven by configurable permit templates.
+
+This approach provides consistency, scalability and easier maintenance.
+
+---
+
+# 1. Objectives
+
+The Permit Engine enables organizations to:
+
+- Create permits for high-risk work.
+- Standardize approval workflows.
+- Verify safety requirements before work begins.
+- Monitor active permits.
+- Track permit status.
+- Maintain complete permit history.
+- Support audits and compliance.
+
+---
+
+# 2. Permit Philosophy
+
+A permit is not simply a document.
+
+A permit is a controlled authorization process.
+
+Every permit follows a structured workflow:
+
+Template
+
+↓
+
+### Permit Request
+
+↓
+
+### Risk Review
+
+↓
+
+Approval
+
+↓
+
+### Work Execution
+
+↓
+
+Monitoring
+
+↓
+
+### Permit Closure
+
+↓
+
+Archive
+
+---
+
+# 3. Permit Types
+
+The engine must support unlimited permit types.
+
+Examples include:
+
+- Hot Work
+- Work at Height
+- Confined Space Entry
+- Excavation
+- Electrical Isolation (**LOTO**)
+- Lifting Operation
+- Radiation Work
+- Pressure Testing
+- Chemical Work
+- Road Closure
+
+Organizations may create custom permit types without changing application code.
+
+---
+
+# 4. Permit Templates
+
+Permit templates define the structure of each permit.
+
+Each template contains:
+
+- Name
+- Description
+- Category
+- Required Information
+- Mandatory Checklist
+- Required Attachments
+- Required Approvers
+- Expiration Rules
+- Renewal Rules
+
+Templates should support version control.
+
+Existing permits must continue using the template version they were created with.
+
+---
+
+# 5. Permit Information
+
+Each permit records:
+
+- Company
+- Project
+- Area
+- Location
+- Work Zone
+- Permit Type
+- Template Version
+- Work Description
+- Requester
+- Supervisor
+- Start Date & Time
+- End Date & Time
+
+---
+
+# 6. Permit Workflow
+
+Recommended lifecycle:
+
+Draft
+
+↓
+
+Submitted
+
+↓
+
+### Safety Review
+
+↓
+
+Approval
+
+↓
+
+Active
+
+↓
+
+Suspended
+
+↓
+
+Completed
+
+↓
+
+Closed
+
+↓
+
+Archived
+
+Every status change must be recorded.
+
+---
+
+# 7. Approval Workflow
+
+Permit approval should be configurable.
+
+Possible approvers include:
+
+- Supervisor
+- Safety Officer
+- **HSE** Manager
+- Project Manager
+- Client Representative
+
+Organizations should define approval sequences based on permit type.
+
+---
+
+# 8. Permit Checklist
+
+Every permit may contain one or more checklists.
+
+Examples:
+
+- **PPE** Verification
+- Gas Test
+- Equipment Inspection
+- Isolation Confirmation
+- Barricading
+- Fire Watch
+- Rescue Equipment
+
+Checklist requirements depend on the selected template.
+
+---
+
+# 9. Risk Assessment
+
+Permits should support linking to one or more risk assessments.
+
+The permit cannot become active until mandatory risk assessments are completed and approved.
+
+---
+
+# 10. Attachments
+
+Supported attachments include:
+
+- Method Statements
+- Risk Assessments
+- Drawings
+- Photos
+- Gas Test Reports
+- Supporting Documents
+
+Attachments remain permanently linked to the permit.
+
+---
+
+# 11. Linked Records
+
+Permits should integrate with other platform modules.
+
+Examples:
+
+- Inspection
+- Safety Events
+- Corrective Actions
+- Workforce
+- Equipment
+
+This provides complete operational traceability.
+
+---
+
+# 12. Expiration & Renewal
+
+The system should automatically monitor permit validity.
+
+Examples:
+
+- Permit Expiring Soon
+- Permit Expired
+- Renewal Required
+
+Expired permits must no longer be considered active.
+
+---
+
+# 13. Dashboard
+
+The Permit Dashboard should display:
+
+- Active Permits
+- Pending Approvals
+- Expiring Permits
+- Suspended Permits
+- Closed Permits
+- High-Risk Work Today
+
+The dashboard should help supervisors monitor ongoing work.
+
+---
+
+# 14. Notifications
+
+Examples:
+
+- Permit Submitted
+- Approval Required
+- Permit Approved
+- Permit Activated
+- Permit Expiring
+- Permit Closed
+
+Critical notifications should be delivered immediately.
+
+---
+
+# 15. Reporting
+
+Reports should support:
+
+- Permit Summary
+- Active Permit Register
+- Expired Permits
+- Approval Performance
+- Permit Type Distribution
+- Project Permit Statistics
+
+Reports should support filtering and export.
+
+---
+
+# 16. Business Rules
+
+The following rules apply:
+
+- Every permit belongs to one project.
+- Every permit uses one template version.
+- Active permits cannot be deleted.
+- Closed permits become read-only.
+- Required approvals must be completed before activation.
+- Historical permit records must remain unchanged.
+
+---
+
+# 17. Future Expansion
+
+The engine should support future capabilities including:
+
+- Digital Signatures
+- QR Code Verification
+- **NFC** Verification
+- Mobile Approval
+- Offline Permit Creation
+- AI Permit Review
+- AI Compliance Validation
+- Geofencing
+- IoT Device Integration
+
+The Permit Engine should evolve without requiring architectural redesign.
+
+---
+
+# 18. AI Implementation Rules
+
+When implementing the Permit Engine, AI assistants must:
+
+- Use template-driven architecture.
+- Keep permit types configurable.
+- Separate templates from permit records.
+- Support versioning.
+- Preserve historical records.
+- Integrate with other platform modules through reusable services.
+- Avoid hard-coded approval workflows.
+
+---
+
+# Final Principle
+
+The Permit Engine should provide a standardized, configurable and auditable process for managing all high-risk work activities.
+
+By using reusable templates instead of hard-coded permit forms, the platform can adapt to different industries, regulations and customer requirements while maintaining a consistent user experience.
+
+# Document 13 — Action Management Engine
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Action Management Engine provides a centralized system for managing all corrective, preventive and improvement actions across the platform.
+
+Instead of creating separate action systems for inspections, permits, incidents and audits, every action is managed through one unified engine.
+
+This ensures consistency, accountability and complete operational traceability.
+
+---
+
+# 1. Objectives
+
+The Action Management Engine enables organizations to:
+
+- Assign actions.
+- Track progress.
+- Monitor deadlines.
+- Verify completion.
+- Maintain accountability.
+- Improve operational performance.
+
+---
+
+# 2. Action Philosophy
+
+Every problem should result in an action.
+
+Every action should have an owner.
+
+Every owner should have a deadline.
+
+Every completed action should be verified.
+
+No action should disappear without traceability.
+
+---
+
+# 3. Action Sources
+
+Actions may originate from any module.
+
+Examples:
+
+- Inspection Finding
+- Safety Event
+- Permit Review
+- Audit
+- Environmental Observation
+- Equipment Inspection
+- Manual Assignment
+
+The Action Engine should never depend on one specific module.
+
+---
+
+# 4. Action Types
+
+Supported action types include:
+
+- Corrective Action
+- Preventive Action
+- Improvement Action
+- Observation Follow-up
+- Recommendation
+- Compliance Action
+
+Organizations may create additional action types.
+
+---
+
+# 5. Action Information
+
+Each action records:
+
+- Company
+- Project
+- Source Module
+- Source Record
+- Action Type
+- Title
+- Description
+- Priority
+- Responsible Person
+- Due Date
+- Status
+
+Every action must remain linked to its originating source.
+
+---
+
+# 6. Priority Levels
+
+Recommended priorities:
+
+- Low
+- Medium
+- High
+- Critical
+
+Priority should influence dashboard visibility and notifications.
+
+---
+
+# 7. Action Workflow
+
+Suggested lifecycle:
+
+Draft
+
+↓
+
+Assigned
+
+↓
+
+Accepted
+
+↓
+
+### In Progress
+
+↓
+
+Completed
+
+↓
+
+Verification
+
+↓
+
+Closed
+
+↓
+
+Archived
+
+Each transition must be logged.
+
+---
+
+# 8. Ownership
+
+Every action requires one primary owner.
+
+Additional collaborators may be assigned if necessary.
+
+Ownership history must remain available.
+
+---
+
+# 9. Due Dates
+
+Every action should have a target completion date.
+
+The system should automatically identify:
+
+- Due Today
+- Due Soon
+- Overdue
+
+Overdue actions should receive increased visibility.
+
+---
+
+# 10. Verification
+
+Completion alone is insufficient.
+
+An authorized user must verify that the action has been effectively implemented.
+
+Verification may include:
+
+- Photo Evidence
+- Document Review
+- Site Visit
+- Supervisor Approval
+
+Only verified actions may be closed.
+
+---
+
+# 11. Evidence
+
+Actions may include:
+
+- Photos
+- Documents
+- Notes
+- Comments
+- Completion Evidence
+
+Evidence remains permanently linked to the action.
+
+---
+
+# 12. Comments
+
+Team members should be able to discuss actions.
+
+Every comment records:
+
+- User
+- Date
+- Message
+
+Comments become part of the permanent action history.
+
+---
+
+# 13. Notifications
+
+Examples:
+
+- Action Assigned
+- Due Tomorrow
+- Due Today
+- Overdue
+- Completed
+- Verification Required
+- Closed
+
+Critical and overdue actions should generate recurring reminders until resolved.
+
+---
+
+# 14. Dashboard
+
+The Action Dashboard should display:
+
+- My Actions
+- Team Actions
+- Overdue Actions
+- Due Today
+- High Priority Actions
+- Verification Pending
+- Recently Completed
+
+The dashboard should help users prioritize daily work.
+
+---
+
+# 15. Reporting
+
+Supported reports include:
+
+- Open Actions
+- Closed Actions
+- Overdue Actions
+- Actions by Project
+- Actions by Owner
+- Actions by Source Module
+- Completion Performance
+- Average Closure Time
+
+Reports should support export and scheduled generation.
+
+---
+
+# 16. Business Rules
+
+The following rules apply:
+
+- Every action belongs to one company.
+- Every action belongs to one project.
+- Every action has one responsible owner.
+- Closed actions become read-only.
+- Verification is required before closure.
+- Historical actions must never be deleted.
+- Every action must reference its originating source.
+
+---
+
+# 17. Future Expansion
+
+The engine should support future capabilities including:
+
+- AI-generated action recommendations
+- Automatic action creation from inspection failures
+- **SLA** tracking
+- Escalation workflows
+- Multi-level approvals
+- QR code verification
+- Voice updates
+- Mobile offline synchronization
+
+Future enhancements should integrate without redesigning the engine.
+
+---
+
+# 18. AI Implementation Rules
+
+When implementing the Action Management Engine, AI assistants must:
+
+- Build one reusable action engine.
+- Never duplicate action systems across modules.
+- Keep actions independent from their source modules.
+- Preserve complete action history.
+- Ensure every workflow is auditable.
+- Reuse notifications, comments and attachment services.
+
+---
+
+# Final Principle
+
+The Action Management Engine is the execution layer of the platform.
+
+Inspections identify issues.
+
+Safety Events record occurrences.
+
+Permits control work.
+
+Actions drive improvement.
+
+A platform without strong action management records problems.
+
+A platform with strong action management solves them.
+
+# Document 14 — Product Backlog & User Stories (Phase 1 MVP)
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines the complete Product Backlog for Phase 1.
+
+Every feature of the platform will be divided into small User Stories.
+
+Each User Story should represent one complete business capability that can be designed, developed, tested and deployed independently.
+
+The Product Backlog serves as the primary implementation roadmap for AI-assisted development.
+
+---
+
+# User Story Format
+
+Every User Story should include:
+
+- User Story ID
+- Epic
+- Title
+- Business Goal
+- Description
+- Acceptance Criteria
+- Permission Rules
+- Validation Rules
+- Dependencies
+- Priority
+
+---
+
+# Epic 01 — Authentication & Security
+
+### US-001
+
+### User Login
+
+### US-002
+
+### Forgot Password
+
+### US-003
+
+### Reset Password
+
+### US-004
+
+Logout
+
+### US-005
+
+### Change Password
+
+### US-006
+
+### User Invitation
+
+### US-007
+
+### User Profile
+
+### US-008
+
+### Role Assignment
+
+### US-009
+
+### Permission Assignment
+
+### US-010
+
+### Session Management
+
+---
+
+# Epic 02 — Company Management
+
+### US-011
+
+### Create Company
+
+### US-012
+
+### Edit Company
+
+### US-013
+
+### Company Settings
+
+### US-014
+
+### Upload Company Logo
+
+### US-015
+
+### Manage Company Information
+
+---
+
+# Epic 03 — Project Management
+
+### US-016
+
+### Create Project
+
+### US-017
+
+### Edit Project
+
+### US-018
+
+### Archive Project
+
+### US-019
+
+### Manage Project Areas
+
+### US-020
+
+### Manage Locations
+
+### US-021
+
+### Manage Work Zones
+
+### US-022
+
+### Assign Project Members
+
+### US-023
+
+### Project Dashboard
+
+---
+
+# Epic 04 — Workforce
+
+### US-024
+
+### Create Workforce Profile
+
+### US-025
+
+Assign Workforce to Project
+
+### US-026
+
+### Training Records
+
+### US-027
+
+Certificates
+
+### US-028
+
+### Medical Fitness
+
+### US-029
+
+### Emergency Contact
+
+### US-030
+
+### Upload Workforce Documents
+
+---
+
+# Epic 05 — Inspection Engine
+
+### US-031
+
+### Create Inspection Template
+
+### US-032
+
+### Edit Template
+
+### US-033
+
+### Start Inspection
+
+### US-034
+
+### Complete Checklist
+
+### US-035
+
+### Upload Inspection Photos
+
+### US-036
+
+### Submit Inspection
+
+### US-037
+
+### Review Inspection
+
+### US-038
+
+### Approve Inspection
+
+### US-039
+
+### Generate Findings
+
+---
+
+# Epic 06 — Safety Event Engine
+
+### US-040
+
+### Report Hazard
+
+### US-041
+
+### Report Near Miss
+
+### US-042
+
+### Report Incident
+
+### US-043
+
+### Assign Investigation
+
+### US-044
+
+### Root Cause Analysis
+
+### US-045
+
+### Witness Management
+
+### US-046
+
+### Close Event
+
+---
+
+# Epic 07 — Permit Engine
+
+### US-047
+
+### Create Permit Template
+
+### US-048
+
+### Request Permit
+
+### US-049
+
+### Review Permit
+
+### US-050
+
+### Approve Permit
+
+### US-051
+
+### Activate Permit
+
+### US-052
+
+### Close Permit
+
+---
+
+# Epic 08 — Action Management
+
+### US-053
+
+### Create Action
+
+### US-054
+
+### Assign Owner
+
+### US-055
+
+### Update Progress
+
+### US-056
+
+### Upload Completion Evidence
+
+### US-057
+
+### Verify Action
+
+### US-058
+
+### Close Action
+
+---
+
+# Epic 09 — Risk Assessment
+
+### US-059
+
+### Create Risk Assessment
+
+### US-060
+
+### Identify Hazards
+
+### US-061
+
+### Evaluate Risk
+
+### US-062
+
+### Define Control Measures
+
+### US-063
+
+### Approve Risk Assessment
+
+---
+
+# Epic 10 — Reports & Dashboard
+
+### US-064
+
+### Dashboard Overview
+
+### US-065
+
+### Project Dashboard
+
+### US-066
+
+### Inspection Reports
+
+### US-067
+
+### Permit Reports
+
+### US-068
+
+### Safety Event Reports
+
+### US-069
+
+Export **PDF**
+
+### US-070
+
+### Export Excel
+
+---
+
+# Epic 11 — Notifications
+
+### US-071
+
+### Notification Center
+
+### US-072
+
+### Email Notifications
+
+### US-073
+
+### Due Date Reminder
+
+### US-074
+
+### Expiry Reminder
+
+---
+
+# Epic 12 — Documents
+
+### US-075
+
+### Upload Documents
+
+### US-076
+
+### Manage Categories
+
+### US-077
+
+### Preview Documents
+
+### US-078
+
+### Download Documents
+
+---
+
+# Epic 13 — Search
+
+### US-079
+
+### Global Search
+
+### US-080
+
+### Advanced Filter
+
+### US-081
+
+### Saved Filters
+
+---
+
+# Epic 14 — Administration
+
+### US-082
+
+### Manage Users
+
+### US-083
+
+### Manage Roles
+
+### US-084
+
+### Manage Permissions
+
+### US-085
+
+### System Settings
+
+---
+
+# Development Priority
+
+The development order should follow:
+
+Authentication
+
+↓
+
+Company
+
+↓
+
+Project
+
+↓
+
+Workforce
+
+↓
+
+Inspection
+
+↓
+
+### Safety Events
+
+↓
+
+Permit
+
+↓
+
+### Action Management
+
+↓
+
+### Risk Assessment
+
+↓
+
+Dashboard
+
+↓
+
+Reports
+
+↓
+
+Notifications
+
+↓
+
+Documents
+
+↓
+
+Administration
+
+---
+
+# AI Development Strategy
+
+AI assistants should implement User Stories in small batches.
+
+Recommended sprint size:
+
+- 5–10 User Stories per Sprint
+
+Each sprint must be fully tested before moving to the next.
+
+No User Story should be considered complete unless all acceptance criteria are satisfied.
+
+---
+
+# Final Principle
+
+The Product Backlog is the bridge between business requirements and software implementation.
+
+Every future feature, enhancement and module should begin as a clearly defined User Story before development starts.
+
+# Document 15 — User Story Specification Template
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines the standard format for writing every User Story in the project.
+
+Every feature, regardless of size, must follow this specification before development begins.
+
+This ensures consistent planning, implementation, testing and AI-assisted development.
+
+---
+
+# User Story Structure
+
+Every User Story must contain the following sections:
+
+## User Story ID
+
+2. Epic
+## Feature Name
+## Business Goal
+## Description
+## Actors
+## Preconditions
+## User Flow
+## Functional Requirements
+## Validation Rules
+## Permission Rules
+## Database Impact
+## API Requirements
+## UI Requirements
+## Error Handling
+## Notifications
+## Audit Requirements
+## Acceptance Criteria
+## Test Scenarios
+## Future Improvements
+
+---
+
+# Example User Story
+
+## User Story ID
+
+US-**001**
+
+---
+
+## Epic
+
+Authentication & Security
+
+---
+
+## Feature Name
+
+### User Login
+
+---
+
+## Business Goal
+
+Allow authorized users to securely access the platform.
+
+Only authenticated users may access protected resources.
+
+---
+
+## Description
+
+Users enter their registered email address and password.
+
+The system validates the credentials.
+
+If successful, the user is redirected to the appropriate dashboard based on permissions.
+
+---
+
+## Actors
+
+- Company Administrator
+- **HSE** Manager
+- Safety Officer
+- Supervisor
+- Site Engineer
+- Auditor
+
+---
+
+## Preconditions
+
+- User account exists.
+- User account is active.
+- User has not been suspended.
+- User has verified their email (if enabled).
+
+---
+
+## User Flow
+
+## Open Login Page.
+
+## Enter Email. ## Enter Password. ## Click Login. ## Validate credentials. ## Create authenticated session. ## Redirect user. ## Record login event.
+
+---
+
+## Functional Requirements
+
+The system shall:
+
+- Authenticate users.
+- Support secure passwords.
+- Remember active sessions.
+- Redirect based on permissions.
+- Prevent unauthorized access.
+
+---
+
+## Validation Rules
+
+- Email is required.
+- Password is required.
+- Email format must be valid.
+- Password comparison must be performed securely.
+- Empty values are not accepted.
+
+---
+
+## Permission Rules
+
+Anyone may view the Login page.
+
+Only authenticated users may access protected pages.
+
+Authorization begins only after successful authentication.
+
+---
+
+## Database Impact
+
+Tables affected:
+
+- User
+- Session
+- Audit Log
+
+No business data should be modified.
+
+---
+
+## API Requirements
+
+**POST** /api/auth/login
+
+Input:
+
+- Email
+- Password
+
+Output:
+
+- Access Token
+- Refresh Token
+- User Profile
+- Permissions
+
+---
+
+## UI Requirements
+
+The login page should contain:
+
+- Company Logo
+- Email Field
+- Password Field
+- Show Password Toggle
+- Forgot Password Link
+- Login Button
+- Loading Indicator
+
+The page should be fully responsive.
+
+---
+
+## Error Handling
+
+Display user-friendly messages.
+
+Examples:
+
+- Invalid email or password.
+- Account suspended.
+- Account inactive.
+- Too many login attempts.
+- Server unavailable.
+
+Never expose technical details.
+
+---
+
+## Notifications
+
+Optional:
+
+- Notify user of new device login.
+- Notify administrator of repeated failed logins.
+
+---
+
+## Audit Requirements
+
+Record:
+
+- Login Time
+- Device
+- Browser
+- IP Address
+- Success/Failure
+
+Audit records must remain immutable.
+
+---
+
+## Acceptance Criteria
+
+The feature is complete when:
+
+- User can log in successfully.
+- Invalid credentials are rejected.
+- Suspended users cannot log in.
+- Sessions are created correctly.
+- Audit log is recorded.
+- Responsive design works on mobile and desktop.
+
+---
+
+## Test Scenarios
+
+Positive Tests:
+
+- Valid email and password.
+- Remember session.
+- Redirect after login.
+
+Negative Tests:
+
+- Wrong password.
+- Invalid email.
+- Empty fields.
+- Suspended account.
+- Locked account.
+
+Boundary Tests:
+
+- Maximum email length.
+- Maximum password length.
+
+---
+
+## Future Improvements
+
+Potential enhancements:
+
+- Multi-Factor Authentication (**MFA**)
+- Biometric Login
+- Single Sign-On (**SSO**)
+- Passwordless Authentication
+- Passkey Support
+
+---
+
+# AI Development Rules
+
+For every User Story, AI assistants must:
+
+- Implement only the current User Story.
+- Avoid adding unrelated features.
+- Follow the project architecture.
+- Reuse existing components.
+- Keep business logic separate from UI.
+- Write production-ready code.
+- Ensure all acceptance criteria pass before marking the story complete.
+
+---
+
+# Final Principle
+
+Every feature begins as a User Story.
+
+If a requirement cannot be expressed as a clear User Story with measurable acceptance criteria, it is not ready for development.
+
+The User Story Specification is the single source of truth for feature implementation, testing and future maintenance.
+
+# Document 16 — Epic 01: Authentication & Security
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Authentication & Security module protects the platform by ensuring that only authorized users can access company data and perform permitted actions.
+
+It provides secure authentication, role-based authorization, session management and complete audit logging.
+
+---
+
+# Business Goal
+
+The objective of this module is to:
+
+- Secure user accounts
+- Protect company data
+- Prevent unauthorized access
+- Track user activities
+- Provide a secure foundation for all other modules
+
+Every module in the platform depends on this Epic.
+
+---
+
+# Features Included
+
+### Authentication
+
+- Login
+- Logout
+- Forgot Password
+- Reset Password
+- Change Password
+
+### User Profile
+
+- View Profile
+- Update Basic Information
+- Change Profile Picture
+- Change Password
+
+### User Invitation
+
+- Invite User by Email
+- Accept Invitation
+- Activate Account
+
+### Role & Permission
+
+- Assign Role
+- Update Role
+- Assign Permissions
+- Remove Permissions
+
+### Session Management
+
+- Active Sessions
+- Logout from All Devices
+- Session Timeout
+
+### Security
+
+- Password Policy
+- Failed Login Protection
+- Account Lock (Optional)
+- Email Verification
+
+### Audit Log
+
+- Login History
+- Password Changes
+- Permission Changes
+- User Activity
+
+---
+
+# Business Rules
+
+- Every user must have a unique email address.
+- Passwords must always be encrypted.
+- Suspended users cannot log in.
+- Every user belongs to at least one company.
+- Every protected request requires authentication.
+- Permissions must be verified on the server.
+- Important security actions must be recorded in the Audit Log.
+
+---
+
+# User Flow
+
+## User receives an invitation.
+
+## User activates the account. ## User logs in. ## The system validates credentials. ## User accesses the dashboard based on assigned permissions. ## All important activities are recorded.
+
+---
+
+# Success Criteria
+
+This Epic is considered complete when users can:
+
+- Securely log in and log out.
+- Recover forgotten passwords.
+- Manage their profile.
+- Receive role-based access.
+- Access only authorized resources.
+- View and manage active sessions.
+- Generate complete audit records for security-related activities.
+
+---
+
+# Dependencies
+
+This Epic has no dependency on business modules.
+
+However, all future modules depend on this Epic.
+
+---
+
+# Out of Scope (Phase 1)
+
+The following features are planned for future versions:
+
+- Multi-Factor Authentication (**MFA**)
+- Single Sign-On (**SSO**)
+- Biometric Login
+- Passkey Authentication
+- OAuth Providers (Google, Microsoft)
+
+---
+
+# Related User Stories
+
+- US-**001** — User Login
+- US-**002** — Forgot Password
+- US-**003** — Reset Password
+- US-**004** — Logout
+- US-**005** — Change Password
+- US-**006** — User Invitation
+- US-**007** — User Profile
+- US-**008** — Role Assignment
+- US-**009** — Permission Assignment
+- US-**010** — Session Management
+
+---
+
+# Final Principle
+
+Security should be built into the platform from the beginning—not added later.
+
+Every authenticated request, permission check and user action must follow a consistent, secure and auditable process.
+
+# Document 17 — Epic 02: Company & Project Management
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This Epic manages the organizational structure of every customer using the platform.
+
+Every module such as Inspection, Permit, Safety Event and Reports depends on the Company and Project structure.
+
+---
+
+# Business Goal
+
+Provide a structured environment where organizations can:
+
+- Create and manage companies
+- Create projects
+- Define work locations
+- Assign project members
+- Organize work efficiently
+
+---
+
+# Features Included
+
+### Company
+
+- Create Company
+- Update Company Profile
+- Company Settings
+- Company Logo
+- Company Information
+
+### Project
+
+- Create Project
+- Edit Project
+- Archive Project
+- Project Status
+- Project Dashboard
+
+### Project Structure
+
+- Area
+- Location
+- Work Zone
+
+### Project Members
+
+- Add Members
+- Remove Members
+- Assign Roles
+- Assign Permissions
+
+### Project Dashboard
+
+- Project Summary
+- Active Inspections
+- Active Permits
+- Open Safety Events
+- Pending Actions
+
+---
+
+# Business Rules
+
+- Every project belongs to one company.
+- Every operational record belongs to one project.
+- Archived projects are read-only.
+- Company Administrators can manage all company projects.
+- Project codes must be unique within a company.
+- Projects cannot be permanently deleted if operational records exist.
+
+---
+
+# User Flow
+
+## Create Company.
+
+## Configure Company Settings. ## Create Project. ## Define Areas, Locations and Work Zones. ## Invite Project Members. ## Start daily operations.
+
+---
+
+# Success Criteria
+
+Users can:
+
+- Manage multiple projects.
+- Assign users to projects.
+- Organize work locations.
+- View project dashboards.
+- Archive completed projects without losing history.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Authentication & Security
+
+Required by:
+
+- Workforce
+- Inspection
+- Safety Events
+- Permit
+- Reports
+- Dashboard
+
+---
+
+# Out of Scope (Phase 1)
+
+- **GIS** Maps
+- Multi-company Collaboration
+- Client Portal
+- Project Templates
+
+---
+
+# Related User Stories
+
+- US-**011** – Create Company
+- US-**012** – Edit Company
+- US-**013** – Company Settings
+- US-**014** – Upload Company Logo
+- US-**015** – Manage Company Information
+- US-**016** – Create Project
+- US-**017** – Edit Project
+- US-**018** – Archive Project
+- US-**019** – Manage Areas
+- US-**020** – Manage Locations
+- US-**021** – Manage Work Zones
+- US-**022** – Assign Project Members
+- US-**023** – Project Dashboard
+
+---
+
+# Final Principle
+
+Every operational activity starts with a Company and a Project. A strong organizational structure is essential for scalability, reporting and security.
+
+---
+
+---
+
+# Document 18 — Epic 03: Workforce Management
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This Epic manages every person working within the organization, regardless of employment type.
+
+Employees, Contractors, Subcontractors, Visitors and Consultants are managed through one unified Workforce system.
+
+---
+
+# Business Goal
+
+Provide a centralized workforce database that supports project assignment, competency tracking and compliance management.
+
+---
+
+# Features Included
+
+### Workforce Profiles
+
+- Employee
+- Contractor
+- Visitor
+- Consultant
+
+### Personal Information
+
+- Contact Details
+- Job Position
+- Department
+- Nationality
+- Profile Photo
+
+### Project Assignment
+
+- Assign to Projects
+- Change Assignment
+- Remove Assignment
+
+### Training
+
+- Training Records
+- Training Expiry
+- Training History
+
+### Certificates
+
+- Upload Certificates
+- Expiry Tracking
+- Renewal Reminder
+
+### Medical
+
+- Medical Fitness
+- Medical Expiry
+
+### Emergency Contact
+
+- Primary Contact
+- Secondary Contact
+
+### Workforce Documents
+
+- Passport
+- National ID
+- Work Permit
+- Employment Documents
+- Other Attachments
+
+---
+
+# Business Rules
+
+- Every workforce member belongs to one company.
+- One person may work on multiple projects.
+- Expired certificates should generate reminders.
+- Inactive workforce members cannot receive new assignments.
+- Workforce records should be archived instead of deleted.
+
+---
+
+# User Flow
+
+## Create Workforce Profile.
+
+## Upload required documents. ## Assign to one or more projects. ## Add training and certifications. ## Monitor expiry dates. ## Update records when required.
+
+---
+
+# Success Criteria
+
+Users can:
+
+- Maintain workforce records.
+- Assign workers to projects.
+- Track certificates and training.
+- Monitor medical fitness.
+- Manage workforce documents.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Authentication
+- Company & Project
+
+Required by:
+
+- Inspection
+- Permit
+- Toolbox Talk
+- Risk Assessment
+- Action Management
+
+---
+
+# Out of Scope (Phase 1)
+
+- Attendance Management
+- Payroll
+- Shift Planning
+- Face Recognition
+- Biometric Integration
+
+---
+
+# Related User Stories
+
+- US-**024** – Create Workforce Profile
+- US-**025** – Assign Workforce
+- US-**026** – Training Records
+- US-**027** – Certificates
+- US-**028** – Medical Fitness
+- US-**029** – Emergency Contact
+- US-**030** – Workforce Documents
+
+---
+
+# Final Principle
+
+People are the foundation of every **HSE** operation.
+
+The Workforce module should provide a complete, accurate and reliable record of every individual working within the organization while remaining simple, scalable and easy to maintain.
+
+# Document 20 — Epic 05: Safety Event Engine
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Safety Event Engine is the central module for reporting, managing and investigating all safety-related events.
+
+Instead of maintaining separate modules for Hazard, Near Miss, Incident and Accident, the platform manages everything through one unified Safety Event Engine.
+
+---
+
+# Business Goal
+
+Provide a simple and standardized process for reporting, investigating and resolving safety events while maintaining complete traceability and compliance.
+
+The system should encourage fast reporting, proper investigation and timely corrective actions.
+
+---
+
+# Features Included
+
+### Event Reporting
+
+- Report Hazard
+- Report Near Miss
+- Report Incident
+- Report Accident
+- Report Environmental Event
+
+### Event Information
+
+- Event Type
+- Category
+- Project
+- Area
+- Location
+- Date & Time
+- Description
+- Severity
+- Reported By
+
+### Evidence
+
+- Upload Photos
+- Upload Documents
+- Add Comments
+- Witness Information
+
+### Investigation
+
+- Assign Investigator
+- Investigation Notes
+- Immediate Cause
+- Root Cause
+- Corrective Recommendation
+- Lessons Learned
+
+### Action Management
+
+- Create Corrective Action
+- Assign Owner
+- Set Due Date
+- Track Progress
+
+### Event Closure
+
+- Review Findings
+- Verify Completion
+- Close Event
+- Archive Record
+
+---
+
+# Business Rules
+
+- Every event belongs to one project.
+- Every event must have an event type.
+- High severity events should require investigation.
+- Closed events become read-only.
+- All evidence and investigation records must remain permanently linked to the event.
+- Events must never be permanently deleted.
+
+---
+
+# User Flow
+
+## Report Safety Event.
+
+## Select Event Type. ## Enter Event Details. ## Upload Evidence. ## Submit Report. ## Assign Investigation. ## Complete Investigation. ## Create Corrective Actions. ## Verify Completion. ## Close Event.
+
+---
+
+# Success Criteria
+
+Users can:
+
+- Report any type of safety event.
+- Upload supporting evidence.
+- Assign investigations.
+- Identify root causes.
+- Track corrective actions.
+- Close events with complete history.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Authentication & Security
+- Company & Project
+- Workforce
+
+Integrates with:
+
+- Inspection Engine
+- Permit Engine
+- Action Management
+- Dashboard
+- Reports
+- Notifications
+
+---
+
+# Out of Scope (Phase 1)
+
+- AI Root Cause Analysis
+- AI Hazard Classification
+- Voice-Based Event Reporting
+- Automatic Image Analysis
+- IoT Sensor Integration
+
+---
+
+# Related User Stories
+
+- US-**040** – Report Hazard
+- US-**041** – Report Near Miss
+- US-**042** – Report Incident
+- US-**043** – Assign Investigation
+- US-**044** – Root Cause Analysis
+- US-**045** – Witness Management
+- US-**046** – Close Event
+
+---
+
+# Final Principle
+
+Every unsafe condition, unsafe act, near miss, incident or accident should be managed through a single configurable workflow.
+
+The Safety Event Engine should make reporting easy, investigations structured and corrective actions measurable, creating a reliable source of truth for safety performance across all projects.
+
+# Document 21 — Epic 06: Permit to Work (PTW) Engine
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Permit to Work (**PTW**) Engine controls and authorizes high-risk work activities before work begins.
+
+The system ensures that all required approvals, safety checks and supporting documents are completed before a permit becomes active.
+
+---
+
+# Business Goal
+
+Provide a standardized permit management system that improves safety, accountability and compliance while reducing unauthorized high-risk work.
+
+The platform should support multiple permit types through a single configurable engine.
+
+---
+
+# Features Included
+
+### Permit Templates
+
+- Create Permit Template
+- Edit Permit Template
+- Define Approval Workflow
+- Configure Checklist
+
+### Permit Request
+
+- Create Permit
+- Select Project & Location
+- Select Permit Type
+- Define Work Duration
+- Assign Responsible Person
+
+### Safety Verification
+
+- Risk Assessment
+- Safety Checklist
+- Required Attachments
+- Supporting Documents
+
+### Approval Workflow
+
+- Review Permit
+- Approve / Reject
+- Request Changes
+- Activate Permit
+
+### Permit Monitoring
+
+- Active Permit List
+- Expiry Monitoring
+- Suspend Permit
+- Resume Permit
+- Close Permit
+
+### Permit History
+
+- Approval Timeline
+- Activity Log
+- Document History
+
+---
+
+# Business Rules
+
+- Every permit belongs to one project.
+- Every permit must use a permit template.
+- Work cannot begin until the permit is approved.
+- Expired permits become inactive automatically.
+- Closed permits cannot be edited.
+- All approval actions must be recorded.
+
+---
+
+# User Flow
+
+## Create Permit Request.
+
+## Select Permit Template. ## Complete Required Information. ## Upload Supporting Documents. ## Submit for Approval. ## Review by Approver. ## Approve or Reject. ## Activate Permit. ## Complete Work. ## Close Permit.
+
+---
+
+# Success Criteria
+
+Users can:
+
+- Create different permit types.
+- Complete approval workflows.
+- Track active permits.
+- Monitor permit expiry.
+- Maintain complete permit history.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Authentication & Security
+- Company & Project
+- Workforce
+
+Integrates with:
+
+- Risk Assessment
+- Inspection Engine
+- Action Management
+- Dashboard
+- Reports
+- Notifications
+
+---
+
+# Out of Scope (Phase 1)
+
+- AI Permit Review
+- QR Code Permit Validation
+- **GPS** Geofencing
+- Offline Permit Approval
+- IoT Equipment Verification
+
+---
+
+# Related User Stories
+
+- US-**047** – Create Permit Template
+- US-**048** – Request Permit
+- US-**049** – Review Permit
+- US-**050** – Approve Permit
+- US-**051** – Activate Permit
+- US-**052** – Close Permit
+
+---
+
+# Final Principle
+
+No high-risk work should begin without proper authorization.
+
+The Permit to Work Engine should provide a simple, traceable and configurable approval process that ensures work is performed safely, responsibly and in compliance with organizational procedures.
+
+# Document 22 — Epic 07: Action Management
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Action Management module is responsible for tracking all corrective, preventive and improvement actions created throughout the system.
+
+Every module, including Inspection, Safety Event and Permit, can generate actions that are managed from one centralized location.
+
+---
+
+# Business Goal
+
+Ensure that identified issues are resolved on time by assigning responsibilities, tracking progress and verifying completion.
+
+---
+
+# Features Included
+
+- Create Action
+- Assign Responsible Person
+- Set Priority
+- Set Due Date
+- Progress Tracking
+- Upload Completion Evidence
+- Verify Completion
+- Close Action
+- Action Timeline
+- Action Dashboard
+
+---
+
+# Business Rules
+
+- Every action must have one owner.
+- Every action must have a due date.
+- Closed actions become read-only.
+- Verification is required before closure.
+- Actions remain linked to their source record.
+
+---
+
+# User Flow
+
+Issue Identified → Create Action → Assign Owner → Complete Work → Verify → Close Action
+
+---
+
+# Success Criteria
+
+Users can assign, monitor, verify and close actions while maintaining complete accountability.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Inspection Engine
+- Safety Event Engine
+- Permit Engine
+
+---
+
+# Out of Scope (Phase 1)
+
+- AI Action Suggestions
+- **SLA** Escalation Automation
+
+---
+
+# Related User Stories
+
+- US-**053** – Create Action
+- US-**054** – Assign Owner
+- US-**055** – Update Progress
+- US-**056** – Upload Evidence
+- US-**057** – Verify Action
+- US-**058** – Close Action
+
+---
+
+# Final Principle
+
+Every identified issue should end with a completed and verified action.
+
+---
+
+==================================================
+
+# Document 23 — Epic 08: Risk Assessment (JSA/JHA)
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Risk Assessment module helps organizations identify hazards before work starts and define appropriate control measures.
+
+---
+
+# Business Goal
+
+Reduce workplace risks through structured hazard identification and risk evaluation.
+
+---
+
+# Features Included
+
+- Create Risk Assessment
+- Job Safety Analysis (**JSA**)
+- Job Hazard Analysis (**JHA**)
+- Hazard Identification
+- Risk Matrix
+- Control Measures
+- Residual Risk
+- Review & Approval
+- Revision History
+
+---
+
+# Business Rules
+
+- Every assessment belongs to one project.
+- At least one hazard must exist.
+- Every hazard requires a risk rating.
+- Control measures should be documented.
+- Approved assessments become read-only.
+
+---
+
+# User Flow
+
+Create Assessment → Identify Hazards → Assess Risk → Define Controls → Review → Approve
+
+---
+
+# Success Criteria
+
+Users can prepare, review and approve complete risk assessments before work begins.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Company & Project
+- Workforce
+
+Integrates with:
+
+- Permit Engine
+- Inspection Engine
+
+---
+
+# Out of Scope (Phase 1)
+
+- AI Risk Assessment
+- Automatic Hazard Detection
+
+---
+
+# Related User Stories
+
+- US-**059** – Create Risk Assessment
+- US-**060** – Identify Hazards
+- US-**061** – Evaluate Risk
+- US-**062** – Define Controls
+- US-**063** – Approve Assessment
+
+---
+
+# Final Principle
+
+Every high-risk activity should have an approved risk assessment before work starts.
+
+---
+
+==================================================
+
+# Document 24 — Epic 09: Toolbox Talk
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Toolbox Talk module records daily safety meetings conducted before work begins.
+
+It helps ensure that workers understand hazards, safety precautions and daily work activities.
+
+---
+
+# Business Goal
+
+Improve communication, increase safety awareness and maintain records of daily safety briefings.
+
+---
+
+# Features Included
+
+- Toolbox Talk Templates
+- Create Meeting
+- Select Topic
+- Attendance Register
+- Digital Signature
+- Photos & Attachments
+- Meeting Notes
+- History
+
+---
+
+# Business Rules
+
+- Every Toolbox Talk belongs to one project.
+- At least one participant is required.
+- Attendance should be recorded.
+- Completed meetings become read-only.
+- Meeting history must be preserved.
+
+---
+
+# User Flow
+
+Create Meeting → Select Topic → Record Attendance → Conduct Discussion → Collect Signatures → Close Meeting
+
+---
+
+# Success Criteria
+
+Users can record, manage and review daily Toolbox Talks with complete attendance and supporting evidence.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Company & Project
+- Workforce
+
+Integrates with:
+
+- Risk Assessment
+- Reports
+- Dashboard
+
+---
+
+# Out of Scope (Phase 1)
+
+- Video Toolbox Talks
+- AI Meeting Summary
+- Voice Transcription
+
+---
+
+# Related User Stories
+
+- US-**064** – Create Toolbox Talk
+- US-**065** – Record Attendance
+- US-**066** – Add Meeting Notes
+- US-**067** – Collect Digital Signatures
+- US-**068** – Close Toolbox Talk
+
+---
+
+# Final Principle
+
+A Toolbox Talk is more than a meeting—it is the first safety checkpoint of the working day.
+
+Every discussion should be documented, every participant recorded and every meeting easily traceable for future audits.
+
+# Document 25 — Epic 10: Equipment Inspection
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Equipment Inspection module ensures that tools, machinery and safety equipment are inspected regularly and remain safe for use.
+
+---
+
+# Business Goal
+
+Maintain equipment safety, reduce operational risks and ensure compliance through scheduled inspections and complete inspection history.
+
+---
+
+# Features Included
+
+- Equipment Register
+- Equipment Categories
+- Inspection Schedule
+- Inspection Checklist
+- Photo Evidence
+- Certificate Management
+- Maintenance History
+- Inspection History
+
+---
+
+# Business Rules
+
+- Every equipment belongs to one company.
+- Equipment may be assigned to one or more projects.
+- Expired inspection certificates should generate reminders.
+- Unsafe equipment should be marked as unavailable until resolved.
+
+---
+
+# User Flow
+
+Register Equipment → Schedule Inspection → Perform Inspection → Record Findings → Approve → Continue Use or Remove from Service
+
+---
+
+# Dependencies
+
+- Company & Project
+- Inspection Engine
+- Action Management
+
+---
+
+# Out of Scope (Phase 1)
+
+- IoT Monitoring
+- QR Code Equipment Tracking
+- Predictive Maintenance
+
+---
+
+# Related User Stories
+
+- Equipment Registration
+- Equipment Inspection
+- Inspection Schedule
+- Equipment History
+
+---
+
+# Final Principle
+
+Unsafe equipment should never be used on site.
+
+---
+
+==================================================
+
+# Document 26 — Epic 11: PPE Management
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The **PPE** Management module tracks the issuance, return and replacement of Personal Protective Equipment for workers.
+
+---
+
+# Business Goal
+
+Ensure every worker receives the required **PPE** and maintain a complete issuance history.
+
+---
+
+# Features Included
+
+- **PPE** Register
+- **PPE** Categories
+- Issue **PPE**
+- Return **PPE**
+- Replacement History
+- **PPE** Expiry
+- Stock Status
+- **PPE** Assignment History
+
+---
+
+# Business Rules
+
+- **PPE** can only be assigned to active workforce members.
+- Every **PPE** issue must be recorded.
+- Expired **PPE** should trigger reminders.
+- Issue history cannot be deleted.
+
+---
+
+# User Flow
+
+Register **PPE** → Assign to Worker → Record Issue → Monitor Expiry → Replace if Required
+
+---
+
+# Dependencies
+
+- Workforce
+- Company & Project
+
+---
+
+# Out of Scope (Phase 1)
+
+- **PPE** Inventory Forecast
+- **RFID** Tracking
+- Smart **PPE** Integration
+
+---
+
+# Related User Stories
+
+- **PPE** Registration
+- **PPE** Assignment
+- **PPE** Return
+- **PPE** Replacement
+
+---
+
+# Final Principle
+
+Proper **PPE** management protects workers and supports compliance with safety regulations.
+
+---
+
+==================================================
+
+# Document 27 — Epic 12: Environmental Management
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Environmental Management module records environmental observations, incidents and compliance activities related to project operations.
+
+---
+
+# Business Goal
+
+Help organizations monitor environmental performance and minimize environmental impact.
+
+---
+
+# Features Included
+
+- Environmental Observation
+- Spill Report
+- Waste Management
+- Environmental Inspection
+- Environmental Action Tracking
+- Environmental Reports
+
+---
+
+# Business Rules
+
+- Every environmental record belongs to a project.
+- Significant environmental incidents should require investigation.
+- Corrective actions should be linked where applicable.
+- Historical environmental records must be retained.
+
+---
+
+# User Flow
+
+Report Observation → Assess Impact → Upload Evidence → Assign Action → Verify Completion → Close Record
+
+---
+
+# Dependencies
+
+- Company & Project
+- Safety Event Engine
+- Action Management
+
+---
+
+# Out of Scope (Phase 1)
+
+- Carbon Emission Tracking
+- Air Quality Sensors
+- Water Monitoring Integration
+- **ESG** Reporting
+
+---
+
+# Related User Stories
+
+- Environmental Observation
+- Spill Report
+- Waste Record
+- Environmental Inspection
+- Environmental Action
+
+---
+
+# Final Principle
+
+Environmental protection should be managed with the same level of discipline as workplace safety, ensuring every observation, incident and corrective action is properly documented and traceable.
+
+# Document 28 — Epic 13: Emergency Management
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Emergency Management module helps organizations prepare for, respond to and document emergency situations through proper planning and record management.
+
+---
+
+# Business Goal
+
+Improve emergency preparedness by maintaining emergency contacts, equipment, drills and response records in one centralized system.
+
+---
+
+# Features Included
+
+- Emergency Contact List
+- Emergency Response Plan
+- Emergency Equipment Register
+- Fire Drill Records
+- Evacuation Drill Records
+- Incident Response Log
+- Emergency Reports
+
+---
+
+# Business Rules
+
+- Every emergency record belongs to one project.
+- Emergency drills must record participants.
+- Emergency equipment inspections should be traceable.
+- Historical records cannot be deleted.
+
+---
+
+# User Flow
+
+Create Emergency Plan → Schedule Drill → Record Attendance → Document Results → Assign Improvements → Close Drill
+
+---
+
+# Dependencies
+
+- Company & Project
+- Workforce
+- Action Management
+
+---
+
+# Out of Scope (Phase 1)
+
+- Mass **SMS** Alerts
+- Live Emergency Tracking
+- **GPS** Evacuation Monitoring
+
+---
+
+# Final Principle
+
+Preparation saves lives. Every emergency activity should be documented, reviewed and continuously improved.
+
+---
+
+==================================================
+
+# Document 29 — Epic 14: Document Management
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Document Management module provides a secure location for storing and managing all project and **HSE**-related documents.
+
+---
+
+# Business Goal
+
+Maintain organized, searchable and version-controlled documentation for compliance and daily operations.
+
+---
+
+# Features Included
+
+- Upload Documents
+- Folder Structure
+- Categories
+- File Preview
+- Download
+- Version History
+- Document Permissions
+- Search Documents
+
+---
+
+# Business Rules
+
+- Every document belongs to a company or project.
+- Only authorized users may access restricted documents.
+- Updated documents create new versions instead of replacing history.
+- Deleted documents should be recoverable by administrators.
+
+---
+
+# User Flow
+
+Upload Document → Select Category → Assign Project → Save → View / Download → Update Version
+
+---
+
+# Dependencies
+
+- Authentication
+- Company & Project
+
+---
+
+# Out of Scope (Phase 1)
+
+- **OCR**
+- AI Document Search
+- Automatic Document Classification
+
+---
+
+# Final Principle
+
+Documents are organizational knowledge and should remain secure, searchable and fully traceable.
+
+---
+
+==================================================
+
+# Document 30 — Epic 15: Dashboard & Reports
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Dashboard & Reports module provides users with a real-time overview of operational performance and generates professional reports for management and compliance.
+
+---
+
+# Business Goal
+
+Transform operational data into meaningful insights that support faster decision-making and better safety performance.
+
+---
+
+# Features Included
+
+### Dashboard
+
+- Personal Dashboard
+- Project Dashboard
+- Company Dashboard
+- **KPI** Cards
+- Charts
+- Recent Activities
+- Upcoming Tasks
+
+### Reports
+
+- Inspection Reports
+- Safety Event Reports
+- Permit Reports
+- Action Reports
+- Workforce Reports
+- Risk Assessment Reports
+- **PDF** Export
+- Excel Export
+
+---
+
+# Business Rules
+
+- Dashboard data should respect user permissions.
+- Reports should only include accessible records.
+- Exported reports must match applied filters.
+- Historical reports should remain available.
+
+---
+
+# User Flow
+
+Login → View Dashboard → Apply Filters → Generate Report → Export **PDF** / Excel
+
+---
+
+# Dependencies
+
+- All operational modules
+
+---
+
+# Out of Scope (Phase 1)
+
+- AI Analytics
+- Predictive Dashboards
+- Power BI Integration
+- Custom Report Builder
+
+---
+
+# Final Principle
+
+A good dashboard informs users.
+
+A good report supports decisions.
+
+The platform should present accurate, timely and actionable information while remaining simple and easy to understand.
+
+# Document 31 — Epic 16: Notification, Calendar & Activity Center
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+The Notification, Calendar & Activity Center keeps users informed about important events, upcoming tasks and system activities.
+
+Instead of checking multiple modules, users can view all reminders, notifications and scheduled activities from one centralized location.
+
+---
+
+# Business Goal
+
+Improve communication, task completion and operational visibility by providing timely notifications and a unified activity calendar.
+
+---
+
+# Features Included
+
+## Notification Center
+
+- In-App Notifications
+- Email Notifications
+- Unread Notification Counter
+- Mark as Read
+- Mark All as Read
+- Notification History
+
+---
+
+## Reminder System
+
+Automatic reminders for:
+
+- Action Due Date
+- Permit Expiry
+- Certificate Expiry
+- Training Expiry
+- Inspection Schedule
+- Equipment Inspection Due
+- Document Expiry
+
+---
+
+## Calendar
+
+View activities by:
+
+- Day
+- Week
+- Month
+
+Calendar Events:
+
+- Inspections
+- Permits
+- Risk Assessments
+- Toolbox Talks
+- Training
+- Emergency Drills
+- Due Actions
+- Certificate Expiry
+
+---
+
+## Activity Center
+
+Recent activities including:
+
+- New Inspection
+- New Safety Event
+- Permit Approval
+- Action Completion
+- User Invitation
+- Document Upload
+- Project Updates
+
+---
+
+# Business Rules
+
+- Users should only receive notifications for records they have permission to access.
+- Completed notifications remain in history.
+- Calendar events must automatically update when related records change.
+- Activity logs cannot be modified manually.
+
+---
+
+# User Flow
+
+### System Event Occurs
+
+↓
+
+### Notification Created
+
+↓
+
+### User Receives Alert
+
+↓
+
+### User Opens Related Record
+
+↓
+
+Marks Notification as Read
+
+---
+
+# Success Criteria
+
+Users can:
+
+- Receive important reminders.
+- View upcoming activities.
+- Track recent system activities.
+- Stay informed without manually checking each module.
+
+---
+
+# Dependencies
+
+Depends on:
+
+- Authentication
+- Company & Project
+
+Integrates with:
+
+- Inspection Engine
+- Safety Event Engine
+- Permit Engine
+- Action Management
+- Workforce
+- Document Management
+- Dashboard
+
+---
+
+# Out of Scope (Phase 1)
+
+- Push Notifications
+- **SMS** Notifications
+- WhatsApp Notifications
+- Microsoft Teams Integration
+- Slack Integration
+
+---
+
+# Related User Stories
+
+- Notification Center
+- Reminder Management
+- Calendar View
+- Activity Timeline
+- Email Notifications
+
+---
+
+# Final Principle
+
+Users should never miss an important task or deadline.
+
+The platform should proactively notify users about upcoming responsibilities, overdue activities and significant operational events, ensuring better communication, accountability and productivity across the organization.
+
+# Document 32 — System Integration, Non-Functional Requirements & Phase 1 Summary
+
+**Version:** 1.0
+
+---
+
+# Purpose
+
+This document defines how all Phase 1 modules work together and outlines the overall quality requirements of the platform.
+
+---
+
+# Phase 1 Modules
+
+The platform includes the following core modules:
+
+- Authentication & Security
+- Company & Project Management
+- Workforce Management
+- Inspection Engine
+- Safety Event Engine
+- Permit to Work Engine
+- Action Management
+- Risk Assessment
+- Toolbox Talk
+- Equipment Inspection
+- **PPE** Management
+- Environmental Management
+- Emergency Management
+- Document Management
+- Dashboard & Reports
+- Notification, Calendar & Activity Center
+
+---
+
+# Module Integration
+
+All modules should operate as one connected platform.
+
+Examples:
+
+- Inspection ➜ Create Action
+- Safety Event ➜ Investigation ➜ Action
+- Risk Assessment ➜ Permit
+- Permit ➜ Inspection
+- Workforce ➜ Toolbox Talk
+- Equipment ➜ Inspection
+- Training Expiry ➜ Notification
+- Document Upload ➜ Activity Timeline
+
+Data should never be duplicated unnecessarily.
+
+---
+
+# Common Platform Services
+
+Every module should use the same platform services:
+
+- Authentication
+- Authorization
+- File Upload
+- Notification
+- Audit Log
+- Activity Timeline
+- Search
+- Reports
+- Dashboard
+
+These services must be reusable across the entire platform.
+
+---
+
+# Non-Functional Requirements
+
+## Performance
+
+- Fast page loading.
+- Responsive user interface.
+- Efficient database queries.
+- Optimized file uploads.
+
+---
+
+## Security
+
+- Encrypted passwords.
+- Role-based permissions.
+- Secure APIs.
+- Audit logging.
+- Secure file access.
+
+---
+
+## Scalability
+
+The architecture should support:
+
+- Multiple companies.
+- Multiple projects.
+- Large numbers of users.
+- Millions of operational records.
+
+---
+
+## Reliability
+
+The system should provide:
+
+- Stable performance.
+- Error handling.
+- Data integrity.
+- Automatic recovery where possible.
+
+---
+
+## Usability
+
+The platform should be:
+
+- Simple to learn.
+- Mobile friendly.
+- Responsive.
+- Consistent across modules.
+
+---
+
+# Coding Principles
+
+Development should follow:
+
+- Modular architecture.
+- Reusable components.
+- Clean code.
+- **API**-first design.
+- Consistent naming conventions.
+- Proper validation.
+- Comprehensive error handling.
+
+---
+
+# Testing Requirements
+
+Each feature should include:
+
+- Unit Testing
+- Integration Testing
+- User Acceptance Testing (**UAT**)
+
+Critical business workflows must be verified before release.
+
+---
+
+# Future Ready Architecture
+
+The platform should allow future integration with:
+
+- AI Assistant
+- **OCR**
+- QR / Barcode
+- Offline Mobile Sync
+- Digital Signature
+- WhatsApp
+- IoT Devices
+- Power BI
+- **REST** **API**
+- Third-party Integrations
+
+These additions should not require redesigning the existing architecture.
+
+---
+
+# Phase 1 Deliverables
+
+At the end of Phase 1, the platform should provide:
+
+- Secure user management.
+- Complete **HSE** operational management.
+- Configurable inspections.
+- Safety event management.
+- Permit management.
+- Action tracking.
+- Risk assessment.
+- Toolbox talks.
+- Equipment and **PPE** management.
+- Environmental and emergency management.
+- Centralized documents.
+- Dashboards and reports.
+- Notifications and calendar.
+
+---
+
+# Final Vision
+
+The goal of Phase 1 is to deliver a complete, modern and enterprise-ready **HSE** Management Platform that organizations can use in daily operations.
+
+The platform should be modular, scalable and maintainable, providing a strong foundation for future AI-powered capabilities without requiring major architectural changes.

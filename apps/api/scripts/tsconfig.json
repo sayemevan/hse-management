@@ -1,0 +1,7 @@
+{
+  "extends": "@hse/config-typescript/base.json",
+  "compilerOptions": {
+    "types": ["node", "@cloudflare/workers-types"]
+  },
+  "include": ["."]
+}

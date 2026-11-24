@@ -1,0 +1,63 @@
+@import 'tailwindcss';
+
+/*
+ * Design tokens.
+ * Semantic status colours follow Product Book Doc 05 §13 and the UI/UX rules:
+ * green = success, blue = information, yellow = warning, red = critical/danger, gray = inactive.
+ * The exact values are PROVISIONAL (Tailwind defaults) until the design tokens in docs/ui/ are approved.
+ * Components must use these semantic tokens, never raw palette colours.
+ */
+@theme {
+  --color-success: var(--color-green-600);
+  --color-info: var(--color-blue-600);
+  --color-warning: var(--color-yellow-500);
+  --color-danger: var(--color-red-600);
+  --color-inactive: var(--color-gray-500);
+
+  --color-background: var(--color-white);
+  --color-foreground: var(--color-gray-950);
+  --color-muted: var(--color-gray-100);
+  --color-muted-foreground: var(--color-gray-600);
+  --color-border: var(--color-gray-200);
+  --color-primary: var(--color-blue-700);
+  --color-primary-foreground: var(--color-white);
+  --color-primary-hover: var(--color-blue-800);
+  --color-danger-hover: var(--color-red-700);
+
+  /* Tinted surfaces for alerts and badges (text colour + icon carry the meaning too). */
+  --color-info-surface: var(--color-blue-50);
+  --color-info-foreground: var(--color-blue-900);
+  --color-success-surface: var(--color-green-50);
+  --color-success-foreground: var(--color-green-900);
+  --color-warning-surface: var(--color-yellow-50);
+  --color-warning-foreground: var(--color-yellow-900);
+  --color-danger-surface: var(--color-red-50);
+  --color-danger-foreground: var(--color-red-900);
+
+  /* Fonts (O-6): Latin first in English, Arabic first in Arabic (see [dir=rtl] below). */
+  --font-sans: var(--font-latin), var(--font-arabic), system-ui, sans-serif;
+
+  /* Large touch targets for gloved, one-handed use (Doc 03 Rule 12). */
+  --spacing-touch: 3rem;
+}
+
+@layer base {
+  html[dir='rtl'] {
+    --font-sans: var(--font-arabic), var(--font-latin), system-ui, sans-serif;
+  }
+
+  html {
+    -webkit-text-size-adjust: 100%;
+  }
+
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    font-family: var(--font-sans);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-primary);
+    outline-offset: 2px;
+  }
+}

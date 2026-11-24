@@ -1,0 +1,4 @@
+{
+  "extends": "@hse/config-typescript/library.json",
+  "include": ["src"]
+}

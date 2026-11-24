@@ -1,0 +1,13 @@
+# Development image only (ADR-001: production runs on Cloudflare, not containers).
+# Debian-based because workerd (used by Wrangler's local runtime) needs glibc.
+FROM node:22-bookworm-slim
+
+ENV NEXT_TELEMETRY_DISABLED=1 \
+    WRANGLER_SEND_METRICS=false
+
+RUN apt-get update \
+ && apt-get install -y --no-install-recommends ca-certificates \
+ && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /workspace
+USER node

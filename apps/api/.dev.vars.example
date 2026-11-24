@@ -1,0 +1,10 @@
+# Copy to .dev.vars for local development (git-ignored).
+# Generate a value with: node -e "console.log(require('crypto').randomBytes(48).toString('base64url'))"
+JWT_SECRET=replace-with-at-least-32-random-characters
+
+# Cloudflare Turnstile test secret: always passes (public test value, not a real secret).
+# Use a real secret per environment with: wrangler secret put TURNSTILE_SECRET_KEY
+TURNSTILE_SECRET_KEY=1x0000000000000000000000000000000AA
+
+# Only needed when EMAIL_PROVIDER=resend.
+# RESEND_API_KEY=re_...

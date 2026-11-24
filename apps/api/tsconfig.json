@@ -1,0 +1,4 @@
+{
+  "extends": "@hse/config-typescript/worker.json",
+  "include": ["src", "test", "drizzle.config.ts", "vitest.config.ts"]
+}

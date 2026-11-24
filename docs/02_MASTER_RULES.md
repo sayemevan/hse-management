@@ -1,0 +1,1039 @@
+# 02 — Master Rules
+
+> **Source of truth** for engineering, architecture, database, API, UI and process rules.
+> Migrated verbatim from `archive/Rules.txt` (2026-11-10). Content unchanged except: this header, the index, and two clearly marked ADR notes where the stack was superseded.
+
+## Index
+
+- PROJECT_RULES.md
+- ARCHITECTURE_RULES.md
+- DATABASE_RULES.md
+- API_RULES.md
+- UI_UX_RULES.md
+- CODING_STANDARDS.md
+- MASTER_RULES_02.md
+- MASTER_RULES_03.md
+- MASTER_RULES_04.md
+- MASTER_RULES_05.md
+- MASTER_REFERENCE_GUIDE.md
+- MASTER_CONFIGURATION_GUIDE.md
+- MASTER_PLATFORM_GUIDE.md
+
+---
+
+# PROJECT_RULES.md
+
+## Purpose
+
+This document defines the mandatory development rules for the **HSE** Management Platform.
+
+Every AI assistant and developer must follow these rules throughout the project.
+
+---
+
+# 1. General Principles
+
+- Build for production, not demo.
+- Keep the architecture simple and scalable.
+- Avoid unnecessary complexity.
+- Prefer reusable solutions over duplicated code.
+- Every feature should be modular.
+
+---
+
+# 2. Development Philosophy
+
+- Feature First
+- **API** First
+- Mobile First
+- Security First
+- Performance First
+
+---
+
+# 3. Module Rules
+
+Every module must be independent.
+
+Modules communicate only through services or APIs.
+
+Never tightly couple two modules.
+
+---
+
+# 4. Reusability
+
+If a component can be reused, create a shared component.
+
+Avoid duplicate business logic.
+
+---
+
+# 5. File Upload
+
+All modules should use one common file upload service.
+
+Never implement multiple upload systems.
+
+---
+
+# 6. Notifications
+
+All notifications must use one notification service.
+
+Never create module-specific notification systems.
+
+---
+
+# 7. Reports
+
+All reports must use one reporting engine.
+
+---
+
+# 8. Search
+
+Use one global search system across the platform.
+
+---
+
+# 9. Audit
+
+Every important action must be logged.
+
+Nothing important should happen without an audit record.
+
+---
+
+# 10. Error Handling
+
+Show user-friendly messages.
+
+Never expose technical errors to end users.
+
+---
+
+# 11. Documentation
+
+Every feature should be documented before development.
+
+---
+
+# 12. Final Rule
+
+When multiple implementation options exist, choose the solution that is:
+
+- Easier to maintain
+- Easier to understand
+- Easier to extend
+- Easier to test
+
+Long-term maintainability is more important than short-term speed.
+
+# ARCHITECTURE_RULES.md
+
+## Purpose
+
+This document defines the architecture principles of the **HSE** Management Platform.
+
+---
+
+# Architecture Principles
+
+- Use a Modular Monolith architecture for Phase 1.
+- Each module must have its own Controller, Service and Repository.
+- Business logic must remain inside Services.
+- Controllers should only handle requests and responses.
+- Database access should go through repositories only.
+
+---
+
+# Module Independence
+
+Each module must be independent.
+
+Examples:
+- Inspection
+- Safety Event
+- Permit
+- Action
+- Workforce
+- Risk Assessment
+
+A module must never directly access another module's database tables.
+
+---
+
+# Shared Services
+
+Common services:
+
+- Authentication
+- Authorization
+- Notification
+- File Upload
+- Audit Log
+- Search
+- Report Export
+
+These services must be reusable across all modules.
+
+---
+
+# Database Rules
+
+> **⚠ Superseded by [ADR-001](architecture/adr/ADR-001-technology-stack.md) (2026-11-10):** Phase 1 uses one Cloudflare D1 (SQLite) database; PostgreSQL is the documented upgrade path. The Modular Monolith rule above remains in force — the API is one modular Worker.
+
+- One PostgreSQL database.
+- **UUID** as primary keys.
+- Soft Delete where appropriate.
+- Audit fields on every table.
+
+---
+
+# API Principles
+
+- **REST** **API**.
+- Versioning (`/api/v1`).
+- Consistent response format.
+- Proper **HTTP** status codes.
+
+---
+
+# Final Rule
+
+Build for future microservices, but keep Phase 1 as a clean Modular Monolith.
+
+---
+
+# DATABASE_RULES.md
+
+## Purpose
+
+Defines database design standards.
+
+---
+
+# Naming
+
+- snake_case for tables and columns.
+- Singular model names in code.
+- **UUID** primary keys.
+
+---
+
+# Common Columns
+
+Every table should include:
+
+- id
+- created_at
+- updated_at
+- created_by
+- updated_by
+- deleted_at (where applicable)
+
+---
+
+# Relationships
+
+- Use foreign keys.
+- Avoid duplicated data.
+- Use lookup tables for reusable values.
+
+---
+
+# Data Integrity
+
+- Use constraints.
+- Use indexes on searchable columns.
+- Prevent orphan records.
+
+---
+
+# Audit
+
+Critical business records should never be permanently deleted.
+
+---
+
+# Final Rule
+
+Design the database for long-term scalability rather than short-term convenience.
+
+---
+
+# API_RULES.md
+
+## Purpose
+
+Defines **API** standards for the platform.
+
+---
+
+# URL Structure
+
+- /api/v1/auth
+- /api/v1/projects
+- /api/v1/inspections
+- /api/v1/permits
+
+---
+
+# HTTP Methods
+
+- **GET** → Read
+- **POST** → Create
+- **PUT**/**PATCH** → Update
+- **DELETE** → Archive / Delete
+
+---
+
+# Response Format
+
+Every response should contain:
+
+- success
+- message
+- data
+- meta (optional)
+
+---
+
+# Validation
+
+Validate every request before processing.
+
+Never trust client input.
+
+---
+
+# Security
+
+- **JWT** Authentication
+- Role-based Authorization
+- Permission Checks
+- Request Validation
+
+---
+
+# Error Responses
+
+Use consistent error messages and **HTTP** status codes.
+
+---
+
+# Final Rule
+
+Every **API** should be predictable, secure and well documented.
+
+---
+
+# UI_UX_RULES.md
+
+## Purpose
+
+Defines UI and UX standards.
+
+---
+
+# Design Principles
+
+- Clean
+- Modern
+- Professional
+- Mobile First
+
+---
+
+# Layout
+
+- Consistent spacing
+- Reusable components
+- Responsive design
+
+---
+
+# Forms
+
+- Inline validation
+- Required field indicators
+- Helpful error messages
+
+---
+
+# Tables
+
+- Pagination
+- Search
+- Sorting
+- Filtering
+- Export
+
+---
+
+# Colors
+
+Use colors consistently:
+
+- Green → Success
+- Yellow → Warning
+- Red → Danger
+- Blue → Information
+
+---
+
+# Accessibility
+
+- Keyboard navigation
+- Proper contrast
+- Readable typography
+
+---
+
+# Final Rule
+
+Users should learn the interface naturally without training.
+
+---
+
+# CODING_STANDARDS.md
+
+## Purpose
+
+Defines coding standards for developers and AI assistants.
+
+---
+
+# General
+
+- Write clean code.
+- Keep functions small.
+- Avoid duplicated logic.
+- Prefer readability over cleverness.
+
+---
+
+# Naming
+
+- Meaningful variable names.
+- Clear function names.
+- Consistent file names.
+
+---
+
+# Code Structure
+
+- One responsibility per function.
+- Separate business logic from UI.
+- Reuse shared utilities.
+
+---
+
+# Error Handling
+
+Handle expected errors gracefully.
+
+Log unexpected errors.
+
+---
+
+# Comments
+
+Write comments only where necessary.
+
+Prefer self-explanatory code.
+
+---
+
+# Testing
+
+Every feature should be manually tested before completion.
+
+Critical workflows should include automated tests when practical.
+
+---
+
+# Git
+
+- Small commits.
+- Meaningful commit messages.
+- One feature per branch (recommended).
+
+---
+
+# Final Rule
+
+Code should be easy to understand, easy to review and easy to maintain for many years.
+
+# MASTER_RULES_02.md
+
+## Covers
+
+- Security Rules
+- Permission Rules
+- Validation Rules
+- Audit Rules
+- Error Handling Rules
+
+---
+
+## Security
+
+- **JWT** Authentication
+- Role & Permission Based Access
+- Strong Password Policy
+- Session Timeout
+- Encrypted Password
+- Secure **API** Access
+
+---
+
+## Permission
+
+- Verify every request.
+- Check Company access.
+- Check Project access.
+- Check Module permission.
+- Check Record ownership where required.
+- Deny by default.
+
+---
+
+## Validation
+
+- Validate every input.
+- Validate uploaded files.
+- Validate dates.
+- Validate business rules.
+- Never trust client data.
+
+---
+
+## Audit
+
+Log:
+
+- Login
+- Logout
+- Create
+- Update
+- Delete
+- Approval
+- Permission Change
+
+Audit history cannot be modified.
+
+---
+
+## Error Handling
+
+- Friendly error messages.
+- Proper **HTTP** status codes.
+- Log unexpected errors.
+- Never expose internal errors.
+
+---
+
+## Final Rule
+
+Security and validation are mandatory for every module.
+
+---
+
+# MASTER_RULES_03.md
+
+## Covers
+
+- Workflow Rules
+- Notification Rules
+- Reporting Rules
+- Activity Timeline
+
+---
+
+## Workflow
+
+Every workflow should follow defined statuses.
+
+No record should skip mandatory approval steps.
+
+---
+
+## Notification
+
+Generate notifications for:
+
+- Assignment
+- Approval
+- Due Date
+- Expiry
+- Completion
+- Rejection
+
+---
+
+## Reports
+
+- **PDF** Export
+- Excel Export
+- Filters
+- Company Branding
+- Consistent Report Layout
+
+---
+
+## Activity Timeline
+
+Record:
+
+- Who
+- What
+- When
+- Old Value
+- New Value
+
+Timeline should be immutable.
+
+---
+
+## Final Rule
+
+Every important business activity should be traceable from creation to closure.
+
+---
+
+# MASTER_RULES_04.md
+
+## Covers
+
+- File Management
+- UI Components
+- Performance
+- Search
+
+---
+
+## File Management
+
+- Central Upload Service
+- File Categories
+- Version History
+- Secure Download
+- File Size Validation
+
+---
+
+## UI Components
+
+Reuse:
+
+- Button
+- Input
+- Table
+- Modal
+- Drawer
+- Card
+- Badge
+- Avatar
+- Status Chip
+
+Never duplicate components.
+
+---
+
+## Performance
+
+- Pagination
+- Lazy Loading
+- Optimized Queries
+- Proper Indexing
+- Efficient **API** Calls
+
+---
+
+## Search
+
+Provide:
+
+- Global Search
+- Advanced Filters
+- Saved Filters
+
+Use one search engine for the whole platform.
+
+---
+
+## Final Rule
+
+Performance and consistency are more important than visual complexity.
+
+---
+
+# MASTER_RULES_05.md
+
+## Covers
+
+- Development Workflow
+- Testing
+- Deployment
+- AI Development
+
+---
+
+## Development
+
+- One Feature at a Time.
+- One User Story per Task.
+- Small Pull Requests.
+- Reuse Existing Code.
+- No Duplicate Logic.
+
+---
+
+## Testing
+
+Verify:
+
+- Functional Tests
+- Validation
+- Permission
+- Error Handling
+- Mobile Responsiveness
+
+---
+
+## Deployment
+
+- Environment Variables
+- Database Migration
+- Backup Before Release
+- Rollback Support
+
+---
+
+## AI Development
+
+AI must:
+
+- Follow project architecture.
+- Never redesign existing modules.
+- Never create duplicate components.
+- Never guess business rules.
+- Complete acceptance criteria before marking a task done.
+- Ask for clarification if requirements are unclear.
+
+---
+
+## Final Rule
+
+Write production-ready code that is readable, maintainable and scalable.
+
+# MASTER_REFERENCE_GUIDE.md
+
+## Purpose
+
+This document defines the common reference standards for the **HSE** Management Platform.
+
+---
+
+# 1. Naming Convention
+
+Use consistent naming throughout the project.
+
+### Database
+
+- snake_case
+- Singular table names
+- **UUID** Primary Keys
+
+### Backend
+
+- PascalCase → Class
+- camelCase → Variable
+- camelCase → Function
+
+### Frontend
+
+- PascalCase → Components
+- camelCase → Functions
+- kebab-case → Routes
+
+---
+
+# 2. Folder Structure
+
+Backend
+
+- auth
+- company
+- project
+- workforce
+- inspection
+- safety-event
+- permit
+- action
+- shared
+
+Frontend
+
+- app
+- components
+- modules
+- hooks
+- services
+- utils
+- types
+
+Every module should contain:
+
+- controller
+- service
+- repository
+- dto
+- entity
+- validator
+
+---
+
+# 3. Tech Stack
+
+> **⚠ Superseded by [ADR-001](architecture/adr/ADR-001-technology-stack.md) (2026-11-10).** The Product Owner selected the Cloudflare serverless stack (Product Book, Doc 02). The original text below is kept for traceability; where it conflicts, ADR-001 wins.
+
+Frontend
+
+- Next.js
+- TypeScript
+- Tailwind **CSS**
+- Shadcn UI
+
+Backend
+
+- NestJS
+- Prisma **ORM**
+- PostgreSQL
+
+Storage
+
+- S3 Compatible Storage
+
+Deployment
+
+- Docker
+- Vercel
+- Railway / Hetzner
+
+---
+
+# 4. Dependency Policy
+
+Before installing any package:
+
+- Prefer native solution.
+- Check maintenance status.
+- Avoid unnecessary dependencies.
+- Avoid duplicate libraries.
+
+---
+
+# 5. Design System
+
+Use consistent:
+
+- Colors
+- Typography
+- Buttons
+- Tables
+- Cards
+- Forms
+- Icons
+- Status Colors
+
+Never redesign components for each module.
+
+---
+
+# Final Rule
+
+The entire platform should look and behave like one product.
+
+---
+
+==================================================
+
+# MASTER_CONFIGURATION_GUIDE.md
+
+## Purpose
+
+Defines reusable configuration and master data.
+
+---
+
+# Master Data
+
+Examples:
+
+- Countries
+- Nationalities
+- Departments
+- Job Titles
+- Companies
+- Projects
+- Permit Types
+- Incident Types
+- Inspection Types
+- **PPE** Categories
+- Equipment Categories
+
+Master Data should be configurable whenever possible.
+
+---
+
+# Status Standards
+
+Examples
+
+Inspection
+
+- Draft
+- In Progress
+- Submitted
+- Approved
+- Closed
+
+Permit
+
+- Draft
+- Pending
+- Approved
+- Active
+- Closed
+- Expired
+
+Action
+
+- Open
+- In Progress
+- Completed
+- Verified
+- Closed
+
+---
+
+# Company Configuration
+
+Allow configuration of:
+
+- Company Logo
+- Branding
+- Time Zone
+- Language
+- Date Format
+- Currency
+- Working Days
+- Notification Preferences
+
+---
+
+# Project Configuration
+
+Allow configuration of:
+
+- Areas
+- Locations
+- Work Zones
+- Project Status
+- Default Templates
+
+---
+
+# Final Rule
+
+Whenever possible, values should be configurable instead of hard-coded.
+
+---
+
+==================================================
+
+# MASTER_PLATFORM_GUIDE.md
+
+## Purpose
+
+Defines platform-wide standards.
+
+---
+
+# Permission Matrix
+
+Support roles such as:
+
+- Super Admin
+- Company Admin
+- Project Manager
+- **HSE** Manager
+- Safety Officer
+- Supervisor
+- Employee
+- Viewer
+
+Every module should follow the same permission model.
+
+---
+
+# Roadmap
+
+Phase 1
+
+Complete **HSE** Platform
+
+Phase 2
+
+AI Features
+
+Offline
+
+QR
+
+Automation
+
+Phase 3
+
+IoT
+
+Power BI
+
+### Enterprise Integrations
+
+---
+
+# Scalability
+
+Platform should support:
+
+- Unlimited Companies
+- Unlimited Projects
+- Unlimited Users
+- Unlimited Records
+
+without architecture changes.
+
+---
+
+# Future Expansion
+
+Architecture should support:
+
+- Asset Management
+- Facility Management
+- QA/QC
+- **ESG**
+- Compliance
+- **ERP** Integration
+
+without redesigning the platform.
+
+---
+
+# Final Rule
+
+Every development decision should prioritize long-term scalability, maintainability and reusability over short-term convenience.

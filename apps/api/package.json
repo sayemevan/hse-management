@@ -1,0 +1,35 @@
+{
+  "name": "@hse/api",
+  "version": "0.1.0",
+  "private": true,
+  "description": "HSE Management Platform API — Hono on Cloudflare Workers (modular monolith)",
+  "type": "module",
+  "scripts": {
+    "dev": "wrangler dev --ip 127.0.0.1 --port 8787",
+    "build": "wrangler deploy --dry-run --outdir dist",
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p scripts/tsconfig.json",
+    "test": "vitest run",
+    "db:generate": "drizzle-kit generate",
+    "db:migrate:local": "wrangler d1 migrations apply DB --local",
+    "deploy": "wrangler deploy",
+    "bootstrap:system-owner": "tsx scripts/bootstrap-system-owner.ts",
+    "db:seed:dev": "tsx scripts/seed-dev.ts",
+    "job:run": "tsx scripts/run-job.ts"
+  },
+  "dependencies": {
+    "@hono/zod-validator": "0.9.1",
+    "@hse/shared": "*",
+    "drizzle-orm": "0.45.4",
+    "hono": "4.13.17",
+    "zod": "4.6.7"
+  },
+  "devDependencies": {
+    "@cloudflare/workers-types": "5.20261110.1",
+    "@hse/config-typescript": "*",
+    "drizzle-kit": "0.31.11",
+    "tsx": "4.23.15",
+    "vitest": "5.1.0",
+    "wrangler": "4.160.0",
+    "typescript": "6.0.3"
+  }
+}
