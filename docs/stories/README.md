@@ -13,5 +13,6 @@ Status flow: **Draft** → **Approved** (by the Product Owner) → **In progress
 | 5      | [Roles, permissions & projects](sprint-05/00_SPRINT_05_OVERVIEW.md)             | Done (accepted 2026-11-12) |
 | 6      | [Project structure & platform services](sprint-06/00_SPRINT_06_OVERVIEW.md)     | Done (accepted 2026-11-13) |
 | 7      | [Workforce](sprint-07/00_SPRINT_07_OVERVIEW.md)                                 | Done (accepted 2026-11-14) |
+| 8      | [Action engine](sprint-08/00_SPRINT_08_OVERVIEW.md)                             | Done (accepted 2026-11-27) |
 
 Story IDs: `US-xxx` from the Product Book backlog (Doc 14); `PLT-xx` for platform enablers that the backlog doesn't list but the stories depend on.

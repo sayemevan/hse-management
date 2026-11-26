@@ -15,6 +15,7 @@ Empty in Sprint 0; built just before the first module that needs each one (see `
 | `activity`                | Sprint 6 | `ActivityService.entry(event)` in the change's `UnitOfWork`; add new actions to `ACTIVITY_ACTIONS`. Append-only.                                                           |
 
 Sprint 7: `activity` also serves one record's history (`listForEntity`, the workforce profile History tab); `file-storage` has three workforce categories that only the workforce routes serve (`MODULE_SERVED_CATEGORIES`, T-49).
+| `comment` | Sprint 8 | `CommentService.list / add / edit` with a `CommentTarget` the module loads with its own access checks; the module mounts the routes under its record (T-63). Never deleted. |
 
-Comments are planned for Sprint 8 (O-57).
+Sprint 8: `notification` also groups repeated events (`groupedEntries`: one unread notification per record, counted); `activity` entries accept `occurredAt` so several entries of one change keep their order.
 One implementation per concern: modules must never build their own.

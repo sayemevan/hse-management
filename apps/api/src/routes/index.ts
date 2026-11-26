@@ -21,6 +21,7 @@ import { notificationRoutes } from '../modules/notifications';
 import { meRoutes, projectRoutes } from '../modules/project';
 import { planRoutes } from '../modules/subscription';
 import { projectWorkforceRoutes, workforceMeRoutes, workforceRoutes } from '../modules/workforce';
+import { actionMeRoutes, projectActionRoutes } from '../modules/action';
 import { healthRoutes } from './health.routes';
 import { platformJobRoutes } from './platform-jobs.routes';
 
@@ -35,6 +36,7 @@ export { API_V1_BASE_PATH } from './paths';
  * Sprint 5: projects, user roles and the roles screen on company subdomains.
  * Sprint 6: places, members and timeline under a project; notifications; `/me` preferences.
  * Sprint 7: the workforce area, a project's Workforce tab and `/me/workforce`.
+ * Sprint 8: a project's actions with comments, and `/me/actions`.
  */
 export const v1Routes = new Hono<AppEnv>()
   .route('/health', healthRoutes)
@@ -83,10 +85,12 @@ export const v1Routes = new Hono<AppEnv>()
   .route('/projects', projectRoutes)
   .route('/projects', projectMemberRoutes)
   .route('/projects', projectWorkforceRoutes)
+  .route('/projects', projectActionRoutes)
   .route('/workforce', workforceRoutes)
   .route('/notifications', notificationRoutes)
   .route('/me', meRoutes)
   .route('/me', workforceMeRoutes)
+  .route('/me', actionMeRoutes)
   .route('/roles', roleRoutes)
   .route('/platform/payments', platformPaymentRoutes)
   .route('/platform/subscriptions', platformSubscriptionRoutes)

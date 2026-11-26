@@ -6,7 +6,7 @@ import {
   type ActivityEntryDto,
   type ActivityGroup,
 } from '@hse/shared';
-import { FolderKanban, HardHat, MapPin, Users } from 'lucide-react';
+import { FolderKanban, HardHat, ListChecks, MapPin, Users } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -29,10 +29,11 @@ const GROUP_ICONS = {
   members: Users,
   structure: MapPin,
   workforce: HardHat,
+  actions: ListChecks,
 } as const;
 
-/** The sentence of a timeline entry in the reader's language (PLT-18 FR-6). */
-function useActivitySentence() {
+/** The sentence of a timeline entry in the reader's language (PLT-18 FR-6; Sprint 8 History). */
+export function useActivitySentence() {
   const t = useTranslations('timeline.actions');
   const roles = useTranslations('roles');
   const statuses = useTranslations('projectStatus');
@@ -40,6 +41,7 @@ function useActivitySentence() {
   const workforceStatus = useTranslations('workforce.status');
   const positionName = usePositionName();
   const recordLabel = useRecordLabel();
+  const methods = useTranslations('actions.method');
   return useCallback(
     (entry: ActivityEntryDto) => {
       const s = entry.snapshot;
@@ -65,7 +67,19 @@ function useActivitySentence() {
               name: s.recordName ?? null,
             })
           : '',
+        // Sprint 8
+        ref: s.actionReference ? ltr(s.actionReference) : '',
+        title: s.actionTitle ?? '',
+        method: s.method ? methods(s.method as 'site_visit') : '',
+        reason: s.reason ?? '',
+        file: s.fileName ?? '',
       };
+      if (entry.action === 'action.owner_changed') {
+        const before = entry.changes?.before.owner;
+        const after = entry.changes?.after.owner;
+        values.from = typeof before === 'string' ? before : '';
+        values.to = typeof after === 'string' ? after : '';
+      }
       if (entry.action === 'project.status.changed' || entry.action === 'project.restored') {
         const before = entry.changes?.before.status;
         const after = entry.changes?.after.status;
@@ -75,7 +89,7 @@ function useActivitySentence() {
       const key = entry.action.replace(/\./g, '_') as 'project_created';
       return t(key, values);
     },
-    [t, roles, statuses, levels, workforceStatus, positionName, recordLabel],
+    [t, roles, statuses, levels, workforceStatus, positionName, recordLabel, methods],
   );
 }
 

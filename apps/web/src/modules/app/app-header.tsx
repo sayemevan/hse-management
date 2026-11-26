@@ -10,6 +10,7 @@ import { SubscriptionBanner } from '@/modules/billing/subscription-banner';
 import { LanguageSwitcher } from '@/modules/i18n/language-switcher';
 import { useAuth } from '@/modules/auth/auth-provider';
 import { hasPermission } from '@/modules/auth/require-permission';
+import { MyActionsLink } from '@/modules/actions/my-actions-link';
 import { NotificationBell } from '@/modules/notifications/notification-bell';
 import { ProjectSwitcher } from '@/modules/projects/project-switcher';
 import { useCompany } from '@/modules/tenant/tenant-provider';
@@ -17,7 +18,8 @@ import { useCompany } from '@/modules/tenant/tenant-provider';
 /**
  * Header for signed-in pages. The full navigation (Doc 05 §4) arrives with the dashboard;
  * Sprint 5 adds Projects on company subdomains; Sprint 6 the project switcher and the
- * notification bell (PLT-17, PLT-19); Sprint 7 the Workforce link (US-024).
+ * notification bell (PLT-17, PLT-19); Sprint 7 the Workforce link (US-024); Sprint 8 My actions
+ * with the overdue count (PLT-24).
  */
 export function AppHeader() {
   const company = useCompany();
@@ -42,6 +44,7 @@ export function AppHeader() {
                   <span className="sr-only sm:not-sr-only">{t('title')}</span>
                 </Link>
               ) : null}
+              <MyActionsLink />
               <NotificationBell />
             </>
           ) : null}

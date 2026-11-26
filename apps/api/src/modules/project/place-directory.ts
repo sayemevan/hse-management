@@ -50,6 +50,37 @@ export class PlaceDirectory {
     };
   }
 
+  /** Several places of one project at once (lists of records), by the deepest place id. */
+  async resolveMany(
+    companyId: string,
+    projectId: string,
+    placeIds: readonly string[],
+  ): Promise<Map<string, ResolvedPlace>> {
+    const result = new Map<string, ResolvedPlace>();
+    if (placeIds.length === 0) return result;
+    const rows = new Map(
+      (await this.places.listForProject(companyId, projectId)).map((row) => [row.id, row]),
+    );
+    for (const placeId of new Set(placeIds)) {
+      const chain: PlaceRow[] = [];
+      let current = rows.get(placeId);
+      while (current) {
+        chain.unshift(current);
+        current = current.parentId ? rows.get(current.parentId) : undefined;
+      }
+      if (chain.length === 0) continue;
+      const idOf = (level: PlaceLevel) => chain.find((row) => row.level === level)?.id ?? null;
+      result.set(placeId, {
+        areaId: idOf('area'),
+        locationId: idOf('location'),
+        workZoneId: idOf('work_zone'),
+        names: chain.map((row) => row.name),
+        active: chain.every((row) => row.active),
+      });
+    }
+    return result;
+  }
+
   /**
    * O-56: an optional selection that stops at any level, never a level without its parent,
    * active places only (unless already on the record being edited). Returns field issues for

@@ -1,6 +1,7 @@
 // Public surface of @hse/shared. Apps import only from '@hse/shared'.
 export * from './access/access-contracts';
 export * from './access/permissions';
+export * from './actions/action-contracts';
 export * from './activity/activity-contracts';
 export * from './api/error-codes';
 export * from './api/pagination';
@@ -9,6 +10,7 @@ export * from './auth/auth-contracts';
 export * from './auth/password-policy';
 export * from './billing/periods';
 export * from './billing/subscription-contracts';
+export * from './comments/comment-contracts';
 export * from './company/company-contracts';
 export * from './contact/phone';
 export * from './geo/countries';

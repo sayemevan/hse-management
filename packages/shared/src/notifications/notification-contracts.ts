@@ -23,6 +23,21 @@ export const NOTIFICATION_TYPES = [
   'workforce.record.expiring',
   'workforce.assignment.added',
   'workforce.member.suspended',
+  // Sprint 8 (PLT-23 § Notifications, O-109)
+  'action.assigned',
+  'action.unassigned',
+  'action.collaborator_added',
+  'action.due_tomorrow',
+  'action.overdue',
+  'action.due_digest',
+  'action.verification_needed',
+  'action.sent_back',
+  'action.verified',
+  'action.closed',
+  'action.voided',
+  'action.due_date_changed',
+  'action.comment_added',
+  'action.owner_lost_access',
 ] as const;
 export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
 
@@ -63,6 +78,21 @@ export interface NotificationParams {
   positionKey?: string | null;
   startDate?: string;
   since?: string;
+  // Sprint 8
+  /** `RMX-02-ACT-0012`. */
+  actionReference?: string;
+  /** The first 80 characters of the title. */
+  actionTitle?: string;
+  priority?: string;
+  dueOn?: string;
+  daysOverdue?: number;
+  /** `action.due_digest`: counts. */
+  overdue?: number;
+  dueToday?: number;
+  /** Critical actions among the overdue ones (listed every day until resolved, T-64). */
+  critical?: number;
+  /** `action.sent_back` / `action.voided`: the first 120 characters of the reason. */
+  reason?: string;
 }
 
 export const notificationListQuerySchema = z.object({

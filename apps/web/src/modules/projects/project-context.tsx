@@ -147,6 +147,8 @@ function ProjectTabs({ project }: { project: ProjectDto }) {
       label: t('workforce'),
       show: project.myPermissions.includes('projects.workforce.view'),
     },
+    // Sprint 8 (PLT-24): everyone on the project sees the tab; its contents follow T-65.
+    { href: `${base}/actions`, label: t('actions'), show: true, prefix: true },
     {
       href: `${base}/timeline`,
       label: t('timeline'),
@@ -157,7 +159,8 @@ function ProjectTabs({ project }: { project: ProjectDto }) {
     <nav aria-label={t('label')} className="-mx-4 overflow-x-auto px-4">
       <ul className="flex min-w-max border-b border-border">
         {tabs.map((tab) => {
-          const active = pathname.endsWith(tab.href);
+          const active =
+            pathname.endsWith(tab.href) || ('prefix' in tab && pathname.startsWith(`${tab.href}/`));
           return (
             <li key={tab.href}>
               <Link

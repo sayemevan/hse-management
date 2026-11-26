@@ -108,6 +108,23 @@ export const AUDIT_ACTIONS = [
   'workforce.document.voided',
   'workforce.document.opened',
   'workforce.contacts.updated',
+  // Actions and comments (Sprint 8: PLT-22, PLT-23)
+  'action.created',
+  'action.updated',
+  'action.owner_changed',
+  'action.collaborator_added',
+  'action.collaborator_removed',
+  'action.started',
+  'action.progress_added',
+  'action.file_added',
+  'action.file_opened',
+  'action.completed',
+  'action.verified',
+  'action.sent_back',
+  'action.closed',
+  'action.voided',
+  'comment.created',
+  'comment.edited',
   // Platform (PLT-04)
   'platform.system_owner.created',
 ] as const;

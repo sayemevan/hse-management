@@ -147,6 +147,10 @@ function visibleActions(group: ActivityGroup | undefined, permissions: Set<strin
       ([, actionGroup]) =>
         actionGroup !== 'workforce' || permissions.has('projects.workforce.view'),
     )
+    // Sprint 8 (T-65): action entries for readers who see all of the project's actions.
+    .filter(
+      ([, actionGroup]) => actionGroup !== 'actions' || permissions.has('projects.actions.view'),
+    )
     .map(([action]) => action);
 }
 

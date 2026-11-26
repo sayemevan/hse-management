@@ -6,6 +6,7 @@ import { botCheckFor } from './platform/bot-check';
 import { FileStorageService } from './platform/file-storage';
 import { JobRunner, NO_WORK, type ScheduledJob } from './platform/jobs';
 import { workforceExpiryJob } from './modules/workforce';
+import { actionDueJob } from './modules/action';
 
 /**
  * The daily jobs, in the order they run (PLT-09, T-25). Each one is independent: a failure is
@@ -51,6 +52,8 @@ const DAILY_JOBS: readonly ScheduledJob[] = [
   notificationPurgeJob,
   // Sprint 7
   workforceExpiryJob,
+  // Sprint 8
+  actionDueJob,
 ];
 
 export const dailyJobs = new JobRunner(DAILY_JOBS);

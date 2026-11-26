@@ -1,4 +1,5 @@
 import {
+  ACTION_FILE_RULES,
   LOGO_RULES,
   PAYMENT_PROOF_RULES,
   WORKFORCE_FILE_RULES,
@@ -42,6 +43,12 @@ export const FILE_CATEGORIES = {
     contentTypes: WORKFORCE_FILE_RULES.contentTypes,
     cacheControl: 'private, no-store',
   },
+  // Sprint 8 (T-62, O-108). Served only through the action routes, after the view check.
+  action_evidence: {
+    maxBytes: ACTION_FILE_RULES.maxBytes,
+    contentTypes: ACTION_FILE_RULES.contentTypes,
+    cacheControl: 'private, no-store',
+  },
 } as const satisfies Record<string, FileCategoryRules>;
 
 export type FileCategory = keyof typeof FILE_CATEGORIES;
@@ -54,4 +61,5 @@ export const MODULE_SERVED_CATEGORIES: readonly FileCategory[] = [
   'workforce_photo',
   'workforce_attachment',
   'workforce_personal',
+  'action_evidence',
 ];

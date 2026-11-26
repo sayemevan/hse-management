@@ -4,7 +4,7 @@ import {
   type NotificationParams,
   type NotificationType,
 } from '@hse/shared';
-import { and, desc, eq, inArray, isNull, lt, or, sql } from 'drizzle-orm';
+import { and, desc, eq, gt, inArray, isNull, lt, or, sql } from 'drizzle-orm';
 
 import type { Database } from '../../database/client';
 import type { Statement } from '../../database/unit-of-work';
@@ -76,6 +76,50 @@ export class NotificationService {
         readAt: null,
       }),
     );
+  }
+
+  /**
+   * PLT-22 § Notifications: a recipient who already has an unread notification of the same type
+   * about the same record from the last `windowMs` gets that one updated (`count` + 1, moved to
+   * the top) instead of a new one.
+   */
+  async groupedEntries(event: NotificationEvent, windowMs: number): Promise<Statement[]> {
+    const recipients = new Set(event.recipients);
+    if (event.actorUserId) recipients.delete(event.actorUserId);
+    if (recipients.size === 0 || !event.entityId) return [];
+    const now = this.clock();
+    const existing = await this.db
+      .select()
+      .from(notification)
+      .where(
+        and(
+          eq(notification.companyId, event.companyId),
+          eq(notification.type, event.type),
+          eq(notification.entityId, event.entityId),
+          inArray(notification.recipientUserId, [...recipients]),
+          isNull(notification.readAt),
+          gt(notification.createdAt, new Date(now - windowMs)),
+        ),
+      )
+      .all();
+    const statements: Statement[] = [];
+    for (const row of existing) {
+      if (!recipients.delete(row.recipientUserId)) continue;
+      const previous = JSON.parse(row.params) as NotificationParams;
+      const params = { ...event.params, count: (previous.count ?? 1) + 1 };
+      statements.push(
+        this.db
+          .update(notification)
+          .set({
+            params: JSON.stringify(params),
+            actorUserId: event.actorUserId,
+            createdAt: new Date(now),
+          })
+          .where(eq(notification.id, row.id)),
+      );
+    }
+    statements.push(...this.entries({ ...event, recipients }));
+    return statements;
   }
 
   /** FR-5. */

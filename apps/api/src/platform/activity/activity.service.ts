@@ -22,6 +22,8 @@ export interface ActivityEvent {
   actorUserId: string | null;
   changes?: ActivityChanges | null;
   snapshot?: ActivitySnapshot;
+  /** Several entries of one change keep their order (default: now). */
+  occurredAt?: number;
 }
 
 /** FR-5: long texts are recorded as "changed" without the text. */
@@ -71,7 +73,7 @@ export class ActivityService {
           })
         : null,
       snapshot: JSON.stringify(event.snapshot ?? {}),
-      occurredAt: new Date(this.clock()),
+      occurredAt: new Date(event.occurredAt ?? this.clock()),
     });
   }
 

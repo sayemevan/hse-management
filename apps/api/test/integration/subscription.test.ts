@@ -398,6 +398,7 @@ describe('PLT-10 / PLT-15 daily lifecycle job', () => {
       'projects.access_ending',
       'notifications.purge',
       'workforce.expiry',
+      'actions.due',
     ]);
     expect(rows.every((row) => row.outcome === 'succeeded')).toBe(true);
     const runs = await owner.call<JobRunDto[]>('GET', '/platform/jobs');

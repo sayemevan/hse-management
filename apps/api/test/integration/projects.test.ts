@@ -79,6 +79,11 @@ describe('US-016 create project', () => {
       allowedNextStatuses: ['mobilization', 'active'],
     });
     expect(result.body.data.myPermissions).toEqual([
+      'projects.actions.close',
+      'projects.actions.create',
+      'projects.actions.manage',
+      'projects.actions.verify',
+      'projects.actions.view',
       'projects.archive',
       'projects.edit',
       'projects.members.manage',
@@ -160,8 +165,13 @@ describe('US-016 list and view (PLT-16 project scope)', () => {
     const view = await officer.call<ProjectDto>('GET', `/projects/${alpha.id}`);
     expect(view.status).toBe(200);
     // Sprint 6 defaults (D-47) add members, structure and timeline for Safety Officers;
-    // Sprint 7 (D-50) the project workforce.
+    // Sprint 7 (D-50) the project workforce; Sprint 8 (D-53) the actions.
     expect(view.body.data.myPermissions).toEqual([
+      'projects.actions.close',
+      'projects.actions.create',
+      'projects.actions.manage',
+      'projects.actions.verify',
+      'projects.actions.view',
       'projects.members.view',
       'projects.structure.manage',
       'projects.timeline.view',

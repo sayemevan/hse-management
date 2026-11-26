@@ -22,6 +22,7 @@ import {
   type NotificationRow,
 } from '../../platform/notification';
 import { permissionResolverFor, userNames, validateIdentitySession } from '../identity';
+import { ActionDirectory } from '../action';
 import { ProjectDirectory } from '../project';
 
 const signedIn = authenticate(validateIdentitySession);
@@ -49,6 +50,10 @@ type Target =
     }
   /** PLT-20 digest: the project's Workforce tab when sent for one project, else the directory. */
   | { kind: 'workforce_digest' }
+  /** Sprint 8: the action page, if the reader may still view the action (T-65). */
+  | { kind: 'action' }
+  /** PLT-24: My actions, due today and overdue. */
+  | { kind: 'my_actions' }
   | {
       kind: 'company';
       permission: 'roles.view' | 'users.view' | 'subscription.view' | 'workforce.view' | null;
@@ -94,6 +99,21 @@ const TARGETS: Record<NotificationType, Target> = {
     permission: 'projects.workforce.view',
     suffix: '/workforce',
   },
+  // Sprint 8
+  'action.assigned': { kind: 'action' },
+  'action.unassigned': { kind: 'action' },
+  'action.collaborator_added': { kind: 'action' },
+  'action.due_tomorrow': { kind: 'action' },
+  'action.overdue': { kind: 'action' },
+  'action.due_digest': { kind: 'my_actions' },
+  'action.verification_needed': { kind: 'action' },
+  'action.sent_back': { kind: 'action' },
+  'action.verified': { kind: 'action' },
+  'action.closed': { kind: 'action' },
+  'action.voided': { kind: 'action' },
+  'action.due_date_changed': { kind: 'action' },
+  'action.comment_added': { kind: 'action' },
+  'action.owner_lost_access': { kind: 'action' },
 };
 
 async function openTarget(c: Context<AppEnv>, row: NotificationRow): Promise<NotificationOpenDto> {
@@ -104,6 +124,19 @@ async function openTarget(c: Context<AppEnv>, row: NotificationRow): Promise<Not
   switch (target.kind) {
     case 'none':
       return { route: null, access: true };
+    case 'my_actions':
+      return { route: '/my-actions?due=overdue,due_today', access: true };
+    case 'action': {
+      if (!row.entityId) return { route: null, access: false };
+      const projectId = await new ActionDirectory(createDatabase(c.env.DB), resolver).viewableProject(
+        c.get('principal'),
+        company.id,
+        row.entityId,
+      );
+      return projectId
+        ? { route: `/projects/${projectId}/actions/${row.entityId}`, access: true }
+        : { route: null, access: false };
+    }
     case 'workforce_digest': {
       if (row.projectId) {
         const granted = await resolver.projectPermissions(userId, company.id, row.projectId);

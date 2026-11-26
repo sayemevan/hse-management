@@ -4,7 +4,7 @@ import { z } from 'zod';
  * Activity timeline actions (PLT-18, T-43). Each belongs to one filter group. Later modules add
  * their actions here. The web app writes the sentence in the reader's language.
  */
-export const ACTIVITY_GROUPS = ['project', 'members', 'structure', 'workforce'] as const;
+export const ACTIVITY_GROUPS = ['project', 'members', 'structure', 'workforce', 'actions'] as const;
 export type ActivityGroup = (typeof ACTIVITY_GROUPS)[number];
 
 export const ACTIVITY_ACTIONS = {
@@ -41,6 +41,20 @@ export const ACTIVITY_ACTIONS = {
   'workforce.record.renewed': 'workforce',
   'workforce.record.voided': 'workforce',
   'workforce.contacts.updated': 'workforce',
+  // Sprint 8: the project timeline and the action's History (PLT-23).
+  'action.created': 'actions',
+  'action.updated': 'actions',
+  'action.owner_changed': 'actions',
+  'action.collaborator_added': 'actions',
+  'action.collaborator_removed': 'actions',
+  'action.started': 'actions',
+  'action.progress_added': 'actions',
+  'action.file_added': 'actions',
+  'action.completed': 'actions',
+  'action.verified': 'actions',
+  'action.sent_back': 'actions',
+  'action.closed': 'actions',
+  'action.voided': 'actions',
 } as const satisfies Record<string, ActivityGroup>;
 export type ActivityAction = keyof typeof ACTIVITY_ACTIONS;
 
@@ -76,6 +90,12 @@ export interface ActivitySnapshot {
   recordKind?: string;
   recordType?: string | null;
   recordName?: string | null;
+  // Sprint 8
+  actionReference?: string;
+  actionTitle?: string;
+  method?: string;
+  fileName?: string;
+  reason?: string;
 }
 
 export const timelineQuerySchema = z.object({

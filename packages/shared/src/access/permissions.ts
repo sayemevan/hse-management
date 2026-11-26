@@ -65,6 +65,8 @@ const SV = 'supervisor';
 const FM = 'foreman';
 const IN = 'inspector';
 const AU = 'auditor';
+const CL = 'client';
+const CO = 'consultant';
 
 export const PERMISSIONS = [
   // Company scope
@@ -162,6 +164,38 @@ export const PERMISSIONS = [
     defaults: [CA, HD, HM],
   },
   { code: 'workforce.lists.manage', module: 'workforce', scope: 'company', defaults: [CA, HD, HM] },
+  // Sprint 8 (D-53: O-107). Participants see their own actions without `projects.actions.view`.
+  {
+    code: 'projects.actions.view',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO, SE, SV, FM, IN, CL, CO, AU],
+  },
+  {
+    code: 'projects.actions.create',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO, SE, SV, FM, IN],
+  },
+  {
+    code: 'projects.actions.manage',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
+  // PM added during the build (D-54): T-46 would otherwise stop PMs adding Safety Officers.
+  {
+    code: 'projects.actions.verify',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
+  {
+    code: 'projects.actions.close',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
   // Platform scope (not editable by companies)
   {
     code: 'platform.registrations.view',

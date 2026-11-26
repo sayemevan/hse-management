@@ -24,7 +24,7 @@ A sprint starts only when the previous one is done and its specs are approved (`
 - `docs/03_DATABASE.md`, `docs/04_API.md` — add a "Tables / Endpoints (Sprint N)" section each sprint.
 - `docs/01_PRODUCT_BOOK.md` (7,400 lines) — never read whole. Document start lines: Doc 04 DB 1291 · Doc 05 Design 1581 · Doc 06 Org 2062 · Doc 07 Roles 2368 · Doc 08 Company/Project 2697 · Doc 09 Workforce 3022 · Doc 10 Inspection 3344 · Doc 11 Safety Event 3744 · Doc 12 Permit 4104 · Doc 13 Action 4461 · Doc 14 Backlog 4786 · Doc 15 Template 5297 · Doc 16–31 Epics 5594–7081 (`grep -n "^# Document"` for exact lines). `docs/02_MASTER_RULES.md` — grep the topic.
 
-**Next IDs** (update this line at the end of every stage): last `D-51`, `T-56`, `O-95`, `PLT-21`. Sprint 7 done. Next sprint: 8 (Action engine, US-053–058).
+**Next IDs** (update this line at the end of every stage): last `D-55`, `T-65`, `O-114`, `PLT-24`. Sprint 8 done. Next sprint: 9 (Offline foundation: service worker, IndexedDB store, sync queue, idempotent writes, conflict review, D-20).
 
 **Code** (npm workspaces)
 
@@ -41,7 +41,7 @@ A sprint starts only when the previous one is done and its specs are approved (`
 ## Conventions that save time
 
 - Shell is Git Bash on Windows. **Heredocs containing apostrophes fail** in the Bash tool: write multi-line edits as a Node script with the Write tool into the scratchpad, then `node script.cjs`. Python is not installed.
-- No git repository: nothing to commit.
+- Git repository (`origin` = GitHub `sayemevan/hse-management`, branch `main`). Commit at the end of each stage when the user asks.
 - UI rules: logical `start/end` classes only; codes, dates, emails in `<bdi dir="ltr">`; status never by colour alone; cards at every width; dialogs full-screen on phone.
 - Lint traps seen before: no `Date.now()` in render (use `useState(() => Date.now())`), no JSX literal punctuation (put it in translations), `??` not `||`, braces on void arrow bodies.
 - Dev data: `apps/api/scripts/seed-dev.ts` (accounts and `DEV_PASSWORD`). Company `demo` at `http://demo.localhost:3000`. Apply migrations with `npm run db:migrate:local --workspace @hse/api`.

@@ -88,6 +88,50 @@ export function useNotificationText(): (notification: NotificationDto) => string
               : '',
             date: calendarDate(p.startDate ?? null),
           });
+        // Sprint 8 (PLT-23 § Notifications)
+        case 'action.assigned':
+        case 'action.unassigned':
+        case 'action.collaborator_added':
+        case 'action.due_tomorrow':
+        case 'action.verification_needed':
+        case 'action.verified':
+        case 'action.closed':
+        case 'action.owner_lost_access':
+          return t(notification.type.replace('action.', 'action_') as 'action_assigned', {
+            ref: ltr(p.actionReference ?? ''),
+            title: p.actionTitle ?? '',
+          });
+        case 'action.overdue':
+          return t('action_overdue', {
+            ref: ltr(p.actionReference ?? ''),
+            title: p.actionTitle ?? '',
+            days: p.daysOverdue ?? 1,
+          });
+        case 'action.sent_back':
+        case 'action.voided':
+          return t(notification.type.replace('action.', 'action_') as 'action_sent_back', {
+            ref: ltr(p.actionReference ?? ''),
+            title: p.actionTitle ?? '',
+            reason: p.reason ?? '',
+          });
+        case 'action.due_date_changed':
+          return t('action_due_date_changed', {
+            ref: ltr(p.actionReference ?? ''),
+            title: p.actionTitle ?? '',
+            date: calendarDate(p.dueOn ?? null),
+          });
+        case 'action.comment_added':
+          return t('action_comment_added', {
+            ref: ltr(p.actionReference ?? ''),
+            title: p.actionTitle ?? '',
+            count: p.count ?? 1,
+          });
+        case 'action.due_digest':
+          return t('action_due_digest', {
+            overdue: p.overdue ?? 0,
+            dueToday: p.dueToday ?? 0,
+            critical: p.critical ?? 0,
+          });
         case 'workforce.member.suspended':
           return t('workforceSuspended', {
             member: p.memberName ?? '',

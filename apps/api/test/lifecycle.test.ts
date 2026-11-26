@@ -189,6 +189,18 @@ const REVIEWED_BLOCKED = [
   'PATCH /workforce/:memberId/:kind/:recordId',
   'POST /workforce/:memberId/:kind/:recordId/renew',
   'POST /workforce/:memberId/:kind/:recordId/void',
+  // Sprint 8 (T-24): every action and comment write is blocked in read-only mode.
+  'POST /projects/:id/actions',
+  'PATCH /projects/:id/actions/:actionId',
+  'POST /projects/:id/actions/:actionId/owner',
+  'POST /projects/:id/actions/:actionId/collaborators',
+  'DELETE /projects/:id/actions/:actionId/collaborators/:userId',
+  'POST /projects/:id/actions/:actionId/updates',
+  'POST /projects/:id/actions/:actionId/files',
+  'POST /projects/:id/actions/:actionId/transitions',
+  'POST /projects/:id/actions/:actionId/void',
+  'POST /projects/:id/actions/:actionId/comments',
+  'PATCH /projects/:id/actions/:actionId/comments/:commentId',
 ];
 
 /** Base-domain only, never reached in a company context. */

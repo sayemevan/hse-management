@@ -3,6 +3,7 @@
 Each module is added by its sprint (see `docs/05_SPRINT_PLAN.md`). Sprint 5 added `project` (projects) and `access` (role and permission administration).
 Sprint 6 added places, the timeline and the switcher to `project`, project members and the daily
 access-ending job to `access`, and `notifications` (the signed-in user's notification centre).
+Sprint 8 added `action` (the one action engine: actions from any source, owner and collaborators, progress and evidence, the Open → In Progress → Completed → Verified → Closed workflow, voiding, comments through the platform comment service, My actions and the daily `actions.due` job). Source modules register an `ActionSource` and create actions with `ActionEngine.prepare` inside `withActionNumber` (T-57, T-60). The `project` module gained `RecordNumbers` (per-project numbers) and `PlaceDirectory.resolveMany`.
 Sprint 7 added `workforce` (profiles, project assignments, training, certificates, medical,
 contacts, personal documents, workforce lists and the daily `workforce.expiry` job). Other modules
 use `WorkforceDirectory` (who is this person, are they available and fit for work on a project).

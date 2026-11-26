@@ -208,7 +208,19 @@
     "LIST_ITEM_NAME_TAKEN": "This name is already in the list.",
     "LIST_ITEM_IN_USE": "This item is in use, so it cannot be deleted. Deactivate it instead.",
     "LIST_ITEM_INACTIVE": "Choose an active item from the list.",
-    "LIST_LIMIT_REACHED": "This list has reached its maximum size ({limit})."
+    "LIST_LIMIT_REACHED": "This list has reached its maximum size ({limit}).",
+    "ACTION_TRANSITION_NOT_ALLOWED": "This step is no longer possible. The action may have been changed by someone else — reload the page.",
+    "ACTION_LOCKED": "This action is closed or voided and can no longer be changed.",
+    "ACTION_OWNER_NOT_ELIGIBLE": "This person can't be assigned actions on this project.",
+    "ACTION_VERIFIER_IS_PARTICIPANT": "You can't verify an action you worked on.",
+    "ACTION_EVIDENCE_REQUIRED": "Add at least one photo or document for a High or Critical action.",
+    "ACTION_DUE_DATE_INVALID": "The due date must be between today and two years ahead.",
+    "ACTION_FILE_LIMIT": "An action can have up to {max} files.",
+    "ACTION_COLLABORATOR_LIMIT": "An action can have up to {max} collaborators.",
+    "ACTION_REASON_REQUIRED": "Give a reason for this change.",
+    "PROJECT_NOT_ACCEPTING_RECORDS": "New records can only be added to projects in Mobilization or Active.",
+    "COMMENT_EDIT_WINDOW_PASSED": "Comments can only be edited for 15 minutes after posting.",
+    "COMMENTS_LOCKED": "This action is closed. Comments are read-only."
   },
   "legal": {
     "termsTitle": "Terms of Service",
@@ -1091,6 +1103,28 @@
           "label": "Assign workforce",
           "meaning": "Assign people to the project, change and end assignments."
         }
+      },
+      "actions": {
+        "view": {
+          "label": "View all actions",
+          "meaning": "See every action of the project. Everyone sees the actions they own, help with or created."
+        },
+        "create": {
+          "label": "Create actions",
+          "meaning": "Create actions and follow-up actions."
+        },
+        "manage": {
+          "label": "Manage actions",
+          "meaning": "Edit, reassign, change the due date or priority, manage collaborators and void actions."
+        },
+        "verify": {
+          "label": "Verify actions",
+          "meaning": "Verify completed actions or send them back (never one you worked on)."
+        },
+        "close": {
+          "label": "Close actions",
+          "meaning": "Close verified actions."
+        }
       }
     },
     "workforce": {
@@ -1128,7 +1162,8 @@
     "structure": "Structure",
     "members": "Members",
     "timeline": "Timeline",
-    "workforce": "Workforce"
+    "workforce": "Workforce",
+    "actions": "Actions"
   },
   "switcher": {
     "choose": "Projects",
@@ -1173,7 +1208,21 @@
       "workforceDigest": "{count, plural, one {# workforce item needs attention} other {# workforce items need attention}}: {expired} expired, {expiring} expiring, {ending} assignments ending.",
       "workforceRecordExpiring": "{days, plural, =0 {Your {record} expires today.} one {Your {record} expires in # day ({date}).} other {Your {record} expires in # days ({date}).}}",
       "workforceAssigned": "You were assigned to {project} as {position} from {date}.",
-      "workforceSuspended": "{member} was suspended from {date} ({project})."
+      "workforceSuspended": "{member} was suspended from {date} ({project}).",
+      "action_assigned": "You were assigned {ref} “{title}”.",
+      "action_unassigned": "{ref} “{title}” was reassigned to someone else.",
+      "action_collaborator_added": "You were added to {ref} “{title}”.",
+      "action_due_tomorrow": "{ref} “{title}” is due tomorrow.",
+      "action_overdue": "{ref} “{title}” is overdue by {days, plural, one {# day} other {# days}}.",
+      "action_due_digest": "Your actions: {dueToday} due today, {overdue} overdue{critical, plural, =0 {} other { (# critical)}}.",
+      "action_verification_needed": "{ref} “{title}” is completed and needs verification.",
+      "action_sent_back": "{ref} “{title}” was sent back: {reason}",
+      "action_verified": "{ref} “{title}” was verified.",
+      "action_closed": "{ref} “{title}” was closed.",
+      "action_voided": "{ref} “{title}” was voided: {reason}",
+      "action_due_date_changed": "The due date of {ref} “{title}” is now {date}.",
+      "action_comment_added": "{count, plural, one {New comment} other {# new comments}} on {ref} “{title}”.",
+      "action_owner_lost_access": "The owner of {ref} “{title}” can no longer see the project. Reassign it."
     }
   },
   "placePicker": {
@@ -1310,7 +1359,8 @@
       "project": "Project",
       "members": "Members",
       "structure": "Structure",
-      "workforce": "Workforce"
+      "workforce": "Workforce",
+      "actions": "Actions"
     },
     "empty": "Nothing has happened in this project yet.",
     "loadMore": "Load more",
@@ -1349,7 +1399,16 @@
       "reason": "Reason",
       "issuedOn": "Date",
       "expiresOn": "Expires",
-      "issuer": "Issued by"
+      "issuer": "Issued by",
+      "title": "Title",
+      "type": "Type",
+      "priority": "Priority",
+      "dueOn": "Due date",
+      "areaId": "Area",
+      "locationId": "Location",
+      "workZoneId": "Work zone",
+      "progressPercent": "Progress",
+      "owner": "Owner"
     },
     "actions": {
       "system": "The system",
@@ -1384,7 +1443,20 @@
       "workforce_record_updated": "{actor} edited {record}.",
       "workforce_record_renewed": "{actor} renewed {record}.",
       "workforce_record_voided": "{actor} voided {record}.",
-      "workforce_contacts_updated": "{actor} updated the emergency contacts."
+      "workforce_contacts_updated": "{actor} updated the emergency contacts.",
+      "action_created": "{actor} created {ref} “{title}”.",
+      "action_updated": "{actor} edited {ref}.",
+      "action_owner_changed": "{actor} reassigned {ref} from {from} to {to}.",
+      "action_collaborator_added": "{actor} added {member} to {ref}.",
+      "action_collaborator_removed": "{actor} removed {member} from {ref}.",
+      "action_started": "{actor} started {ref}.",
+      "action_progress_added": "{actor} added progress to {ref}.",
+      "action_file_added": "{actor} added {file} to {ref}.",
+      "action_completed": "{actor} completed {ref}.",
+      "action_verified": "{actor} verified {ref} ({method}).",
+      "action_sent_back": "{actor} sent {ref} back: {reason}",
+      "action_closed": "{actor} closed {ref}.",
+      "action_voided": "{actor} voided {ref}: {reason}"
     },
     "groupLabel": "{group}: ",
     "fieldLabel": "{field}:",
@@ -1767,5 +1839,237 @@
       "name": "Name",
       "save": "Save"
     }
+  },
+  "actions": {
+    "status": {
+      "open": "Open",
+      "in_progress": "In progress",
+      "completed": "Waiting for verification",
+      "verified": "Verified",
+      "closed": "Closed",
+      "voided": "Voided"
+    },
+    "priority": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical"
+    },
+    "type": {
+      "corrective": "Corrective",
+      "preventive": "Preventive",
+      "improvement": "Improvement",
+      "observation_follow_up": "Observation follow-up",
+      "recommendation": "Recommendation",
+      "compliance": "Compliance"
+    },
+    "method": {
+      "photo_evidence": "Photo evidence",
+      "document_review": "Document review",
+      "site_visit": "Site visit",
+      "supervisor_approval": "Supervisor approval"
+    },
+    "due": {
+      "overdue": "Overdue · {count, plural, one {# day} other {# days}}",
+      "today": "Due today",
+      "soon": "Due {date}",
+      "on": "Due {date}"
+    },
+    "ownerLine": "Owner: {name}",
+    "ownerNoAccess": "(no longer on the project)",
+    "percent": "{value} %",
+    "search": "Search by number or title",
+    "new": "New action",
+    "newFollowUp": "New follow-up action",
+    "show": "Show",
+    "chips": {
+      "open": "Open",
+      "overdue": "Overdue",
+      "dueToday": "Due today",
+      "toVerify": "To verify",
+      "closed": "Closed"
+    },
+    "filters": "More filters",
+    "any": "Any",
+    "filterNoAccess": "Owner has no access",
+    "filterVoided": "Show voided",
+    "notAccepting": "New actions can be added when the project is in Mobilization or Active.",
+    "empty": "No actions here yet.",
+    "loadMore": "Load more",
+    "fields": {
+      "title": "Title",
+      "type": "Type",
+      "priority": "Priority",
+      "owner": "Responsible person",
+      "dueOn": "Due date",
+      "description": "Description",
+      "place": "Where",
+      "collaborators": "Collaborators",
+      "source": "Source",
+      "createdBy": "Created",
+      "verifiedBy": "Verified"
+    },
+    "person": {
+      "search": "Search people",
+      "choose": "Choose a person",
+      "remove": "Remove {name}",
+      "limit": "An action can have up to {max} collaborators."
+    },
+    "followUpTitle": "Follow-up: {title}",
+    "followUpOf": "Follow-up of",
+    "followUpOfLabel": "Follow-up of",
+    "sourceManual": "Created by hand",
+    "errors": {
+      "title": "Enter a title of at least 5 characters.",
+      "owner": "Choose who is responsible.",
+      "dueOn": "Choose a due date.",
+      "duePast": "The due date can't be in the past.",
+      "invalid": "Check this field.",
+      "progressNote": "Describe the progress.",
+      "completionNote": "Describe what was done (at least 10 characters).",
+      "evidence": "Add at least one photo or document for a High or Critical action.",
+      "method": "Choose how you checked it.",
+      "reason": "Give a reason of at least 10 characters.",
+      "changeReason": "Say why you're changing it (at least 5 characters).",
+      "fileTooLarge": "{name} is larger than 10 MB."
+    },
+    "assignToMe": "Assign to me",
+    "quickDue": {
+      "1": "Tomorrow",
+      "3": "In 3 days",
+      "7": "In a week",
+      "14": "In 2 weeks"
+    },
+    "create": "Create action",
+    "evidence": {
+      "select": "Select {name} as evidence",
+      "unselect": "Remove {name} from the evidence",
+      "open": "Open {name}"
+    },
+    "dialog": {
+      "progressNote": "What has been done?",
+      "completionNote": "What was done?",
+      "verifyNote": "Note (optional)",
+      "sendBackReason": "What still needs to be done?",
+      "closeNote": "Closing note (optional)",
+      "voidReason": "Why is this action voided?",
+      "ownerReason": "Why are you reassigning it?",
+      "editReason": "Reason (needed when you change the priority or due date)",
+      "title": {
+        "progress": "Add progress",
+        "complete": "Complete the action",
+        "verify": "Verify the action",
+        "verify_and_close": "Verify and close",
+        "send_back": "Send back",
+        "close": "Close the action",
+        "void": "Void the action",
+        "owner": "Change the owner",
+        "edit": "Edit the action"
+      },
+      "submit": {
+        "progress": "Save",
+        "complete": "Complete",
+        "verify": "Verify",
+        "verify_and_close": "Verify and close",
+        "send_back": "Send back",
+        "close": "Close action",
+        "void": "Void",
+        "owner": "Change",
+        "edit": "Save"
+      },
+      "newOwner": "New responsible person",
+      "method": "How did you check it?",
+      "percent": "Progress",
+      "photos": "Photos or files",
+      "evidence": "Evidence",
+      "evidenceRequired": "High and Critical actions need at least one photo or document.",
+      "addFiles": "Add photos or files",
+      "filesChosen": "{count, plural, one {# file} other {# files}} to upload"
+    },
+    "done": {
+      "start": "Action started.",
+      "progress": "Progress saved.",
+      "complete": "Action completed. It now waits for verification.",
+      "verify": "Action verified.",
+      "verify_and_close": "Action verified and closed.",
+      "send_back": "Action sent back to the owner.",
+      "close": "Action closed.",
+      "void": "Action voided.",
+      "owner": "Owner changed.",
+      "edit": "Action updated."
+    },
+    "created": "Action created and assigned.",
+    "backToList": "All actions",
+    "steps": {
+      "start": "Start",
+      "complete": "Complete",
+      "verify_and_close": "Verify and close",
+      "verify": "Verify",
+      "send_back": "Send back",
+      "close": "Close",
+      "progress": "Add progress"
+    },
+    "cannotVerifyOwn": "You can't verify an action you worked on.",
+    "sections": "Action sections",
+    "tabs": {
+      "details": "Details",
+      "updates": "Updates & evidence",
+      "comments": "Comments",
+      "history": "History"
+    },
+    "voidedBanner": "This action was voided: {reason}",
+    "closedBanner": "Closed on {date} by {name}. The action is read-only.",
+    "waitingVerification": "Completed. Waiting for verification by someone who did not work on it.",
+    "sentBackBanner": "Sent back: {reason}",
+    "createdLine": "{name}, {date}",
+    "verifiedLine": "{name} · {method}",
+    "people": "People",
+    "changeOwner": "Change owner",
+    "noCollaborators": "No collaborators.",
+    "ownerHistory": "Ownership history",
+    "ownerHistoryLine": "{name}: {from} – {to}",
+    "now": "now",
+    "followUps": "Follow-up actions",
+    "edit": "Edit",
+    "createFollowUp": "Create follow-up action",
+    "void": "Void",
+    "noUpdates": "No updates yet.",
+    "updateKind": {
+      "start": "Started",
+      "progress": "Progress",
+      "completion": "Completed",
+      "verification": "Verified",
+      "send_back": "Sent back",
+      "closure": "Closed",
+      "void": "Voided"
+    },
+    "otherFiles": "Other files",
+    "noHistory": "No history yet.",
+    "mine": {
+      "title": "My actions",
+      "tabs": {
+        "owned": "Owned",
+        "collaborating": "Collaborating",
+        "verify": "To verify"
+      },
+      "filteredDue": "Showing actions due today and overdue.",
+      "showAll": "Show all",
+      "empty": "Nothing needs you today.",
+      "loadMore": "Load more",
+      "linkOverdue": "My actions, {count} overdue"
+    }
+  },
+  "comments": {
+    "earlier": "Show earlier comments",
+    "none": "No comments yet.",
+    "you": "You",
+    "leftProject": "(no longer on this project)",
+    "edited": "edited",
+    "edit": "Edit",
+    "save": "Save",
+    "locked": "This action is closed. Comments are read-only.",
+    "write": "Write a comment",
+    "post": "Post",
+    "empty": "Write a comment."
   }
 }

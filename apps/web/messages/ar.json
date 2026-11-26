@@ -208,7 +208,19 @@
     "LIST_ITEM_NAME_TAKEN": "هذا الاسم موجود في القائمة.",
     "LIST_ITEM_IN_USE": "هذا العنصر مستخدم ولا يمكن حذفه. يمكنك إيقافه بدلًا من ذلك.",
     "LIST_ITEM_INACTIVE": "اختر عنصرًا نشطًا من القائمة.",
-    "LIST_LIMIT_REACHED": "وصلت هذه القائمة إلى حدها الأقصى ({limit})."
+    "LIST_LIMIT_REACHED": "وصلت هذه القائمة إلى حدها الأقصى ({limit}).",
+    "ACTION_TRANSITION_NOT_ALLOWED": "لم تعد هذه الخطوة ممكنة. ربما غيّر شخص آخر الإجراء — أعد تحميل الصفحة.",
+    "ACTION_LOCKED": "هذا الإجراء مغلق أو ملغى ولا يمكن تغييره.",
+    "ACTION_OWNER_NOT_ELIGIBLE": "لا يمكن إسناد إجراءات إلى هذا الشخص في هذا المشروع.",
+    "ACTION_VERIFIER_IS_PARTICIPANT": "لا يمكنك التحقق من إجراء شاركت في تنفيذه.",
+    "ACTION_EVIDENCE_REQUIRED": "أضف صورة أو مستندًا واحدًا على الأقل للإجراء ذي الأولوية العالية أو الحرجة.",
+    "ACTION_DUE_DATE_INVALID": "يجب أن يكون تاريخ الاستحقاق بين اليوم وسنتين من الآن.",
+    "ACTION_FILE_LIMIT": "الحد الأقصى لملفات الإجراء: {max}.",
+    "ACTION_COLLABORATOR_LIMIT": "الحد الأقصى لمشاركي الإجراء: {max}.",
+    "ACTION_REASON_REQUIRED": "اذكر سبب هذا التغيير.",
+    "PROJECT_NOT_ACCEPTING_RECORDS": "لا يمكن إضافة سجلات جديدة إلا للمشاريع في مرحلة التجهيز أو النشطة.",
+    "COMMENT_EDIT_WINDOW_PASSED": "يمكن تعديل التعليقات خلال 15 دقيقة فقط من نشرها.",
+    "COMMENTS_LOCKED": "هذا الإجراء مغلق. التعليقات للقراءة فقط."
   },
   "legal": {
     "termsTitle": "شروط الخدمة",
@@ -1091,6 +1103,28 @@
           "label": "تعيين القوى العاملة",
           "meaning": "تعيين الأشخاص في المشروع وتعديل التعيينات وإنهاؤها."
         }
+      },
+      "actions": {
+        "view": {
+          "label": "عرض كل الإجراءات",
+          "meaning": "عرض جميع إجراءات المشروع. يرى الجميع الإجراءات المسندة إليهم أو التي يشاركون فيها أو أنشؤوها."
+        },
+        "create": {
+          "label": "إنشاء الإجراءات",
+          "meaning": "إنشاء الإجراءات وإجراءات المتابعة."
+        },
+        "manage": {
+          "label": "إدارة الإجراءات",
+          "meaning": "تعديل الإجراءات وإعادة إسنادها وتغيير تاريخ الاستحقاق أو الأولوية وإدارة المشاركين وإلغاء الإجراءات."
+        },
+        "verify": {
+          "label": "التحقق من الإجراءات",
+          "meaning": "التحقق من الإجراءات المنجزة أو إعادتها (وليس إجراءً شاركت فيه)."
+        },
+        "close": {
+          "label": "إغلاق الإجراءات",
+          "meaning": "إغلاق الإجراءات التي تم التحقق منها."
+        }
       }
     },
     "workforce": {
@@ -1128,7 +1162,8 @@
     "structure": "الهيكل",
     "members": "الأعضاء",
     "timeline": "السجل الزمني",
-    "workforce": "القوى العاملة"
+    "workforce": "القوى العاملة",
+    "actions": "الإجراءات"
   },
   "switcher": {
     "choose": "المشاريع",
@@ -1173,7 +1208,21 @@
       "workforceDigest": "{count, plural, one {عنصر واحد في القوى العاملة يحتاج إلى متابعة} two {عنصران في القوى العاملة يحتاجان إلى متابعة} few {# عناصر في القوى العاملة تحتاج إلى متابعة} many {# عنصرًا في القوى العاملة تحتاج إلى متابعة} other {# عنصر في القوى العاملة تحتاج إلى متابعة}}: منتهية {expired}، تقترب من الانتهاء {expiring}، تعيينات تنتهي {ending}.",
       "workforceRecordExpiring": "{days, plural, =0 {ينتهي {record} الخاص بك اليوم.} one {ينتهي {record} الخاص بك خلال يوم واحد ({date}).} two {ينتهي {record} الخاص بك خلال يومين ({date}).} few {ينتهي {record} الخاص بك خلال # أيام ({date}).} other {ينتهي {record} الخاص بك خلال # يومًا ({date}).}}",
       "workforceAssigned": "تم تعيينك في {project} بمسمى {position} اعتبارًا من {date}.",
-      "workforceSuspended": "تم إيقاف {member} اعتبارًا من {date} ({project})."
+      "workforceSuspended": "تم إيقاف {member} اعتبارًا من {date} ({project}).",
+      "action_assigned": "أُسند إليك الإجراء {ref} «{title}».",
+      "action_unassigned": "أُعيد إسناد الإجراء {ref} «{title}» إلى شخص آخر.",
+      "action_collaborator_added": "أُضفت مشاركًا في الإجراء {ref} «{title}».",
+      "action_due_tomorrow": "الإجراء {ref} «{title}» مستحق غدًا.",
+      "action_overdue": "الإجراء {ref} «{title}» متأخر {days, plural, one {يومًا واحدًا} two {يومين} few {# أيام} other {# يومًا}}.",
+      "action_due_digest": "إجراءاتك: المستحقة اليوم {dueToday}، المتأخرة {overdue}{critical, plural, =0 {} other { (منها # حرجة)}}.",
+      "action_verification_needed": "تم إنجاز الإجراء {ref} «{title}» وهو بحاجة إلى تحقق.",
+      "action_sent_back": "أُعيد الإجراء {ref} «{title}»: {reason}",
+      "action_verified": "تم التحقق من الإجراء {ref} «{title}».",
+      "action_closed": "أُغلق الإجراء {ref} «{title}».",
+      "action_voided": "أُلغي الإجراء {ref} «{title}»: {reason}",
+      "action_due_date_changed": "أصبح تاريخ استحقاق الإجراء {ref} «{title}» {date}.",
+      "action_comment_added": "{count, plural, one {تعليق جديد} two {تعليقان جديدان} few {# تعليقات جديدة} other {# تعليقًا جديدًا}} على الإجراء {ref} «{title}».",
+      "action_owner_lost_access": "لم يعد مسؤول الإجراء {ref} «{title}» يرى المشروع. أعد إسناده."
     }
   },
   "placePicker": {
@@ -1310,7 +1359,8 @@
       "project": "المشروع",
       "members": "الأعضاء",
       "structure": "الهيكل",
-      "workforce": "القوى العاملة"
+      "workforce": "القوى العاملة",
+      "actions": "الإجراءات"
     },
     "empty": "لم يحدث شيء في هذا المشروع بعد.",
     "loadMore": "عرض المزيد",
@@ -1349,7 +1399,16 @@
       "reason": "السبب",
       "issuedOn": "التاريخ",
       "expiresOn": "ينتهي",
-      "issuer": "جهة الإصدار"
+      "issuer": "جهة الإصدار",
+      "title": "العنوان",
+      "type": "النوع",
+      "priority": "الأولوية",
+      "dueOn": "تاريخ الاستحقاق",
+      "areaId": "المنطقة",
+      "locationId": "الموقع",
+      "workZoneId": "منطقة العمل",
+      "progressPercent": "التقدّم",
+      "owner": "المسؤول"
     },
     "actions": {
       "system": "النظام",
@@ -1384,7 +1443,20 @@
       "workforce_record_updated": "عدّل {actor} {record}.",
       "workforce_record_renewed": "جدّد {actor} {record}.",
       "workforce_record_voided": "ألغى {actor} {record}.",
-      "workforce_contacts_updated": "حدّث {actor} جهات اتصال الطوارئ."
+      "workforce_contacts_updated": "حدّث {actor} جهات اتصال الطوارئ.",
+      "action_created": "أنشأ {actor} الإجراء {ref} «{title}».",
+      "action_updated": "عدّل {actor} الإجراء {ref}.",
+      "action_owner_changed": "أعاد {actor} إسناد {ref} من {from} إلى {to}.",
+      "action_collaborator_added": "أضاف {actor} {member} إلى {ref}.",
+      "action_collaborator_removed": "أزال {actor} {member} من {ref}.",
+      "action_started": "بدأ {actor} تنفيذ {ref}.",
+      "action_progress_added": "أضاف {actor} تقدّمًا إلى {ref}.",
+      "action_file_added": "أضاف {actor} الملف {file} إلى {ref}.",
+      "action_completed": "أنجز {actor} الإجراء {ref}.",
+      "action_verified": "تحقق {actor} من {ref} ({method}).",
+      "action_sent_back": "أعاد {actor} الإجراء {ref}: {reason}",
+      "action_closed": "أغلق {actor} الإجراء {ref}.",
+      "action_voided": "ألغى {actor} الإجراء {ref}: {reason}"
     },
     "groupLabel": "{group}: ",
     "fieldLabel": "{field}:",
@@ -1767,5 +1839,237 @@
       "name": "الاسم",
       "save": "حفظ"
     }
+  },
+  "actions": {
+    "status": {
+      "open": "مفتوح",
+      "in_progress": "قيد التنفيذ",
+      "completed": "بانتظار التحقق",
+      "verified": "تم التحقق",
+      "closed": "مغلق",
+      "voided": "ملغى"
+    },
+    "priority": {
+      "low": "منخفضة",
+      "medium": "متوسطة",
+      "high": "عالية",
+      "critical": "حرجة"
+    },
+    "type": {
+      "corrective": "تصحيحي",
+      "preventive": "وقائي",
+      "improvement": "تحسيني",
+      "observation_follow_up": "متابعة ملاحظة",
+      "recommendation": "توصية",
+      "compliance": "امتثال"
+    },
+    "method": {
+      "photo_evidence": "دليل مصوّر",
+      "document_review": "مراجعة المستندات",
+      "site_visit": "زيارة الموقع",
+      "supervisor_approval": "موافقة المشرف"
+    },
+    "due": {
+      "overdue": "متأخر · {count, plural, one {يوم واحد} two {يومان} few {# أيام} other {# يومًا}}",
+      "today": "مستحق اليوم",
+      "soon": "مستحق في {date}",
+      "on": "مستحق في {date}"
+    },
+    "ownerLine": "المسؤول: {name}",
+    "ownerNoAccess": "(لم يعد ضمن المشروع)",
+    "percent": "{value}٪",
+    "search": "ابحث بالرقم أو العنوان",
+    "new": "إجراء جديد",
+    "newFollowUp": "إجراء متابعة جديد",
+    "show": "عرض",
+    "chips": {
+      "open": "مفتوحة",
+      "overdue": "متأخرة",
+      "dueToday": "مستحقة اليوم",
+      "toVerify": "بانتظار التحقق",
+      "closed": "مغلقة"
+    },
+    "filters": "مزيد من عوامل التصفية",
+    "any": "الكل",
+    "filterNoAccess": "المسؤول ليس لديه صلاحية",
+    "filterVoided": "إظهار الملغاة",
+    "notAccepting": "يمكن إضافة إجراءات جديدة عندما يكون المشروع في مرحلة التجهيز أو نشطًا.",
+    "empty": "لا توجد إجراءات هنا بعد.",
+    "loadMore": "تحميل المزيد",
+    "fields": {
+      "title": "العنوان",
+      "type": "النوع",
+      "priority": "الأولوية",
+      "owner": "الشخص المسؤول",
+      "dueOn": "تاريخ الاستحقاق",
+      "description": "الوصف",
+      "place": "المكان",
+      "collaborators": "المشاركون",
+      "source": "المصدر",
+      "createdBy": "أُنشئ",
+      "verifiedBy": "تم التحقق"
+    },
+    "person": {
+      "search": "ابحث عن شخص",
+      "choose": "اختر شخصًا",
+      "remove": "إزالة {name}",
+      "limit": "يمكن أن يكون للإجراء {max} مشاركين كحد أقصى."
+    },
+    "followUpTitle": "متابعة: {title}",
+    "followUpOf": "متابعة للإجراء",
+    "followUpOfLabel": "متابعة للإجراء",
+    "sourceManual": "أُنشئ يدويًا",
+    "errors": {
+      "title": "أدخل عنوانًا من 5 أحرف على الأقل.",
+      "owner": "اختر الشخص المسؤول.",
+      "dueOn": "اختر تاريخ الاستحقاق.",
+      "duePast": "لا يمكن أن يكون تاريخ الاستحقاق في الماضي.",
+      "invalid": "تحقق من هذا الحقل.",
+      "progressNote": "صف التقدّم المُحرز.",
+      "completionNote": "صف ما تم إنجازه (10 أحرف على الأقل).",
+      "evidence": "أضف صورة أو مستندًا واحدًا على الأقل للإجراء ذي الأولوية العالية أو الحرجة.",
+      "method": "اختر طريقة التحقق.",
+      "reason": "اذكر سببًا من 10 أحرف على الأقل.",
+      "changeReason": "اذكر سبب التغيير (5 أحرف على الأقل).",
+      "fileTooLarge": "حجم {name} أكبر من 10 ميغابايت."
+    },
+    "assignToMe": "إسناده إليّ",
+    "quickDue": {
+      "1": "غدًا",
+      "3": "خلال 3 أيام",
+      "7": "خلال أسبوع",
+      "14": "خلال أسبوعين"
+    },
+    "create": "إنشاء الإجراء",
+    "evidence": {
+      "select": "اختيار {name} كدليل",
+      "unselect": "إزالة {name} من الأدلة",
+      "open": "فتح {name}"
+    },
+    "dialog": {
+      "progressNote": "ما الذي تم إنجازه؟",
+      "completionNote": "ما الذي تم إنجازه؟",
+      "verifyNote": "ملاحظة (اختيارية)",
+      "sendBackReason": "ما الذي لا يزال مطلوبًا؟",
+      "closeNote": "ملاحظة الإغلاق (اختيارية)",
+      "voidReason": "لماذا يُلغى هذا الإجراء؟",
+      "ownerReason": "لماذا تعيد إسناده؟",
+      "editReason": "السبب (مطلوب عند تغيير الأولوية أو تاريخ الاستحقاق)",
+      "title": {
+        "progress": "إضافة تقدّم",
+        "complete": "إنجاز الإجراء",
+        "verify": "التحقق من الإجراء",
+        "verify_and_close": "التحقق والإغلاق",
+        "send_back": "إعادة الإجراء",
+        "close": "إغلاق الإجراء",
+        "void": "إلغاء الإجراء",
+        "owner": "تغيير المسؤول",
+        "edit": "تعديل الإجراء"
+      },
+      "submit": {
+        "progress": "حفظ",
+        "complete": "إنجاز",
+        "verify": "تحقق",
+        "verify_and_close": "تحقق وأغلق",
+        "send_back": "إعادة",
+        "close": "إغلاق الإجراء",
+        "void": "إلغاء",
+        "owner": "تغيير",
+        "edit": "حفظ"
+      },
+      "newOwner": "الشخص المسؤول الجديد",
+      "method": "كيف تحققت؟",
+      "percent": "التقدّم",
+      "photos": "صور أو ملفات",
+      "evidence": "الأدلة",
+      "evidenceRequired": "تحتاج الإجراءات ذات الأولوية العالية أو الحرجة إلى صورة أو مستند واحد على الأقل.",
+      "addFiles": "إضافة صور أو ملفات",
+      "filesChosen": "{count, plural, one {ملف واحد} two {ملفان} few {# ملفات} other {# ملفًا}} للرفع"
+    },
+    "done": {
+      "start": "بدأ تنفيذ الإجراء.",
+      "progress": "تم حفظ التقدّم.",
+      "complete": "تم إنجاز الإجراء وهو الآن بانتظار التحقق.",
+      "verify": "تم التحقق من الإجراء.",
+      "verify_and_close": "تم التحقق من الإجراء وإغلاقه.",
+      "send_back": "أُعيد الإجراء إلى المسؤول.",
+      "close": "تم إغلاق الإجراء.",
+      "void": "تم إلغاء الإجراء.",
+      "owner": "تم تغيير المسؤول.",
+      "edit": "تم تحديث الإجراء."
+    },
+    "created": "تم إنشاء الإجراء وإسناده.",
+    "backToList": "كل الإجراءات",
+    "steps": {
+      "start": "بدء التنفيذ",
+      "complete": "إنجاز",
+      "verify_and_close": "تحقق وأغلق",
+      "verify": "تحقق",
+      "send_back": "إعادة",
+      "close": "إغلاق",
+      "progress": "إضافة تقدّم"
+    },
+    "cannotVerifyOwn": "لا يمكنك التحقق من إجراء شاركت في تنفيذه.",
+    "sections": "أقسام الإجراء",
+    "tabs": {
+      "details": "التفاصيل",
+      "updates": "التحديثات والأدلة",
+      "comments": "التعليقات",
+      "history": "السجل"
+    },
+    "voidedBanner": "أُلغي هذا الإجراء: {reason}",
+    "closedBanner": "أُغلق في {date} بواسطة {name}. الإجراء للقراءة فقط.",
+    "waitingVerification": "تم الإنجاز. بانتظار التحقق من شخص لم يشارك في التنفيذ.",
+    "sentBackBanner": "أُعيد الإجراء: {reason}",
+    "createdLine": "{name}، {date}",
+    "verifiedLine": "{name} · {method}",
+    "people": "الأشخاص",
+    "changeOwner": "تغيير المسؤول",
+    "noCollaborators": "لا يوجد مشاركون.",
+    "ownerHistory": "سجل المسؤولين",
+    "ownerHistoryLine": "{name}: من {from} إلى {to}",
+    "now": "الآن",
+    "followUps": "إجراءات المتابعة",
+    "edit": "تعديل",
+    "createFollowUp": "إنشاء إجراء متابعة",
+    "void": "إلغاء",
+    "noUpdates": "لا توجد تحديثات بعد.",
+    "updateKind": {
+      "start": "بدء التنفيذ",
+      "progress": "تقدّم",
+      "completion": "إنجاز",
+      "verification": "تحقق",
+      "send_back": "إعادة",
+      "closure": "إغلاق",
+      "void": "إلغاء"
+    },
+    "otherFiles": "ملفات أخرى",
+    "noHistory": "لا يوجد سجل بعد.",
+    "mine": {
+      "title": "إجراءاتي",
+      "tabs": {
+        "owned": "المسندة إليّ",
+        "collaborating": "أشارك فيها",
+        "verify": "بانتظار تحققي"
+      },
+      "filteredDue": "تُعرض الإجراءات المستحقة اليوم والمتأخرة.",
+      "showAll": "عرض الكل",
+      "empty": "لا شيء يحتاج إليك اليوم.",
+      "loadMore": "تحميل المزيد",
+      "linkOverdue": "إجراءاتي، المتأخرة: {count}"
+    }
+  },
+  "comments": {
+    "earlier": "عرض التعليقات السابقة",
+    "none": "لا توجد تعليقات بعد.",
+    "you": "أنت",
+    "leftProject": "(لم يعد ضمن هذا المشروع)",
+    "edited": "معدَّل",
+    "edit": "تعديل",
+    "save": "حفظ",
+    "locked": "هذا الإجراء مغلق. التعليقات للقراءة فقط.",
+    "write": "اكتب تعليقًا",
+    "post": "نشر",
+    "empty": "اكتب تعليقًا."
   }
 }
