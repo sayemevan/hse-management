@@ -92,7 +92,7 @@ Status key: **RESOLVED** = decided · **BLOCKING** = must be answered before the
 ### Scope & roadmap
 
 - **Q-25** Authoritative Phase 1 module list (C-10)? Doc 32 (16 modules) or Doc 00 (13 items)?
-- **Q-26** Is offline capture in Phase 1 (C-12)? If yes, which flows: inspection, hazard report, photos?
+- **Q-26** Is offline capture in Phase 1 (C-12)? If yes, which flows: inspection, hazard report, photos? _Answered: D-11; confirmed for the sync layer: D-57 (O-115)._
 - **Q-27** Email notifications in Phase 1 (C-11)? Which provider and sender domain?
 - **Q-28** Please renumber epics and user stories (C-07, C-08, C-09) and supply Document 19 (Inspection epic).
 - **Q-29** Is Arabic/RTL in Phase 1 or Version 2? (Doc 02 says Version 2; Doc 00 says "Arabic Ready".) We will build i18n-ready from day one either way.

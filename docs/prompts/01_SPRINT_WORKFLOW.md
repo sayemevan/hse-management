@@ -24,7 +24,7 @@ A sprint starts only when the previous one is done and its specs are approved (`
 - `docs/03_DATABASE.md`, `docs/04_API.md` — add a "Tables / Endpoints (Sprint N)" section each sprint.
 - `docs/01_PRODUCT_BOOK.md` (7,400 lines) — never read whole. Document start lines: Doc 04 DB 1291 · Doc 05 Design 1581 · Doc 06 Org 2062 · Doc 07 Roles 2368 · Doc 08 Company/Project 2697 · Doc 09 Workforce 3022 · Doc 10 Inspection 3344 · Doc 11 Safety Event 3744 · Doc 12 Permit 4104 · Doc 13 Action 4461 · Doc 14 Backlog 4786 · Doc 15 Template 5297 · Doc 16–31 Epics 5594–7081 (`grep -n "^# Document"` for exact lines). `docs/02_MASTER_RULES.md` — grep the topic.
 
-**Next IDs** (update this line at the end of every stage): last `D-55`, `T-65`, `O-114`, `PLT-24`. Sprint 8 done. Next sprint: 9 (Offline foundation: service worker, IndexedDB store, sync queue, idempotent writes, conflict review, D-20).
+**Next IDs** (update this line at the end of every stage): last `D-57`, `T-74`, `O-131`, `PLT-31`. Sprint 8 done. Sprint 9 (Offline foundation) specs approved (D-56, D-57); next stage: build.
 
 **Code** (npm workspaces)
 
