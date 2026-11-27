@@ -1,6 +1,6 @@
 # Sprint 9 — Offline Foundation
 
-**Status: IMPLEMENTED — awaiting Product Owner acceptance.** Approved by the Product Owner on 2026-11-27 (D-56), including technical decisions T-66 to T-74 and the proposed answers to open points O-115 to O-131 (D-57). O-115 confirms **Q-26** (already answered by D-11) for the sync layer; O-122 applies **D-20** (conflicts flagged for review).
+**Status: DONE — accepted by the Product Owner on 2026-11-27 (D-58).** Approved by the Product Owner on 2026-11-27 (D-56), including technical decisions T-66 to T-74 and the proposed answers to open points O-115 to O-131 (D-57). O-115 confirms **Q-26** (already answered by D-11) for the sync layer; O-122 applies **D-20** (conflicts flagged for review).
 
 ## Goal
 
