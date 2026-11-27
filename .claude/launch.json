@@ -4,13 +4,34 @@
     {
       "name": "api",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--workspace", "@hse/api"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--workspace",
+        "@hse/api"
+      ],
       "port": 8787
     },
     {
       "name": "web",
       "runtimeExecutable": "npm",
-      "runtimeArgs": ["run", "dev", "--workspace", "@hse/web"],
+      "runtimeArgs": [
+        "run",
+        "dev",
+        "--workspace",
+        "@hse/web"
+      ],
+      "port": 3000
+    },
+    {
+      "name": "web-prod",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": [
+        "run",
+        "start",
+        "--workspace",
+        "@hse/web"
+      ],
       "port": 3000
     }
   ]
