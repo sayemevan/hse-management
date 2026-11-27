@@ -1,8 +1,8 @@
 'use client';
 
-import { COMMENT_LIMITS, type CommentDto } from '@hse/shared';
+import { COMMENT_LIMITS, type CommentDto, type CommentPageDto } from '@hse/shared';
 import { useTranslations } from 'next-intl';
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 
 import { Alert } from '@/components/ui/alert';
 import { Button } from '@/components/ui/button';
@@ -15,8 +15,32 @@ import { useRelativeTime } from '@/modules/notifications/use-notification-text';
 
 import { actionsService } from './actions.service';
 
-/** PLT-22: the comment thread of an action, oldest first, box at the bottom. */
-export function CommentThread({ projectId, actionId }: { projectId: string; actionId: string }) {
+/** The calls of one record's thread (actions by default; inspections in Sprint 10). */
+export interface CommentApi {
+  comments: (before: string | null) => Promise<CommentPageDto>;
+  add: (body: string) => Promise<CommentDto>;
+  edit: (commentId: string, body: string) => Promise<CommentDto>;
+}
+
+/** PLT-22: the comment thread of a record, oldest first, box at the bottom. */
+export function CommentThread({
+  projectId,
+  actionId,
+  api,
+}: {
+  projectId: string;
+  actionId: string;
+  api?: CommentApi;
+}) {
+  const calls: CommentApi = useMemo(
+    () =>
+      api ?? {
+        comments: (before) => actionsService.comments(projectId, actionId, before),
+        add: (body) => actionsService.addComment(projectId, actionId, body),
+        edit: (commentId, body) => actionsService.editComment(projectId, actionId, commentId, body),
+      },
+    [api, projectId, actionId],
+  );
   const t = useTranslations('comments');
   const tc = useTranslations('common');
   const errorMessage = useErrorMessage();
@@ -33,7 +57,7 @@ export function CommentThread({ projectId, actionId }: { projectId: string; acti
 
   const load = useCallback(
     (cursor: string | null) => {
-      actionsService.comments(projectId, actionId, cursor).then(
+      calls.comments(cursor).then(
         (page) => {
           setComments((current) =>
             cursor && current ? [...page.comments, ...current] : page.comments,
@@ -47,7 +71,7 @@ export function CommentThread({ projectId, actionId }: { projectId: string; acti
         },
       );
     },
-    [projectId, actionId, errorMessage],
+    [calls, errorMessage],
   );
 
   useEffect(() => {
@@ -62,8 +86,8 @@ export function CommentThread({ projectId, actionId }: { projectId: string; acti
     }
     setPosting(true);
     setError(null);
-    actionsService
-      .addComment(projectId, actionId, text)
+    calls
+      .add(text)
       .then(
         (comment) => {
           setComments((current) => [...(current ?? []), comment]);
@@ -80,7 +104,7 @@ export function CommentThread({ projectId, actionId }: { projectId: string; acti
 
   const saveEdit = () => {
     if (!editing) return;
-    actionsService.editComment(projectId, actionId, editing.id, editing.body.trim()).then(
+    calls.edit(editing.id, editing.body.trim()).then(
       (comment) => {
         setComments((current) => (current ?? []).map((c) => (c.id === comment.id ? comment : c)));
         setEditing(null);

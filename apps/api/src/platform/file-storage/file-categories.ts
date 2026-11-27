@@ -1,5 +1,6 @@
 import {
   ACTION_FILE_RULES,
+  INSPECTION_FILE_RULES,
   LOGO_RULES,
   PAYMENT_PROOF_RULES,
   WORKFORCE_FILE_RULES,
@@ -49,6 +50,12 @@ export const FILE_CATEGORIES = {
     contentTypes: ACTION_FILE_RULES.contentTypes,
     cacheControl: 'private, no-store',
   },
+  // Sprint 10 (O-136): inspection evidence, served by the inspection module (T-83).
+  inspection_evidence: {
+    maxBytes: INSPECTION_FILE_RULES.maxBytes,
+    contentTypes: INSPECTION_FILE_RULES.contentTypes,
+    cacheControl: 'private, no-store',
+  },
   // Sprint 9 (O-116): sync probe photos, development and test builds only. Module-served.
   sync_probe_photo: {
     maxBytes: 10 * 1024 * 1024,
@@ -69,4 +76,5 @@ export const MODULE_SERVED_CATEGORIES: readonly FileCategory[] = [
   'workforce_personal',
   'action_evidence',
   'sync_probe_photo',
+  'inspection_evidence',
 ];

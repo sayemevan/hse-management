@@ -14,6 +14,7 @@ export * from './comments/comment-contracts';
 export * from './company/company-contracts';
 export * from './contact/phone';
 export * from './geo/countries';
+export * from './inspections/inspection-contracts';
 export * from './notifications/notification-contracts';
 export * from './offline/offline-contracts';
 export * from './projects/member-contracts';

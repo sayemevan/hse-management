@@ -81,12 +81,12 @@ Status key: **RESOLVED** = decided · **BLOCKING** = must be answered before the
 
 ### Workflows
 
-- **Q-18** Confirm the authoritative status lifecycles for Inspection, Permit and Action (C-03, C-04, C-05). _Answered: D-12; for actions confirmed in D-53 (O-96)._
-- **Q-19** Can a closed or approved record be reopened? By whom? (Doc 01 lists "Reopened" as an audit event.) _Answered for actions: D-53 (O-97); other records with their modules._
+- **Q-18** Confirm the authoritative status lifecycles for Inspection, Permit and Action (C-03, C-04, C-05). _Answered: D-12; for actions confirmed in D-53 (O-96); for inspections in D-60 (O-133)._
+- **Q-19** Can a closed or approved record be reopened? By whom? (Doc 01 lists "Reopened" as an audit event.) _Answered for actions: D-53 (O-97); inspections: D-60 (O-134); other records with their modules._
 - **Q-20** Permit expiry: is "Expired" a status, or a derived state of "Active" past its end time?
 - **Q-21** Which safety-event types require mandatory investigation ("high severity" — High only, or High + Critical)?
 - **Q-22** Default risk matrix: 5×5 or 4×4? What are the probability/severity labels and score bands?
-- **Q-23** Record numbering format (e.g. `PTW-{PROJECT}-{YYYY}-{0001}`)? Per project or per company? _Answered for actions: D-53 (O-98); other records with their modules._
+- **Q-23** Record numbering format (e.g. `PTW-{PROJECT}-{YYYY}-{0001}`)? Per project or per company? _Answered for actions: D-53 (O-98); inspections: D-60 (O-135); other records with their modules._
 - **Q-24** Digital signatures (Toolbox Talk, Doc 24) are in Phase 1 scope but "future" elsewhere — is a drawn signature image enough?
 
 ### Scope & roadmap
@@ -94,13 +94,13 @@ Status key: **RESOLVED** = decided · **BLOCKING** = must be answered before the
 - **Q-25** Authoritative Phase 1 module list (C-10)? Doc 32 (16 modules) or Doc 00 (13 items)?
 - **Q-26** Is offline capture in Phase 1 (C-12)? If yes, which flows: inspection, hazard report, photos? _Answered: D-11; confirmed for the sync layer: D-57 (O-115)._
 - **Q-27** Email notifications in Phase 1 (C-11)? Which provider and sender domain?
-- **Q-28** Please renumber epics and user stories (C-07, C-08, C-09) and supply Document 19 (Inspection epic).
+- **Q-28** Please renumber epics and user stories (C-07, C-08, C-09) and supply Document 19 (Inspection epic). _Answered for inspections: D-60 (O-132) — Doc 14 numbering, content from Doc 10; C-08 and C-09 stay open for their sprints._
 - **Q-29** Is Arabic/RTL in Phase 1 or Version 2? (Doc 02 says Version 2; Doc 00 says "Arabic Ready".) We will build i18n-ready from day one either way.
 - **Q-30** Hijri calendar: display only, or also input?
 
 ### Files, reports & search
 
-- **Q-31** Maximum upload size and allowed file types per category? _Answered for workforce files: D-50; action files: D-53; other categories with their modules._
+- **Q-31** Maximum upload size and allowed file types per category? _Answered for workforce files: D-50; action files: D-53; inspection files: D-60 (O-136); other categories with their modules._
 - **Q-32** Do videos need support in Phase 1? (Marked "Future" in Docs 10 and 11.)
 - **Q-33** PDF report look: is there a reference template or branding guideline?
 - **Q-34** "Scheduled report generation/delivery" (Docs 10, 11, 13) — Phase 1 or later?

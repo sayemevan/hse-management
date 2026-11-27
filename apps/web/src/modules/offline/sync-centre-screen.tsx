@@ -14,7 +14,7 @@ import {
 } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter, useSearchParams } from 'next/navigation';
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 
 import { Alert } from '@/components/ui/alert';
@@ -26,6 +26,7 @@ import { useDateFormat } from '@/modules/i18n/use-date-format';
 import { cn } from '@/utils/cn';
 
 import { ConflictReview } from './conflict-review';
+import { displayLabel } from './registry';
 import type { OutboxItem, OutboxState } from './device-store';
 import { type KeptPack, listKeptPacks, refreshAllPacks } from './offline-profile';
 import { dependentsOf } from './outbox';
@@ -74,6 +75,7 @@ function StateBadge({ state }: { state: OutboxState }) {
 /** PLT-31: Pending, Needs attention, Conflicts, Synced (24 h); storage; offline data. */
 export function SyncCentreScreen() {
   const t = useTranslations('offline.centre');
+  const locale = useLocale();
   const tk = useTranslations('offline.kinds');
   const params = useSearchParams();
   const conflictId = params.get('conflict');
@@ -122,7 +124,7 @@ export function SyncCentreScreen() {
   const usedRatio = storage && storage.quota > 0 ? storage.usage / storage.quota : 0;
 
   const copy = async (item: OutboxItem) => {
-    const text = [item.label, ...Object.values(item.request.body ?? {}).filter((v) => typeof v === 'string')]
+    const text = [displayLabel(item.label, locale), ...Object.values(item.request.body ?? {}).filter((v) => typeof v === 'string')]
       .join('\n')
       .trim();
     await navigator.clipboard.writeText(text).catch(() => undefined);
@@ -189,7 +191,7 @@ export function SyncCentreScreen() {
               <li key={item.seq} className="flex flex-col gap-2 rounded-xl border border-border p-4">
                 <div className="flex flex-wrap items-center justify-between gap-2">
                   <span className="font-medium">
-                    <bdi>{item.label}</bdi>
+                    <bdi>{displayLabel(item.label, locale)}</bdi>
                     {item.projectCode ? (
                       <span className="text-muted-foreground">
                         {' · '}
@@ -295,7 +297,7 @@ export function SyncCentreScreen() {
         body={
           confirm
             ? t('discardBody', {
-                label: confirm.label,
+                label: displayLabel(confirm.label, locale),
                 extra: dependentsOf(items, confirm.seq ?? -1).length,
               })
             : ''

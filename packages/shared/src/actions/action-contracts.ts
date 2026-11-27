@@ -38,7 +38,7 @@ export const VERIFICATION_METHODS = [
 export type VerificationMethod = (typeof VERIFICATION_METHODS)[number];
 
 /** T-57: the sources registered in Sprint 8. Later modules add theirs. */
-export const ACTION_SOURCE_MODULES = ['manual', 'action'] as const;
+export const ACTION_SOURCE_MODULES = ['manual', 'action', 'inspection'] as const;
 
 export const ACTION_UPDATE_KINDS = [
   'start',

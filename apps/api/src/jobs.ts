@@ -8,6 +8,7 @@ import { JobRunner, NO_WORK, type ScheduledJob } from './platform/jobs';
 import { workforceExpiryJob } from './modules/workforce';
 import { actionDueJob } from './modules/action';
 import { syncMaintenanceJob } from './modules/sync';
+import { inspectionDueJob } from './modules/inspection';
 
 /**
  * The daily jobs, in the order they run (PLT-09, T-25). Each one is independent: a failure is
@@ -57,6 +58,8 @@ const DAILY_JOBS: readonly ScheduledJob[] = [
   actionDueJob,
   // Sprint 9
   syncMaintenanceJob,
+  // Sprint 10
+  inspectionDueJob,
 ];
 
 export const dailyJobs = new JobRunner(DAILY_JOBS);

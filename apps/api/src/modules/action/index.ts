@@ -21,7 +21,7 @@ registerPlaceUsage({
 });
 
 export { ActionContext, type ActionDeps } from './action-context';
-export { ActionDirectory } from './action-directory';
+export { ActionDirectory, type SourceAction } from './action-directory';
 export {
   ActionEngine,
   type ActionProject,
@@ -29,7 +29,12 @@ export {
   type PreparedAction,
   withActionNumber,
 } from './action-engine';
-export { type ActionSource, type ActionSourceRecord, registerActionSource } from './action-sources';
+export {
+  type ActionChange,
+  type ActionSource,
+  type ActionSourceRecord,
+  registerActionSource,
+} from './action-sources';
 export { actionMeRoutes, projectActionRoutes } from './action.routes';
 export { action } from './action.schema';
 export { actionDueJob } from './due.job';

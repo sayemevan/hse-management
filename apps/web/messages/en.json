@@ -86,7 +86,9 @@
     "roles": "Roles and permissions",
     "continueIn": "Continue in",
     "workforce": "Workforce",
-    "workforceLists": "Job positions and competencies"
+    "workforceLists": "Job positions and competencies",
+    "myInspections": "My inspections",
+    "inspectionTemplates": "Inspection templates"
   },
   "changePassword": {
     "title": "Change password",
@@ -227,7 +229,27 @@
     "IDEMPOTENCY_KEY_REUSED": "This change conflicts with an earlier one from this device. Please try again.",
     "RECORD_ID_TAKEN": "This record could not be created because its id is already in use.",
     "SYNC_CONFLICT": "Someone changed this record while you were editing. Review both versions.",
-    "SYNC_CONFLICT_RESOLVED": "This conflict has already been resolved."
+    "SYNC_CONFLICT_RESOLVED": "This conflict has already been resolved.",
+    "TEMPLATE_NAME_TAKEN": "Another template already has this name.",
+    "TEMPLATE_DRAFT_EXISTS": "This template already has a draft.",
+    "TEMPLATE_DRAFT_CHANGED": "Someone else changed this draft. Reload it to see their changes.",
+    "TEMPLATE_INVALID": "The template is not ready to publish.",
+    "TEMPLATE_IN_USE": "A published template can't be deleted. Retire it instead.",
+    "TEMPLATE_RETIRED": "This template is retired.",
+    "TEMPLATE_VERSION_NOT_ALLOWED": "This version of the template can no longer be used for new inspections.",
+    "TEMPLATE_LIMIT_REACHED": "A company can have up to {max} active templates.",
+    "INSPECTION_LOCKED": "This inspection can no longer be changed.",
+    "INSPECTION_TRANSITION_NOT_ALLOWED": "This step isn't possible for the inspection now. Reload to see its status.",
+    "INSPECTION_INCOMPLETE": "Some items still need attention before the inspection can be submitted.",
+    "INSPECTION_EVIDENCE_REQUIRED": "Add the required photos before submitting.",
+    "INSPECTION_ITEM_UNKNOWN": "This item is not part of the inspection.",
+    "INSPECTION_INSPECTOR_NOT_ELIGIBLE": "This person can't carry out inspections on this project.",
+    "INSPECTION_SELF_APPROVAL": "You can't review or approve your own inspection.",
+    "INSPECTION_NOT_INSPECTOR": "Only the inspector of this inspection can do this. It may have been reassigned.",
+    "INSPECTION_FILE_LIMIT": "You can add up to {max} files here.",
+    "FINDING_OWNER_REQUIRED": "Choose who is responsible for each finding.",
+    "FINDING_LOCKED": "This finding is resolved and can no longer be changed.",
+    "PLACE_REQUIRED": "Choose an area for this inspection."
   },
   "legal": {
     "termsTitle": "Terms of Service",
@@ -1016,7 +1038,8 @@
       "roles": "Roles",
       "subscription": "Subscription",
       "projects": "Projects",
-      "workforce": "Workforce"
+      "workforce": "Workforce",
+      "inspections": "Inspections"
     },
     "company": {
       "view": {
@@ -1132,6 +1155,24 @@
           "label": "Close actions",
           "meaning": "Close verified actions."
         }
+      },
+      "inspections": {
+        "view": {
+          "label": "View inspections",
+          "meaning": "See every inspection of the project."
+        },
+        "conduct": {
+          "label": "Carry out inspections",
+          "meaning": "Start, capture and submit your own inspections."
+        },
+        "manage": {
+          "label": "Manage inspections",
+          "meaning": "Plan, reassign and cancel inspections; edit findings before approval."
+        },
+        "approve": {
+          "label": "Review and approve inspections",
+          "meaning": "Return or approve submitted inspections (never your own)."
+        }
       }
     },
     "workforce": {
@@ -1161,6 +1202,14 @@
           "meaning": "Add, rename and deactivate job positions and competencies."
         }
       }
+    },
+    "inspections": {
+      "templates": {
+        "manage": {
+          "label": "Manage inspection templates",
+          "meaning": "Create, edit, publish and retire templates and their categories."
+        }
+      }
     }
   },
   "projectTabs": {
@@ -1170,7 +1219,8 @@
     "members": "Members",
     "timeline": "Timeline",
     "workforce": "Workforce",
-    "actions": "Actions"
+    "actions": "Actions",
+    "inspections": "Inspections"
   },
   "switcher": {
     "choose": "Projects",
@@ -1231,7 +1281,17 @@
       "action_comment_added": "{count, plural, one {New comment} other {# new comments}} on {ref} “{title}”.",
       "action_owner_lost_access": "The owner of {ref} “{title}” can no longer see the project. Reassign it.",
       "sync_conflict": "Your offline change to {record} was changed by someone else meanwhile. Review both versions.",
-      "sync_conflict_again": "Reminder: your offline change to {record} still needs review."
+      "sync_conflict_again": "Reminder: your offline change to {record} still needs review.",
+      "inspection_assigned": "Inspection {ref} ({template}) is planned for you on {date}.",
+      "inspection_unassigned": "Inspection {ref} ({template}) was given to someone else.",
+      "inspection_submitted": "Inspection {ref} ({template}) was submitted and waits for review.",
+      "inspection_returned": "Inspection {ref} was returned to you: {reason}",
+      "inspection_approved": "Inspection {ref} ({template}) was approved.",
+      "inspection_closed": "Inspection {ref} ({template}) is closed.",
+      "inspection_cancelled": "Inspection {ref} was cancelled: {reason}",
+      "inspection_overdue": "Inspection {ref} ({template}) planned for {date} is overdue.",
+      "inspection_review_waiting": "{count, plural, one {# inspection waits} other {# inspections wait}} for your review.",
+      "inspection_comment_added": "New comment on inspection {ref}."
     }
   },
   "placePicker": {
@@ -1369,7 +1429,8 @@
       "members": "Members",
       "structure": "Structure",
       "workforce": "Workforce",
-      "actions": "Actions"
+      "actions": "Actions",
+      "inspections": "Inspections"
     },
     "empty": "Nothing has happened in this project yet.",
     "loadMore": "Load more",
@@ -1465,7 +1526,25 @@
       "action_verified": "{actor} verified {ref} ({method}).",
       "action_sent_back": "{actor} sent {ref} back: {reason}",
       "action_closed": "{actor} closed {ref}.",
-      "action_voided": "{actor} voided {ref}: {reason}"
+      "action_voided": "{actor} voided {ref}: {reason}",
+      "inspection_planned": "{actor} planned inspection {inspection} ({template}).",
+      "inspection_started": "{actor} started inspection {inspection} ({template}).",
+      "inspection_updated": "{actor} edited inspection {inspection}.",
+      "inspection_items_saved": "{actor} recorded results on inspection {inspection}.",
+      "inspection_file_added": "{actor} added a photo or file to inspection {inspection}.",
+      "inspection_file_removed": "{actor} removed a photo or file from inspection {inspection}.",
+      "inspection_submitted": "{actor} submitted inspection {inspection} ({count, plural, =0 {no findings} one {# finding} other {# findings}}).",
+      "inspection_withdrawn": "{actor} withdrew inspection {inspection}.",
+      "inspection_returned": "{actor} returned inspection {inspection}: {reason}",
+      "inspection_approved": "{actor} approved inspection {inspection} ({count, plural, =0 {no actions} one {# action} other {# actions}} raised).",
+      "inspection_closed": "Inspection {inspection} was closed.",
+      "inspection_cancelled": "{actor} cancelled inspection {inspection}: {reason}",
+      "inspection_reassigned": "{actor} reassigned inspection {inspection}.",
+      "inspection_finding_updated": "{actor} edited finding {finding} of inspection {inspection}.",
+      "inspection_finding_action_raised": "{actor} raised action {ref} for finding {finding} of inspection {inspection}.",
+      "inspection_finding_no_action": "{actor} marked finding {finding} of inspection {inspection} as needing no action.",
+      "inspection_finding_resolved": "Finding {finding} of inspection {inspection} was resolved ({ref} closed).",
+      "inspection_finding_reopened": "Finding {finding} of inspection {inspection} is open again ({ref} voided)."
     },
     "groupLabel": "{group}: ",
     "fieldLabel": "{field}:",
@@ -2243,5 +2322,380 @@
       "photoCount": "{count, plural, one {# photo} other {# photos}}",
       "preparing": "Preparing photos…"
     }
+  },
+  "inspections": {
+    "status": {
+      "draft": "Draft",
+      "in_progress": "In progress",
+      "submitted": "Submitted",
+      "approved": "Approved",
+      "closed": "Closed",
+      "cancelled": "Cancelled"
+    },
+    "notSynced": "Not yet synced",
+    "underReview": "Under review",
+    "overdue": "Overdue · {days, plural, one {# day} other {# days}}",
+    "findingCount": "{count, plural, one {# finding} other {# findings}} ({open} open)",
+    "score": {
+      "percent": "{value} %",
+      "pass": "Pass",
+      "fail": "Fail"
+    },
+    "result": {
+      "pass": "Pass",
+      "fail": "Fail",
+      "observation": "Observation",
+      "not_applicable": "Not applicable",
+      "not_inspected": "Not inspected"
+    },
+    "weather": {
+      "clear": "Clear",
+      "hot": "Hot",
+      "humid": "Humid",
+      "windy": "Windy",
+      "dust": "Dust",
+      "rain": "Rain",
+      "cold": "Cold"
+    },
+    "start": "Start inspection",
+    "notAccepting": "This project doesn't accept new inspections in its current status.",
+    "show": "Show",
+    "chips": {
+      "today": "Today",
+      "overdue": "Overdue",
+      "in_progress": "In progress",
+      "to_review": "To review",
+      "open_findings": "Open findings"
+    },
+    "showCancelled": "Show cancelled inspections",
+    "empty": "No inspections yet.",
+    "loadMore": "Load more",
+    "plan": {
+      "title": "Plan inspection",
+      "submit": "Plan",
+      "required": "Choose a template and an inspector.",
+      "template": "Template",
+      "chooseTemplate": "Choose a template",
+      "inspector": "Inspector",
+      "plannedOn": "Planned date",
+      "note": "Note for the inspector"
+    },
+    "templates": {
+      "title": "Inspection templates",
+      "new": "New template",
+      "tabs": {
+        "active": "Active",
+        "retired": "Retired",
+        "categories": "Categories"
+      },
+      "empty": "No templates here.",
+      "versionChip": "v{version}",
+      "notPublished": "Not published",
+      "draftChanges": "Draft changes",
+      "retired": "Retired",
+      "itemCount": "{count, plural, one {# item} other {# items}}",
+      "create": "Create",
+      "nameRequired": "Enter a name.",
+      "categoryRequired": "Choose a category.",
+      "nameEn": "Name (English)",
+      "nameAr": "Name (Arabic)",
+      "category": "Category",
+      "chooseCategory": "Choose a category"
+    },
+    "categories": {
+      "add": "Add category",
+      "edit": "Edit category",
+      "inactive": "Inactive",
+      "templates": "{count, plural, =0 {No templates} one {# template} other {# templates}}",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "deactivate": "Deactivate",
+      "reactivate": "Reactivate",
+      "nameEn": "Name (English)",
+      "nameAr": "Name (Arabic)"
+    },
+    "builder": {
+      "title": "Template",
+      "back": "Back to templates",
+      "currentVersion": "Published version {version}",
+      "neverPublished": "Not published yet",
+      "editingDraft": "editing draft version {version}",
+      "saving": "Saving…",
+      "unsaved": "Unsaved changes",
+      "draftBanner": "Changes are saved as version {next}. Inspectors keep using version {current} until you publish.",
+      "changes": "Since the published version: {added} new, {changed} changed, {removed} removed items.",
+      "publish": "Publish version {version}",
+      "saveDraft": "Save draft",
+      "discardDraft": "Discard draft",
+      "deleteTemplate": "Delete template",
+      "edit": "Edit (new version)",
+      "preview": "Preview",
+      "closePreview": "Close preview",
+      "duplicate": "Duplicate",
+      "retire": "Retire",
+      "reactivate": "Reactivate",
+      "reactivated": "The template is active again.",
+      "versions": "Versions",
+      "details": "Details",
+      "name": "Name",
+      "description": "Description",
+      "results": "Allowed results",
+      "resultLabel": {
+        "pass": "Pass (always)",
+        "fail": "Fail (always)",
+        "observation": "Observation",
+        "not_applicable": "Not applicable",
+        "not_inspected": "Not inspected"
+      },
+      "scoring": "Scoring",
+      "scoringMethod": {
+        "none": "None",
+        "percentage": "Percentage",
+        "pass_fail": "Pass / Fail"
+      },
+      "passMark": "Pass mark (%)",
+      "passMarkHint": "Below this score the inspection fails. Leave empty for no pass mark.",
+      "needsApproval": "Needs approval (a reviewer approves each inspection)",
+      "areaRequired": "Area required when starting",
+      "sections": "Sections ({sections}) · items ({items})",
+      "noSections": "No sections yet.",
+      "addSection": "Add section",
+      "publishTitle": "Publish version {version}?",
+      "publishIssues": "{count, plural, one {# problem must} other {# problems must}} be fixed first:",
+      "publishBody": "Inspectors on every project can use it straight away. Inspections already started keep their version.",
+      "publishConfirm": "Publish",
+      "published": "Published.",
+      "issue": {
+        "noSections": "Add at least one section.",
+        "emptySection": "This section has no items.",
+        "tooManyItems": "A template can have up to 300 items.",
+        "passMarkNotAllowed": "A pass mark needs a scoring method.",
+        "passFailNeedsRule": "Pass / Fail needs a pass mark or a critical item.",
+        "duplicateKey": "Two sections or items share the same key; remove and add one again."
+      },
+      "discardTitle": "Discard the draft?",
+      "discardBody": "Your changes since the published version are lost. The published version stays as it is.",
+      "deleteTitle": "Delete this template?",
+      "deleteBody": "It was never published. This can't be undone.",
+      "retireTitle": "Retire this template?",
+      "retireBody": "Nobody can start new inspections with it. Existing inspections are kept.",
+      "retired": "The template is retired.",
+      "english": "English",
+      "arabic": "Arabic",
+      "sectionNumber": "Section {number}",
+      "untitled": "Untitled",
+      "sectionTitle": "Section title",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "removeSection": "Remove section",
+      "addItem": "Add item",
+      "criticalChip": "Critical",
+      "question": "Question",
+      "expected": "Expected condition",
+      "guidance": "Guidance",
+      "weight": "Weight (1–10)",
+      "defaultPriority": "Default priority of its finding",
+      "critical": "Critical item (a fail fails the whole inspection with Pass / Fail scoring)",
+      "photoOnFail": "Photo required when it fails",
+      "photoAlways": "Photo always required",
+      "removeItem": "Remove item",
+      "versionLabel": "Version {version}",
+      "state": {
+        "published": "Published",
+        "superseded": "Superseded"
+      },
+      "system": "System",
+      "inspectionCount": "{count, plural, =0 {no inspections} one {# inspection} other {# inspections}}",
+      "view": "View"
+    },
+    "mine": {
+      "title": "My inspections",
+      "start": "Start inspection",
+      "offline": "You're offline. Inspections on this device can still be captured; they sync when you're back online.",
+      "tabs": {
+        "assigned": "Assigned",
+        "in_progress": "In progress",
+        "to_review": "To review"
+      },
+      "onDevice": "On this device",
+      "waitingToSync": "Waiting to sync",
+      "empty": {
+        "assigned": "Nothing is planned for you.",
+        "in_progress": "No inspections in progress.",
+        "to_review": "Nothing to review."
+      },
+      "nothingOffline": "No inspections are kept on this device yet."
+    },
+    "startScreen": {
+      "title": "Start inspection",
+      "offline": "You're offline. The inspection is saved on this device and synced later.",
+      "required": "Choose a project and a template.",
+      "areaRequired": "This template needs an area.",
+      "noProjects": "No project kept on this device lets you carry out inspections. Open the project online first.",
+      "project": "Project",
+      "chooseProject": "Choose a project",
+      "template": "Template",
+      "noTemplates": "No templates on this device yet. Connect once to load them.",
+      "items": "{count, plural, one {# item} other {# items}}",
+      "areaRequiredLabel": "Area (required)",
+      "area": "Area",
+      "noArea": "No area",
+      "location": "Location",
+      "noLocation": "No location",
+      "date": "Inspection date",
+      "weather": "Weather",
+      "noWeather": "Not recorded",
+      "locationFailed": "The device location could not be read.",
+      "locationAgain": "Update my location",
+      "addLocation": "Add my location",
+      "accuracy": "± {metres} m",
+      "start": "Start"
+    },
+    "capture": {
+      "title": "Inspection",
+      "notFound": "This inspection can't be found.",
+      "notOnDevice": "This inspection isn't on this device.",
+      "backToMine": "Back to My inspections",
+      "photoFailed": "This photo couldn't be added.",
+      "progress": "{answered} of {total} answered",
+      "planned": "This inspection is planned. Start it when you are on site.",
+      "startNow": "Start now",
+      "submittedHere": "Submitted on this device. It is sent when you're back online.",
+      "notCapturing": "This inspection can no longer be captured.",
+      "openInspection": "Open the inspection",
+      "sections": "Sections",
+      "fails": "{count} fail",
+      "empty": "This template has no items.",
+      "previous": "Previous",
+      "next": "Next section",
+      "review": "Review and submit",
+      "critical": "Critical",
+      "guidance": "Guidance",
+      "expected": "Expected",
+      "comment": "Comment",
+      "commentRequired": "Add a comment for this item.",
+      "priority": "Priority",
+      "assigned": "Assigned person",
+      "nobody": "Nobody",
+      "raiseFinding": "Raise a finding",
+      "addPhoto": "Add photo",
+      "photos": "{count} of {max} photos",
+      "photoRequired": "Photo required"
+    },
+    "submit": {
+      "title": "Review and submit",
+      "submit": "Submit",
+      "blocked": "{count, plural, one {# item needs} other {# items need}} attention first.",
+      "reasonRequired": "Say why no action is needed.",
+      "needsAttention": "{count, plural, one {# item needs} other {# items need}} attention",
+      "reason": {
+        "unanswered": "not answered",
+        "commentRequired": "comment required",
+        "photoRequired": "photo required",
+        "resultNotAllowed": "result not allowed",
+        "areaRequired": "Choose an area for this inspection."
+      },
+      "findings": "{count, plural, =0 {No findings will be created.} one {# finding will be created.} other {# findings will be created.}}",
+      "decision": "Decision",
+      "raiseAction": "Raise action",
+      "noAction": "No action needed",
+      "noActionReason": "Why no action is needed"
+    },
+    "page": {
+      "title": "Inspection",
+      "back": "Back to inspections",
+      "inspector": "Inspector",
+      "planner": "Planned by",
+      "plannedOn": "Planned for",
+      "inspectedOn": "Inspected on",
+      "place": "Place",
+      "weather": "Weather",
+      "version": "Template",
+      "versionValue": "version {version}",
+      "location": "Device location",
+      "syncedLater": "Synced later",
+      "followUpOf": "Follow-up of",
+      "note": "Note",
+      "cancelledBecause": "Cancelled: {reason}",
+      "startCapture": "Start inspection",
+      "continueCapture": "Continue capture",
+      "results": "Results",
+      "showProblems": "Show problems only",
+      "showAll": "Show all items",
+      "unanswered": "Not answered",
+      "photoOf": "Photo of {item}",
+      "noProblems": "No failed items or observations.",
+      "comments": "Comments",
+      "approve": "Approve",
+      "return": "Return to inspector",
+      "withdraw": "Withdraw",
+      "withdrawn": "Withdrawn. You can edit it again.",
+      "reassign": "Reassign",
+      "cancel": "Cancel inspection",
+      "returnTitle": "Return to the inspector?",
+      "cancelTitle": "Cancel this inspection?",
+      "returnReason": "What should the inspector change?",
+      "cancelReason": "Why is it cancelled?",
+      "returned": "Returned to the inspector.",
+      "cancelled": "The inspection is cancelled.",
+      "reassigned": "Reassigned.",
+      "approveTitle": "Approve {ref}?",
+      "approveNoFindings": "There are no findings, so the inspection is closed too.",
+      "findingNumber": "Finding {number}",
+      "willRaise": "An action is raised for {owner}, due {date}.",
+      "ownerMissing": "Choose who is responsible before approving.",
+      "willNotRaise": "No action: {reason}",
+      "approved": "Approved.",
+      "reasonTooShort": "Write at least 5 characters.",
+      "reassignTitle": "Reassign the inspection",
+      "newInspector": "New inspector",
+      "history": "History"
+    },
+    "findings": {
+      "title": "Findings ({count})",
+      "number": "Finding {number}",
+      "edited": "Edited by reviewer",
+      "responsible": "Responsible: {name}",
+      "noResponsible": "Nobody responsible yet",
+      "due": "Due {date}",
+      "noActionBecause": "No action needed: {reason}",
+      "voided": "Voided",
+      "actionStatus": {
+        "open": "Open",
+        "in_progress": "In progress",
+        "completed": "Completed",
+        "verified": "Verified",
+        "closed": "Closed"
+      },
+      "edit": "Edit",
+      "raise": "Raise action",
+      "raiseAnother": "Raise another action",
+      "noAction": "No action needed",
+      "editTitle": "Edit finding {number}",
+      "raiseTitle": "Raise an action for finding {number}",
+      "noActionTitle": "No action for finding {number}",
+      "description": "Description",
+      "severity": "Severity",
+      "responsibleLabel": "Responsible person",
+      "dueLabel": "Due date",
+      "decision": "Decision",
+      "reason": "Reason",
+      "backToInspections": "Back to inspections",
+      "openTitle": "Open findings",
+      "any": "Any",
+      "overdueOnly": "Overdue only",
+      "none": "No open findings."
+    },
+    "findingStatus": {
+      "open": "Open",
+      "action_raised": "Action raised",
+      "resolved": "Resolved",
+      "no_action": "No action needed"
+    },
+    "offline": {
+      "type": "Inspection",
+      "itemType": "Inspection item"
+    },
+    "outboxFallback": "Inspection"
   }
 }

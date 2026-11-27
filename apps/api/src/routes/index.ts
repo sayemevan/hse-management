@@ -28,6 +28,12 @@ import { planRoutes } from '../modules/subscription';
 import { projectWorkforceRoutes, workforceMeRoutes, workforceRoutes } from '../modules/workforce';
 import { actionMeRoutes, projectActionRoutes } from '../modules/action';
 import { syncMeRoutes } from '../modules/sync';
+import {
+  inspectionCategoryRoutes,
+  inspectionMeRoutes,
+  inspectionTemplateRoutes,
+  projectInspectionRoutes,
+} from '../modules/inspection';
 import { syncProbeRoutes } from '../modules/sync-probe';
 import { healthRoutes } from './health.routes';
 import { platformJobRoutes } from './platform-jobs.routes';
@@ -44,6 +50,7 @@ export { API_V1_BASE_PATH } from './paths';
  * Sprint 6: places, members and timeline under a project; notifications; `/me` preferences.
  * Sprint 7: the workforce area, a project's Workforce tab and `/me/workforce`.
  * Sprint 8: a project's actions with comments, and `/me/actions`.
+ * Sprint 10: inspection categories, templates, a project's inspections, `/me/inspections`.
  * Sprint 9: the offline profile and pack, the user's sync conflicts, and the sync probe
  * (development and test only, O-116).
  */
@@ -78,6 +85,11 @@ export const v1Routes = new Hono<AppEnv>()
   // Sprint 7
   .use('/workforce', resolveTenant(), requireCompanyContext())
   .use('/workforce/*', resolveTenant(), requireCompanyContext())
+  // Sprint 10
+  .use('/inspection-categories', resolveTenant(), requireCompanyContext())
+  .use('/inspection-categories/*', resolveTenant(), requireCompanyContext())
+  .use('/inspection-templates', resolveTenant(), requireCompanyContext())
+  .use('/inspection-templates/*', resolveTenant(), requireCompanyContext())
   // Sprint 9
   .use('/dev/*', resolveTenant(), requireCompanyContext())
   // PLT-11: after tenant resolution, before every handler. Refuses company writes in
@@ -98,6 +110,9 @@ export const v1Routes = new Hono<AppEnv>()
   .route('/projects', projectWorkforceRoutes)
   .route('/projects', projectActionRoutes)
   .route('/projects', offlinePackRoutes)
+  .route('/projects', projectInspectionRoutes)
+  .route('/inspection-categories', inspectionCategoryRoutes)
+  .route('/inspection-templates', inspectionTemplateRoutes)
   .route('/workforce', workforceRoutes)
   .route('/notifications', notificationRoutes)
   .route('/me', meRoutes)
@@ -105,6 +120,7 @@ export const v1Routes = new Hono<AppEnv>()
   .route('/me', actionMeRoutes)
   .route('/me', offlineProfileRoutes)
   .route('/me', syncMeRoutes)
+  .route('/me', inspectionMeRoutes)
   .route('/dev/sync-probes', syncProbeRoutes)
   .route('/roles', roleRoutes)
   .route('/platform/payments', platformPaymentRoutes)

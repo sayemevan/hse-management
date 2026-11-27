@@ -1,7 +1,7 @@
 'use client';
 
-import type { NotificationDto } from '@hse/shared';
-import { useTranslations } from 'next-intl';
+import { localized, type NotificationDto } from '@hse/shared';
+import { useLocale, useTranslations } from 'next-intl';
 import { useCallback } from 'react';
 
 import { useDateFormat } from '@/modules/i18n/use-date-format';
@@ -19,6 +19,7 @@ export function useNotificationText(): (notification: NotificationDto) => string
   const roles = useTranslations('roles');
   const statuses = useTranslations('projectStatus');
   const { calendarDate, date } = useDateFormat();
+  const locale = useLocale();
   const recordLabel = useRecordLabel();
   const positionName = usePositionName();
 
@@ -132,6 +133,24 @@ export function useNotificationText(): (notification: NotificationDto) => string
             dueToday: p.dueToday ?? 0,
             critical: p.critical ?? 0,
           });
+        // Sprint 10 (O-150)
+        case 'inspection.assigned':
+        case 'inspection.unassigned':
+        case 'inspection.submitted':
+        case 'inspection.returned':
+        case 'inspection.approved':
+        case 'inspection.closed':
+        case 'inspection.cancelled':
+        case 'inspection.overdue':
+        case 'inspection.review_waiting':
+        case 'inspection.comment_added':
+          return t(notification.type.replace('inspection.', 'inspection_') as 'inspection_assigned', {
+            ref: ltr(p.inspectionReference ?? ''),
+            template: localized({ en: p.templateNameEn ?? null, ar: p.templateNameAr ?? null }, locale),
+            date: calendarDate(p.plannedOn ?? null),
+            reason: p.reason ?? '',
+            count: p.count ?? 1,
+          });
         // Sprint 9 (O-131)
         case 'sync.conflict':
           return t(p.again ? 'sync_conflict_again' : 'sync_conflict', { record: p.recordLabel ?? '' });
@@ -143,7 +162,7 @@ export function useNotificationText(): (notification: NotificationDto) => string
           });
       }
     },
-    [t, roles, statuses, calendarDate, date, recordLabel, positionName],
+    [t, roles, statuses, calendarDate, date, recordLabel, positionName, locale],
   );
 }
 

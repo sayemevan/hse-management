@@ -49,6 +49,7 @@ import type { OpenedFile } from '../../platform/file-storage';
 import { userSummaries } from '../identity';
 import { ProjectArchivedError, ProjectDirectory, type ProjectRow, type ResolvedPlace } from '../project';
 import { type ActionContext } from './action-context';
+import { actionSource } from './action-sources';
 import {
   type ActionViewer,
   canOf,
@@ -1069,8 +1070,24 @@ export class ActionService {
     if (notifyType) {
       statements.push(...(await this.notify(notifyType, after, project, by, recipients, params)));
     }
+    if (after.status === 'closed') statements.push(...(await this.sourceHook(after, by, false)));
     await this.commit(row, statements);
     return this.detail(tenant, project, principal, row.id);
+  }
+
+  /** T-79: the source module's statements when one of its actions closes or is voided. */
+  private async sourceHook(row: ActionRow, by: string, voided: boolean): Promise<Statement[]> {
+    const source = actionSource(row.sourceModule);
+    if (!source?.onActionChanged || !row.sourceRecordId) return [];
+    return source.onActionChanged({
+      db: this.ctx.db,
+      meta: this.ctx.deps.meta,
+      now: this.ctx.now(),
+      companyId: row.companyId,
+      recordId: row.sourceRecordId,
+      actorUserId: by,
+      action: { id: row.id, number: row.number, status: row.status, voided },
+    });
   }
 
   /** O-109: who is told that a completed action needs verification. */
@@ -1147,6 +1164,7 @@ export class ActionService {
         [row.ownerId, ...loaded.collaboratorIds],
         { reason: reason.slice(0, 120) },
       )),
+      ...(await this.sourceHook(after, principal.userId, true)),
     ]);
     return this.detail(tenant, project, principal, row.id);
   }

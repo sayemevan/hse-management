@@ -166,7 +166,7 @@ export class SyncProbeService {
       version: 1,
       deviceId: offline?.deviceId ?? null,
       capturedAt: new Date(offline?.capturedAt ?? now),
-      receivedAt: new Date(now),
+      receivedAt: new Date(offline?.receivedAt ?? now),
       createdAt: new Date(now),
       updatedAt: new Date(now),
     };

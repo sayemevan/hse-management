@@ -40,6 +40,17 @@ export const NOTIFICATION_TYPES = [
   'action.owner_lost_access',
   // Sprint 9 (PLT-30, O-131)
   'sync.conflict',
+  // Sprint 10 (O-150)
+  'inspection.assigned',
+  'inspection.unassigned',
+  'inspection.submitted',
+  'inspection.returned',
+  'inspection.approved',
+  'inspection.closed',
+  'inspection.cancelled',
+  'inspection.overdue',
+  'inspection.review_waiting',
+  'inspection.comment_added',
 ] as const;
 export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
 
@@ -100,6 +111,13 @@ export interface NotificationParams {
   recordLabel?: string;
   conflictId?: string;
   again?: boolean;
+  // Sprint 10
+  /** `RMX-02-INS-0012`, or null before the number is given. */
+  inspectionReference?: string | null;
+  /** The template name in both languages (T-80); the web app picks the reader's. */
+  templateNameEn?: string | null;
+  templateNameAr?: string | null;
+  plannedOn?: string | null;
 }
 
 export const notificationListQuerySchema = z.object({

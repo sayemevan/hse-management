@@ -4,6 +4,7 @@ import {
   Building2,
   ChevronRight,
   ClipboardCheck,
+  ClipboardList,
   CreditCard,
   FolderKanban,
   HardHat,
@@ -79,6 +80,12 @@ export function HomeScreen() {
           Icon: ListChecks,
         },
         {
+          permission: 'inspections.templates.manage',
+          href: '/settings/inspection-templates',
+          label: t('home.inspectionTemplates'),
+          Icon: ClipboardList,
+        },
+        {
           permission: 'subscription.view',
           href: '/settings/subscription',
           label: t('home.subscription'),
@@ -91,6 +98,8 @@ export function HomeScreen() {
   const workLinks = company
     ? [
         { href: '/projects', label: t('home.projects'), Icon: FolderKanban },
+        // Sprint 10 (US-033): works offline too.
+        { href: '/inspections', label: t('home.myInspections'), Icon: ClipboardCheck },
         ...(hasPermission(user, 'workforce.view')
           ? [{ href: '/workforce', label: t('home.workforce'), Icon: HardHat }]
           : []),

@@ -36,3 +36,18 @@ with this folder and queue changes through it.
    contract backward compatible for 30 days after a change (O-125).
 
 See `dev/sync-probe.ts` for a complete example.
+
+## First consumer: inspections (Sprint 10)
+
+`modules/inspections/inspection-offline.ts` is the real example now. Points it adds to the rules above:
+
+- **One record, one queue:** every change of an inspection (create, header, items, photos, submit)
+  uses the inspection id as `entityId`, so the engine sends them in order and the submit goes last.
+- **`baseVersion` only when it is known and nothing is pending** for the same item or header;
+  otherwise a second queued edit would conflict with the first one.
+- **Pages with ids in the query** (`/inspections/capture?project=&id=`): one cached page works offline
+  for every record, because the service worker matches offline pages by path.
+- **Language-neutral labels:** store the outbox label as JSON `{ en, ar, ref }`; `displayLabel`
+  renders it in the reader's language in the sync centre and the sign-out dialog.
+- **Packs of your own:** the module keeps its template pack under `inspection-templates` with an
+  ETag (`refreshTemplatePack`), next to the shared project packs.

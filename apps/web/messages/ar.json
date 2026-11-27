@@ -86,7 +86,9 @@
     "roles": "الأدوار والصلاحيات",
     "continueIn": "متابعة في",
     "workforce": "القوى العاملة",
-    "workforceLists": "المسميات الوظيفية والكفاءات"
+    "workforceLists": "المسميات الوظيفية والكفاءات",
+    "myInspections": "عمليات التفتيش الخاصة بي",
+    "inspectionTemplates": "نماذج التفتيش"
   },
   "changePassword": {
     "title": "تغيير كلمة المرور",
@@ -227,7 +229,27 @@
     "IDEMPOTENCY_KEY_REUSED": "يتعارض هذا التغيير مع تغيير سابق من هذا الجهاز. حاول مرة أخرى.",
     "RECORD_ID_TAKEN": "تعذّر إنشاء هذا السجل لأن معرّفه مستخدم بالفعل.",
     "SYNC_CONFLICT": "عدّل شخص آخر هذا السجل أثناء تعديلك. راجع النسختين.",
-    "SYNC_CONFLICT_RESOLVED": "تمت تسوية هذا التعارض من قبل."
+    "SYNC_CONFLICT_RESOLVED": "تمت تسوية هذا التعارض من قبل.",
+    "TEMPLATE_NAME_TAKEN": "يوجد نموذج آخر بهذا الاسم.",
+    "TEMPLATE_DRAFT_EXISTS": "لهذا النموذج مسودة بالفعل.",
+    "TEMPLATE_DRAFT_CHANGED": "عدّل شخص آخر هذه المسودة. أعد تحميلها لرؤية تعديلاته.",
+    "TEMPLATE_INVALID": "النموذج غير جاهز للنشر.",
+    "TEMPLATE_IN_USE": "لا يمكن حذف نموذج منشور. أوقفه بدلًا من ذلك.",
+    "TEMPLATE_RETIRED": "هذا النموذج متوقف.",
+    "TEMPLATE_VERSION_NOT_ALLOWED": "لم يعد بالإمكان استخدام هذا الإصدار من النموذج لعمليات تفتيش جديدة.",
+    "TEMPLATE_LIMIT_REACHED": "يمكن أن يكون للشركة {max} نموذجًا نشطًا كحد أقصى.",
+    "INSPECTION_LOCKED": "لم يعد بالإمكان تغيير هذا التفتيش.",
+    "INSPECTION_TRANSITION_NOT_ALLOWED": "هذه الخطوة غير ممكنة للتفتيش الآن. أعد التحميل لرؤية حالته.",
+    "INSPECTION_INCOMPLETE": "لا تزال بعض البنود تحتاج إلى معالجة قبل إرسال التفتيش.",
+    "INSPECTION_EVIDENCE_REQUIRED": "أضف الصور المطلوبة قبل الإرسال.",
+    "INSPECTION_ITEM_UNKNOWN": "هذا البند ليس جزءًا من التفتيش.",
+    "INSPECTION_INSPECTOR_NOT_ELIGIBLE": "لا يمكن لهذا الشخص إجراء التفتيش في هذا المشروع.",
+    "INSPECTION_SELF_APPROVAL": "لا يمكنك مراجعة تفتيشك أو اعتماده.",
+    "INSPECTION_NOT_INSPECTOR": "يمكن لمفتش هذا التفتيش فقط القيام بذلك. ربما أُعيد إسناده.",
+    "INSPECTION_FILE_LIMIT": "يمكنك إضافة {max} ملفات هنا كحد أقصى.",
+    "FINDING_OWNER_REQUIRED": "اختر المسؤول عن كل ملاحظة.",
+    "FINDING_LOCKED": "تمت معالجة هذه الملاحظة ولم يعد بالإمكان تغييرها.",
+    "PLACE_REQUIRED": "اختر منطقة لهذا التفتيش."
   },
   "legal": {
     "termsTitle": "شروط الخدمة",
@@ -1016,7 +1038,8 @@
       "roles": "الأدوار",
       "subscription": "الاشتراك",
       "projects": "المشاريع",
-      "workforce": "القوى العاملة"
+      "workforce": "القوى العاملة",
+      "inspections": "التفتيش"
     },
     "company": {
       "view": {
@@ -1132,6 +1155,24 @@
           "label": "إغلاق الإجراءات",
           "meaning": "إغلاق الإجراءات التي تم التحقق منها."
         }
+      },
+      "inspections": {
+        "view": {
+          "label": "عرض عمليات التفتيش",
+          "meaning": "رؤية كل عمليات التفتيش في المشروع."
+        },
+        "conduct": {
+          "label": "إجراء التفتيش",
+          "meaning": "بدء عمليات التفتيش الخاصة بك وتسجيلها وإرسالها."
+        },
+        "manage": {
+          "label": "إدارة عمليات التفتيش",
+          "meaning": "جدولة عمليات التفتيش وإعادة إسنادها وإلغاؤها؛ وتعديل الملاحظات قبل الاعتماد."
+        },
+        "approve": {
+          "label": "مراجعة عمليات التفتيش واعتمادها",
+          "meaning": "إعادة عمليات التفتيش المرسلة أو اعتمادها (ما عدا تفتيشك)."
+        }
       }
     },
     "workforce": {
@@ -1161,6 +1202,14 @@
           "meaning": "إضافة المسميات الوظيفية والكفاءات وإعادة تسميتها وإيقافها."
         }
       }
+    },
+    "inspections": {
+      "templates": {
+        "manage": {
+          "label": "إدارة نماذج التفتيش",
+          "meaning": "إنشاء النماذج وفئاتها وتعديلها ونشرها وإيقافها."
+        }
+      }
     }
   },
   "projectTabs": {
@@ -1170,7 +1219,8 @@
     "members": "الأعضاء",
     "timeline": "السجل الزمني",
     "workforce": "القوى العاملة",
-    "actions": "الإجراءات"
+    "actions": "الإجراءات",
+    "inspections": "التفتيش"
   },
   "switcher": {
     "choose": "المشاريع",
@@ -1231,7 +1281,17 @@
       "action_comment_added": "{count, plural, one {تعليق جديد} two {تعليقان جديدان} few {# تعليقات جديدة} other {# تعليقًا جديدًا}} على الإجراء {ref} «{title}».",
       "action_owner_lost_access": "لم يعد مسؤول الإجراء {ref} «{title}» يرى المشروع. أعد إسناده.",
       "sync_conflict": "عدّل شخص آخر {record} بعد تغييرك دون اتصال. راجع النسختين.",
-      "sync_conflict_again": "تذكير: ما زال تغييرك دون اتصال على {record} بحاجة إلى مراجعة."
+      "sync_conflict_again": "تذكير: ما زال تغييرك دون اتصال على {record} بحاجة إلى مراجعة.",
+      "inspection_assigned": "التفتيش {ref} ({template}) مخطط لك في {date}.",
+      "inspection_unassigned": "أُسند التفتيش {ref} ({template}) إلى شخص آخر.",
+      "inspection_submitted": "أُرسل التفتيش {ref} ({template}) وينتظر المراجعة.",
+      "inspection_returned": "أُعيد إليك التفتيش {ref}: {reason}",
+      "inspection_approved": "اعتُمد التفتيش {ref} ({template}).",
+      "inspection_closed": "أُغلق التفتيش {ref} ({template}).",
+      "inspection_cancelled": "أُلغي التفتيش {ref}: {reason}",
+      "inspection_overdue": "التفتيش {ref} ({template}) المخطط في {date} متأخر.",
+      "inspection_review_waiting": "{count, plural, one {تفتيش واحد ينتظر} two {عمليتا تفتيش تنتظران} few {# عمليات تفتيش تنتظر} other {# عملية تفتيش تنتظر}} مراجعتك.",
+      "inspection_comment_added": "تعليق جديد على التفتيش {ref}."
     }
   },
   "placePicker": {
@@ -1369,7 +1429,8 @@
       "members": "الأعضاء",
       "structure": "الهيكل",
       "workforce": "القوى العاملة",
-      "actions": "الإجراءات"
+      "actions": "الإجراءات",
+      "inspections": "التفتيش"
     },
     "empty": "لم يحدث شيء في هذا المشروع بعد.",
     "loadMore": "عرض المزيد",
@@ -1465,7 +1526,25 @@
       "action_verified": "تحقق {actor} من {ref} ({method}).",
       "action_sent_back": "أعاد {actor} الإجراء {ref}: {reason}",
       "action_closed": "أغلق {actor} الإجراء {ref}.",
-      "action_voided": "ألغى {actor} الإجراء {ref}: {reason}"
+      "action_voided": "ألغى {actor} الإجراء {ref}: {reason}",
+      "inspection_planned": "خطط {actor} للتفتيش {inspection} ({template}).",
+      "inspection_started": "بدأ {actor} التفتيش {inspection} ({template}).",
+      "inspection_updated": "عدّل {actor} التفتيش {inspection}.",
+      "inspection_items_saved": "سجّل {actor} نتائج في التفتيش {inspection}.",
+      "inspection_file_added": "أضاف {actor} صورة أو ملفًا إلى التفتيش {inspection}.",
+      "inspection_file_removed": "أزال {actor} صورة أو ملفًا من التفتيش {inspection}.",
+      "inspection_submitted": "أرسل {actor} التفتيش {inspection} ({count, plural, =0 {بدون ملاحظات} one {ملاحظة واحدة} two {ملاحظتان} few {# ملاحظات} other {# ملاحظة}}).",
+      "inspection_withdrawn": "سحب {actor} التفتيش {inspection}.",
+      "inspection_returned": "أعاد {actor} التفتيش {inspection}: {reason}",
+      "inspection_approved": "اعتمد {actor} التفتيش {inspection} ({count, plural, =0 {بدون إجراءات} one {إجراء واحد} two {إجراءان} few {# إجراءات} other {# إجراءً}}).",
+      "inspection_closed": "أُغلق التفتيش {inspection}.",
+      "inspection_cancelled": "ألغى {actor} التفتيش {inspection}: {reason}",
+      "inspection_reassigned": "أعاد {actor} إسناد التفتيش {inspection}.",
+      "inspection_finding_updated": "عدّل {actor} الملاحظة {finding} في التفتيش {inspection}.",
+      "inspection_finding_action_raised": "أنشأ {actor} الإجراء {ref} للملاحظة {finding} في التفتيش {inspection}.",
+      "inspection_finding_no_action": "حدد {actor} أن الملاحظة {finding} في التفتيش {inspection} لا تحتاج إلى إجراء.",
+      "inspection_finding_resolved": "تمت معالجة الملاحظة {finding} في التفتيش {inspection} (أُغلق {ref}).",
+      "inspection_finding_reopened": "أصبحت الملاحظة {finding} في التفتيش {inspection} مفتوحة مرة أخرى (أُلغي {ref})."
     },
     "groupLabel": "{group}: ",
     "fieldLabel": "{field}:",
@@ -2243,5 +2322,380 @@
       "photoCount": "{count, plural, =0 {لا صور} one {صورة واحدة} two {صورتان} few {# صور} many {# صورة} other {# صورة}}",
       "preparing": "جارٍ تجهيز الصور…"
     }
+  },
+  "inspections": {
+    "status": {
+      "draft": "مسودة",
+      "in_progress": "قيد التنفيذ",
+      "submitted": "مُرسل",
+      "approved": "معتمد",
+      "closed": "مغلق",
+      "cancelled": "ملغى"
+    },
+    "notSynced": "لم تتم المزامنة بعد",
+    "underReview": "قيد المراجعة",
+    "overdue": "متأخر · {days, plural, one {يوم واحد} two {يومان} few {# أيام} other {# يومًا}}",
+    "findingCount": "{count, plural, one {ملاحظة واحدة} two {ملاحظتان} few {# ملاحظات} other {# ملاحظة}} ({open} مفتوحة)",
+    "score": {
+      "percent": "{value} %",
+      "pass": "ناجح",
+      "fail": "راسب"
+    },
+    "result": {
+      "pass": "مطابق",
+      "fail": "غير مطابق",
+      "observation": "ملاحظة",
+      "not_applicable": "لا ينطبق",
+      "not_inspected": "لم يُفحص"
+    },
+    "weather": {
+      "clear": "صافٍ",
+      "hot": "حار",
+      "humid": "رطب",
+      "windy": "عاصف",
+      "dust": "غبار",
+      "rain": "مطر",
+      "cold": "بارد"
+    },
+    "start": "بدء التفتيش",
+    "notAccepting": "لا يقبل هذا المشروع عمليات تفتيش جديدة في حالته الحالية.",
+    "show": "عرض",
+    "chips": {
+      "today": "اليوم",
+      "overdue": "متأخرة",
+      "in_progress": "قيد التنفيذ",
+      "to_review": "للمراجعة",
+      "open_findings": "ملاحظات مفتوحة"
+    },
+    "showCancelled": "عرض عمليات التفتيش الملغاة",
+    "empty": "لا توجد عمليات تفتيش بعد.",
+    "loadMore": "تحميل المزيد",
+    "plan": {
+      "title": "جدولة تفتيش",
+      "submit": "جدولة",
+      "required": "اختر نموذجًا ومفتشًا.",
+      "template": "النموذج",
+      "chooseTemplate": "اختر نموذجًا",
+      "inspector": "المفتش",
+      "plannedOn": "التاريخ المخطط",
+      "note": "ملاحظة للمفتش"
+    },
+    "templates": {
+      "title": "نماذج التفتيش",
+      "new": "نموذج جديد",
+      "tabs": {
+        "active": "نشطة",
+        "retired": "متوقفة",
+        "categories": "الفئات"
+      },
+      "empty": "لا توجد نماذج هنا.",
+      "versionChip": "الإصدار {version}",
+      "notPublished": "غير منشور",
+      "draftChanges": "تعديلات في المسودة",
+      "retired": "متوقف",
+      "itemCount": "{count, plural, one {بند واحد} two {بندان} few {# بنود} other {# بندًا}}",
+      "create": "إنشاء",
+      "nameRequired": "أدخل اسمًا.",
+      "categoryRequired": "اختر فئة.",
+      "nameEn": "الاسم (بالإنجليزية)",
+      "nameAr": "الاسم (بالعربية)",
+      "category": "الفئة",
+      "chooseCategory": "اختر فئة"
+    },
+    "categories": {
+      "add": "إضافة فئة",
+      "edit": "تعديل الفئة",
+      "inactive": "غير نشطة",
+      "templates": "{count, plural, =0 {لا توجد نماذج} one {نموذج واحد} two {نموذجان} few {# نماذج} other {# نموذجًا}}",
+      "moveUp": "تحريك لأعلى",
+      "moveDown": "تحريك لأسفل",
+      "deactivate": "إيقاف",
+      "reactivate": "إعادة تفعيل",
+      "nameEn": "الاسم (بالإنجليزية)",
+      "nameAr": "الاسم (بالعربية)"
+    },
+    "builder": {
+      "title": "النموذج",
+      "back": "العودة إلى النماذج",
+      "currentVersion": "الإصدار المنشور {version}",
+      "neverPublished": "لم يُنشر بعد",
+      "editingDraft": "تحرير مسودة الإصدار {version}",
+      "saving": "جارٍ الحفظ…",
+      "unsaved": "تعديلات غير محفوظة",
+      "draftBanner": "تُحفظ التعديلات في الإصدار {next}. يستمر المفتشون في استخدام الإصدار {current} حتى تنشره.",
+      "changes": "منذ الإصدار المنشور: {added} جديد، {changed} معدّل، {removed} محذوف.",
+      "publish": "نشر الإصدار {version}",
+      "saveDraft": "حفظ المسودة",
+      "discardDraft": "تجاهل المسودة",
+      "deleteTemplate": "حذف النموذج",
+      "edit": "تعديل (إصدار جديد)",
+      "preview": "معاينة",
+      "closePreview": "إغلاق المعاينة",
+      "duplicate": "نسخ",
+      "retire": "إيقاف",
+      "reactivate": "إعادة تفعيل",
+      "reactivated": "النموذج نشط مرة أخرى.",
+      "versions": "الإصدارات",
+      "details": "التفاصيل",
+      "name": "الاسم",
+      "description": "الوصف",
+      "results": "النتائج المسموح بها",
+      "resultLabel": {
+        "pass": "مطابق (دائمًا)",
+        "fail": "غير مطابق (دائمًا)",
+        "observation": "ملاحظة",
+        "not_applicable": "لا ينطبق",
+        "not_inspected": "لم يُفحص"
+      },
+      "scoring": "التقييم",
+      "scoringMethod": {
+        "none": "بدون",
+        "percentage": "نسبة مئوية",
+        "pass_fail": "ناجح / راسب"
+      },
+      "passMark": "درجة النجاح (%)",
+      "passMarkHint": "يرسب التفتيش تحت هذه الدرجة. اتركها فارغة إن لم تكن هناك درجة نجاح.",
+      "needsApproval": "يحتاج إلى اعتماد (يعتمد مراجع كل تفتيش)",
+      "areaRequired": "المنطقة مطلوبة عند البدء",
+      "sections": "الأقسام ({sections}) · البنود ({items})",
+      "noSections": "لا توجد أقسام بعد.",
+      "addSection": "إضافة قسم",
+      "publishTitle": "نشر الإصدار {version}؟",
+      "publishIssues": "يجب إصلاح {count, plural, one {مشكلة واحدة} two {مشكلتين} few {# مشكلات} other {# مشكلة}} أولًا:",
+      "publishBody": "يمكن للمفتشين في كل مشروع استخدامه فورًا. تحتفظ عمليات التفتيش التي بدأت بإصدارها.",
+      "publishConfirm": "نشر",
+      "published": "تم النشر.",
+      "issue": {
+        "noSections": "أضف قسمًا واحدًا على الأقل.",
+        "emptySection": "لا يحتوي هذا القسم على بنود.",
+        "tooManyItems": "يمكن أن يحتوي النموذج على 300 بند كحد أقصى.",
+        "passMarkNotAllowed": "تحتاج درجة النجاح إلى طريقة تقييم.",
+        "passFailNeedsRule": "يحتاج تقييم ناجح / راسب إلى درجة نجاح أو بند حرج.",
+        "duplicateKey": "يتشارك قسمان أو بندان المفتاح نفسه؛ احذف أحدهما وأضفه من جديد."
+      },
+      "discardTitle": "تجاهل المسودة؟",
+      "discardBody": "ستفقد تعديلاتك منذ الإصدار المنشور. يبقى الإصدار المنشور كما هو.",
+      "deleteTitle": "حذف هذا النموذج؟",
+      "deleteBody": "لم يُنشر قط. لا يمكن التراجع عن ذلك.",
+      "retireTitle": "إيقاف هذا النموذج؟",
+      "retireBody": "لن يتمكن أحد من بدء تفتيش جديد به. تُحفظ عمليات التفتيش الحالية.",
+      "retired": "تم إيقاف النموذج.",
+      "english": "الإنجليزية",
+      "arabic": "العربية",
+      "sectionNumber": "القسم {number}",
+      "untitled": "بدون عنوان",
+      "sectionTitle": "عنوان القسم",
+      "moveUp": "تحريك لأعلى",
+      "moveDown": "تحريك لأسفل",
+      "removeSection": "حذف القسم",
+      "addItem": "إضافة بند",
+      "criticalChip": "حرج",
+      "question": "السؤال",
+      "expected": "الحالة المتوقعة",
+      "guidance": "إرشادات",
+      "weight": "الوزن (1–10)",
+      "defaultPriority": "الأولوية الافتراضية لملاحظته",
+      "critical": "بند حرج (عدم المطابقة يُرسب التفتيش كله في تقييم ناجح / راسب)",
+      "photoOnFail": "صورة مطلوبة عند عدم المطابقة",
+      "photoAlways": "صورة مطلوبة دائمًا",
+      "removeItem": "حذف البند",
+      "versionLabel": "الإصدار {version}",
+      "state": {
+        "published": "منشور",
+        "superseded": "سابق"
+      },
+      "system": "النظام",
+      "inspectionCount": "{count, plural, =0 {لا توجد عمليات تفتيش} one {تفتيش واحد} two {عمليتا تفتيش} few {# عمليات تفتيش} other {# عملية تفتيش}}",
+      "view": "عرض"
+    },
+    "mine": {
+      "title": "عمليات التفتيش الخاصة بي",
+      "start": "بدء التفتيش",
+      "offline": "أنت غير متصل. لا يزال بإمكانك تسجيل عمليات التفتيش الموجودة على هذا الجهاز؛ تتم مزامنتها عند عودة الاتصال.",
+      "tabs": {
+        "assigned": "المسندة",
+        "in_progress": "قيد التنفيذ",
+        "to_review": "للمراجعة"
+      },
+      "onDevice": "على هذا الجهاز",
+      "waitingToSync": "في انتظار المزامنة",
+      "empty": {
+        "assigned": "لا يوجد شيء مخطط لك.",
+        "in_progress": "لا توجد عمليات تفتيش قيد التنفيذ.",
+        "to_review": "لا يوجد شيء للمراجعة."
+      },
+      "nothingOffline": "لا توجد عمليات تفتيش محفوظة على هذا الجهاز بعد."
+    },
+    "startScreen": {
+      "title": "بدء التفتيش",
+      "offline": "أنت غير متصل. يُحفظ التفتيش على هذا الجهاز وتتم مزامنته لاحقًا.",
+      "required": "اختر مشروعًا ونموذجًا.",
+      "areaRequired": "يحتاج هذا النموذج إلى منطقة.",
+      "noProjects": "لا يوجد مشروع محفوظ على هذا الجهاز يسمح لك بإجراء التفتيش. افتح المشروع وأنت متصل أولًا.",
+      "project": "المشروع",
+      "chooseProject": "اختر مشروعًا",
+      "template": "النموذج",
+      "noTemplates": "لا توجد نماذج على هذا الجهاز بعد. اتصل مرة واحدة لتحميلها.",
+      "items": "{count, plural, one {بند واحد} two {بندان} few {# بنود} other {# بندًا}}",
+      "areaRequiredLabel": "المنطقة (مطلوبة)",
+      "area": "المنطقة",
+      "noArea": "بدون منطقة",
+      "location": "الموقع",
+      "noLocation": "بدون موقع",
+      "date": "تاريخ التفتيش",
+      "weather": "الطقس",
+      "noWeather": "غير مسجل",
+      "locationFailed": "تعذرت قراءة موقع الجهاز.",
+      "locationAgain": "تحديث موقعي",
+      "addLocation": "إضافة موقعي",
+      "accuracy": "± {metres} م",
+      "start": "بدء"
+    },
+    "capture": {
+      "title": "التفتيش",
+      "notFound": "لا يمكن العثور على هذا التفتيش.",
+      "notOnDevice": "هذا التفتيش غير موجود على هذا الجهاز.",
+      "backToMine": "العودة إلى عمليات التفتيش الخاصة بي",
+      "photoFailed": "تعذرت إضافة هذه الصورة.",
+      "progress": "تمت الإجابة على {answered} من {total}",
+      "planned": "هذا التفتيش مخطط. ابدأه عندما تكون في الموقع.",
+      "startNow": "ابدأ الآن",
+      "submittedHere": "أُرسل من هذا الجهاز. سيُرسل عند عودة الاتصال.",
+      "notCapturing": "لم يعد بالإمكان تسجيل هذا التفتيش.",
+      "openInspection": "فتح التفتيش",
+      "sections": "الأقسام",
+      "fails": "{count} غير مطابق",
+      "empty": "لا يحتوي هذا النموذج على بنود.",
+      "previous": "السابق",
+      "next": "القسم التالي",
+      "review": "مراجعة وإرسال",
+      "critical": "حرج",
+      "guidance": "إرشادات",
+      "expected": "المتوقع",
+      "comment": "تعليق",
+      "commentRequired": "أضف تعليقًا لهذا البند.",
+      "priority": "الأولوية",
+      "assigned": "الشخص المسؤول",
+      "nobody": "لا أحد",
+      "raiseFinding": "تسجيل ملاحظة",
+      "addPhoto": "إضافة صورة",
+      "photos": "{count} من {max} صور",
+      "photoRequired": "صورة مطلوبة"
+    },
+    "submit": {
+      "title": "مراجعة وإرسال",
+      "submit": "إرسال",
+      "blocked": "{count, plural, one {بند واحد يحتاج} two {بندان يحتاجان} few {# بنود تحتاج} other {# بندًا تحتاج}} إلى معالجة أولًا.",
+      "reasonRequired": "اذكر سبب عدم الحاجة إلى إجراء.",
+      "needsAttention": "{count, plural, one {بند واحد يحتاج} two {بندان يحتاجان} few {# بنود تحتاج} other {# بندًا تحتاج}} إلى معالجة",
+      "reason": {
+        "unanswered": "لم تتم الإجابة",
+        "commentRequired": "التعليق مطلوب",
+        "photoRequired": "الصورة مطلوبة",
+        "resultNotAllowed": "النتيجة غير مسموح بها",
+        "areaRequired": "اختر منطقة لهذا التفتيش."
+      },
+      "findings": "{count, plural, =0 {لن تُنشأ ملاحظات.} one {ستُنشأ ملاحظة واحدة.} two {ستُنشأ ملاحظتان.} few {ستُنشأ # ملاحظات.} other {ستُنشأ # ملاحظة.}}",
+      "decision": "القرار",
+      "raiseAction": "إنشاء إجراء",
+      "noAction": "لا حاجة إلى إجراء",
+      "noActionReason": "سبب عدم الحاجة إلى إجراء"
+    },
+    "page": {
+      "title": "التفتيش",
+      "back": "العودة إلى عمليات التفتيش",
+      "inspector": "المفتش",
+      "planner": "خطط له",
+      "plannedOn": "مخطط في",
+      "inspectedOn": "تاريخ التفتيش",
+      "place": "المكان",
+      "weather": "الطقس",
+      "version": "النموذج",
+      "versionValue": "الإصدار {version}",
+      "location": "موقع الجهاز",
+      "syncedLater": "تمت المزامنة لاحقًا",
+      "followUpOf": "متابعة لـ",
+      "note": "ملاحظة",
+      "cancelledBecause": "ملغى: {reason}",
+      "startCapture": "بدء التفتيش",
+      "continueCapture": "متابعة التسجيل",
+      "results": "النتائج",
+      "showProblems": "عرض المشكلات فقط",
+      "showAll": "عرض كل البنود",
+      "unanswered": "لم تتم الإجابة",
+      "photoOf": "صورة {item}",
+      "noProblems": "لا توجد بنود غير مطابقة أو ملاحظات.",
+      "comments": "التعليقات",
+      "approve": "اعتماد",
+      "return": "إعادة إلى المفتش",
+      "withdraw": "سحب",
+      "withdrawn": "تم السحب. يمكنك تعديله مرة أخرى.",
+      "reassign": "إعادة إسناد",
+      "cancel": "إلغاء التفتيش",
+      "returnTitle": "إعادة إلى المفتش؟",
+      "cancelTitle": "إلغاء هذا التفتيش؟",
+      "returnReason": "ما الذي يجب على المفتش تغييره؟",
+      "cancelReason": "لماذا أُلغي؟",
+      "returned": "أُعيد إلى المفتش.",
+      "cancelled": "أُلغي التفتيش.",
+      "reassigned": "تمت إعادة الإسناد.",
+      "approveTitle": "اعتماد {ref}؟",
+      "approveNoFindings": "لا توجد ملاحظات، لذلك يُغلق التفتيش أيضًا.",
+      "findingNumber": "الملاحظة {number}",
+      "willRaise": "يُنشأ إجراء لـ {owner}، مستحق في {date}.",
+      "ownerMissing": "اختر المسؤول قبل الاعتماد.",
+      "willNotRaise": "بدون إجراء: {reason}",
+      "approved": "تم الاعتماد.",
+      "reasonTooShort": "اكتب 5 أحرف على الأقل.",
+      "reassignTitle": "إعادة إسناد التفتيش",
+      "newInspector": "المفتش الجديد",
+      "history": "السجل"
+    },
+    "findings": {
+      "title": "الملاحظات ({count})",
+      "number": "الملاحظة {number}",
+      "edited": "عدّلها المراجع",
+      "responsible": "المسؤول: {name}",
+      "noResponsible": "لا يوجد مسؤول بعد",
+      "due": "مستحقة في {date}",
+      "noActionBecause": "لا حاجة إلى إجراء: {reason}",
+      "voided": "ملغى",
+      "actionStatus": {
+        "open": "مفتوح",
+        "in_progress": "قيد التنفيذ",
+        "completed": "مكتمل",
+        "verified": "تم التحقق",
+        "closed": "مغلق"
+      },
+      "edit": "تعديل",
+      "raise": "إنشاء إجراء",
+      "raiseAnother": "إنشاء إجراء آخر",
+      "noAction": "لا حاجة إلى إجراء",
+      "editTitle": "تعديل الملاحظة {number}",
+      "raiseTitle": "إنشاء إجراء للملاحظة {number}",
+      "noActionTitle": "بدون إجراء للملاحظة {number}",
+      "description": "الوصف",
+      "severity": "الخطورة",
+      "responsibleLabel": "الشخص المسؤول",
+      "dueLabel": "تاريخ الاستحقاق",
+      "decision": "القرار",
+      "reason": "السبب",
+      "backToInspections": "العودة إلى عمليات التفتيش",
+      "openTitle": "الملاحظات المفتوحة",
+      "any": "الكل",
+      "overdueOnly": "المتأخرة فقط",
+      "none": "لا توجد ملاحظات مفتوحة."
+    },
+    "findingStatus": {
+      "open": "مفتوحة",
+      "action_raised": "أُنشئ إجراء",
+      "resolved": "تمت المعالجة",
+      "no_action": "لا حاجة إلى إجراء"
+    },
+    "offline": {
+      "type": "تفتيش",
+      "itemType": "بند تفتيش"
+    },
+    "outboxFallback": "تفتيش"
   }
 }

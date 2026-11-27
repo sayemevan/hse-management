@@ -5,9 +5,10 @@ import {
   ACTIVITY_LONG_VALUE,
   type ActivityEntryDto,
   type ActivityGroup,
+  localized,
 } from '@hse/shared';
-import { FolderKanban, HardHat, ListChecks, MapPin, Users } from 'lucide-react';
-import { useTranslations } from 'next-intl';
+import { ClipboardCheck, FolderKanban, HardHat, ListChecks, MapPin, Users } from 'lucide-react';
+import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 
 import { Alert } from '@/components/ui/alert';
@@ -30,6 +31,7 @@ const GROUP_ICONS = {
   structure: MapPin,
   workforce: HardHat,
   actions: ListChecks,
+  inspections: ClipboardCheck,
 } as const;
 
 /** The sentence of a timeline entry in the reader's language (PLT-18 FR-6; Sprint 8 History). */
@@ -42,6 +44,7 @@ export function useActivitySentence() {
   const positionName = usePositionName();
   const recordLabel = useRecordLabel();
   const methods = useTranslations('actions.method');
+  const locale = useLocale();
   return useCallback(
     (entry: ActivityEntryDto) => {
       const s = entry.snapshot;
@@ -73,6 +76,10 @@ export function useActivitySentence() {
         method: s.method ? methods(s.method as 'site_visit') : '',
         reason: s.reason ?? '',
         file: s.fileName ?? '',
+        // Sprint 10
+        inspection: s.inspectionReference ? ltr(s.inspectionReference) : '',
+        template: localized({ en: s.templateNameEn ?? null, ar: s.templateNameAr ?? null }, locale),
+        finding: s.findingSeq ?? '',
       };
       if (entry.action === 'action.owner_changed') {
         const before = entry.changes?.before.owner;
@@ -89,7 +96,7 @@ export function useActivitySentence() {
       const key = entry.action.replace(/\./g, '_') as 'project_created';
       return t(key, values);
     },
-    [t, roles, statuses, levels, workforceStatus, positionName, recordLabel, methods],
+    [t, roles, statuses, levels, workforceStatus, positionName, recordLabel, methods, locale],
   );
 }
 

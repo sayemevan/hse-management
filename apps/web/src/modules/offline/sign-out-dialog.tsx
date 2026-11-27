@@ -1,12 +1,13 @@
 'use client';
 
-import { useTranslations } from 'next-intl';
+import { useLocale, useTranslations } from 'next-intl';
 import { useEffect, useId, useRef, useState } from 'react';
 
 import { Button } from '@/components/ui/button';
 import { Spinner } from '@/components/ui/spinner';
 
 import { discardAll } from './outbox';
+import { displayLabel } from './registry';
 import { useSync } from './sync-provider';
 
 /**
@@ -25,6 +26,7 @@ export function SignOutDialog({
   onSignOut: () => void;
 }) {
   const t = useTranslations('offline.signOut');
+  const locale = useLocale();
   const { online, items, syncNow } = useSync();
   const dialog = useRef<HTMLDialogElement>(null);
   const titleId = useId();
@@ -97,7 +99,7 @@ export function SignOutDialog({
           <ul className="mt-3 max-h-60 list-disc overflow-auto ps-6 text-sm">
             {unsynced.map((item) => (
               <li key={item.seq}>
-                <bdi>{item.label}</bdi>
+                <bdi>{displayLabel(item.label, locale)}</bdi>
               </li>
             ))}
           </ul>

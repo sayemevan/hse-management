@@ -86,6 +86,8 @@ describe('PLT-16 permission catalogue', () => {
     expect(me.body.data.companyRole).toBe('hse_director');
     expect(me.body.data.permissions).toEqual([
       'company.view',
+      // Sprint 10 (D-60: O-149)
+      'inspections.templates.manage',
       'projects.create',
       'roles.view',
       'users.view',

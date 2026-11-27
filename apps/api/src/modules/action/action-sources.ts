@@ -1,5 +1,7 @@
 import type { Principal } from '../../core/auth/principal';
+import type { RequestMeta } from '../../core/http/request-meta';
 import type { Database } from '../../database/client';
+import type { Statement } from '../../database/unit-of-work';
 
 /** What a source module says about one of its records (T-57). */
 export interface ActionSourceRecord {
@@ -19,6 +21,22 @@ export interface ActionSource {
   describe(db: Database, companyId: string, recordId: string): Promise<ActionSourceRecord | null>;
   /** May narrow who sees this source's actions (T-65). Default: no extra rule. */
   canView?(db: Database, principal: Principal, recordId: string): Promise<boolean>;
+  /**
+   * Sprint 10 (T-79): called inside the action's batch when an action of this source is closed
+   * or voided; returns the source's own statements (e.g. resolve a finding, close an inspection).
+   */
+  onActionChanged?(input: ActionChange): Promise<Statement[]>;
+}
+
+/** What changed on one action of a source (T-79). */
+export interface ActionChange {
+  db: Database;
+  meta: RequestMeta;
+  now: number;
+  companyId: string;
+  recordId: string;
+  actorUserId: string;
+  action: { id: string; number: number; status: string; voided: boolean };
 }
 
 const sources = new Map<string, ActionSource>();

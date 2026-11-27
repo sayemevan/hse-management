@@ -42,7 +42,14 @@ export const PROJECT_ROLES_REQUIRING_END_DATE: readonly ProjectRole[] = [
 export type PermissionScopeLevel = 'platform' | 'company' | 'project';
 
 export type PermissionModule =
-  'platform' | 'company' | 'users' | 'roles' | 'subscription' | 'projects' | 'workforce';
+  | 'platform'
+  | 'company'
+  | 'users'
+  | 'roles'
+  | 'subscription'
+  | 'projects'
+  | 'workforce'
+  | 'inspections';
 
 export interface PermissionDefinition {
   readonly code: string;
@@ -192,6 +199,38 @@ export const PERMISSIONS = [
   },
   {
     code: 'projects.actions.close',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
+  // Sprint 10 (D-60: O-149). Inspectors always see their own inspections.
+  {
+    code: 'inspections.templates.manage',
+    module: 'inspections',
+    scope: 'company',
+    defaults: [CA, HD, HM],
+  },
+  {
+    code: 'projects.inspections.view',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO, SE, SV, FM, IN, CL, CO, AU],
+  },
+  {
+    code: 'projects.inspections.conduct',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO, SE, SV, FM, IN],
+  },
+  {
+    code: 'projects.inspections.manage',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
+  // PM approves by default, like actions (D-54), so T-46 doesn't block adding Safety Officers.
+  {
+    code: 'projects.inspections.approve',
     module: 'projects',
     scope: 'project',
     defaults: [CA, HD, HM, PM, SO],

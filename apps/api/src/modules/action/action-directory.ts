@@ -9,6 +9,18 @@ import { mayView } from './action-access';
 import { ActionRepository } from './action.repository';
 import { action } from './action.schema';
 
+/** One action of a source record (Sprint 10). */
+export interface SourceAction {
+  id: string;
+  recordId: string;
+  projectId: string;
+  number: number;
+  status: ActionStatus;
+  voided: boolean;
+  ownerId: string;
+  dueOn: string;
+}
+
 /**
  * What other modules may know about actions (PLT-23 FR-2): counts by status for their source
  * records, and whether a reader may open one (notification links, T-41).
@@ -50,6 +62,46 @@ export class ActionDirectory {
       result.set(row.recordId, entry);
     }
     return result;
+  }
+
+  /** Sprint 10: the actions of source records (voided included), for the source's screens. */
+  async actionsForSource(
+    companyId: string,
+    module: string,
+    recordIds: readonly string[],
+  ): Promise<SourceAction[]> {
+    if (recordIds.length === 0) return [];
+    const rows = await this.db
+      .select({
+        id: action.id,
+        recordId: action.sourceRecordId,
+        projectId: action.projectId,
+        number: action.number,
+        status: action.status,
+        voidedAt: action.voidedAt,
+        ownerId: action.ownerId,
+        dueOn: action.dueOn,
+      })
+      .from(action)
+      .where(
+        and(
+          eq(action.companyId, companyId),
+          eq(action.sourceModule, module),
+          inArray(action.sourceRecordId, [...recordIds]),
+        ),
+      )
+      .orderBy(action.number)
+      .all();
+    return rows.map((row) => ({
+      id: row.id,
+      recordId: row.recordId ?? '',
+      projectId: row.projectId,
+      number: row.number,
+      status: row.status,
+      voided: row.voidedAt !== null,
+      ownerId: row.ownerId,
+      dueOn: row.dueOn,
+    }));
   }
 
   /** The action's project, if the principal may view the action now (T-65). */

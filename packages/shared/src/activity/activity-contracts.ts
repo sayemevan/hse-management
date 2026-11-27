@@ -4,7 +4,7 @@ import { z } from 'zod';
  * Activity timeline actions (PLT-18, T-43). Each belongs to one filter group. Later modules add
  * their actions here. The web app writes the sentence in the reader's language.
  */
-export const ACTIVITY_GROUPS = ['project', 'members', 'structure', 'workforce', 'actions'] as const;
+export const ACTIVITY_GROUPS = ['project', 'members', 'structure', 'workforce', 'actions', 'inspections'] as const;
 export type ActivityGroup = (typeof ACTIVITY_GROUPS)[number];
 
 export const ACTIVITY_ACTIONS = {
@@ -55,6 +55,25 @@ export const ACTIVITY_ACTIONS = {
   'action.sent_back': 'actions',
   'action.closed': 'actions',
   'action.voided': 'actions',
+  // Sprint 10: the project timeline and the inspection's History (PLT-32).
+  'inspection.planned': 'inspections',
+  'inspection.started': 'inspections',
+  'inspection.updated': 'inspections',
+  'inspection.items_saved': 'inspections',
+  'inspection.file_added': 'inspections',
+  'inspection.file_removed': 'inspections',
+  'inspection.submitted': 'inspections',
+  'inspection.withdrawn': 'inspections',
+  'inspection.returned': 'inspections',
+  'inspection.approved': 'inspections',
+  'inspection.closed': 'inspections',
+  'inspection.cancelled': 'inspections',
+  'inspection.reassigned': 'inspections',
+  'inspection.finding_updated': 'inspections',
+  'inspection.finding_action_raised': 'inspections',
+  'inspection.finding_no_action': 'inspections',
+  'inspection.finding_resolved': 'inspections',
+  'inspection.finding_reopened': 'inspections',
 } as const satisfies Record<string, ActivityGroup>;
 export type ActivityAction = keyof typeof ACTIVITY_ACTIONS;
 
@@ -96,6 +115,12 @@ export interface ActivitySnapshot {
   method?: string;
   fileName?: string;
   reason?: string;
+  // Sprint 10
+  inspectionReference?: string | null;
+  templateNameEn?: string | null;
+  templateNameAr?: string | null;
+  findingSeq?: number;
+  itemCount?: number;
 }
 
 export const timelineQuerySchema = z.object({

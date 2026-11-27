@@ -37,7 +37,8 @@ export interface ActionProject {
 export interface NewAction {
   tenant: TenantCompany;
   project: ActionProject;
-  source: { module: string; recordId?: string | null };
+  /** `label`: a registered source may give its label itself (its record is in the same batch). */
+  source: { module: string; recordId?: string | null; label?: string };
   type: ActionType;
   priority: ActionPriority;
   title: string;
@@ -66,7 +67,8 @@ export const ACTION_NUMBER_INDEX = 'action.project_id, action.number';
 export class ActionEngine {
   constructor(private readonly ctx: ActionContext) {}
 
-  async prepare(input: NewAction): Promise<PreparedAction> {
+  /** `number`: several actions in one batch take consecutive numbers after one `peekNumber`. */
+  async prepare(input: NewAction, number?: number): Promise<PreparedAction> {
     const { tenant, project } = input;
     if (project.status === 'archived') throw new ProjectArchivedError();
     if (!acceptsRecords(project.status)) throw new ProjectNotAcceptingRecordsError(project.status);
@@ -97,13 +99,13 @@ export class ActionEngine {
     }
 
     const label = await this.sourceLabel(tenant, project, input.source);
-    const number = await this.ctx.numbers.peek(project.id, 'action');
+    const assigned = number ?? (await this.ctx.numbers.peek(project.id, 'action'));
     const now = new Date(this.ctx.now());
     const row: ActionRow = {
       id: generateId(),
       companyId: tenant.id,
       projectId: project.id,
-      number,
+      number: assigned,
       sourceModule: input.source.module,
       sourceRecordId: input.source.recordId ?? null,
       sourceLabel: label,
@@ -136,7 +138,7 @@ export class ActionEngine {
       updatedAt: now,
       updatedBy: input.createdBy,
     };
-    const reference = actionReference(project.code, number);
+    const reference = actionReference(project.code, assigned);
     const params: NotificationParams = {
       projectCode: project.code,
       actionReference: reference,
@@ -157,7 +159,7 @@ export class ActionEngine {
       });
 
     const statements: Statement[] = [
-      this.ctx.numbers.claim(project.id, 'action', number),
+      this.ctx.numbers.claim(project.id, 'action', assigned),
       this.ctx.repo.insert(row),
       this.ctx.repo.openOwnerHistory({
         id: generateId(),
@@ -198,6 +200,11 @@ export class ActionEngine {
     return { row, reference, statements };
   }
 
+  /** The next free number of the project (for several actions in one batch). */
+  peekNumber(projectId: string): Promise<number> {
+    return this.ctx.numbers.peek(projectId, 'action');
+  }
+
   /** Creates one action on its own (US-053), retrying a number taken concurrently. */
   create(input: NewAction): Promise<PreparedAction> {
     return withActionNumber(async () => {
@@ -223,6 +230,7 @@ export class ActionEngine {
     }
     const registered = actionSource(source.module);
     if (!registered) throw new NotFoundError();
+    if (source.label) return source.label;
     const described = await registered.describe(this.ctx.db, tenant.id, source.recordId);
     if (described?.projectId !== project.id) throw new NotFoundError();
     return described.label;

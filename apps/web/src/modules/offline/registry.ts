@@ -72,3 +72,18 @@ export function isOfflineRoute(pathname: string): boolean {
   const path = pathname.replace(/\/+$/, '') || '/';
   return offlineRoutes().some((route) => route === path);
 }
+
+/**
+ * T-80: a module may store its outbox label as JSON `{ en, ar, ref }` so the reader sees it in
+ * their language (Sprint 10). Plain labels (the sync probe) are shown as they are.
+ */
+export function displayLabel(label: string, locale: string): string {
+  if (!label.startsWith('{')) return label;
+  try {
+    const parsed = JSON.parse(label) as { en?: string | null; ar?: string | null; ref?: string | null };
+    const name = (locale.startsWith('ar') ? (parsed.ar ?? parsed.en) : (parsed.en ?? parsed.ar)) ?? '';
+    return parsed.ref ? `${parsed.ref} · ${name}` : name;
+  } catch {
+    return label;
+  }
+}

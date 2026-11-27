@@ -23,6 +23,7 @@ import {
 } from '../../platform/notification';
 import { permissionResolverFor, userNames, validateIdentitySession } from '../identity';
 import { ActionDirectory } from '../action';
+import { InspectionDirectory } from '../inspection';
 import { ProjectDirectory } from '../project';
 
 const signedIn = authenticate(validateIdentitySession);
@@ -54,6 +55,10 @@ type Target =
   | { kind: 'action' }
   /** PLT-24: My actions, due today and overdue. */
   | { kind: 'my_actions' }
+  /** Sprint 10: the inspection page, if the reader may still view it. */
+  | { kind: 'inspection' }
+  /** Sprint 10: My inspections, To review. */
+  | { kind: 'my_inspections' }
   | {
       kind: 'company';
       permission: 'roles.view' | 'users.view' | 'subscription.view' | 'workforce.view' | null;
@@ -120,6 +125,17 @@ const TARGETS: Record<NotificationType, Target> = {
     permission: null,
     route: (row) => `/sync/conflicts/${row.entityId ?? ''}`,
   },
+  // Sprint 10 (O-150)
+  'inspection.assigned': { kind: 'inspection' },
+  'inspection.unassigned': { kind: 'inspection' },
+  'inspection.submitted': { kind: 'inspection' },
+  'inspection.returned': { kind: 'inspection' },
+  'inspection.approved': { kind: 'inspection' },
+  'inspection.closed': { kind: 'inspection' },
+  'inspection.cancelled': { kind: 'inspection' },
+  'inspection.overdue': { kind: 'inspection' },
+  'inspection.review_waiting': { kind: 'my_inspections' },
+  'inspection.comment_added': { kind: 'inspection' },
 };
 
 async function openTarget(c: Context<AppEnv>, row: NotificationRow): Promise<NotificationOpenDto> {
@@ -132,6 +148,19 @@ async function openTarget(c: Context<AppEnv>, row: NotificationRow): Promise<Not
       return { route: null, access: true };
     case 'my_actions':
       return { route: '/my-actions?due=overdue,due_today', access: true };
+    case 'my_inspections':
+      return { route: '/inspections?tab=to_review', access: true };
+    case 'inspection': {
+      if (!row.entityId) return { route: null, access: false };
+      const projectId = await new InspectionDirectory(createDatabase(c.env.DB), resolver).viewableProject(
+        c.get('principal'),
+        company.id,
+        row.entityId,
+      );
+      return projectId
+        ? { route: `/projects/${projectId}/inspections/${row.entityId}`, access: true }
+        : { route: null, access: false };
+    }
     case 'action': {
       if (!row.entityId) return { route: null, access: false };
       const projectId = await new ActionDirectory(createDatabase(c.env.DB), resolver).viewableProject(
