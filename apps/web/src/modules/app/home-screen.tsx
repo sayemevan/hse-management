@@ -5,6 +5,9 @@ import {
   ChevronRight,
   ClipboardCheck,
   ClipboardList,
+  Grid3x3,
+  Megaphone,
+  ShieldAlert,
   CreditCard,
   FolderKanban,
   HardHat,
@@ -86,6 +89,18 @@ export function HomeScreen() {
           Icon: ClipboardList,
         },
         {
+          permission: 'safety_events.settings.manage',
+          href: '/settings/safety-events',
+          label: t('home.safetySettings'),
+          Icon: ShieldAlert,
+        },
+        {
+          permission: 'risk.matrix.manage',
+          href: '/settings/risk-matrix',
+          label: t('home.riskMatrix'),
+          Icon: Grid3x3,
+        },
+        {
           permission: 'subscription.view',
           href: '/settings/subscription',
           label: t('home.subscription'),
@@ -100,6 +115,9 @@ export function HomeScreen() {
         { href: '/projects', label: t('home.projects'), Icon: FolderKanban },
         // Sprint 10 (US-033): works offline too.
         { href: '/inspections', label: t('home.myInspections'), Icon: ClipboardCheck },
+        // Sprint 11 (PLT-33): report in one tap; works offline too.
+        { href: '/safety-events/report', label: t('home.report'), Icon: Megaphone },
+        { href: '/safety-events', label: t('home.myReports'), Icon: ShieldAlert },
         ...(hasPermission(user, 'workforce.view')
           ? [{ href: '/workforce', label: t('home.workforce'), Icon: HardHat }]
           : []),

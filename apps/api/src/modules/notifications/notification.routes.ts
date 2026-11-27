@@ -24,6 +24,7 @@ import {
 import { permissionResolverFor, userNames, validateIdentitySession } from '../identity';
 import { ActionDirectory } from '../action';
 import { InspectionDirectory } from '../inspection';
+import { SafetyEventDirectory } from '../safety-event';
 import { ProjectDirectory } from '../project';
 
 const signedIn = authenticate(validateIdentitySession);
@@ -59,6 +60,10 @@ type Target =
   | { kind: 'inspection' }
   /** Sprint 10: My inspections, To review. */
   | { kind: 'my_inspections' }
+  /** Sprint 11: the event page, if the reader may still see the event (T-93). */
+  | { kind: 'safety_event' }
+  /** Sprint 11: My reports, To review. */
+  | { kind: 'my_safety_events' }
   | {
       kind: 'company';
       permission: 'roles.view' | 'users.view' | 'subscription.view' | 'workforce.view' | null;
@@ -136,6 +141,20 @@ const TARGETS: Record<NotificationType, Target> = {
   'inspection.overdue': { kind: 'inspection' },
   'inspection.review_waiting': { kind: 'my_inspections' },
   'inspection.comment_added': { kind: 'inspection' },
+  // Sprint 11 (O-175)
+  'safety_event.reported': { kind: 'safety_event' },
+  'safety_event.high_reported': { kind: 'safety_event' },
+  'safety_event.critical_reported': { kind: 'safety_event' },
+  'safety_event.investigation_assigned': { kind: 'safety_event' },
+  'safety_event.investigation_unassigned': { kind: 'my_safety_events' },
+  'safety_event.investigation_completed': { kind: 'safety_event' },
+  'safety_event.verification_ready': { kind: 'safety_event' },
+  'safety_event.returned': { kind: 'safety_event' },
+  'safety_event.closed': { kind: 'safety_event' },
+  'safety_event.voided': { kind: 'safety_event' },
+  'safety_event.investigation_overdue': { kind: 'safety_event' },
+  'safety_event.review_waiting': { kind: 'my_safety_events' },
+  'safety_event.comment_added': { kind: 'safety_event' },
 };
 
 async function openTarget(c: Context<AppEnv>, row: NotificationRow): Promise<NotificationOpenDto> {
@@ -150,6 +169,19 @@ async function openTarget(c: Context<AppEnv>, row: NotificationRow): Promise<Not
       return { route: '/my-actions?due=overdue,due_today', access: true };
     case 'my_inspections':
       return { route: '/inspections?tab=to_review', access: true };
+    case 'my_safety_events':
+      return { route: '/safety-events?tab=to_review', access: true };
+    case 'safety_event': {
+      if (!row.entityId) return { route: null, access: false };
+      const projectId = await new SafetyEventDirectory(createDatabase(c.env.DB), resolver).viewableProject(
+        c.get('principal'),
+        company.id,
+        row.entityId,
+      );
+      return projectId
+        ? { route: `/projects/${projectId}/safety-events/${row.entityId}`, access: true }
+        : { route: null, access: false };
+    }
     case 'inspection': {
       if (!row.entityId) return { route: null, access: false };
       const projectId = await new InspectionDirectory(createDatabase(c.env.DB), resolver).viewableProject(

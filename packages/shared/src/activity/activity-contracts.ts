@@ -4,7 +4,7 @@ import { z } from 'zod';
  * Activity timeline actions (PLT-18, T-43). Each belongs to one filter group. Later modules add
  * their actions here. The web app writes the sentence in the reader's language.
  */
-export const ACTIVITY_GROUPS = ['project', 'members', 'structure', 'workforce', 'actions', 'inspections'] as const;
+export const ACTIVITY_GROUPS = ['project', 'members', 'structure', 'workforce', 'actions', 'inspections', 'safety_events'] as const;
 export type ActivityGroup = (typeof ACTIVITY_GROUPS)[number];
 
 export const ACTIVITY_ACTIONS = {
@@ -74,6 +74,27 @@ export const ACTIVITY_ACTIONS = {
   'inspection.finding_no_action': 'inspections',
   'inspection.finding_resolved': 'inspections',
   'inspection.finding_reopened': 'inspections',
+  // Sprint 11: the project timeline and the event's History (PLT-33).
+  'safety_event.reported': 'safety_events',
+  'safety_event.updated': 'safety_events',
+  'safety_event.review_started': 'safety_events',
+  'safety_event.classified': 'safety_events',
+  'safety_event.investigation_assigned': 'safety_events',
+  'safety_event.investigation_reassigned': 'safety_events',
+  'safety_event.investigation_updated': 'safety_events',
+  'safety_event.investigation_completed': 'safety_events',
+  'safety_event.returned': 'safety_events',
+  'safety_event.action_raised': 'safety_events',
+  'safety_event.recommendation_no_action': 'safety_events',
+  'safety_event.recommendation_resolved': 'safety_events',
+  'safety_event.recommendation_reopened': 'safety_events',
+  'safety_event.verification_ready': 'safety_events',
+  'safety_event.closed': 'safety_events',
+  'safety_event.voided': 'safety_events',
+  'safety_event.file_added': 'safety_events',
+  'safety_event.file_removed': 'safety_events',
+  'safety_event.person_changed': 'safety_events',
+  'safety_event.witness_changed': 'safety_events',
 } as const satisfies Record<string, ActivityGroup>;
 export type ActivityAction = keyof typeof ACTIVITY_ACTIONS;
 
@@ -121,6 +142,14 @@ export interface ActivitySnapshot {
   templateNameAr?: string | null;
   findingSeq?: number;
   itemCount?: number;
+  // Sprint 11 (never people's names or injury details; T-92)
+  eventReference?: string | null;
+  typeNameEn?: string | null;
+  typeNameAr?: string | null;
+  recommendationSeq?: number;
+  severity?: string | null;
+  /** Shown only to the investigation team and sensitive readers (T-92). */
+  sensitive?: boolean;
 }
 
 export const timelineQuerySchema = z.object({

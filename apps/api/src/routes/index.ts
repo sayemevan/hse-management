@@ -34,6 +34,12 @@ import {
   inspectionTemplateRoutes,
   projectInspectionRoutes,
 } from '../modules/inspection';
+import { riskMatrixRoutes } from '../modules/risk';
+import {
+  projectSafetyEventRoutes,
+  safetyEventMeRoutes,
+  safetyEventSettingsRoutes,
+} from '../modules/safety-event';
 import { syncProbeRoutes } from '../modules/sync-probe';
 import { healthRoutes } from './health.routes';
 import { platformJobRoutes } from './platform-jobs.routes';
@@ -51,6 +57,7 @@ export { API_V1_BASE_PATH } from './paths';
  * Sprint 7: the workforce area, a project's Workforce tab and `/me/workforce`.
  * Sprint 8: a project's actions with comments, and `/me/actions`.
  * Sprint 10: inspection categories, templates, a project's inspections, `/me/inspections`.
+ * Sprint 11: the risk matrix, safety event settings, a project's safety events, `/me/safety-events`.
  * Sprint 9: the offline profile and pack, the user's sync conflicts, and the sync probe
  * (development and test only, O-116).
  */
@@ -90,6 +97,11 @@ export const v1Routes = new Hono<AppEnv>()
   .use('/inspection-categories/*', resolveTenant(), requireCompanyContext())
   .use('/inspection-templates', resolveTenant(), requireCompanyContext())
   .use('/inspection-templates/*', resolveTenant(), requireCompanyContext())
+  // Sprint 11
+  .use('/risk-matrix', resolveTenant(), requireCompanyContext())
+  .use('/risk-matrix/*', resolveTenant(), requireCompanyContext())
+  .use('/safety-event-settings', resolveTenant(), requireCompanyContext())
+  .use('/safety-event-settings/*', resolveTenant(), requireCompanyContext())
   // Sprint 9
   .use('/dev/*', resolveTenant(), requireCompanyContext())
   // PLT-11: after tenant resolution, before every handler. Refuses company writes in
@@ -113,6 +125,9 @@ export const v1Routes = new Hono<AppEnv>()
   .route('/projects', projectInspectionRoutes)
   .route('/inspection-categories', inspectionCategoryRoutes)
   .route('/inspection-templates', inspectionTemplateRoutes)
+  .route('/projects', projectSafetyEventRoutes)
+  .route('/risk-matrix', riskMatrixRoutes)
+  .route('/safety-event-settings', safetyEventSettingsRoutes)
   .route('/workforce', workforceRoutes)
   .route('/notifications', notificationRoutes)
   .route('/me', meRoutes)
@@ -121,6 +136,7 @@ export const v1Routes = new Hono<AppEnv>()
   .route('/me', offlineProfileRoutes)
   .route('/me', syncMeRoutes)
   .route('/me', inspectionMeRoutes)
+  .route('/me', safetyEventMeRoutes)
   .route('/dev/sync-probes', syncProbeRoutes)
   .route('/roles', roleRoutes)
   .route('/platform/payments', platformPaymentRoutes)

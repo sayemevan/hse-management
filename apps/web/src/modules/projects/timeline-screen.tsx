@@ -7,7 +7,7 @@ import {
   type ActivityGroup,
   localized,
 } from '@hse/shared';
-import { ClipboardCheck, FolderKanban, HardHat, ListChecks, MapPin, Users } from 'lucide-react';
+import { ClipboardCheck, FolderKanban, HardHat, ListChecks, MapPin, ShieldAlert, Users } from 'lucide-react';
 import { useLocale, useTranslations } from 'next-intl';
 import { useCallback, useEffect, useState } from 'react';
 
@@ -32,6 +32,7 @@ const GROUP_ICONS = {
   workforce: HardHat,
   actions: ListChecks,
   inspections: ClipboardCheck,
+  safety_events: ShieldAlert,
 } as const;
 
 /** The sentence of a timeline entry in the reader's language (PLT-18 FR-6; Sprint 8 History). */
@@ -80,6 +81,10 @@ export function useActivitySentence() {
         inspection: s.inspectionReference ? ltr(s.inspectionReference) : '',
         template: localized({ en: s.templateNameEn ?? null, ar: s.templateNameAr ?? null }, locale),
         finding: s.findingSeq ?? '',
+        // Sprint 11
+        event: s.eventReference ? ltr(s.eventReference) : '',
+        type: localized({ en: s.typeNameEn ?? null, ar: s.typeNameAr ?? null }, locale),
+        recommendation: s.recommendationSeq ?? '',
       };
       if (entry.action === 'action.owner_changed') {
         const before = entry.changes?.before.owner;

@@ -89,7 +89,10 @@ describe('PLT-16 permission catalogue', () => {
       // Sprint 10 (D-60: O-149)
       'inspections.templates.manage',
       'projects.create',
+      // Sprint 11 (D-63: O-168)
+      'risk.matrix.manage',
       'roles.view',
+      'safety_events.settings.manage',
       'users.view',
       // Sprint 7 (D-50: O-73 – O-77)
       'workforce.contacts.view',

@@ -401,6 +401,7 @@ describe('PLT-10 / PLT-15 daily lifecycle job', () => {
       'actions.due',
       'sync.maintenance',
       'inspections.due',
+      'safety_events.due',
     ]);
     expect(rows.every((row) => row.outcome === 'succeeded')).toBe(true);
     const runs = await owner.call<JobRunDto[]>('GET', '/platform/jobs');

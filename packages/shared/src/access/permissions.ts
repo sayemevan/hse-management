@@ -49,7 +49,9 @@ export type PermissionModule =
   | 'subscription'
   | 'projects'
   | 'workforce'
-  | 'inspections';
+  | 'inspections'
+  | 'safety_events'
+  | 'risk';
 
 export interface PermissionDefinition {
   readonly code: string;
@@ -74,6 +76,7 @@ const IN = 'inspector';
 const AU = 'auditor';
 const CL = 'client';
 const CO = 'consultant';
+const WK = 'worker';
 
 export const PERMISSIONS = [
   // Company scope
@@ -231,6 +234,51 @@ export const PERMISSIONS = [
   // PM approves by default, like actions (D-54), so T-46 doesn't block adding Safety Officers.
   {
     code: 'projects.inspections.approve',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
+  // Sprint 11 (D-63: O-167, O-168). Reporters always see their own reports; the investigation
+  // team sees the whole event while on the team (T-93).
+  {
+    code: 'safety_events.settings.manage',
+    module: 'safety_events',
+    scope: 'company',
+    defaults: [CA, HD, HM],
+  },
+  { code: 'risk.matrix.manage', module: 'risk', scope: 'company', defaults: [CA, HD, HM] },
+  {
+    code: 'projects.safety_events.report',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO, SE, SV, FM, IN, WK, CL, CO],
+  },
+  {
+    code: 'projects.safety_events.view',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO, SE, SV, FM, IN, CL, CO, AU],
+  },
+  {
+    code: 'projects.safety_events.manage',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
+  {
+    code: 'projects.safety_events.investigate',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO, SE, SV],
+  },
+  {
+    code: 'projects.safety_events.close',
+    module: 'projects',
+    scope: 'project',
+    defaults: [CA, HD, HM, PM, SO],
+  },
+  {
+    code: 'projects.safety_events.sensitive.view',
     module: 'projects',
     scope: 'project',
     defaults: [CA, HD, HM, PM, SO],

@@ -51,6 +51,20 @@ export const NOTIFICATION_TYPES = [
   'inspection.overdue',
   'inspection.review_waiting',
   'inspection.comment_added',
+  // Sprint 11 (O-175)
+  'safety_event.reported',
+  'safety_event.high_reported',
+  'safety_event.critical_reported',
+  'safety_event.investigation_assigned',
+  'safety_event.investigation_unassigned',
+  'safety_event.investigation_completed',
+  'safety_event.verification_ready',
+  'safety_event.returned',
+  'safety_event.closed',
+  'safety_event.voided',
+  'safety_event.investigation_overdue',
+  'safety_event.review_waiting',
+  'safety_event.comment_added',
 ] as const;
 export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
 
@@ -118,6 +132,16 @@ export interface NotificationParams {
   templateNameEn?: string | null;
   templateNameAr?: string | null;
   plannedOn?: string | null;
+  // Sprint 11 — never people's names or injury details (PLT-33)
+  /** `RMX-02-EVT-0014`. */
+  eventReference?: string | null;
+  typeNameEn?: string | null;
+  typeNameAr?: string | null;
+  /** The first 80 characters of the title. */
+  eventTitle?: string;
+  severity?: string | null;
+  /** `safety_event.critical_reported`: shown first, with the word "Urgent". */
+  urgent?: boolean;
 }
 
 export const notificationListQuerySchema = z.object({

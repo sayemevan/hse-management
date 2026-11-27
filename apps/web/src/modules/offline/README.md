@@ -51,3 +51,17 @@ See `dev/sync-probe.ts` for a complete example.
   renders it in the reader's language in the sync centre and the sign-out dialog.
 - **Packs of your own:** the module keeps its template pack under `inspection-templates` with an
   ETag (`refreshTemplatePack`), next to the shared project packs.
+
+## Second consumer: safety event reports (Sprint 11)
+
+`modules/safety-events/safety-event-offline.ts` follows the inspection pattern for a simpler record:
+
+- **Report = one create plus photo uploads** queued under the event id; the photos depend on the
+  create's `seq`. Unsent drafts live in the `drafts` store under their own type
+  (`safety_event_draft`) and never reach the outbox.
+- **My reports offline** shows the outbox items and up to 20 device copies kept while online.
+- **Labels** are JSON `{ kind, en, ar, ref }` with the type name and a title excerpt.
+- **Settings pack** `safety-event-settings` (active types with their rules, categories) with an
+  ETag computed over the data only.
+- Chromium runs Background Sync in the service worker, so a page-level fetch override does not
+  keep items offline: real offline tests need the network switched off.

@@ -24,7 +24,7 @@ A sprint starts only when the previous one is done and its specs are approved (`
 - `docs/03_DATABASE.md`, `docs/04_API.md` — add a "Tables / Endpoints (Sprint N)" section each sprint.
 - `docs/01_PRODUCT_BOOK.md` (7,400 lines) — never read whole. Document start lines: Doc 04 DB 1291 · Doc 05 Design 1581 · Doc 06 Org 2062 · Doc 07 Roles 2368 · Doc 08 Company/Project 2697 · Doc 09 Workforce 3022 · Doc 10 Inspection 3344 · Doc 11 Safety Event 3744 · Doc 12 Permit 4104 · Doc 13 Action 4461 · Doc 14 Backlog 4786 · Doc 15 Template 5297 · Doc 16–31 Epics 5594–7081 (`grep -n "^# Document"` for exact lines). `docs/02_MASTER_RULES.md` — grep the topic.
 
-**Next IDs** (update this line at the end of every stage): last `D-61`, `T-83`, `O-155`, `PLT-32`. Sprint 10 done. Next sprint: 11 (Safety event engine: US-040–046, offline hazard reporting, D-11; blockers Q-21, Q-22).
+**Next IDs** (update this line at the end of every stage): last `D-64`, `T-93`, `O-182`, `PLT-34`. Sprint 11 done (accepted 2026-11-28, D-64). Next: Sprint 12 specs (`/sprint-spec 12`).
 
 **Code** (npm workspaces)
 

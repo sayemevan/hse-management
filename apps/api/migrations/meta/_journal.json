@@ -127,6 +127,20 @@
       "when": 1795771191329,
       "tag": "0017_sprint10_seed_permissions_triggers",
       "breakpoints": true
+    },
+    {
+      "idx": 18,
+      "version": "6",
+      "when": 1795800422910,
+      "tag": "0018_sprint11_safety_events",
+      "breakpoints": true
+    },
+    {
+      "idx": 19,
+      "version": "6",
+      "when": 1795800429432,
+      "tag": "0019_sprint11_seed_permissions_triggers",
+      "breakpoints": true
     }
   ]
 }

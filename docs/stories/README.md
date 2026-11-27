@@ -16,5 +16,6 @@ Status flow: **Draft** → **Approved** (by the Product Owner) → **In progress
 | 8      | [Action engine](sprint-08/00_SPRINT_08_OVERVIEW.md)                             | Done (accepted 2026-11-27) |
 | 9      | [Offline foundation](sprint-09/00_SPRINT_09_OVERVIEW.md)                        | Done (accepted 2026-11-27) |
 | 10     | [Inspection engine](sprint-10/00_SPRINT_10_OVERVIEW.md)                         | Done (accepted 2026-11-27) |
+| 11     | [Safety event engine](sprint-11/00_SPRINT_11_OVERVIEW.md)                       | Done (accepted 2026-11-28) |
 
 Story IDs: `US-xxx` from the Product Book backlog (Doc 14); `PLT-xx` for platform enablers that the backlog doesn't list but the stories depend on.

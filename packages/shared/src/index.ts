@@ -20,6 +20,8 @@ export * from './offline/offline-contracts';
 export * from './projects/member-contracts';
 export * from './projects/place-contracts';
 export * from './projects/project-contracts';
+export * from './risk/risk-contracts';
+export * from './safety-events/safety-event-contracts';
 export * from './tenancy/registration-contracts';
 export * from './tenancy/slug';
 export * from './users/user-contracts';

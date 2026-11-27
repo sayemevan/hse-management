@@ -3,6 +3,7 @@ import {
   INSPECTION_FILE_RULES,
   LOGO_RULES,
   PAYMENT_PROOF_RULES,
+  SAFETY_EVENT_FILE_RULES,
   WORKFORCE_FILE_RULES,
   WORKFORCE_PHOTO_RULES,
 } from '@hse/shared';
@@ -56,6 +57,17 @@ export const FILE_CATEGORIES = {
     contentTypes: INSPECTION_FILE_RULES.contentTypes,
     cacheControl: 'private, no-store',
   },
+  // Sprint 11 (O-162): safety event evidence and medical documents, module-served (T-92).
+  safety_event_evidence: {
+    maxBytes: SAFETY_EVENT_FILE_RULES.maxBytes,
+    contentTypes: SAFETY_EVENT_FILE_RULES.contentTypes,
+    cacheControl: 'private, no-store',
+  },
+  safety_event_sensitive: {
+    maxBytes: SAFETY_EVENT_FILE_RULES.maxBytes,
+    contentTypes: SAFETY_EVENT_FILE_RULES.sensitiveContentTypes,
+    cacheControl: 'private, no-store',
+  },
   // Sprint 9 (O-116): sync probe photos, development and test builds only. Module-served.
   sync_probe_photo: {
     maxBytes: 10 * 1024 * 1024,
@@ -77,4 +89,6 @@ export const MODULE_SERVED_CATEGORIES: readonly FileCategory[] = [
   'action_evidence',
   'sync_probe_photo',
   'inspection_evidence',
+  'safety_event_evidence',
+  'safety_event_sensitive',
 ];

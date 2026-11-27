@@ -156,6 +156,8 @@ function ProjectTabs({ project }: { project: ProjectDto }) {
     { href: `${base}/actions`, label: t('actions'), show: true, prefix: true },
     // Sprint 10 (US-033): everyone on the project sees the tab; its contents follow PLT-32 FR-9.
     { href: `${base}/inspections`, label: t('inspections'), show: true, prefix: true },
+    // Sprint 11 (PLT-33): everyone on the project sees the tab; reporters see their own reports.
+    { href: `${base}/safety-events`, label: t('safetyEvents'), show: true, prefix: true },
     {
       href: `${base}/timeline`,
       label: t('timeline'),

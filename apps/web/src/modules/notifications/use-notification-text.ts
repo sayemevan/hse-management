@@ -151,6 +151,29 @@ export function useNotificationText(): (notification: NotificationDto) => string
             reason: p.reason ?? '',
             count: p.count ?? 1,
           });
+        // Sprint 11 (O-175)
+        case 'safety_event.reported':
+        case 'safety_event.high_reported':
+        case 'safety_event.critical_reported':
+        case 'safety_event.investigation_assigned':
+        case 'safety_event.investigation_unassigned':
+        case 'safety_event.investigation_completed':
+        case 'safety_event.verification_ready':
+        case 'safety_event.returned':
+        case 'safety_event.closed':
+        case 'safety_event.voided':
+        case 'safety_event.investigation_overdue':
+        case 'safety_event.review_waiting':
+        case 'safety_event.comment_added':
+          return t(notification.type.replace('safety_event.', 'safety_event_') as 'safety_event_reported', {
+            ref: ltr(p.eventReference ?? ''),
+            type: localized({ en: p.typeNameEn ?? null, ar: p.typeNameAr ?? null }, locale),
+            title: p.eventTitle ?? '',
+            date: calendarDate(p.dueOn ?? null),
+            reason: p.reason ?? '',
+            count: p.count ?? 1,
+            days: p.daysOverdue ?? 1,
+          });
         // Sprint 9 (O-131)
         case 'sync.conflict':
           return t(p.again ? 'sync_conflict_again' : 'sync_conflict', { record: p.recordLabel ?? '' });

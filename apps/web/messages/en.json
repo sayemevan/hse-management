@@ -7,7 +7,11 @@
     "requiredHint": "Fields marked * are required.",
     "home": "Home",
     "platformName": "HSE Management Platform",
-    "skipToContent": "Skip to main content"
+    "skipToContent": "Skip to main content",
+    "save": "Save",
+    "add": "Add",
+    "edit": "Edit",
+    "remove": "Remove"
   },
   "language": {
     "label": "Language",
@@ -88,7 +92,11 @@
     "workforce": "Workforce",
     "workforceLists": "Job positions and competencies",
     "myInspections": "My inspections",
-    "inspectionTemplates": "Inspection templates"
+    "inspectionTemplates": "Inspection templates",
+    "safetySettings": "Safety event types and lists",
+    "riskMatrix": "Risk matrix",
+    "report": "Report a hazard or incident",
+    "myReports": "My reports"
   },
   "changePassword": {
     "title": "Change password",
@@ -249,7 +257,26 @@
     "INSPECTION_FILE_LIMIT": "You can add up to {max} files here.",
     "FINDING_OWNER_REQUIRED": "Choose who is responsible for each finding.",
     "FINDING_LOCKED": "This finding is resolved and can no longer be changed.",
-    "PLACE_REQUIRED": "Choose an area for this inspection."
+    "PLACE_REQUIRED": "Choose an area for this inspection.",
+    "SAFETY_EVENT_LOCKED": "This report can no longer be changed. Add what you wanted to say as a comment.",
+    "SAFETY_EVENT_TRANSITION_NOT_ALLOWED": "This event changed meanwhile. Reload it and try again.",
+    "SAFETY_EVENT_NOT_REPORTER": "Only the reporter can change the report.",
+    "SAFETY_EVENT_TYPE_INACTIVE": "This event type is no longer in use. Choose another one.",
+    "SAFETY_EVENT_FAMILY_LOCKED": "The family of a type in use cannot change.",
+    "SAFETY_EVENT_SEVERITY_BELOW_MINIMUM": "The severity is below the minimum for this type.",
+    "SAFETY_EVENT_TIME_INVALID": "Check the date and time of the event: not in the future, not more than a year ago.",
+    "SAFETY_EVENT_INVESTIGATION_REQUIRED": "This event must be investigated first.",
+    "SAFETY_EVENT_INVESTIGATION_INCOMPLETE": "The investigation is not complete yet.",
+    "SAFETY_EVENT_INVESTIGATION_CHANGED": "Someone else changed the investigation. Reload it to see their changes.",
+    "SAFETY_EVENT_INVESTIGATOR_NOT_ELIGIBLE": "This person cannot investigate events on this project.",
+    "SAFETY_EVENT_SELF_CLOSURE": "The lead investigator cannot close this event.",
+    "SAFETY_EVENT_OPEN_ACTIONS": "Some recommendations or actions are still open.",
+    "SAFETY_EVENT_FILE_LIMIT": "This event has reached its file limit.",
+    "SAFETY_EVENT_PERSON_LIMIT": "Too many people on this event.",
+    "SAFETY_EVENT_WITNESS_LIMIT": "Too many witnesses on this event.",
+    "RISK_RATING_REQUIRED": "Rate the risk on the matrix first.",
+    "RISK_MATRIX_INVALID": "Every possible score must fall in exactly one band.",
+    "RECOMMENDATION_LOCKED": "This recommendation is already resolved."
   },
   "legal": {
     "termsTitle": "Terms of Service",
@@ -1039,7 +1066,9 @@
       "subscription": "Subscription",
       "projects": "Projects",
       "workforce": "Workforce",
-      "inspections": "Inspections"
+      "inspections": "Inspections",
+      "safety_events": "Safety events",
+      "risk": "Risk"
     },
     "company": {
       "view": {
@@ -1173,6 +1202,34 @@
           "label": "Review and approve inspections",
           "meaning": "Return or approve submitted inspections (never your own)."
         }
+      },
+      "safety_events": {
+        "report": {
+          "label": "Report safety events",
+          "meaning": "Report hazards, near misses and incidents, also offline."
+        },
+        "view": {
+          "label": "View safety events",
+          "meaning": "See every safety event of the project (not injury details)."
+        },
+        "manage": {
+          "label": "Review safety events",
+          "meaning": "Classify and rate events, assign investigations, raise actions, void."
+        },
+        "investigate": {
+          "label": "Investigate safety events",
+          "meaning": "Be named lead investigator or team member."
+        },
+        "close": {
+          "label": "Close safety events",
+          "meaning": "Close events after verification, or with no further action."
+        },
+        "sensitive": {
+          "view": {
+            "label": "See injury details",
+            "meaning": "Injured people, medical documents and witness statements."
+          }
+        }
       }
     },
     "workforce": {
@@ -1210,6 +1267,22 @@
           "meaning": "Create, edit, publish and retire templates and their categories."
         }
       }
+    },
+    "safety_events": {
+      "settings": {
+        "manage": {
+          "label": "Manage safety event settings",
+          "meaning": "Event types and their rules, categories and cause lists."
+        }
+      }
+    },
+    "risk": {
+      "matrix": {
+        "manage": {
+          "label": "Manage the risk matrix",
+          "meaning": "Size, likelihood and consequence labels, score bands."
+        }
+      }
     }
   },
   "projectTabs": {
@@ -1220,7 +1293,8 @@
     "timeline": "Timeline",
     "workforce": "Workforce",
     "actions": "Actions",
-    "inspections": "Inspections"
+    "inspections": "Inspections",
+    "safetyEvents": "Safety events"
   },
   "switcher": {
     "choose": "Projects",
@@ -1291,7 +1365,20 @@
       "inspection_cancelled": "Inspection {ref} was cancelled: {reason}",
       "inspection_overdue": "Inspection {ref} ({template}) planned for {date} is overdue.",
       "inspection_review_waiting": "{count, plural, one {# inspection waits} other {# inspections wait}} for your review.",
-      "inspection_comment_added": "New comment on inspection {ref}."
+      "inspection_comment_added": "New comment on inspection {ref}.",
+      "safety_event_reported": "New safety report {ref}: {title}",
+      "safety_event_high_reported": "High severity report {ref}: {title}",
+      "safety_event_critical_reported": "Urgent — critical report {ref}: {title}",
+      "safety_event_investigation_assigned": "You are investigating {ref}: {title}. Due {date}.",
+      "safety_event_investigation_unassigned": "You are no longer investigating {ref}.",
+      "safety_event_investigation_completed": "The investigation of {ref} is complete.",
+      "safety_event_verification_ready": "{ref} is ready to close: every action is done.",
+      "safety_event_returned": "The investigation of {ref} was returned to you: {reason}",
+      "safety_event_closed": "{ref} was closed. See the outcome.",
+      "safety_event_voided": "Your report {ref} was voided: {reason}",
+      "safety_event_investigation_overdue": "The investigation of {ref} is overdue.",
+      "safety_event_review_waiting": "{count, plural, one {# safety report is} other {# safety reports are}} waiting for review.",
+      "safety_event_comment_added": "New comment on {ref}."
     }
   },
   "placePicker": {
@@ -1430,7 +1517,8 @@
       "structure": "Structure",
       "workforce": "Workforce",
       "actions": "Actions",
-      "inspections": "Inspections"
+      "inspections": "Inspections",
+      "safety_events": "Safety events"
     },
     "empty": "Nothing has happened in this project yet.",
     "loadMore": "Load more",
@@ -1544,7 +1632,27 @@
       "inspection_finding_action_raised": "{actor} raised action {ref} for finding {finding} of inspection {inspection}.",
       "inspection_finding_no_action": "{actor} marked finding {finding} of inspection {inspection} as needing no action.",
       "inspection_finding_resolved": "Finding {finding} of inspection {inspection} was resolved ({ref} closed).",
-      "inspection_finding_reopened": "Finding {finding} of inspection {inspection} is open again ({ref} voided)."
+      "inspection_finding_reopened": "Finding {finding} of inspection {inspection} is open again ({ref} voided).",
+      "safety_event_reported": "{actor} reported {event} ({type}).",
+      "safety_event_updated": "{actor} changed the report {event}.",
+      "safety_event_review_started": "{actor} started reviewing {event}.",
+      "safety_event_classified": "{actor} reviewed {event}.",
+      "safety_event_investigation_assigned": "{actor} assigned the investigation of {event}.",
+      "safety_event_investigation_reassigned": "{actor} changed the investigation team of {event}.",
+      "safety_event_investigation_updated": "{actor} updated the investigation of {event}.",
+      "safety_event_investigation_completed": "{actor} completed the investigation of {event}.",
+      "safety_event_returned": "{actor} returned the investigation of {event}: {reason}",
+      "safety_event_action_raised": "{actor} raised action {ref} from {event}, recommendation {recommendation}.",
+      "safety_event_recommendation_no_action": "{actor} marked recommendation {recommendation} of {event} as needing no action.",
+      "safety_event_recommendation_resolved": "Recommendation {recommendation} of {event} was resolved by {ref}.",
+      "safety_event_recommendation_reopened": "Recommendation {recommendation} of {event} is open again ({ref} voided).",
+      "safety_event_verification_ready": "{event} is ready to close.",
+      "safety_event_closed": "{actor} closed {event}.",
+      "safety_event_voided": "{actor} voided {event}: {reason}",
+      "safety_event_file_added": "{actor} added a file to {event}.",
+      "safety_event_file_removed": "{actor} removed a file from {event}.",
+      "safety_event_person_changed": "{actor} updated the people of {event}.",
+      "safety_event_witness_changed": "{actor} updated the witnesses of {event}."
     },
     "groupLabel": "{group}: ",
     "fieldLabel": "{field}:",
@@ -2697,5 +2805,395 @@
       "itemType": "Inspection item"
     },
     "outboxFallback": "Inspection"
+  },
+  "safetyEvents": {
+    "underReview": "Under review",
+    "urgent": "Urgent",
+    "overdue": "Overdue · {days, plural, one {# day} other {# days}}",
+    "reportedLate": "Reported late",
+    "offline": {
+      "type": "Safety report"
+    },
+    "status": {
+      "reported": "Reported",
+      "under_investigation": "Under investigation",
+      "corrective_action": "Corrective action",
+      "verification": "Verification",
+      "closed": "Closed",
+      "voided": "Voided"
+    },
+    "family": {
+      "hazard": "Hazard",
+      "near_miss": "Near miss",
+      "incident": "Incident"
+    },
+    "severity": {
+      "low": "Low",
+      "medium": "Medium",
+      "high": "High",
+      "critical": "Critical",
+      "proposed": "{level} (proposed)",
+      "guidance": {
+        "low": "No injury, or minor first aid; little damage.",
+        "medium": "Medical treatment; minor damage or release.",
+        "high": "Lost-time injury; serious damage or release.",
+        "critical": "Fatality or permanent disability; major fire or release."
+      }
+    },
+    "risk": {
+      "band": "Risk {band}",
+      "likelihood": "Likelihood",
+      "consequence": "Consequence",
+      "axes": "Likelihood × consequence",
+      "gridCaption": "Risk matrix: likelihood by consequence, with the score and band of each cell",
+      "cellLabel": "{likelihood} × {consequence}: score {score}, {band}",
+      "noBand": "No band"
+    },
+    "report": {
+      "title": "Report",
+      "offline": "You're offline. The report is kept on this device and sent when you're back online.",
+      "emergencyOffline": "For a serious injury or fire, call your emergency number and your supervisor now. This report will be sent when you're back online.",
+      "alertNow": "The HSE team will be alerted as soon as you send this. For an emergency, call your emergency number first.",
+      "noProjects": "You can't report on any project right now.",
+      "project": "Project",
+      "chooseProject": "Choose a project",
+      "what": "What are you reporting?",
+      "type": "Type",
+      "titleLabel": "Short title",
+      "whatSeen": "What did you see?",
+      "whatHappened": "What happened?",
+      "couldHave": "What could have happened?",
+      "area": "Area (optional)",
+      "areaRequiredLabel": "Area",
+      "noArea": "No area",
+      "location": "Location",
+      "noLocation": "No location",
+      "when": "When",
+      "addLocation": "Add my location",
+      "locationAgain": "Update my location",
+      "locationFailed": "Your location could not be read.",
+      "accuracy": "± {metres} m",
+      "howSerious": "How serious was it?",
+      "howSeriousCould": "How serious could it be?",
+      "categories": "Categories (up to 3)",
+      "damage": "What was damaged?",
+      "environment": "What was released or affected?",
+      "immediateAction": "What did you do about it?",
+      "witnesses": "Who else saw it?",
+      "witnessName": "Name",
+      "witnessContact": "Phone or email",
+      "addWitness": "Add a witness",
+      "photos": "Photos ({count})",
+      "addPhoto": "Take or add photos",
+      "photoFailed": "One photo could not be read.",
+      "nameShown": "Your name will be shown to the project's safety team.",
+      "send": "Send report",
+      "saveDraft": "Save as draft",
+      "required": "Choose a project and a type.",
+      "titleShort": "Give a title of at least 5 characters.",
+      "descriptionShort": "Describe it in at least 10 characters.",
+      "severityRequired": "Choose how serious it is.",
+      "severityMinimum": "For this type the severity is at least {level}.",
+      "areaRequired": "Choose an area.",
+      "outcomeRequired": "Say what could have happened (at least 10 characters).",
+      "injuredRequired": "Add the injured person.",
+      "future": "The time can't be in the future."
+    },
+    "people": {
+      "titleInjured": "People injured or involved",
+      "titleInvolved": "People involved",
+      "privacy": "Visible to the investigation team and HSE leads only.",
+      "name": "Name",
+      "role": "Role",
+      "roles": {
+        "injured": "Injured",
+        "involved": "Involved"
+      },
+      "nature": "Nature of injury",
+      "bodyPart": "Body part",
+      "treatment": "Treatment",
+      "natures": {
+        "cut": "Cut",
+        "bruise": "Bruise",
+        "fracture": "Fracture",
+        "burn": "Burn",
+        "sprain": "Sprain",
+        "eye_injury": "Eye injury",
+        "inhalation": "Inhalation",
+        "other": "Other"
+      },
+      "bodyParts": {
+        "head": "Head",
+        "eye": "Eye",
+        "face": "Face",
+        "neck": "Neck",
+        "shoulder": "Shoulder",
+        "arm": "Arm",
+        "hand": "Hand",
+        "finger": "Finger",
+        "back": "Back",
+        "chest": "Chest",
+        "abdomen": "Abdomen",
+        "leg": "Leg",
+        "knee": "Knee",
+        "foot": "Foot",
+        "multiple": "Multiple",
+        "other": "Other"
+      },
+      "treatments": {
+        "none": "None",
+        "first_aid": "First aid",
+        "medical_treatment": "Medical treatment",
+        "hospitalised": "Hospitalised"
+      },
+      "add": "Add a person",
+      "none": "No people recorded.",
+      "restricted": "{injured, plural, =0 {} one {# person injured · } other {# people injured · }}{count, plural, one {# person recorded} other {# people recorded}}",
+      "medicalUpload": "Add a medical document"
+    },
+    "mine": {
+      "title": "My reports",
+      "report": "Report",
+      "offline": "You're offline. These are the reports this device knows.",
+      "sentNumber": "Report sent — {ref}. The safety team has been told.",
+      "sending": "Report sent. It gets its number in a moment.",
+      "savedOffline": "Saved on this device. It will be sent when you're back online.",
+      "drafts": "Drafts on this device",
+      "untitled": "Untitled report",
+      "deleteDraft": "Delete draft",
+      "waiting": "Waiting to sync",
+      "onDevice": "On this device",
+      "waitingToSync": "Waiting to sync",
+      "nothingOffline": "Nothing on this device yet.",
+      "tabs": {
+        "reported": "Reported by me",
+        "investigating": "Investigating",
+        "to_review": "To review",
+        "to_close": "To close"
+      },
+      "empty": {
+        "reported": "You haven't reported anything yet.",
+        "investigating": "No investigations assigned to you.",
+        "to_review": "Nothing waiting for review.",
+        "to_close": "Nothing waiting to close."
+      }
+    },
+    "tab": {
+      "title": "Safety events",
+      "report": "Report",
+      "ownOnly": "You see the reports you made and the events you investigate.",
+      "filters": {
+        "open": "Open",
+        "critical_high": "Critical and high",
+        "to_review": "To review",
+        "overdue": "Overdue investigations",
+        "verification": "Awaiting closure"
+      },
+      "search": "Search by number or title",
+      "severity": "Severity",
+      "anySeverity": "Any severity",
+      "family": "Kind",
+      "anyFamily": "Any kind",
+      "showVoided": "Show voided",
+      "empty": "No safety events match."
+    },
+    "page": {
+      "title": "Safety event",
+      "back": "Back to safety events",
+      "underReview": "Under review",
+      "urgent": "Urgent",
+      "investigationRequired": "Investigation required",
+      "reportedBy": "Reported by {name}",
+      "report": "Report",
+      "received": "Received",
+      "reportedLate": "Reported late, received {date}",
+      "voidedBanner": "This event was voided: {reason}",
+      "closedBanner": "Closed on {date} by {name}",
+      "saved": "Saved.",
+      "assigned": "The investigation team has been told.",
+      "actionRaised": "The action was raised.",
+      "completed": "Investigation completed.",
+      "closedNotice": "The event is closed. The reporter has been told.",
+      "returned": "The investigation was returned.",
+      "voided": "The event was voided.",
+      "recommendations": "Recommendations and actions",
+      "recommendationNo": "Recommendation {seq}",
+      "recommendationKind": {
+        "immediate": "Immediate",
+        "corrective": "Corrective",
+        "preventive": "Preventive",
+        "improvement": "Improvement"
+      },
+      "recommendationStatus": {
+        "open": "Open",
+        "action_raised": "Action raised",
+        "resolved": "Resolved",
+        "no_action": "No action needed"
+      },
+      "actionStatus": {
+        "open": "Open",
+        "in_progress": "In progress",
+        "completed": "Completed",
+        "verified": "Verified",
+        "closed": "Closed",
+        "voided": "Voided"
+      },
+      "raiseAction": "Raise action",
+      "noActionNeeded": "No action needed",
+      "addendum": "Raise a new action",
+      "followUp": "Report a follow-up",
+      "comments": "Comments",
+      "commentHint": "Comments are seen by everyone on this event: never write injury details here.",
+      "history": "History",
+      "complete": "Complete investigation",
+      "close": "Close event",
+      "closeTitle": "Close the event",
+      "closeNoFurther": "Close — no further action",
+      "closureSummary": "Closure summary (the reporter sees it)",
+      "return": "Return investigation",
+      "returnTitle": "Return the investigation",
+      "reassign": "Change investigation team",
+      "void": "Void",
+      "voidTitle": "Void this event",
+      "voidKind": "Why",
+      "voidKinds": {
+        "duplicate": "Duplicate",
+        "not_safety_event": "Not a safety event",
+        "reported_in_error": "Reported in error"
+      },
+      "reason": "Reason",
+      "statement": "Statement",
+      "statementTitle": "Statement of {name}",
+      "tooShort": "Write at least {min} characters."
+    },
+    "review": {
+      "title": "Review",
+      "type": "Type",
+      "severity": "Confirmed severity (proposed: {proposed})",
+      "categories": "Categories (1 to 3)",
+      "risk": "Risk rating (optional)",
+      "riskRequired": "Risk rating",
+      "note": "Review note",
+      "required": "Investigation required for this event.",
+      "optional": "Investigation optional: you may raise actions or close it.",
+      "save": "Save review",
+      "assign": "Assign investigation",
+      "act": "Raise actions without investigation",
+      "closeNoFurther": "Close — no further action"
+    },
+    "assign": {
+      "title": "Assign the investigation",
+      "reassignTitle": "Change the investigation team",
+      "assign": "Assign",
+      "reassign": "Save team",
+      "lead": "Lead investigator",
+      "newLead": "New lead investigator (optional)",
+      "team": "Team members (up to {max})",
+      "due": "Due date",
+      "reason": "Reason (required when the lead changes)"
+    },
+    "action": {
+      "title": "Raise a corrective action",
+      "addendumTitle": "Raise a new action on the closed event",
+      "raise": "Raise action",
+      "recommendation": "Recommendation",
+      "actionTitle": "Action title",
+      "owner": "Owner",
+      "due": "Due date",
+      "priority": "Priority",
+      "evidenceHint": "High and critical actions need evidence when they are completed.",
+      "incomplete": "Give a title of at least 5 characters and choose an owner."
+    },
+    "witnesses": {
+      "title": "Witnesses ({count})",
+      "statementRecorded": "Statement recorded",
+      "noStatement": "No statement yet",
+      "takenBy": "Taken by {name} on {date}",
+      "recordStatement": "Record statement",
+      "editStatement": "Edit statement",
+      "name": "Name",
+      "company": "Company",
+      "contact": "Phone or email",
+      "add": "Add witness"
+    },
+    "investigation": {
+      "title": "Investigation",
+      "lead": "Lead: {name}",
+      "team": "Team: {names}",
+      "due": "Due {date}",
+      "overdue": "Overdue by {days, plural, one {# day} other {# days}}.",
+      "completedOn": "Completed on {date}.",
+      "sequence": "Sequence of events",
+      "lessons": "Lessons learned",
+      "causes": {
+        "immediate": "Immediate causes",
+        "root": "Root causes",
+        "contributing": "Contributing factors"
+      },
+      "category": "Category",
+      "description": "Description",
+      "why": "Why? ({n})",
+      "addWhy": "Add a why",
+      "addCause": "Add",
+      "addRecommendation": "Add a recommendation",
+      "recommendationKind": "Kind",
+      "recommendation": "Recommendation"
+    },
+    "settings": {
+      "title": "Safety event settings",
+      "types": "Event types",
+      "addType": "Add a type",
+      "editType": "Edit type",
+      "inactive": "Inactive",
+      "investigation": {
+        "required": "Investigation always",
+        "by_severity": "Investigation when High or Critical",
+        "optional": "Investigation optional"
+      },
+      "minimum": "At least {level}",
+      "injuryDetails": "Injury details",
+      "riskRequired": "Risk rating required",
+      "moveUp": "Move up",
+      "moveDown": "Move down",
+      "deactivate": "Deactivate",
+      "reactivate": "Reactivate",
+      "lists": {
+        "category": "Event categories",
+        "immediate_cause": "Immediate cause categories",
+        "root_cause": "Root cause categories"
+      },
+      "nameEn": "Name in English",
+      "nameAr": "Name in Arabic",
+      "familyLabel": "Kind",
+      "investigationLabel": "Investigation",
+      "minimumLabel": "Minimum severity",
+      "noMinimum": "No minimum",
+      "riskLabel": "Risk rating at review",
+      "risk": {
+        "required": "Required",
+        "optional": "Optional"
+      },
+      "areaRequired": "Area required"
+    },
+    "matrix": {
+      "title": "Risk matrix",
+      "version": "Version {version} · {size}",
+      "saved": "Version {version} is now used for new ratings. Ratings already made keep their version.",
+      "reset5": "Reset to default 5×5",
+      "reset4": "Use default 4×4",
+      "likelihood": "Likelihood",
+      "consequence": "Consequence",
+      "labelEn": "Label {n} in English",
+      "labelAr": "Label {n} in Arabic",
+      "bands": "Score bands",
+      "from": "{band}: from",
+      "to": "{band}: to",
+      "response": "{band}: required response",
+      "invalid": "{count, plural, one {# problem} other {# problems}}: every possible score must fall in exactly one band.",
+      "save": "Save as new version",
+      "versions": "Versions",
+      "versionLine": "Version {version} · {size} · {date} · {name}",
+      "system": "Default"
+    }
   }
 }

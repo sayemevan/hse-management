@@ -7,7 +7,11 @@
     "requiredHint": "الحقول المميزة بعلامة * مطلوبة.",
     "home": "الرئيسية",
     "platformName": "منصة إدارة الصحة والسلامة والبيئة",
-    "skipToContent": "انتقل إلى المحتوى الرئيسي"
+    "skipToContent": "انتقل إلى المحتوى الرئيسي",
+    "save": "حفظ",
+    "add": "إضافة",
+    "edit": "تعديل",
+    "remove": "إزالة"
   },
   "language": {
     "label": "اللغة",
@@ -88,7 +92,11 @@
     "workforce": "القوى العاملة",
     "workforceLists": "المسميات الوظيفية والكفاءات",
     "myInspections": "عمليات التفتيش الخاصة بي",
-    "inspectionTemplates": "نماذج التفتيش"
+    "inspectionTemplates": "نماذج التفتيش",
+    "safetySettings": "أنواع أحداث السلامة وقوائمها",
+    "riskMatrix": "مصفوفة المخاطر",
+    "report": "الإبلاغ عن خطر أو حادث",
+    "myReports": "بلاغاتي"
   },
   "changePassword": {
     "title": "تغيير كلمة المرور",
@@ -249,7 +257,26 @@
     "INSPECTION_FILE_LIMIT": "يمكنك إضافة {max} ملفات هنا كحد أقصى.",
     "FINDING_OWNER_REQUIRED": "اختر المسؤول عن كل ملاحظة.",
     "FINDING_LOCKED": "تمت معالجة هذه الملاحظة ولم يعد بالإمكان تغييرها.",
-    "PLACE_REQUIRED": "اختر منطقة لهذا التفتيش."
+    "PLACE_REQUIRED": "اختر منطقة لهذا التفتيش.",
+    "SAFETY_EVENT_LOCKED": "لم يعد بالإمكان تعديل هذا البلاغ. أضف ما تريد قوله كتعليق.",
+    "SAFETY_EVENT_TRANSITION_NOT_ALLOWED": "تغيّر هذا الحدث في الأثناء. أعد تحميله وحاول مرة أخرى.",
+    "SAFETY_EVENT_NOT_REPORTER": "المبلّغ وحده يمكنه تعديل البلاغ.",
+    "SAFETY_EVENT_TYPE_INACTIVE": "لم يعد هذا النوع مستخدمًا. اختر نوعًا آخر.",
+    "SAFETY_EVENT_FAMILY_LOCKED": "لا يمكن تغيير فئة نوع مستخدم.",
+    "SAFETY_EVENT_SEVERITY_BELOW_MINIMUM": "الخطورة أقل من الحد الأدنى لهذا النوع.",
+    "SAFETY_EVENT_TIME_INVALID": "تحقق من تاريخ ووقت الحدث: ليس في المستقبل ولا قبل أكثر من سنة.",
+    "SAFETY_EVENT_INVESTIGATION_REQUIRED": "يجب التحقيق في هذا الحدث أولًا.",
+    "SAFETY_EVENT_INVESTIGATION_INCOMPLETE": "لم يكتمل التحقيق بعد.",
+    "SAFETY_EVENT_INVESTIGATION_CHANGED": "غيّر شخص آخر التحقيق. أعد التحميل لرؤية التغييرات.",
+    "SAFETY_EVENT_INVESTIGATOR_NOT_ELIGIBLE": "لا يمكن لهذا الشخص التحقيق في أحداث هذا المشروع.",
+    "SAFETY_EVENT_SELF_CLOSURE": "لا يمكن للمحقق الرئيسي إغلاق هذا الحدث.",
+    "SAFETY_EVENT_OPEN_ACTIONS": "ما زالت بعض التوصيات أو الإجراءات مفتوحة.",
+    "SAFETY_EVENT_FILE_LIMIT": "بلغ هذا الحدث الحد الأقصى للملفات.",
+    "SAFETY_EVENT_PERSON_LIMIT": "عدد الأشخاص في هذا الحدث كبير جدًا.",
+    "SAFETY_EVENT_WITNESS_LIMIT": "عدد الشهود في هذا الحدث كبير جدًا.",
+    "RISK_RATING_REQUIRED": "قيّم الخطر على المصفوفة أولًا.",
+    "RISK_MATRIX_INVALID": "يجب أن تقع كل درجة ممكنة في نطاق واحد فقط.",
+    "RECOMMENDATION_LOCKED": "عولجت هذه التوصية بالفعل."
   },
   "legal": {
     "termsTitle": "شروط الخدمة",
@@ -1039,7 +1066,9 @@
       "subscription": "الاشتراك",
       "projects": "المشاريع",
       "workforce": "القوى العاملة",
-      "inspections": "التفتيش"
+      "inspections": "التفتيش",
+      "safety_events": "أحداث السلامة",
+      "risk": "المخاطر"
     },
     "company": {
       "view": {
@@ -1173,6 +1202,34 @@
           "label": "مراجعة عمليات التفتيش واعتمادها",
           "meaning": "إعادة عمليات التفتيش المرسلة أو اعتمادها (ما عدا تفتيشك)."
         }
+      },
+      "safety_events": {
+        "report": {
+          "label": "الإبلاغ عن أحداث السلامة",
+          "meaning": "الإبلاغ عن المخاطر والحوادث الوشيكة والحوادث، حتى دون اتصال."
+        },
+        "view": {
+          "label": "عرض أحداث السلامة",
+          "meaning": "رؤية جميع أحداث السلامة في المشروع (دون تفاصيل الإصابات)."
+        },
+        "manage": {
+          "label": "مراجعة أحداث السلامة",
+          "meaning": "تصنيف الأحداث وتقييمها وتكليف التحقيقات ورفع الإجراءات والإلغاء."
+        },
+        "investigate": {
+          "label": "التحقيق في أحداث السلامة",
+          "meaning": "التعيين محققًا رئيسيًا أو عضوًا في فريق التحقيق."
+        },
+        "close": {
+          "label": "إغلاق أحداث السلامة",
+          "meaning": "إغلاق الأحداث بعد التحقق أو دون إجراء إضافي."
+        },
+        "sensitive": {
+          "view": {
+            "label": "رؤية تفاصيل الإصابات",
+            "meaning": "المصابون والمستندات الطبية وإفادات الشهود."
+          }
+        }
       }
     },
     "workforce": {
@@ -1210,6 +1267,22 @@
           "meaning": "إنشاء النماذج وفئاتها وتعديلها ونشرها وإيقافها."
         }
       }
+    },
+    "safety_events": {
+      "settings": {
+        "manage": {
+          "label": "إدارة إعدادات أحداث السلامة",
+          "meaning": "أنواع الأحداث وقواعدها والفئات وقوائم الأسباب."
+        }
+      }
+    },
+    "risk": {
+      "matrix": {
+        "manage": {
+          "label": "إدارة مصفوفة المخاطر",
+          "meaning": "الحجم وتسميات الاحتمال والعواقب ونطاقات الدرجات."
+        }
+      }
     }
   },
   "projectTabs": {
@@ -1220,7 +1293,8 @@
     "timeline": "السجل الزمني",
     "workforce": "القوى العاملة",
     "actions": "الإجراءات",
-    "inspections": "التفتيش"
+    "inspections": "التفتيش",
+    "safetyEvents": "أحداث السلامة"
   },
   "switcher": {
     "choose": "المشاريع",
@@ -1291,7 +1365,20 @@
       "inspection_cancelled": "أُلغي التفتيش {ref}: {reason}",
       "inspection_overdue": "التفتيش {ref} ({template}) المخطط في {date} متأخر.",
       "inspection_review_waiting": "{count, plural, one {تفتيش واحد ينتظر} two {عمليتا تفتيش تنتظران} few {# عمليات تفتيش تنتظر} other {# عملية تفتيش تنتظر}} مراجعتك.",
-      "inspection_comment_added": "تعليق جديد على التفتيش {ref}."
+      "inspection_comment_added": "تعليق جديد على التفتيش {ref}.",
+      "safety_event_reported": "بلاغ سلامة جديد {ref}: {title}",
+      "safety_event_high_reported": "بلاغ عالي الخطورة {ref}: {title}",
+      "safety_event_critical_reported": "عاجل — بلاغ حرج {ref}: {title}",
+      "safety_event_investigation_assigned": "أنت تحقق في {ref}: {title}. الموعد {date}.",
+      "safety_event_investigation_unassigned": "لم تعد تحقق في {ref}.",
+      "safety_event_investigation_completed": "اكتمل التحقيق في {ref}.",
+      "safety_event_verification_ready": "{ref} جاهز للإغلاق: أُنجزت جميع الإجراءات.",
+      "safety_event_returned": "أُعيد إليك التحقيق في {ref}: {reason}",
+      "safety_event_closed": "أُغلق {ref}. اطّلع على النتيجة.",
+      "safety_event_voided": "أُلغي بلاغك {ref}: {reason}",
+      "safety_event_investigation_overdue": "تأخر التحقيق في {ref}.",
+      "safety_event_review_waiting": "{count, plural, one {بلاغ سلامة واحد بانتظار المراجعة} other {# بلاغات سلامة بانتظار المراجعة}}.",
+      "safety_event_comment_added": "تعليق جديد على {ref}."
     }
   },
   "placePicker": {
@@ -1430,7 +1517,8 @@
       "structure": "الهيكل",
       "workforce": "القوى العاملة",
       "actions": "الإجراءات",
-      "inspections": "التفتيش"
+      "inspections": "التفتيش",
+      "safety_events": "أحداث السلامة"
     },
     "empty": "لم يحدث شيء في هذا المشروع بعد.",
     "loadMore": "عرض المزيد",
@@ -1544,7 +1632,27 @@
       "inspection_finding_action_raised": "أنشأ {actor} الإجراء {ref} للملاحظة {finding} في التفتيش {inspection}.",
       "inspection_finding_no_action": "حدد {actor} أن الملاحظة {finding} في التفتيش {inspection} لا تحتاج إلى إجراء.",
       "inspection_finding_resolved": "تمت معالجة الملاحظة {finding} في التفتيش {inspection} (أُغلق {ref}).",
-      "inspection_finding_reopened": "أصبحت الملاحظة {finding} في التفتيش {inspection} مفتوحة مرة أخرى (أُلغي {ref})."
+      "inspection_finding_reopened": "أصبحت الملاحظة {finding} في التفتيش {inspection} مفتوحة مرة أخرى (أُلغي {ref}).",
+      "safety_event_reported": "أبلغ {actor} عن {event} ({type}).",
+      "safety_event_updated": "عدّل {actor} البلاغ {event}.",
+      "safety_event_review_started": "بدأ {actor} مراجعة {event}.",
+      "safety_event_classified": "راجع {actor} الحدث {event}.",
+      "safety_event_investigation_assigned": "كلّف {actor} بالتحقيق في {event}.",
+      "safety_event_investigation_reassigned": "غيّر {actor} فريق التحقيق في {event}.",
+      "safety_event_investigation_updated": "حدّث {actor} التحقيق في {event}.",
+      "safety_event_investigation_completed": "أكمل {actor} التحقيق في {event}.",
+      "safety_event_returned": "أعاد {actor} التحقيق في {event}: {reason}",
+      "safety_event_action_raised": "رفع {actor} الإجراء {ref} من {event}، التوصية {recommendation}.",
+      "safety_event_recommendation_no_action": "حدّد {actor} أن التوصية {recommendation} من {event} لا تحتاج إجراءً.",
+      "safety_event_recommendation_resolved": "عولجت التوصية {recommendation} من {event} بالإجراء {ref}.",
+      "safety_event_recommendation_reopened": "أُعيد فتح التوصية {recommendation} من {event} (أُلغي {ref}).",
+      "safety_event_verification_ready": "{event} جاهز للإغلاق.",
+      "safety_event_closed": "أغلق {actor} الحدث {event}.",
+      "safety_event_voided": "ألغى {actor} الحدث {event}: {reason}",
+      "safety_event_file_added": "أضاف {actor} ملفًا إلى {event}.",
+      "safety_event_file_removed": "أزال {actor} ملفًا من {event}.",
+      "safety_event_person_changed": "حدّث {actor} الأشخاص في {event}.",
+      "safety_event_witness_changed": "حدّث {actor} الشهود في {event}."
     },
     "groupLabel": "{group}: ",
     "fieldLabel": "{field}:",
@@ -2697,5 +2805,395 @@
       "itemType": "بند تفتيش"
     },
     "outboxFallback": "تفتيش"
+  },
+  "safetyEvents": {
+    "underReview": "قيد المراجعة",
+    "urgent": "عاجل",
+    "overdue": "متأخر · {days, plural, one {يوم واحد} two {يومان} few {# أيام} many {# يومًا} other {# يوم}}",
+    "reportedLate": "أُبلغ عنه متأخرًا",
+    "offline": {
+      "type": "بلاغ سلامة"
+    },
+    "status": {
+      "reported": "مُبلَّغ عنه",
+      "under_investigation": "قيد التحقيق",
+      "corrective_action": "إجراء تصحيحي",
+      "verification": "تحقق",
+      "closed": "مغلق",
+      "voided": "ملغى"
+    },
+    "family": {
+      "hazard": "خطر",
+      "near_miss": "حادث وشيك",
+      "incident": "حادث"
+    },
+    "severity": {
+      "low": "منخفضة",
+      "medium": "متوسطة",
+      "high": "عالية",
+      "critical": "حرجة",
+      "proposed": "{level} (مقترحة)",
+      "guidance": {
+        "low": "لا إصابة أو إسعاف أولي بسيط؛ ضرر محدود.",
+        "medium": "علاج طبي؛ ضرر أو تسرب بسيط.",
+        "high": "إصابة مضيعة للوقت؛ ضرر أو تسرب جسيم.",
+        "critical": "وفاة أو عجز دائم؛ حريق أو تسرب كبير."
+      }
+    },
+    "risk": {
+      "band": "الخطر {band}",
+      "likelihood": "الاحتمال",
+      "consequence": "العواقب",
+      "axes": "الاحتمال × العواقب",
+      "gridCaption": "مصفوفة المخاطر: الاحتمال مقابل العواقب، مع درجة ونطاق كل خلية",
+      "cellLabel": "{likelihood} × {consequence}: الدرجة {score}، {band}",
+      "noBand": "بلا نطاق"
+    },
+    "report": {
+      "title": "إبلاغ",
+      "offline": "أنت غير متصل. يُحفظ البلاغ على هذا الجهاز ويُرسل عند عودة الاتصال.",
+      "emergencyOffline": "في حالة إصابة خطيرة أو حريق، اتصل برقم الطوارئ وبمشرفك الآن. سيُرسل هذا البلاغ عند عودة الاتصال.",
+      "alertNow": "سيُنبَّه فريق الصحة والسلامة فور الإرسال. في حالة الطوارئ، اتصل برقم الطوارئ أولًا.",
+      "noProjects": "لا يمكنك الإبلاغ في أي مشروع حاليًا.",
+      "project": "المشروع",
+      "chooseProject": "اختر مشروعًا",
+      "what": "عمّ تُبلغ؟",
+      "type": "النوع",
+      "titleLabel": "عنوان قصير",
+      "whatSeen": "ماذا رأيت؟",
+      "whatHappened": "ماذا حدث؟",
+      "couldHave": "ماذا كان يمكن أن يحدث؟",
+      "area": "المنطقة (اختياري)",
+      "areaRequiredLabel": "المنطقة",
+      "noArea": "بلا منطقة",
+      "location": "الموقع",
+      "noLocation": "بلا موقع",
+      "when": "متى",
+      "addLocation": "أضف موقعي",
+      "locationAgain": "حدّث موقعي",
+      "locationFailed": "تعذّر قراءة موقعك.",
+      "accuracy": "± {metres} م",
+      "howSerious": "ما مدى خطورته؟",
+      "howSeriousCould": "ما مدى الخطورة المحتملة؟",
+      "categories": "الفئات (حتى 3)",
+      "damage": "ما الذي تضرر؟",
+      "environment": "ما الذي تسرب أو تأثر؟",
+      "immediateAction": "ماذا فعلت حياله؟",
+      "witnesses": "من رأى ذلك أيضًا؟",
+      "witnessName": "الاسم",
+      "witnessContact": "الهاتف أو البريد",
+      "addWitness": "إضافة شاهد",
+      "photos": "الصور ({count})",
+      "addPhoto": "التقط صورًا أو أضفها",
+      "photoFailed": "تعذّر قراءة إحدى الصور.",
+      "nameShown": "سيظهر اسمك لفريق السلامة في المشروع.",
+      "send": "إرسال البلاغ",
+      "saveDraft": "حفظ كمسودة",
+      "required": "اختر مشروعًا ونوعًا.",
+      "titleShort": "اكتب عنوانًا من 5 أحرف على الأقل.",
+      "descriptionShort": "صِف الحدث في 10 أحرف على الأقل.",
+      "severityRequired": "اختر مدى الخطورة.",
+      "severityMinimum": "الحد الأدنى للخطورة لهذا النوع هو {level}.",
+      "areaRequired": "اختر منطقة.",
+      "outcomeRequired": "اذكر ما كان يمكن أن يحدث (10 أحرف على الأقل).",
+      "injuredRequired": "أضف الشخص المصاب.",
+      "future": "لا يمكن أن يكون الوقت في المستقبل."
+    },
+    "people": {
+      "titleInjured": "المصابون أو المعنيون",
+      "titleInvolved": "الأشخاص المعنيون",
+      "privacy": "لا يراها إلا فريق التحقيق وقادة الصحة والسلامة.",
+      "name": "الاسم",
+      "role": "الدور",
+      "roles": {
+        "injured": "مصاب",
+        "involved": "معني"
+      },
+      "nature": "طبيعة الإصابة",
+      "bodyPart": "جزء الجسم",
+      "treatment": "العلاج",
+      "natures": {
+        "cut": "جرح",
+        "bruise": "كدمة",
+        "fracture": "كسر",
+        "burn": "حرق",
+        "sprain": "التواء",
+        "eye_injury": "إصابة في العين",
+        "inhalation": "استنشاق",
+        "other": "أخرى"
+      },
+      "bodyParts": {
+        "head": "الرأس",
+        "eye": "العين",
+        "face": "الوجه",
+        "neck": "الرقبة",
+        "shoulder": "الكتف",
+        "arm": "الذراع",
+        "hand": "اليد",
+        "finger": "الإصبع",
+        "back": "الظهر",
+        "chest": "الصدر",
+        "abdomen": "البطن",
+        "leg": "الساق",
+        "knee": "الركبة",
+        "foot": "القدم",
+        "multiple": "متعددة",
+        "other": "أخرى"
+      },
+      "treatments": {
+        "none": "لا يوجد",
+        "first_aid": "إسعاف أولي",
+        "medical_treatment": "علاج طبي",
+        "hospitalised": "دخول المستشفى"
+      },
+      "add": "إضافة شخص",
+      "none": "لا يوجد أشخاص مسجلون.",
+      "restricted": "{injured, plural, =0 {} one {مصاب واحد · } other {# مصابين · }}{count, plural, one {شخص واحد مسجل} other {# أشخاص مسجلون}}",
+      "medicalUpload": "إضافة مستند طبي"
+    },
+    "mine": {
+      "title": "بلاغاتي",
+      "report": "إبلاغ",
+      "offline": "أنت غير متصل. هذه البلاغات التي يعرفها هذا الجهاز.",
+      "sentNumber": "أُرسل البلاغ — {ref}. تم إبلاغ فريق السلامة.",
+      "sending": "أُرسل البلاغ. سيحصل على رقمه بعد لحظات.",
+      "savedOffline": "حُفظ على هذا الجهاز. سيُرسل عند عودة الاتصال.",
+      "drafts": "مسودات على هذا الجهاز",
+      "untitled": "بلاغ بلا عنوان",
+      "deleteDraft": "حذف المسودة",
+      "waiting": "بانتظار المزامنة",
+      "onDevice": "على هذا الجهاز",
+      "waitingToSync": "بانتظار المزامنة",
+      "nothingOffline": "لا شيء على هذا الجهاز بعد.",
+      "tabs": {
+        "reported": "بلّغتُ عنها",
+        "investigating": "أحقق فيها",
+        "to_review": "للمراجعة",
+        "to_close": "للإغلاق"
+      },
+      "empty": {
+        "reported": "لم تُبلغ عن أي شيء بعد.",
+        "investigating": "لا توجد تحقيقات مكلف بها.",
+        "to_review": "لا شيء بانتظار المراجعة.",
+        "to_close": "لا شيء بانتظار الإغلاق."
+      }
+    },
+    "tab": {
+      "title": "أحداث السلامة",
+      "report": "إبلاغ",
+      "ownOnly": "ترى البلاغات التي قدّمتها والأحداث التي تحقق فيها.",
+      "filters": {
+        "open": "مفتوحة",
+        "critical_high": "حرجة وعالية",
+        "to_review": "للمراجعة",
+        "overdue": "تحقيقات متأخرة",
+        "verification": "بانتظار الإغلاق"
+      },
+      "search": "ابحث بالرقم أو العنوان",
+      "severity": "الخطورة",
+      "anySeverity": "أي خطورة",
+      "family": "النوع",
+      "anyFamily": "أي نوع",
+      "showVoided": "إظهار الملغاة",
+      "empty": "لا توجد أحداث سلامة مطابقة."
+    },
+    "page": {
+      "title": "حدث سلامة",
+      "back": "العودة إلى أحداث السلامة",
+      "underReview": "قيد المراجعة",
+      "urgent": "عاجل",
+      "investigationRequired": "التحقيق مطلوب",
+      "reportedBy": "أبلغ عنه {name}",
+      "report": "البلاغ",
+      "received": "الاستلام",
+      "reportedLate": "أُبلغ عنه متأخرًا، استُلم {date}",
+      "voidedBanner": "أُلغي هذا الحدث: {reason}",
+      "closedBanner": "أُغلق في {date} بواسطة {name}",
+      "saved": "تم الحفظ.",
+      "assigned": "تم إبلاغ فريق التحقيق.",
+      "actionRaised": "تم رفع الإجراء.",
+      "completed": "اكتمل التحقيق.",
+      "closedNotice": "أُغلق الحدث. تم إبلاغ المبلّغ.",
+      "returned": "أُعيد التحقيق.",
+      "voided": "أُلغي الحدث.",
+      "recommendations": "التوصيات والإجراءات",
+      "recommendationNo": "التوصية {seq}",
+      "recommendationKind": {
+        "immediate": "فورية",
+        "corrective": "تصحيحية",
+        "preventive": "وقائية",
+        "improvement": "تحسينية"
+      },
+      "recommendationStatus": {
+        "open": "مفتوحة",
+        "action_raised": "رُفع إجراء",
+        "resolved": "عولجت",
+        "no_action": "لا تحتاج إجراءً"
+      },
+      "actionStatus": {
+        "open": "مفتوح",
+        "in_progress": "قيد التنفيذ",
+        "completed": "مكتمل",
+        "verified": "تم التحقق",
+        "closed": "مغلق",
+        "voided": "ملغى"
+      },
+      "raiseAction": "رفع إجراء",
+      "noActionNeeded": "لا يحتاج إجراءً",
+      "addendum": "رفع إجراء جديد",
+      "followUp": "الإبلاغ عن متابعة",
+      "comments": "التعليقات",
+      "commentHint": "يرى التعليقات كل من له صلة بهذا الحدث: لا تكتب تفاصيل الإصابات هنا.",
+      "history": "السجل",
+      "complete": "إكمال التحقيق",
+      "close": "إغلاق الحدث",
+      "closeTitle": "إغلاق الحدث",
+      "closeNoFurther": "إغلاق — دون إجراء إضافي",
+      "closureSummary": "ملخص الإغلاق (يراه المبلّغ)",
+      "return": "إعادة التحقيق",
+      "returnTitle": "إعادة التحقيق",
+      "reassign": "تغيير فريق التحقيق",
+      "void": "إلغاء",
+      "voidTitle": "إلغاء هذا الحدث",
+      "voidKind": "السبب",
+      "voidKinds": {
+        "duplicate": "مكرر",
+        "not_safety_event": "ليس حدث سلامة",
+        "reported_in_error": "أُبلغ عنه خطأً"
+      },
+      "reason": "السبب",
+      "statement": "الإفادة",
+      "statementTitle": "إفادة {name}",
+      "tooShort": "اكتب {min} أحرف على الأقل."
+    },
+    "review": {
+      "title": "المراجعة",
+      "type": "النوع",
+      "severity": "الخطورة المؤكدة (المقترحة: {proposed})",
+      "categories": "الفئات (من 1 إلى 3)",
+      "risk": "تقييم الخطر (اختياري)",
+      "riskRequired": "تقييم الخطر",
+      "note": "ملاحظة المراجعة",
+      "required": "التحقيق مطلوب لهذا الحدث.",
+      "optional": "التحقيق اختياري: يمكنك رفع إجراءات أو الإغلاق.",
+      "save": "حفظ المراجعة",
+      "assign": "تكليف بالتحقيق",
+      "act": "رفع إجراءات دون تحقيق",
+      "closeNoFurther": "إغلاق — دون إجراء إضافي"
+    },
+    "assign": {
+      "title": "التكليف بالتحقيق",
+      "reassignTitle": "تغيير فريق التحقيق",
+      "assign": "تكليف",
+      "reassign": "حفظ الفريق",
+      "lead": "المحقق الرئيسي",
+      "newLead": "محقق رئيسي جديد (اختياري)",
+      "team": "أعضاء الفريق (حتى {max})",
+      "due": "تاريخ الاستحقاق",
+      "reason": "السبب (مطلوب عند تغيير المحقق الرئيسي)"
+    },
+    "action": {
+      "title": "رفع إجراء تصحيحي",
+      "addendumTitle": "رفع إجراء جديد على حدث مغلق",
+      "raise": "رفع الإجراء",
+      "recommendation": "التوصية",
+      "actionTitle": "عنوان الإجراء",
+      "owner": "المسؤول",
+      "due": "تاريخ الاستحقاق",
+      "priority": "الأولوية",
+      "evidenceHint": "الإجراءات العالية والحرجة تحتاج دليلًا عند إكمالها.",
+      "incomplete": "اكتب عنوانًا من 5 أحرف على الأقل واختر مسؤولًا."
+    },
+    "witnesses": {
+      "title": "الشهود ({count})",
+      "statementRecorded": "سُجلت إفادة",
+      "noStatement": "لا توجد إفادة بعد",
+      "takenBy": "سجّلها {name} في {date}",
+      "recordStatement": "تسجيل إفادة",
+      "editStatement": "تعديل الإفادة",
+      "name": "الاسم",
+      "company": "الشركة",
+      "contact": "الهاتف أو البريد",
+      "add": "إضافة شاهد"
+    },
+    "investigation": {
+      "title": "التحقيق",
+      "lead": "المحقق الرئيسي: {name}",
+      "team": "الفريق: {names}",
+      "due": "الاستحقاق {date}",
+      "overdue": "متأخر {days, plural, one {يومًا واحدًا} two {يومين} few {# أيام} many {# يومًا} other {# يوم}}.",
+      "completedOn": "اكتمل في {date}.",
+      "sequence": "تسلسل الأحداث",
+      "lessons": "الدروس المستفادة",
+      "causes": {
+        "immediate": "الأسباب المباشرة",
+        "root": "الأسباب الجذرية",
+        "contributing": "العوامل المساهمة"
+      },
+      "category": "الفئة",
+      "description": "الوصف",
+      "why": "لماذا؟ ({n})",
+      "addWhy": "إضافة لماذا",
+      "addCause": "إضافة",
+      "addRecommendation": "إضافة توصية",
+      "recommendationKind": "النوع",
+      "recommendation": "التوصية"
+    },
+    "settings": {
+      "title": "إعدادات أحداث السلامة",
+      "types": "أنواع الأحداث",
+      "addType": "إضافة نوع",
+      "editType": "تعديل النوع",
+      "inactive": "غير نشط",
+      "investigation": {
+        "required": "التحقيق دائمًا",
+        "by_severity": "التحقيق عند الخطورة العالية أو الحرجة",
+        "optional": "التحقيق اختياري"
+      },
+      "minimum": "على الأقل {level}",
+      "injuryDetails": "تفاصيل الإصابة",
+      "riskRequired": "تقييم الخطر مطلوب",
+      "moveUp": "نقل لأعلى",
+      "moveDown": "نقل لأسفل",
+      "deactivate": "إيقاف",
+      "reactivate": "إعادة التفعيل",
+      "lists": {
+        "category": "فئات الأحداث",
+        "immediate_cause": "فئات الأسباب المباشرة",
+        "root_cause": "فئات الأسباب الجذرية"
+      },
+      "nameEn": "الاسم بالإنجليزية",
+      "nameAr": "الاسم بالعربية",
+      "familyLabel": "النوع",
+      "investigationLabel": "التحقيق",
+      "minimumLabel": "الحد الأدنى للخطورة",
+      "noMinimum": "بلا حد أدنى",
+      "riskLabel": "تقييم الخطر عند المراجعة",
+      "risk": {
+        "required": "مطلوب",
+        "optional": "اختياري"
+      },
+      "areaRequired": "المنطقة مطلوبة"
+    },
+    "matrix": {
+      "title": "مصفوفة المخاطر",
+      "version": "الإصدار {version} · {size}",
+      "saved": "يُستخدم الإصدار {version} الآن للتقييمات الجديدة. تحتفظ التقييمات السابقة بإصدارها.",
+      "reset5": "العودة إلى 5×5 الافتراضية",
+      "reset4": "استخدام 4×4 الافتراضية",
+      "likelihood": "الاحتمال",
+      "consequence": "العواقب",
+      "labelEn": "التسمية {n} بالإنجليزية",
+      "labelAr": "التسمية {n} بالعربية",
+      "bands": "نطاقات الدرجات",
+      "from": "{band}: من",
+      "to": "{band}: إلى",
+      "response": "{band}: الاستجابة المطلوبة",
+      "invalid": "{count, plural, one {مشكلة واحدة} other {# مشكلات}}: يجب أن تقع كل درجة ممكنة في نطاق واحد فقط.",
+      "save": "حفظ كإصدار جديد",
+      "versions": "الإصدارات",
+      "versionLine": "الإصدار {version} · {size} · {date} · {name}",
+      "system": "افتراضي"
+    }
   }
 }
