@@ -1,6 +1,6 @@
 # Sprint 9 — Offline Foundation
 
-**Status: APPROVED — not started.** Approved by the Product Owner on 2026-11-27 (D-56), including technical decisions T-66 to T-74 and the proposed answers to open points O-115 to O-131 (D-57). O-115 confirms **Q-26** (already answered by D-11) for the sync layer; O-122 applies **D-20** (conflicts flagged for review).
+**Status: IMPLEMENTED — awaiting Product Owner acceptance.** Approved by the Product Owner on 2026-11-27 (D-56), including technical decisions T-66 to T-74 and the proposed answers to open points O-115 to O-131 (D-57). O-115 confirms **Q-26** (already answered by D-11) for the sync layer; O-122 applies **D-20** (conflicts flagged for review).
 
 ## Goal
 
@@ -133,3 +133,56 @@ New notification type `sync.conflict` and audit actions `sync.conflict_detected`
 - `npm run check` and `npm run build` pass; the production build contains no sync probe route or screen; migrations apply to a fresh local D1 and on top of the Sprint 8 data.
 - Lighthouse PWA "installable" checks pass for the production build.
 - `03_DATABASE.md`, `04_API.md`, `platform/README.md` and a new `apps/web/src/modules/offline/README.md` (how a module registers an offline entity) are updated.
+
+## Implementation notes
+
+### Refinements made during implementation (for acceptance)
+
+| Item                      | Approved text                                              | As built                                                                                                                                                          | Why                                                                                                                                                         |
+| ------------------------- | ---------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| T-66 page caching         | Never cache a response with `Cache-Control: no-store`      | Page HTML **is** cached (by path, query ignored) although Next sends `no-store` for dynamic pages; `/api/*` and every other `no-store` response are never cached. | Every page here is dynamic (language cookie), so the rule would cache nothing. Pages are the app shell: their data comes from the API, never from the HTML. |
+| T-66 RSC payloads         | Network-first with the last cached copy                    | **Network only**; a failure makes Next fall back to a full navigation, which the page rule answers from the cache.                                                | RSC answers depend on the router state, so cached copies would not match.                                                                                   |
+| PLT-25 offline pages      | Offline-capable routes registered by modules               | `/sync` and `/offline` plus each type's pages. `/` is pre-cached too, but offline it shows the offline notice (it starts the app).                                | The home page needs the API.                                                                                                                                |
+| PLT-30 screen             | `<slug>/sync/conflicts/{id}`                               | `<slug>/sync?conflict={id}` (the `sync.conflict` notification opens it).                                                                                          | One cached page then works offline for every conflict.                                                                                                      |
+| PLT-30 409 answer         | `{ conflictId, serverRecord, serverVersion }`              | `params: { conflictId, serverVersion }`; the device reads both versions with `GET /me/sync/conflicts/{id}` and keeps them in its `conflicts` store.               | Error `params` are scalars (they feed translated messages).                                                                                                 |
+| PLT-30 statuses           | `open`, `resolved`, `discarded`                            | Also **`superseded`**: the record changed again before the resolution, so a new conflict (with the user's choice as their version) replaces the old one.          | Both versions are still kept (D-20).                                                                                                                        |
+| PLT-30 offline resolution | —                                                          | A choice made offline is queued like any change and closes the conflict when it reaches the server.                                                               | Test scenario "resolution offline is queued".                                                                                                               |
+| PLT-27 profile            | `GET /me/offline-profile` returns the user                 | Returns company and projects; the web app stores it **with `/auth/me`**.                                                                                          | `/auth/me` already returns the user; no second copy of that code.                                                                                           |
+| T-71 Background Sync      | Runs the queue                                             | The service worker **wakes an open tab**, which holds the session and runs the queue; with no tab open the queue waits until the app is opened.                   | The access token lives only in the page (T-1).                                                                                                              |
+| PLT-28 probe tables       | A migration skipped outside development, or the test setup | The probe **creates its tables on first use** (`CREATE TABLE IF NOT EXISTS`); they are not in the migrations.                                                     | Migrations run everywhere; this keeps production free of them.                                                                                              |
+| PLT-29 FR-7               | `idempotent()` on the probe and the shared upload path     | On the **probe routes**; there is no shared offline upload route yet, each module's file route gets it from Sprint 10 (README in `modules/offline`).              | Every module serves its own files (T-49).                                                                                                                   |
+| O-116 production          | No probe route or screen in the production build           | The page `/dev/sync-probe` exists in the build but answers **404**, and its code is not in the client bundles; the API probe routes answer 404.                   | Next builds every route file; the check is at run time.                                                                                                     |
+| Offline edits             | —                                                          | Queued updates carry **only the fields the user changed**.                                                                                                        | An untouched field otherwise shows as "Changed" in the review. Rule for later modules (README).                                                             |
+| Header on phones          | —                                                          | Logo without the company name, no gaps, no chevron on the account button, and the indicator as icon + count (words for screen readers and wider screens).         | With the indicator the header was 484 px wide at 375 px in Arabic (431 px before this sprint).                                                              |
+
+### Added beyond the specs
+
+- Web unit tests (Vitest with `fake-indexeddb`, `apps/web/test`): the first tests of the web app.
+- `scripts/make-icons.mjs` (the placeholder icons, committed) and `scripts/build-sw.mjs` (runs before `dev` and `build`; `public/sw.js` is not committed).
+- Save in the probe waits for photo compression ("Preparing photos…").
+- `.claude/launch.json`: `web-prod` (`next start`) to check offline behaviour on a production build.
+- `modules/offline/README.md`: how a module makes a record type work offline.
+
+### Known gaps
+
+- **Lint was not run** (`packages/config-eslint` is missing, as in Sprint 8); code is not Prettier-formatted (no repo config). Docs were formatted.
+- **`next dev` and offline:** with Turbopack's development runtime, a page opened offline hydrates once and then stays on "Loading…". The **production build** works (`next build && next start`: offline start, sync centre on repeated offline loads, offline page for other screens). Check offline features against a production build.
+- **Signing out while offline** can't end the server session (the logout request never arrives; Sprint 1 behaviour), so the next online start restores it. Queued items stay safe either way.
+- Not tested on real phones: Android and iOS install, Background Sync, persistent-storage prompt, a real camera photo with GPS in its EXIF (compression was checked with 4000 × 3000 photos made in the browser: stored as 2560 × 1920 JPEG). Field testing is Sprint 20.
+- The Lighthouse installability check was not run (manifest, icons and service worker are in place).
+- The "one tab syncs" Web Lock has no automated test.
+- Outbox labels are text in the language of capture (the probe's are English); modules should keep labels language-neutral (Sprint 10).
+- Other existing dialogs use `sm:h-auto`, which stretches a modal dialog to the full height on wider screens (the sign-out dialog uses `sm:h-fit`); not changed here.
+
+### Verification
+
+- `npm run check` passes: typecheck (API, web, service worker, shared), API **326 tests** (17 new in `test/integration/sync.test.ts`: idempotent creates, ten parallel copies, reused and invalid keys, device ids, multipart replay, future capture times, key expiry, conflict detection, Keep mine / Keep theirs / Combine, superseded conflicts, privacy and immutability, read-only mode, the 2-day reminder, offline profile and pack with ETag, probe 404 in staging), web **21 tests** (engine ordering, dependencies, parallel limit, back-off, every answer class, rebasing, user isolation, discard, pruning, no tokens stored, the 7-day profile, kept projects, photo size), API and web builds. The PLT-11 route review lists the four new blocked writes.
+- Migrations `0014` and `0015` applied to the local D1 with the Sprint 8 data.
+- Browser (local, the demo company, Safety Officer):
+  - Development build: service worker registered, offline pages pre-cached, offline profile saved without any token; the update banner refused **Reload** while the probe form had input and reloaded after it was cleared (old caches removed).
+  - Offline (requests failing in the page): a probe with two 4000 × 3000 photos saved as **"Offline · 4 pending"**, photos stored at 2560 × 1920; back online all items synced, each photo uploaded once, the indicator cleared.
+  - Conflict: the probe edited offline while changed online → **"1 needs attention"**, review with both versions → **Combine** (server title, offline note) → version 3, conflict `resolved`.
+  - Sign-out with an unsynced item: the dialog offered the three choices; **Keep** signed out, the sign-in page said items are waiting, and after the same user signed in the item synced.
+  - **Arabic at 375 px:** sync centre and conflict review right-to-left with no horizontal scroll; **Keep mine** resolved a note-only conflict.
+  - "Keep on this device" on RMX-02 stored its pack (2 areas, 3 people, ETag).
+  - Production build (`next start`) with the web server stopped: the app opened from the cache with the offline notice; the sync centre opened offline, also on a second offline load; an uncached page showed the offline page.

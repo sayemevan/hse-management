@@ -15,6 +15,17 @@ const nextConfig: NextConfig = {
   transpilePackages: ['@hse/shared'],
   // Company subdomains (<slug>.localhost) are used during development (PLT-02).
   allowedDevOrigins: ['*.localhost'],
+  // PLT-25: the service worker is always checked for a new version and controls the whole site.
+  headers: () =>
+    Promise.resolve([
+      {
+        source: '/sw.js',
+        headers: [
+          { key: 'Cache-Control', value: 'no-cache' },
+          { key: 'Service-Worker-Allowed', value: '/' },
+        ],
+      },
+    ]),
   ...(apiProxyOrigin
     ? {
         rewrites: () =>

@@ -22,7 +22,9 @@
     "signingOut": "Signing out…",
     "profile": "My profile",
     "company": "Company",
-    "myWorkforce": "My workforce record"
+    "myWorkforce": "My workforce record",
+    "installApp": "Install app",
+    "installIos": "In Safari, tap Share, then \"Add to Home Screen\"."
   },
   "login": {
     "title": "Sign in",
@@ -220,7 +222,12 @@
     "ACTION_REASON_REQUIRED": "Give a reason for this change.",
     "PROJECT_NOT_ACCEPTING_RECORDS": "New records can only be added to projects in Mobilization or Active.",
     "COMMENT_EDIT_WINDOW_PASSED": "Comments can only be edited for 15 minutes after posting.",
-    "COMMENTS_LOCKED": "This action is closed. Comments are read-only."
+    "COMMENTS_LOCKED": "This action is closed. Comments are read-only.",
+    "IDEMPOTENCY_KEY_INVALID": "The request could not be processed. Please try again.",
+    "IDEMPOTENCY_KEY_REUSED": "This change conflicts with an earlier one from this device. Please try again.",
+    "RECORD_ID_TAKEN": "This record could not be created because its id is already in use.",
+    "SYNC_CONFLICT": "Someone changed this record while you were editing. Review both versions.",
+    "SYNC_CONFLICT_RESOLVED": "This conflict has already been resolved."
   },
   "legal": {
     "termsTitle": "Terms of Service",
@@ -1222,7 +1229,9 @@
       "action_voided": "{ref} “{title}” was voided: {reason}",
       "action_due_date_changed": "The due date of {ref} “{title}” is now {date}.",
       "action_comment_added": "{count, plural, one {New comment} other {# new comments}} on {ref} “{title}”.",
-      "action_owner_lost_access": "The owner of {ref} “{title}” can no longer see the project. Reassign it."
+      "action_owner_lost_access": "The owner of {ref} “{title}” can no longer see the project. Reassign it.",
+      "sync_conflict": "Your offline change to {record} was changed by someone else meanwhile. Review both versions.",
+      "sync_conflict_again": "Reminder: your offline change to {record} still needs review."
     }
   },
   "placePicker": {
@@ -2071,5 +2080,168 @@
     "write": "Write a comment",
     "post": "Post",
     "empty": "Write a comment."
+  },
+  "offline": {
+    "indicator": {
+      "offline": "Offline",
+      "offlinePending": "{count, plural, one {Offline · # pending} other {Offline · # pending}}",
+      "syncing": "{count, plural, =0 {Syncing} one {Syncing #} other {Syncing #}}",
+      "attention": "{count, plural, one {# needs attention} other {# need attention}}",
+      "open": "Sync status: {status}. Open the sync centre"
+    },
+    "update": {
+      "available": "A new version of the app is available.",
+      "unsaved": "Save or discard your changes first, then reload.",
+      "reload": "Reload",
+      "dismiss": "Dismiss"
+    },
+    "notice": {
+      "title": "You're offline",
+      "body": "This page needs a connection. Your offline work is safe on this device and is sent when you are back online.",
+      "syncCentre": "Open the sync centre",
+      "routes": {
+        "syncProbe": "Sync probe (development)"
+      }
+    },
+    "centre": {
+      "title": "Sync",
+      "online": "Online",
+      "offline": "Offline: changes are kept on this device.",
+      "syncNow": "Sync now",
+      "syncNowOffline": "You're offline",
+      "unavailable": "This browser can't store data for offline use (for example in a private window).",
+      "signInToFinish": "{count, plural, one {Sign in to finish syncing: # item is waiting.} other {Sign in to finish syncing: # items are waiting.}}",
+      "storageWarning": "This device has used {percent}% of the space the browser allows. Sync to free space.",
+      "keepOpen": "Waiting items are sent automatically when you are online. On iPhone, keep the app open until they are sent.",
+      "tabs": {
+        "pending": "Pending",
+        "attention": "Needs attention",
+        "conflicts": "Conflicts",
+        "synced": "Synced"
+      },
+      "empty": {
+        "pending": "Nothing is waiting to be sent.",
+        "attention": "Nothing needs your attention.",
+        "conflicts": "No conflicts.",
+        "synced": "Nothing was synced in the last 24 hours."
+      },
+      "captured": "Captured",
+      "syncedAt": "synced",
+      "copy": "Copy text",
+      "copied": "Copied.",
+      "discard": "Discard",
+      "discarded": "Discarded from this device.",
+      "discardTitle": "Discard this item?",
+      "discardBody": "\"{label}\" was never received by the server. It will be removed from this device{extra, plural, =0 {} one { together with # item that depends on it} other { together with # items that depend on it}}. This cannot be undone.",
+      "cancel": "Cancel",
+      "review": "Review both versions",
+      "kept": {
+        "title": "Available offline",
+        "refresh": "Refresh offline data",
+        "none": "No project data on this device yet. Open a project or turn on \"Keep on this device\".",
+        "pinned": "kept",
+        "updated": "Updated"
+      },
+      "storage": "Storage on this device: {used} MB of {quota} MB."
+    },
+    "kinds": {
+      "create": "New",
+      "update": "Change",
+      "upload": "Photo",
+      "custom": "Change"
+    },
+    "states": {
+      "pending": "Pending",
+      "sending": "Sending",
+      "waiting_sign_in": "Waiting for sign-in",
+      "waiting_read_only": "Waiting: company is read-only",
+      "needs_attention": "Needs attention",
+      "conflict": "Conflict",
+      "synced": "Synced"
+    },
+    "reasons": {
+      "network": "No connection. It will be sent automatically.",
+      "dependency": "Waiting for an item that needs attention.",
+      "forbidden": "You no longer have access to do this.",
+      "notFound": "The record no longer exists or you can no longer see it.",
+      "readOnly": "Your company is read-only. It will be sent when the company is active again.",
+      "signIn": "Sign in to finish syncing."
+    },
+    "conflict": {
+      "back": "Back to the sync centre",
+      "missing": "This conflict is not on this device. Connect to the internet to open it.",
+      "changedBy": "Changed by {name} at",
+      "someone": "someone else",
+      "explain": "This record was changed by someone else while you worked offline. Nothing has been overwritten: choose what to keep.",
+      "offlineNote": "You're offline. Your choice is saved and sent when you are back online.",
+      "closed": "This conflict is already settled.",
+      "changed": "Changed",
+      "mine": "Mine (this device)",
+      "theirs": "Theirs (on the server)",
+      "keepMine": "Keep mine",
+      "keepTheirs": "Keep theirs",
+      "combine": "Combine",
+      "saveCombined": "Save combined",
+      "cancel": "Cancel",
+      "keepTheirsTitle": "Keep the server version?",
+      "keepTheirsBody": "Your changes to this record will be dropped from this device. A copy stays in the record's history.",
+      "doneApplied": "Conflict resolved. Your choice was saved.",
+      "doneTheirs": "Conflict resolved. The server's version was kept.",
+      "alreadyResolved": "This conflict was already resolved.",
+      "changedAgain": "The record changed again in the meantime. Review the new version.",
+      "queued": "Your choice is saved on this device and will be sent when you are online.",
+      "fields": {
+        "title": "Title",
+        "note": "Note"
+      }
+    },
+    "signOut": {
+      "title": "{count, plural, one {# item is not synced yet} other {# items are not synced yet}}",
+      "body": "They are only on this device. What would you like to do?",
+      "syncFirst": "Sync now, then sign out",
+      "syncFirstOffline": "Sync now (you're offline)",
+      "keep": "Sign out and keep them on this device",
+      "discard": "Discard and sign out",
+      "cancel": "Cancel",
+      "discardTitle": "Discard unsynced items?",
+      "discardBody": "These items were never received by the server and will be lost:",
+      "back": "Back",
+      "discardConfirm": "Discard them and sign out"
+    },
+    "signIn": {
+      "waiting": "Unsynced items are waiting on this device. They are sent after the person who captured them signs in here again."
+    },
+    "keep": {
+      "label": "Keep on this device",
+      "help": "Keeps this project's areas, locations and people on this device for offline forms.",
+      "offline": "Available when you are online.",
+      "limit": "Up to 10 projects can be kept on this device.",
+      "failed": "Could not save on this device."
+    },
+    "probe": {
+      "type": "Sync probe",
+      "title": "Sync probe (development)",
+      "intro": "A test record that goes through the offline queue, as inspections will. Try it with the network off.",
+      "newHeading": "New probe",
+      "editHeading": "Edit probe",
+      "fieldTitle": "Title",
+      "fieldNote": "Note",
+      "addPhotos": "Add photos",
+      "photosReady": "{count, plural, one {# photo ready} other {# photos ready}} ({size} KB after compression)",
+      "save": "Save",
+      "cancel": "Cancel",
+      "edit": "Edit",
+      "titleRequired": "Enter a title.",
+      "notPhoto": "This file is not a photo the browser can read.",
+      "photoFailed": "The photo could not be prepared.",
+      "savedOnline": "Saved. Sending now.",
+      "savedOffline": "Saved on this device. It will be sent when you are online.",
+      "listHeading": "Your probes",
+      "empty": "No probes yet.",
+      "notSynced": "Not yet synced",
+      "version": "Version {version}",
+      "photoCount": "{count, plural, one {# photo} other {# photos}}",
+      "preparing": "Preparing photos…"
+    }
   }
 }

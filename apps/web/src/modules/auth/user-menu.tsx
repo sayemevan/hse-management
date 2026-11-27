@@ -1,6 +1,6 @@
 'use client';
 
-import { Building2, ChevronDown, HardHat, LogOut, UserRound } from 'lucide-react';
+import { Building2, ChevronDown, Download, HardHat, LogOut, Share, UserRound } from 'lucide-react';
 import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import { useTranslations } from 'next-intl';
@@ -8,6 +8,9 @@ import { useEffect, useId, useRef, useState } from 'react';
 
 import { Spinner } from '@/components/ui/spinner';
 
+import { usePwa } from '@/modules/offline/pwa-provider';
+import { SignOutDialog } from '@/modules/offline/sign-out-dialog';
+import { useSync } from '@/modules/offline/sync-provider';
 import { useCompany } from '@/modules/tenant/tenant-provider';
 
 import { useAuth } from './auth-provider';
@@ -24,6 +27,11 @@ export function UserMenu() {
   const router = useRouter();
   const [open, setOpen] = useState(false);
   const [signingOut, setSigningOut] = useState(false);
+  const [confirmSignOut, setConfirmSignOut] = useState(false);
+  const [iosHint, setIosHint] = useState(false);
+  const { items } = useSync();
+  const pwa = usePwa();
+  const unsynced = items.some((item) => item.state !== 'synced');
   const menuId = useId();
   const container = useRef<HTMLDivElement>(null);
 
@@ -49,6 +57,7 @@ export function UserMenu() {
   if (!user) return null;
 
   const handleSignOut = async () => {
+    setConfirmSignOut(false);
     setSigningOut(true);
     try {
       await signOut();
@@ -68,7 +77,7 @@ export function UserMenu() {
         onClick={() => {
           setOpen((current) => !current);
         }}
-        className="flex min-h-12 items-center gap-2 rounded-lg px-3 hover:bg-muted"
+        className="flex min-h-12 items-center gap-2 rounded-lg px-2 hover:bg-muted sm:px-3"
       >
         <span
           aria-hidden
@@ -77,7 +86,7 @@ export function UserMenu() {
           {user.fullName.trim().charAt(0).toUpperCase()}
         </span>
         <bdi className="hidden max-w-40 truncate sm:inline">{user.fullName}</bdi>
-        <ChevronDown aria-hidden className="size-4" />
+        <ChevronDown aria-hidden className="hidden size-4 sm:block" />
       </button>
 
       {open ? (
@@ -119,17 +128,62 @@ export function UserMenu() {
               {t('company')}
             </Link>
           ) : null}
+          {pwa.canInstall ? (
+            <button
+              type="button"
+              className={ITEM_CLASS}
+              onClick={() => {
+                setOpen(false);
+                void pwa.install();
+              }}
+            >
+              <Download aria-hidden className="size-5" />
+              {t('installApp')}
+            </button>
+          ) : null}
+          {pwa.showIosHint ? (
+            <>
+              <button
+                type="button"
+                className={ITEM_CLASS}
+                aria-expanded={iosHint}
+                onClick={() => {
+                  setIosHint((current) => !current);
+                }}
+              >
+                <Share aria-hidden className="size-5" />
+                {t('installApp')}
+              </button>
+              {iosHint ? <p className="px-3 pb-2 text-sm text-muted-foreground">{t('installIos')}</p> : null}
+            </>
+          ) : null}
           <button
             type="button"
             className={ITEM_CLASS}
             disabled={signingOut}
-            onClick={() => void handleSignOut()}
+            onClick={() => {
+              // O-119: unsynced items on this device: ask what to do with them first.
+              if (unsynced) {
+                setOpen(false);
+                setConfirmSignOut(true);
+              } else {
+                void handleSignOut();
+              }
+            }}
           >
             {signingOut ? <Spinner /> : <LogOut aria-hidden className="size-5 rtl:-scale-x-100" />}
             {signingOut ? t('signingOut') : t('signOut')}
           </button>
         </div>
       ) : null}
+      <SignOutDialog
+        open={confirmSignOut}
+        userId={user.id}
+        onCancel={() => {
+          setConfirmSignOut(false);
+        }}
+        onSignOut={() => void handleSignOut()}
+      />
     </div>
   );
 }

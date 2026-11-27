@@ -38,6 +38,8 @@ export const NOTIFICATION_TYPES = [
   'action.due_date_changed',
   'action.comment_added',
   'action.owner_lost_access',
+  // Sprint 9 (PLT-30, O-131)
+  'sync.conflict',
 ] as const;
 export type NotificationType = (typeof NOTIFICATION_TYPES)[number];
 
@@ -93,6 +95,11 @@ export interface NotificationParams {
   critical?: number;
   /** `action.sent_back` / `action.voided`: the first 120 characters of the reason. */
   reason?: string;
+  // Sprint 9
+  /** `sync.conflict`: what the offline change was about, and whether this is the reminder. */
+  recordLabel?: string;
+  conflictId?: string;
+  again?: boolean;
 }
 
 export const notificationListQuerySchema = z.object({

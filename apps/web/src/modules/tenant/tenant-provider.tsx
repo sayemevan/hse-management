@@ -3,6 +3,7 @@
 import { ErrorCode, type TenantDto } from '@hse/shared';
 import { createContext, type ReactNode, useCallback, useContext, useEffect, useState } from 'react';
 
+import { cacheTenant, cachedTenant } from '@/modules/offline/device-store';
 import { ApiClientError, apiRequest } from '@/services/api-client';
 
 export type TenantState =
@@ -27,9 +28,18 @@ export function TenantProvider({ children }: { children: ReactNode }) {
     apiRequest<TenantDto>('/tenant', { signal: controller.signal })
       .then((response) => {
         setState({ status: 'ready', tenant: response.data });
+        void cacheTenant(response.data).catch(() => undefined);
       })
-      .catch((error: unknown) => {
+      .catch(async (error: unknown) => {
         if (controller.signal.aborted) return;
+        // PLT-27: offline, start from the subdomain's cached public profile.
+        if (error instanceof ApiClientError && error.status === 0) {
+          const cached = await cachedTenant().catch(() => undefined);
+          if (cached && !controller.signal.aborted) {
+            setState((current) => (current.status === 'ready' ? current : { status: 'ready', tenant: cached }));
+            return;
+          }
+        }
         const notFound =
           error instanceof ApiClientError && error.code === ErrorCode.TENANT_NOT_FOUND;
         // A failed reload keeps what is already shown.

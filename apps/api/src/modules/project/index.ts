@@ -15,6 +15,7 @@ export { ProjectCounter, ProjectDirectory, type ProjectFacts } from './project-d
 export { currentProject, requireProjectPermission } from './project-permission';
 export { projectRoutes } from './project.routes';
 export { meRoutes } from './project-structure.routes';
+export { offlinePackRoutes, offlineProfileRoutes } from './project-offline.routes';
 export { PlaceDirectory, type ResolvedPlace } from './place-directory';
 export { type PlaceUsage, registerPlaceUsage } from './place-usage';
 export { place, type PlaceRow } from './place.schema';

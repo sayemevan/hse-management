@@ -49,6 +49,12 @@ export const FILE_CATEGORIES = {
     contentTypes: ACTION_FILE_RULES.contentTypes,
     cacheControl: 'private, no-store',
   },
+  // Sprint 9 (O-116): sync probe photos, development and test builds only. Module-served.
+  sync_probe_photo: {
+    maxBytes: 10 * 1024 * 1024,
+    contentTypes: ['image/jpeg', 'image/png', 'image/webp'],
+    cacheControl: 'private, no-store',
+  },
 } as const satisfies Record<string, FileCategoryRules>;
 
 export type FileCategory = keyof typeof FILE_CATEGORIES;
@@ -62,4 +68,5 @@ export const MODULE_SERVED_CATEGORIES: readonly FileCategory[] = [
   'workforce_attachment',
   'workforce_personal',
   'action_evidence',
+  'sync_probe_photo',
 ];

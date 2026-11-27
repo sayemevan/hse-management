@@ -28,6 +28,19 @@ export interface Variables {
    * (PLT-11). Absent on the base domain and before it is loaded.
    */
   tenantSubscription: TenantSubscriptionDto | undefined;
+  /**
+   * PLT-29 (T-69): set by `idempotent()` when the request carries a new `Idempotency-Key`.
+   * The service adds `IdempotencyService.record(claim, …)` to its `UnitOfWork`.
+   */
+  idempotency: IdempotencyClaim | undefined;
+}
+
+/** A new idempotency key, waiting to be recorded with the change it belongs to. */
+export interface IdempotencyClaim {
+  key: string;
+  method: string;
+  route: string;
+  requestHash: string;
 }
 
 export interface AppEnv {

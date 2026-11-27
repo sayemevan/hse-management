@@ -132,6 +132,9 @@ export function useNotificationText(): (notification: NotificationDto) => string
             dueToday: p.dueToday ?? 0,
             critical: p.critical ?? 0,
           });
+        // Sprint 9 (O-131)
+        case 'sync.conflict':
+          return t(p.again ? 'sync_conflict_again' : 'sync_conflict', { record: p.recordLabel ?? '' });
         case 'workforce.member.suspended':
           return t('workforceSuspended', {
             member: p.memberName ?? '',

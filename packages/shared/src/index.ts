@@ -15,6 +15,7 @@ export * from './company/company-contracts';
 export * from './contact/phone';
 export * from './geo/countries';
 export * from './notifications/notification-contracts';
+export * from './offline/offline-contracts';
 export * from './projects/member-contracts';
 export * from './projects/place-contracts';
 export * from './projects/project-contracts';

@@ -7,6 +7,7 @@ import { FileStorageService } from './platform/file-storage';
 import { JobRunner, NO_WORK, type ScheduledJob } from './platform/jobs';
 import { workforceExpiryJob } from './modules/workforce';
 import { actionDueJob } from './modules/action';
+import { syncMaintenanceJob } from './modules/sync';
 
 /**
  * The daily jobs, in the order they run (PLT-09, T-25). Each one is independent: a failure is
@@ -54,6 +55,8 @@ const DAILY_JOBS: readonly ScheduledJob[] = [
   workforceExpiryJob,
   // Sprint 8
   actionDueJob,
+  // Sprint 9
+  syncMaintenanceJob,
 ];
 
 export const dailyJobs = new JobRunner(DAILY_JOBS);

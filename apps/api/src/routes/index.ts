@@ -18,10 +18,17 @@ import { companyRoutes, fileRoutes } from '../modules/company-admin';
 import { authRoutes, invitationRoutes, userRoutes } from '../modules/identity';
 import { platformRegistrationRoutes, registrationRoutes } from '../modules/registration';
 import { notificationRoutes } from '../modules/notifications';
-import { meRoutes, projectRoutes } from '../modules/project';
+import {
+  meRoutes,
+  offlinePackRoutes,
+  offlineProfileRoutes,
+  projectRoutes,
+} from '../modules/project';
 import { planRoutes } from '../modules/subscription';
 import { projectWorkforceRoutes, workforceMeRoutes, workforceRoutes } from '../modules/workforce';
 import { actionMeRoutes, projectActionRoutes } from '../modules/action';
+import { syncMeRoutes } from '../modules/sync';
+import { syncProbeRoutes } from '../modules/sync-probe';
 import { healthRoutes } from './health.routes';
 import { platformJobRoutes } from './platform-jobs.routes';
 
@@ -37,6 +44,8 @@ export { API_V1_BASE_PATH } from './paths';
  * Sprint 6: places, members and timeline under a project; notifications; `/me` preferences.
  * Sprint 7: the workforce area, a project's Workforce tab and `/me/workforce`.
  * Sprint 8: a project's actions with comments, and `/me/actions`.
+ * Sprint 9: the offline profile and pack, the user's sync conflicts, and the sync probe
+ * (development and test only, O-116).
  */
 export const v1Routes = new Hono<AppEnv>()
   .route('/health', healthRoutes)
@@ -69,6 +78,8 @@ export const v1Routes = new Hono<AppEnv>()
   // Sprint 7
   .use('/workforce', resolveTenant(), requireCompanyContext())
   .use('/workforce/*', resolveTenant(), requireCompanyContext())
+  // Sprint 9
+  .use('/dev/*', resolveTenant(), requireCompanyContext())
   // PLT-11: after tenant resolution, before every handler. Refuses company writes in
   // read-only mode (allow-list in the billing module) and loads the state for GET /tenant.
   .use('*', enforceSubscriptionAccess())
@@ -86,11 +97,15 @@ export const v1Routes = new Hono<AppEnv>()
   .route('/projects', projectMemberRoutes)
   .route('/projects', projectWorkforceRoutes)
   .route('/projects', projectActionRoutes)
+  .route('/projects', offlinePackRoutes)
   .route('/workforce', workforceRoutes)
   .route('/notifications', notificationRoutes)
   .route('/me', meRoutes)
   .route('/me', workforceMeRoutes)
   .route('/me', actionMeRoutes)
+  .route('/me', offlineProfileRoutes)
+  .route('/me', syncMeRoutes)
+  .route('/dev/sync-probes', syncProbeRoutes)
   .route('/roles', roleRoutes)
   .route('/platform/payments', platformPaymentRoutes)
   .route('/platform/subscriptions', platformSubscriptionRoutes)

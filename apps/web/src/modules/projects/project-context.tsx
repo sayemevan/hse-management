@@ -18,7 +18,9 @@ import {
 import { Alert } from '@/components/ui/alert';
 import { Spinner } from '@/components/ui/spinner';
 import { useLoad } from '@/modules/app/use-load';
+import { useAuth } from '@/modules/auth/auth-provider';
 import { useErrorMessage } from '@/modules/i18n/use-error-message';
+import { projectOpened } from '@/modules/offline/offline-profile';
 import { cn } from '@/utils/cn';
 
 import { ProjectStatusBadge } from './project-status-badge';
@@ -74,10 +76,13 @@ export function ProjectShell({ id, children }: { id: string; children: ReactNode
   }, [id]);
 
   // PLT-19 FR-3: remember the last project opened (fire-and-forget).
+  // PLT-26: and keep its offline pack on the device (the last 3 opened, plus pinned ones).
+  const userId = useAuth().user?.id;
   useEffect(() => {
     if (loaded.status !== 'ready') return;
     void projectContextService.rememberLastProject(id).catch(() => undefined);
-  }, [id, loaded.status]);
+    if (userId) void projectOpened(userId, id).catch(() => undefined);
+  }, [id, loaded.status, userId]);
 
   const value = useMemo<CurrentProject | null>(
     () =>

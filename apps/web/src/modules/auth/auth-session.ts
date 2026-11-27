@@ -61,6 +61,14 @@ export function refreshAccessToken(): Promise<boolean> {
   return refreshInFlight;
 }
 
+/**
+ * PLT-27 / PLT-28: a token for the sync engine without telling the screens the session ended
+ * (the queue waits for sign-in instead). Network failures throw, as `refreshAccessToken`.
+ */
+export function syncAccessToken(): Promise<string | null> {
+  return ensureAccessToken();
+}
+
 async function ensureAccessToken(): Promise<string | null> {
   if (accessToken && accessTokenExpiresAt - EXPIRY_MARGIN_MS > Date.now()) return accessToken;
   return (await refreshAccessToken()) ? accessToken : null;

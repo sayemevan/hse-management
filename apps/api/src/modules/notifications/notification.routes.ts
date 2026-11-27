@@ -114,6 +114,12 @@ const TARGETS: Record<NotificationType, Target> = {
   'action.due_date_changed': { kind: 'action' },
   'action.comment_added': { kind: 'action' },
   'action.owner_lost_access': { kind: 'action' },
+  // Sprint 9 (O-131): the conflict review screen; it answers 404 once the conflict is gone.
+  'sync.conflict': {
+    kind: 'company',
+    permission: null,
+    route: (row) => `/sync/conflicts/${row.entityId ?? ''}`,
+  },
 };
 
 async function openTarget(c: Context<AppEnv>, row: NotificationRow): Promise<NotificationOpenDto> {

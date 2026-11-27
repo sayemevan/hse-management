@@ -18,4 +18,7 @@ Sprint 7: `activity` also serves one record's history (`listForEntity`, the work
 | `comment` | Sprint 8 | `CommentService.list / add / edit` with a `CommentTarget` the module loads with its own access checks; the module mounts the routes under its record (T-63). Never deleted. |
 
 Sprint 8: `notification` also groups repeated events (`groupedEntries`: one unread notification per record, counted); `activity` entries accept `occurredAt` so several entries of one change keep their order.
+| `sync` | Sprint 9 | `idempotent({ read, companyIdOf })` on offline-capable write routes and `IdempotencyService.record(claim, …)` in the change's `UnitOfWork` (T-69). `registerSyncEntity` for record types that change offline; `SyncConflictService.detect` when `baseVersion` is stale, `resolve` for the user's choice (T-70, D-20). `offlineMetaOf` / `offlineAudit` for capture times and device ids. |
+
+Sprint 9: `file-storage` has the development-only category `sync_probe_photo`.
 One implementation per concern: modules must never build their own.

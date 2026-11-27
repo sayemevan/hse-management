@@ -1,0 +1,2 @@
+# Built by scripts/build-sw.mjs before dev and build (PLT-25).
+public/sw.js

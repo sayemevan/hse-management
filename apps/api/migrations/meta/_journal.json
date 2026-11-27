@@ -99,6 +99,20 @@
       "when": 1795716359242,
       "tag": "0013_sprint8_seed_permissions_triggers",
       "breakpoints": true
+    },
+    {
+      "idx": 14,
+      "version": "6",
+      "when": 1795720649509,
+      "tag": "0014_sprint9_idempotency_conflicts",
+      "breakpoints": true
+    },
+    {
+      "idx": 15,
+      "version": "6",
+      "when": 1795720655358,
+      "tag": "0015_sprint9_conflict_triggers",
+      "breakpoints": true
     }
   ]
 }

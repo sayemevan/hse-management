@@ -5,7 +5,7 @@ import { BROWSER_THEME } from '@/config/theme';
 
 /**
  * Web App Manifest: makes the app installable (Doc 02 §4, PWA).
- * Icons are added with the brand assets; offline support (service worker) depends on Q-26.
+ * Placeholder icons until the brand assets arrive (O-128); the service worker is PLT-25.
  */
 export default function manifest(): MetadataRoute.Manifest {
   return {
@@ -17,6 +17,15 @@ export default function manifest(): MetadataRoute.Manifest {
     orientation: 'portrait',
     background_color: BROWSER_THEME.backgroundColor,
     theme_color: BROWSER_THEME.themeColor,
-    icons: [],
+    icons: [
+      { src: '/icons/icon-192.png', sizes: '192x192', type: 'image/png', purpose: 'any' },
+      { src: '/icons/icon-512.png', sizes: '512x512', type: 'image/png', purpose: 'any' },
+      {
+        src: '/icons/icon-maskable-512.png',
+        sizes: '512x512',
+        type: 'image/png',
+        purpose: 'maskable',
+      },
+    ],
   };
 }

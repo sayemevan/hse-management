@@ -201,6 +201,11 @@ const REVIEWED_BLOCKED = [
   'POST /projects/:id/actions/:actionId/void',
   'POST /projects/:id/actions/:actionId/comments',
   'PATCH /projects/:id/actions/:actionId/comments/:commentId',
+  // Sprint 9 (T-24, O-126): conflict resolution and the sync probe are blocked too.
+  'POST /me/sync/conflicts/:conflictId/resolve',
+  'POST /dev/sync-probes',
+  'PATCH /dev/sync-probes/:id',
+  'POST /dev/sync-probes/:id/photos',
 ];
 
 /** Base-domain only, never reached in a company context. */

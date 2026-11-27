@@ -10,6 +10,7 @@ import { z } from 'zod';
 import { FormField } from '@/components/form/form-field';
 import { PublicPage } from '@/components/layout/public-page';
 import { Alert } from '@/components/ui/alert';
+import { WaitingItemsNotice } from '@/modules/offline/waiting-items-notice';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
 import { PasswordInput } from '@/components/ui/password-input';
@@ -91,6 +92,7 @@ export function LoginScreen() {
           </p>
         </div>
 
+        {company ? <WaitingItemsNotice /> : null}
         {formError ? <Alert tone="danger">{formError}</Alert> : null}
 
         <FormField

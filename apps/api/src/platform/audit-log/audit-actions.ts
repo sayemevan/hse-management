@@ -125,6 +125,12 @@ export const AUDIT_ACTIONS = [
   'action.voided',
   'comment.created',
   'comment.edited',
+  // Offline sync (Sprint 9: PLT-28, PLT-30, O-130)
+  'sync.conflict_detected',
+  'sync.conflict_resolved',
+  'sync_probe.created',
+  'sync_probe.updated',
+  'sync_probe.photo_added',
   // Platform (PLT-04)
   'platform.system_owner.created',
 ] as const;

@@ -134,6 +134,19 @@ Migrations: `0010_sprint7_workforce.sql` (tables and the user index) and `0011_s
 
 Migrations: `0012_sprint8_actions_comments.sql` (tables) and `0013_sprint8_seed_permissions_triggers.sql` (five action permissions with their default rows, platform permissions moved down five places, and the append-only triggers). New file category `action_evidence` (JPEG, PNG, WebP, PDF ≤ 10 MB, O-108), served only through the action routes and counted against the plan's storage. Actions are the first `PlaceUsage` user (O-112).
 
+## Tables (Sprint 9)
+
+| Table             | Module          | Purpose                                                                              | Notes                                                                                                                                                                                                                                                                                                                                                                                                         |
+| ----------------- | --------------- | ------------------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `idempotency_key` | platform (sync) | One row per accepted idempotent write (PLT-29, T-69)                                 | Unique (`company_id`, `key`); `user_id`, `method`, `route` (pattern), `request_hash` (SHA-256 of method, route and body; multipart: fields and each file's hash), `status_code`, `resource_type` / `resource_id` (read again on replay), `expires_at` (30 days, O-124; removed by the daily `sync.maintenance` job). Written in the same batch as the change.                                                 |
+| `sync_conflict`   | platform (sync) | Both versions of every offline conflict and how it was resolved (PLT-30, T-70, D-20) | `user_id` (only they see and resolve it), `entity_type` / `entity_id`, `label`, `project_code`, `base_version`, `server_version`, `changed_by`, `client_payload` and `server_snapshot` (JSON), `status` (`open`, `resolved`, `discarded`, `superseded`), `resolution` (`mine`, `theirs`, `combine`), `resolved_values`. Kept permanently; triggers refuse DELETE and any UPDATE once the row has left `open`. |
+
+Migrations: `0014_sprint9_idempotency_conflicts.sql` (tables) and `0015_sprint9_conflict_triggers.sql` (the two triggers). Offline-capable record tables add an integer `version` column from Sprint 10 (T-70).
+
+**Development and test only (O-116):** `dev_sync_probe` and `dev_sync_probe_photo` are **not** in the migrations. The sync probe creates them on first use (`CREATE TABLE IF NOT EXISTS`), and its routes answer 404 outside development and test, so a production database never has them. New file category `sync_probe_photo` (JPEG, PNG, WebP ≤ 10 MB), served only through the probe routes.
+
+**On the device (not server tables):** the web app's IndexedDB store `hse-offline` (one per company subdomain) with `meta`, `session`, `reference`, `drafts`, `outbox`, `blobs` and `conflicts` (PLT-26, T-67). No tokens or passwords are stored there (T-73).
+
 ## TODO
 
 - [ ] ERD for company and project (Sprints 2–5)

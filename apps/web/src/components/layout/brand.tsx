@@ -6,7 +6,14 @@ import { useTranslations } from 'next-intl';
 import { useCompany } from '@/modules/tenant/tenant-provider';
 
 /** Company logo and name on a company subdomain; the platform name on the base domain. */
-export function Brand({ size = 'default' }: { size?: 'default' | 'large' }) {
+export function Brand({
+  size = 'default',
+  compact = false,
+}: {
+  size?: 'default' | 'large';
+  /** Header on phones: the logo only, the name for screen readers (fits 375 px). */
+  compact?: boolean;
+}) {
   const t = useTranslations('common');
   const company = useCompany();
   const Icon = company ? Building2 : ShieldCheck;
@@ -29,7 +36,11 @@ export function Brand({ size = 'default' }: { size?: 'default' | 'large' }) {
           <Icon className={large ? 'size-7' : 'size-5'} />
         </span>
       )}
-      <span className={large ? 'text-xl font-semibold' : 'font-semibold'}>
+      <span
+        className={
+          large ? 'text-xl font-semibold' : compact ? 'sr-only font-semibold sm:not-sr-only' : 'font-semibold'
+        }
+      >
         {/* <bdi>: a Latin name inside Arabic text keeps its punctuation in place. */}
         <bdi>{company?.name ?? t('platformName')}</bdi>
       </span>

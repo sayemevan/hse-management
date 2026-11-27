@@ -32,6 +32,9 @@ export async function generateMetadata(): Promise<Metadata> {
   return {
     title: { default: name, template: `%s · ${name}` },
     applicationName: publicEnv.appName,
+    // O-128: placeholder until the brand assets arrive.
+    icons: { apple: '/icons/apple-touch-icon.png' },
+    appleWebApp: { capable: true, title: 'HSE', statusBarStyle: 'default' },
   };
 }
 

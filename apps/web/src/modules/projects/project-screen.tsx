@@ -15,6 +15,7 @@ import { Textarea } from '@/components/ui/textarea';
 import { useReadOnly } from '@/modules/billing/use-subscription-state';
 import { useDateFormat } from '@/modules/i18n/use-date-format';
 import { useErrorMessage } from '@/modules/i18n/use-error-message';
+import { KeepOnDeviceSwitch } from '@/modules/offline/keep-on-device-switch';
 
 import { ProjectFormDialog } from './project-form-dialog';
 import { useCurrentProject } from './project-context';
@@ -145,6 +146,8 @@ function ProjectDetails({
           );
         })}
       </ul>
+
+      {archived ? null : <KeepOnDeviceSwitch projectId={project.id} />}
 
       {archived ? (
         <div role="note" className="rounded-xl bg-inactive p-4 text-white">
